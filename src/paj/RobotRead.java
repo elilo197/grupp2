@@ -3,8 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package lastmileauto;
-
+package paj;
+// hej ///Elise 
 import java.util.Random;
 
 public class RobotRead implements Runnable {
