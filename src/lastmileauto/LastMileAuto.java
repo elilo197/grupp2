@@ -2,6 +2,7 @@ package lastmileauto;
 
 // Main 
 
+
 public class LastMileAuto {
 
     DataStore ds;
@@ -19,12 +20,10 @@ public class LastMileAuto {
         /*
          * This sets the file path and read network text file. Adjust for your needs.
          */
-        ds.setFileName("/Users/eliselord/Documents/Liu-elilo197/TNK111-Kandidat/Programering/streets.txt");
+        //ds.setFileName("C:\\Users\\Helena\\Documents\\GitHub\\grupp2/streets.txt");
+        ds.setFileName("/Users/eliselord/Documents/grupp2/streets.txt");
         ds.readNet();
 
-        /*
-         * Initialize and show the GUI. The constructor gets access to the DataStore
-         */
         cui = new ControlUI(ds);
         cui.setVisible(true);
         cui.showStatus();
@@ -56,5 +55,11 @@ public class LastMileAuto {
          * and thereby, call the RobotControl constructor.
         */
         LastMileAuto x = new LastMileAuto();
-    }
+        
+    for (int i=0; i <1000; i++) {
+    System.out.println (ds.arcColor[i]);
+}
+
+    }   
+    
 }
