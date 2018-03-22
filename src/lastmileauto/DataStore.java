@@ -3,6 +3,8 @@ package lastmileauto;
 import java.io.File;
 import java.util.Scanner;
 
+// Sparar data + håller i kopplingen till GUIUpdate och RobotRead
+
 public class DataStore {
 
     String fileName = null;
@@ -15,6 +17,11 @@ public class DataStore {
     int[] arcCost;
     boolean networkRead;
     boolean updateUIflag;
+    double robotX;
+    double robotY; 
+    int startX = 70;
+    int startY = 70; 
+    int[] arcColor;
     
     
     public DataStore() {
@@ -28,6 +35,7 @@ public class DataStore {
         arcCost = new int[1000];
         updateUIflag = false; 
         networkRead = false;
+        arcColor = new int[1000];
         
     }
 
@@ -100,6 +108,8 @@ public class DataStore {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
+        robotX = nodeX[startX]; // node index för startposition
+        robotY = nodeY[startY];
     }
 
 }
