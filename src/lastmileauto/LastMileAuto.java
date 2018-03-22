@@ -18,9 +18,7 @@ public class LastMileAuto {
     
     LastMileAuto(){
 
-        /*
-         * Initialize the DataStore call where all "global" data will be stored
-         */
+     
         ds = new DataStore();
 
         /*
@@ -30,9 +28,6 @@ public class LastMileAuto {
         ds.setFileName("/Users/eliselord/Documents/grupp2/streets.txt");
         ds.readNet();
 
-        /*
-         * Initialize and show the GUI. The constructor gets access to the DataStore
-         */
         cui = new ControlUI(ds);
         cui.setVisible(true);
         cui.showStatus();
