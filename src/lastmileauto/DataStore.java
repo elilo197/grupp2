@@ -19,9 +19,11 @@ public class DataStore {
     boolean updateUIflag;
     double robotX;
     double robotY; 
+    // Dessa två bör ha samma nummer (tror vi) 
+    // Nod 71 i streets är  nod 70 här..
     int startX = 70;
     int startY = 70; 
-    int[] arcColor; 
+    int[] arcColor;
     //double [] nodeNr;
 
     
