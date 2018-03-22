@@ -3,10 +3,6 @@ package lastmileauto;
 import java.io.File;
 import java.util.Scanner;
 
-/**
- *
- * @author clary35
- */
 public class DataStore {
 
     String fileName = null;

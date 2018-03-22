@@ -1,12 +1,7 @@
 package lastmileauto;
 
-/**
- *
- * @author clary35
- */
 public class LastMileAuto {
     
-    // hejhejhejhej !!!!!! 
 
     DataStore ds;
     ControlUI cui;
