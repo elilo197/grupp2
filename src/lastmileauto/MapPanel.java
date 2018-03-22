@@ -63,7 +63,6 @@ public class MapPanel extends JPanel {
                 System.out.println("Arc "+j+": "+ds.arcStart[i]+" "+ds.arcEnd[i]);
                 
                 // arcCost
-                
                 x = Math.abs(x1 - x2);
                 y = Math.abs(y1 - y2);
                 
@@ -72,11 +71,9 @@ public class MapPanel extends JPanel {
                 
                 // glöm ej ta bort denna sen !
                 // System.out.println("Arc cost: " + tot_arcCost + "\n");
-                
-                               
+             
                 if (ds.arcColor[i] == 1){
-                    g.setColor(MAGENTA_COLOR);
-            
+                    g.setColor(MAGENTA_COLOR);    
                 }
                 else g.setColor(DARK_COLOR);
            
