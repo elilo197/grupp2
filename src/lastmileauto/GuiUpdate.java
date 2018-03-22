@@ -1,9 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package lastmileauto;
+
 
 import java.util.Random;
 
@@ -28,13 +25,15 @@ public void run (){
         int i = 1;    
         while(i <= 20){
             Thread.sleep(sleepTime /20);
-            if(ds.updateUIflag == true)
-            {
+            if(ds.updateUIflag == true){
             cui.appendStatus ("Jag är tråd GuiUpdate! För " 
             + i + ":te gången.");
+            ds.robotX = ds.robotX - 10; 
+            cui.repaint();
             i++;      
             }
                        }
+        
             }
     
     catch (InterruptedException exception) {

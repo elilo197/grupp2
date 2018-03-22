@@ -4,10 +4,8 @@ import java.awt.Color;
 import java.awt.Graphics;
 import javax.swing.JPanel;
 
-/**
- *
- * @author clary35
- */
+// Ritar ut allt på kartan, ex. robot osv. 
+
 public class MapPanel extends JPanel {
 
     DataStore ds;
@@ -20,10 +18,12 @@ public class MapPanel extends JPanel {
         super.paintComponent(g);
         final Color LIGHT_COLOR = new Color(150, 150, 150);
         final Color DARK_COLOR = new Color(0, 0, 0);
-        final Color RED_COLOR = new Color(255, 0, 0);
+        final Color MAGENTA_COLOR = new Color(255, 0, 255);
         int x, y;
         int x1, y1;
         int x2, y2;
+        int robotPosX;
+        int robotPosY; 
 
         final int circlesize = 10;
         final int ysize = 350;
@@ -58,6 +58,7 @@ public class MapPanel extends JPanel {
                 
                 int j = i+1;
                 
+                // Glöm ej ta bort denna sen !
                 System.out.println("Arc "+j+": "+ds.arcStart[i]+" "+ds.arcEnd[i]);
                 
                 // arcCost
@@ -68,9 +69,27 @@ public class MapPanel extends JPanel {
                 int tot_arcCost = x + y;
                 g.drawString("" + tot_arcCost, (x1+x2)/2,((height - y1 ) + (height - y2))/2);
                 
-                System.out.println("Arc cost: " + tot_arcCost + "\n");
+                // glöm ej ta bort denna sen !
+                // System.out.println("Arc cost: " + tot_arcCost + "\n");
+                
+                if (ds.arcColor[i] == 1){
+                    g.setColor(MAGENTA_COLOR);
+            
+                }
+                else g.setColor(DARK_COLOR);
            
             }
+            // Draw robot
+            robotPosX = (int)((ds.robotX) * xscale);
+            robotPosY = (int)((ds.robotY)*yscale);
+            
+             g.setColor(MAGENTA_COLOR);
+             // Bara linjer. 
+            //g.drawOval(robotPosX-((circlesize+10)/2), height-robotPosY-(circlesize+10)/2, circlesize+10, circlesize+10);
+          
+            //Ifylld cirkel
+            g.fillOval(robotPosX-((circlesize+10)/2), height-robotPosY-(circlesize+10)/2, circlesize+10, circlesize+10);
+            
         }
     } // end paintComponent
 }
