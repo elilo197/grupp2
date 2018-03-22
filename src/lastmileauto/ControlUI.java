@@ -1,4 +1,4 @@
-package lastmileauto_elise;
+package lastmileauto;
 
 // Grafiska designen 
 
