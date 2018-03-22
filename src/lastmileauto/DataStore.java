@@ -22,6 +22,7 @@ public class DataStore {
     int startX = 70;
     int startY = 70; 
     int[] arcColor; 
+    double [] nodeNr;
 
     
     public DataStore() {
@@ -36,6 +37,7 @@ public class DataStore {
         updateUIflag = false; 
         networkRead = false;
         arcColor = new int[1000];
+       
         
     }
 
@@ -76,6 +78,8 @@ public class DataStore {
                 sline = line.split(" ");
                 nodeX[i] = Double.parseDouble(sline[1].trim());
                 nodeY[i] = Double.parseDouble(sline[2].trim());
+                //Testa om detta funkar. 
+                nodeNr[i] = Double.parseDouble(sline[0].trim());
                 
                 int j = i+1; //Ändrar nodnummer så att den börjar vid 1
                 
