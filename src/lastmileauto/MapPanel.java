@@ -4,10 +4,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import javax.swing.JPanel;
 
-/**
- *
- * @author clary35
- */
+
 public class MapPanel extends JPanel {
 
     DataStore ds;
