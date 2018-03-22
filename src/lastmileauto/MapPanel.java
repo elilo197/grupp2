@@ -73,6 +73,7 @@ public class MapPanel extends JPanel {
                 // glöm ej ta bort denna sen !
                 // System.out.println("Arc cost: " + tot_arcCost + "\n");
                 
+                               
                 if (ds.arcColor[i] == 1){
                     g.setColor(MAGENTA_COLOR);
             
