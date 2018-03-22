@@ -3,6 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/Users/eliselord/Documents/grupp2/src/lastmileauto/LastMileAuto.java</file>
             <file>file:/Users/eliselord/Documents/grupp2/src/lastmileauto/OptPlan.java</file>
             <file>file:/Users/eliselord/Documents/grupp2/src/lastmileauto/ControlUI.java</file>
@@ -11,6 +12,11 @@
             <file>file:/Users/eliselord/Documents/grupp2/src/lastmileauto/README.md</file>
             <file>file:/Users/eliselord/Documents/grupp2/src/lastmileauto/GuiUpdate.java</file>
             <file>file:/Users/eliselord/Documents/grupp2/src/lastmileauto/RobotRead.java</file>
+=======
+            <file>file:/Users/Veronika/Documents/grupp2/src/lastmileauto/DataStore.java</file>
+            <file>file:/Users/Veronika/Documents/grupp2/src/lastmileauto/README.md</file>
+            <file>file:/Users/Veronika/Documents/grupp2/src/lastmileauto/RobotRead.java</file>
+>>>>>>> 6d82866e3e80396a4e3c85aca09933482e768bd7
         </group>
     </open-files>
 </project-private>
