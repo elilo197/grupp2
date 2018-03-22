@@ -1,7 +1,8 @@
 package lastmileauto;
 
+// Main 
+
 public class LastMileAuto {
-    
 
     DataStore ds;
     ControlUI cui;
@@ -18,7 +19,7 @@ public class LastMileAuto {
         /*
          * This sets the file path and read network text file. Adjust for your needs.
          */
-        ds.setFileName("/Users/eliselord/Documents/grupp2/streets.txt"); //Tänk på att man behöver ändra denna för att köra
+        ds.setFileName("/Users/eliselord/Documents/Liu-elilo197/TNK111-Kandidat/Programering/streets.txt");
         ds.readNet();
 
         /*
@@ -39,6 +40,9 @@ public class LastMileAuto {
         t2.start();
         
         cui.appendStatus("Avslutar main.\n");
+        
+        OptPlan op = new OptPlan(ds);
+        op.createPlan();
         
     }
     

@@ -1,9 +1,8 @@
 package lastmileauto;
 
-/**
- *
- * @author clary35
- */
+// Grafiska designen 
+
+
 public class ControlUI extends javax.swing.JFrame {
 
     DataStore ds;

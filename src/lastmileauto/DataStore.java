@@ -21,8 +21,8 @@ public class DataStore {
     double robotY; 
     int startX = 70;
     int startY = 70; 
-    int[] arcColor;
-    
+    int[] arcColor; 
+
     
     public DataStore() {
         // Initialize the datastore with fixed size arrays for storing the network data
@@ -108,7 +108,7 @@ public class DataStore {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        robotX = nodeX[startX]; // node index för startposition
+        robotX = nodeX[startX]; //Node index för startposition
         robotY = nodeY[startY];
     }
 
