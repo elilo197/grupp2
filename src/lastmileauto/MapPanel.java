@@ -46,6 +46,7 @@ public class MapPanel extends JPanel {
                 y = (int) (ds.nodeY[i] * yscale);
                 
                 g.fillOval(x - (circlesize / 2), height - y - circlesize / 2, circlesize, circlesize);
+                g.drawString(" " + ds.nodeNr[i], x, y);
             }
 
             // Draw arcs
