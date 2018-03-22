@@ -18,7 +18,7 @@ public class LastMileAuto {
         /*
          * This sets the file path and read network text file. Adjust for your needs.
          */
-        ds.setFileName("/home/itn/Downloads/streets.txt");
+        ds.setFileName("/Users/eliselord/Documents/grupp2"); //Tänk på att man behöver ändra denna för att köra
         ds.readNet();
 
         /*
