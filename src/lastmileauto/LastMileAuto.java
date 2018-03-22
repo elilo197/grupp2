@@ -2,13 +2,7 @@ package lastmileauto;
 
 // Main 
 
-/** Helena testar!
 
-
-/** Helena testar!
- *
- * @author clary35
- */
 public class LastMileAuto {
 
     DataStore ds;
@@ -18,14 +12,16 @@ public class LastMileAuto {
     
     LastMileAuto(){
 
-     
+        /*
+         * Initialize the DataStore call where all "global" data will be stored
+         */
         ds = new DataStore();
 
         /*
          * This sets the file path and read network text file. Adjust for your needs.
          */
-        //ds.setFileName("C:\\Users\\Helena\\Documents\\GitHub\\grupp2/streets.txt");
-        ds.setFileName("/Users/eliselord/Documents/grupp2/streets.txt");
+        ds.setFileName("C:\\Users\\Helena\\Documents\\GitHub\\grupp2/streets.txt");
+        //ds.setFileName("/Users/eliselord/Documents/grupp2/streets.txt");
         ds.readNet();
 
         cui = new ControlUI(ds);
