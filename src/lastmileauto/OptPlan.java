@@ -56,7 +56,7 @@ public class OptPlan {
                 {
                     System.out.println("Arc in shortest path: "+j);
                     ds.arcColor[j-1] = 1;
-                    
+
                 }
            
             }
