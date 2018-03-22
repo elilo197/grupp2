@@ -7,4 +7,4 @@ Jag vet. Life sucks.
 
 Jag har issues
 
-Hellu / alice
+Hellu idag är det torsdag
