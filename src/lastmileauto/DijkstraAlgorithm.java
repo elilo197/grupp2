@@ -16,10 +16,10 @@ import java.util.Set;
 
 public class DijkstraAlgorithm {
 
-    private final List<Vertex> nodes;
-    private final List<Edge> edges;
-    private Set<Vertex> settledNodes;
-    private Set<Vertex> unSettledNodes;
+    private final List<Vertex> nodes; // vertex = nodes
+    private final List<Edge> edges; // edges = arcs
+    private Set<Vertex> settledNodes; // kortaste vägen är funnen till denna nod
+    private Set<Vertex> unSettledNodes; // ursprungsläge
     private Map<Vertex, Vertex> predecessors;
     private Map<Vertex, Integer> distance;
 
