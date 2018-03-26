@@ -2,7 +2,6 @@ package lastmileauto;
 
 // Main 
 
-
 public class LastMileAuto {
 
     DataStore ds;
@@ -57,6 +56,5 @@ public class LastMileAuto {
         LastMileAuto x = new LastMileAuto();
         
 
-    }   
-    
+    }       
 }
