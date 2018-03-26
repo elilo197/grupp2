@@ -13,7 +13,7 @@ import javax.bluetooth.*;
  * @author eliselord
  */
 public class BluetoothTransceiver {
-    
+       public BluetoothTransceiver(){
     try {
         StreamConnection anslutning = (StreamConnection) 
     Connector.open("btspp://00809824156D:8");
@@ -36,5 +36,5 @@ public class BluetoothTransceiver {
 
     anslutning.close();
     } catch (Exception e) {  System.out.print(e.toString());   }
-    
+       }   
 }
