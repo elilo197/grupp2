@@ -8,7 +8,7 @@ import javax.swing.JPanel;
 
 public class MapPanel extends JPanel {
 
-    DataStore ds;
+    DataStore ds; 
 
     MapPanel(DataStore ds) {
         this.ds = ds;

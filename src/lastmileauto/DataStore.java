@@ -17,14 +17,14 @@ public class DataStore {
     int[] arcCost;
     boolean networkRead;
     boolean updateUIflag;
-    double robotX;
+    double robotX;          
     double robotY; 
     // Dessa två bör ha samma nummer (tror vi) 
     // Nod 71 i streets är  nod 70 här..
     int startX = 70;
     int startY = 70; 
     int[] arcColor;
-    int startRutt = 67; //start node nummer
+    int startRutt = 64; //start node nummer
     int slutRutt = 14; //slut node nummer.
 
     
