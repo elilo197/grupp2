@@ -12,7 +12,7 @@ public class BluetoothTransmitter {
 
     PrintStream bluetooth_ut = new PrintStream(anslutning.openOutputStream());
 
-    bluetooth_ut.println("Test från grupp X");
+    bluetooth_ut.println("Test från grupp 2");
 
     Thread.sleep(500);
     
