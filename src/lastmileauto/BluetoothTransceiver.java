@@ -8,10 +8,6 @@ import java.io.*;
 import javax.microedition.io.*;
 import javax.bluetooth.*;
 
-/**
- *
- * @author eliselord
- */
 public class BluetoothTransceiver {
        public BluetoothTransceiver(){
     try {
