@@ -1,7 +1,7 @@
 package lastmileauto;
 
 // Grafiska designen 
-
+//Ändrade utseendet
 
 public class ControlUI extends javax.swing.JFrame {
 
