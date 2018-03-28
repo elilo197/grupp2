@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package bluetoothtransmitter;
+package lastmileauto;
 
 import java.io.*;
 import javax.microedition.io.*;
@@ -11,7 +11,7 @@ import javax.bluetooth.*;
 
 public class BluetoothTransmitter {
 
-    public static void main(String args[]) {
+    public BluetoothTransmitter() {
     try {
         StreamConnection anslutning = (StreamConnection) 
     Connector.open("btspp://001A7DDA7106:1");

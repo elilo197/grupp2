@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package bluetoothtransceiver;
+package lastmileauto;
 
 //Bluetoothnamn flr Arduino 20:16:01:20:56:82
 import java.io.*;
@@ -11,9 +11,8 @@ import javax.microedition.io.*;
 import javax.bluetooth.*;
 
 public class BluetoothTransceiver {
-
-    public static void main(String args[]) {
-
+    
+public BluetoothTransceiver (){
         try {
 
             StreamConnection anslutning = (StreamConnection) 
@@ -48,5 +47,7 @@ public class BluetoothTransceiver {
             anslutning.close();
 
         } catch (Exception e) {  System.out.print(e.toString());   }
+
 }
 }
+
