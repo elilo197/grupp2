@@ -22,7 +22,7 @@ public class Uppdrag {
      try {
 
          Uppdrag http = new Uppdrag();
-         String url = " http://facebook.se"; 
+         String url = " http://tnk111.n7.se/listaplatser.php"; 
          URL urlobjekt = new URL(url);       
          HttpURLConnection anslutning = (HttpURLConnection)
     urlobjekt.openConnection();
