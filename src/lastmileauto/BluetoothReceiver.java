@@ -16,7 +16,7 @@ import javax.bluetooth.*;
 
 
 
-public class BluetoothReceiver {
+public class BluetoothReceiver{
 
     
     

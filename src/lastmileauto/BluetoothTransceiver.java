@@ -10,9 +10,10 @@ import java.io.*;
 import javax.microedition.io.*;
 import javax.bluetooth.*;
 
-public class BluetoothTransceiver {
+public class BluetoothTransceiver implements Runnable {
     
-public BluetoothTransceiver (){
+@Override    
+public void run (){
         try {
 
             StreamConnection anslutning = (StreamConnection) 
