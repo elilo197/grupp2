@@ -15,10 +15,10 @@ import javax.bluetooth.*;
 
 public class BluetoothReceiver {
 
-    public BluetoothReceiver() {
+    public void BluetoothReceiver() {
+        System.out.println("YEY det funkade!! ");
 
         try {
-
 
             StreamConnectionNotifier service = (StreamConnectionNotifier) 
 
@@ -34,6 +34,7 @@ public class BluetoothReceiver {
              String mottaget = new String(buffer, 0, antal_bytes);
 
              System.out.println("\n"+"Mottaget meddelande: " + mottaget);
+              //cui.appendStatus("\n"+"Mottaget meddelande: " + mottaget);
 
              anslutning.close();
 
