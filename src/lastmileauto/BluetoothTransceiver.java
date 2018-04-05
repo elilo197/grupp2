@@ -17,7 +17,7 @@ public BluetoothTransceiver (){
 
             StreamConnection anslutning = (StreamConnection) 
 
-                    Connector.open("btspp://001A7DDA7106:3");
+                    Connector.open("btspp://201601205682:1");
 
             PrintStream bluetooth_ut = new 
                     PrintStream(anslutning.openOutputStream());
@@ -32,6 +32,7 @@ public BluetoothTransceiver (){
             while(true) {
 
                 String meddelande_ut = tangentbord.readLine();
+              
 
                 if (meddelande_ut==null) {
                             break;

@@ -1,5 +1,9 @@
 package lastmileauto;
 
+import java.awt.*;
+import javax.swing.*; 
+import java.awt.event*;
+
 // Grafiska designen 
 //Ändrade utseendet
 
@@ -214,6 +218,8 @@ public class ControlUI extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         /*Vill ansluta med rätt Bluetooth adress och kanal och detta ska sedan
         visas i den mindre rutan till vänster*/
+        
+        System.out.println("Hej");
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
