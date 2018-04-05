@@ -10,10 +10,6 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-/**
- *
- * @author Helena
- */
 public class Uppdrag {
     
     //http://tnk111.n7.se/listaplatser.php}
