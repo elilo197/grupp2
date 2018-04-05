@@ -9,6 +9,8 @@ import java.io.*;
 import javax.microedition.io.*;
 import javax.bluetooth.*;
 
+//Tror inte denna ska vara med! 
+
 public class BluetoothMirror {
 
     public BluetoothMirror() {
