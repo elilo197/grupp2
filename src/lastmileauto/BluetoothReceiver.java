@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package bluetoothreceiver;
+package lastmileauto;
 
 
 import java.io.*;
@@ -12,7 +12,7 @@ import javax.bluetooth.*;
 
 public class BluetoothReceiver {
 
-    public static void main(String args[]) {
+    public BluetoothReceiver() {
 
         try {
 

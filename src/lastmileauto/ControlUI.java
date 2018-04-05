@@ -1,7 +1,7 @@
 package lastmileauto;
 
 // Grafiska designen 
-
+//Ändrade utseendet
 
 public class ControlUI extends javax.swing.JFrame {
 
@@ -53,7 +53,7 @@ public class ControlUI extends javax.swing.JFrame {
             .addGap(0, 348, Short.MAX_VALUE)
         );
 
-        jButton1.setText("Just for show");
+        jButton1.setText("Start");
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
@@ -127,6 +127,11 @@ public class ControlUI extends javax.swing.JFrame {
         );
 
         jButton1.setText("Start");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jTextArea1.setEditable(false);
         jTextArea1.setColumns(20);
@@ -134,8 +139,18 @@ public class ControlUI extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTextArea1);
 
         jButton2.setText("Avsluta");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Anslut");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jTextArea2.setColumns(20);
         jTextArea2.setRows(5);
@@ -195,6 +210,20 @@ public class ControlUI extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        /*Vill ansluta med rätt Bluetooth adress och kanal och detta ska sedan
+        visas i den mindre rutan till vänster*/
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        /*Vill starta uppdrag */
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        /* Vill avsluta uppdrag 
+        System.exit(0); ? */
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

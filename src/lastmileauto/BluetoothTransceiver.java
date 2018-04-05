@@ -32,6 +32,7 @@ public BluetoothTransceiver (){
             while(true) {
 
                 String meddelande_ut = tangentbord.readLine();
+              
 
                 if (meddelande_ut==null) {
                             break;

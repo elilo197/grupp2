@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package bluetoothmirror;
+package lastmileauto;
 
 import java.io.*;
 import javax.microedition.io.*;
@@ -11,7 +11,7 @@ import javax.bluetooth.*;
 
 public class BluetoothMirror {
 
-    public static void main(String args[]) {
+    public BluetoothMirror() {
 
         try {
 
