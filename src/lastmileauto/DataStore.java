@@ -91,7 +91,7 @@ public class DataStore {
                 
                 int j = i+1; //Ändrar nodnummer så att den börjar vid 1
                 
-                System.out.println("Node "+j+": "+nodeX[i]+" "+nodeY[i]); //loopar igenom alla noder och visar position
+               // System.out.println("Node "+j+": "+nodeX[i]+" "+nodeY[i]); //loopar igenom alla noder och visar position
             }
 
             // Debug printout: print data for node 1
