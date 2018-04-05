@@ -33,7 +33,7 @@ public void run () {
             Thread.sleep (sleepTime / 20);
             cui.appendStatus("Jag är tråd RobotRead!");
             //cui.appendStatus("Jag är tråd RobotRead! För "+i+":te gången.");
-            bre.BluetoothReceiver();
+            bre.BluetoothReceiver(cui);
             
 //            if (i ==11){
 //                ds.updateUIflag=true;
