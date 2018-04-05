@@ -4,12 +4,13 @@ import java.awt.*;
 import javax.swing.*; 
 //import java.awt.event*;
 
-// Grafiska designen 
+//Grafiska designen 
 //Ändrade utseendet
 
 public class ControlUI extends javax.swing.JFrame {
     DataStore ds;
     BluetoothTransceiver btc;
+    BluetoothTransmitter btm;
     
 
     /**
@@ -282,6 +283,8 @@ public class ControlUI extends javax.swing.JFrame {
 
     private void startActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startActionPerformed
         /*Vill starta uppdrag */
+        btm = new BluetoothTransmitter();
+        
     }//GEN-LAST:event_startActionPerformed
 
     private void avslutaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_avslutaActionPerformed

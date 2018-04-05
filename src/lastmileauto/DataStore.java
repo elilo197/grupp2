@@ -26,10 +26,10 @@ public class DataStore {
     int[] arcColor;
     int startRutt = 64; //start node nummer
     int slutRutt = 14; //slut node nummer.
-    String F; //Kör forward 
-    String R;  //Kör Right
-    String L;   //Kör Left 
-    String S;   //Stop i 5 sek. 
+    String F = "F"; //Kör forward 
+    String R = "R";  //Kör Right
+    String L = "L";   //Kör Left 
+    String S = "S";   //Stop i 5 sek. 
     
 
     

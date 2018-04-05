@@ -11,19 +11,24 @@ import javax.bluetooth.*;
 
 public class BluetoothTransmitter {
 
+ private  DataStore ds;
+    
     public BluetoothTransmitter() {
-    try {
-        StreamConnection anslutning = (StreamConnection) 
-    Connector.open("btspp://001A7DDA7106:1");
-        
-       PrintStream bluetooth_ut = new 
-        PrintStream(anslutning.openOutputStream());
+        this.ds = ds;
+         System.out.println("Vi är i Trasnmitter! Awesome!");
 
-        bluetooth_ut.println("Test från grupp 2");
-
-        Thread.sleep(500);
-        anslutning.close();
-
-    } catch (Exception e) {  System.out.print(e.toString());   }
-    }
+//    try {
+//        StreamConnection anslutning = (StreamConnection) 
+//    Connector.open("btspp://001A7DDA7106:1");
+//        
+//       PrintStream bluetooth_ut = new 
+//        PrintStream(anslutning.openOutputStream());
+//
+//        bluetooth_ut.println(ds.F);
+//       
+//        Thread.sleep(500);
+//        anslutning.close();
+//
+//    } catch (Exception e) {  System.out.print(e.toString());   }
+ }
 }
