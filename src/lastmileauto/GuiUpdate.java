@@ -1,6 +1,7 @@
 
 package lastmileauto;
 
+//söka efter kommandon från robotread, uppdaterar hur roboten rör sig
 
 import java.util.Random;
 
