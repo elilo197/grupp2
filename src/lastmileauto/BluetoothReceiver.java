@@ -25,6 +25,8 @@ private ControlUI cui;
     public void BluetoothReceiver(ControlUI cui) {
         this.cui = cui;
         // System.out.println("YEY det funkade!! ");
+        
+      
         cui.appendStatus("\n"+"Mottaget meddelande: ");
 //        
 //        try {
@@ -45,6 +47,13 @@ private ControlUI cui;
 //            // System.out.println("\n"+"Mottaget meddelande: " + mottaget);
 //            cui.appendStatus("\n"+"Mottaget meddelande: " + mottaget);
 //
+
+            //if (mottaget == 1) {
+            //    
+            //}
+
+
+
 //             anslutning.close();
 //
 //        } catch (IOException e) 

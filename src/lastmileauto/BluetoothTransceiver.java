@@ -40,11 +40,13 @@ public BluetoothTransceiver (){
                 }
 
                 bluetooth_ut.println(meddelande_ut);
+                          
                 String meddelande_in = bluetooth_in.readLine();
                 System.out.println("Mottaget: " + meddelande_in);
-
-            }
-
+                
+                }
+               
+            
             anslutning.close();
 
         } catch (Exception e) {  System.out.print(e.toString());   }

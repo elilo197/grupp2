@@ -35,11 +35,13 @@ public class LastMileAuto {
         cui.setVisible(true);
         cui.showStatus();
         
-        r = new RobotRead(ds, cui, bre);
+        r = new RobotRead(ds, cui, bre);    //Tråd som lyssnar på AGV via Bluetoothreciever
         Thread t1 = new Thread(r);
-        g =  new GuiUpdate(ds, cui);
+        g =  new GuiUpdate(ds, cui);        //Tråd som uppdaterar kartan med var AGV är
         Thread t2 = new Thread(g);
-        
+                                            //Tråd som håller kontakt med AGV via BluetoothTranceiver
+                                            //Tråd för resten, typ main
+                                            
         cui.appendStatus("Startar 2 trådar...\n" );
                        
         t1.start();
