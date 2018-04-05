@@ -60,7 +60,7 @@ public class MapPanel extends JPanel {
                 int j = i+1;
                 
                 // Glöm ej ta bort denna sen !
-                System.out.println("Arc "+j+": "+ds.arcStart[i]+" "+ds.arcEnd[i]);
+               // System.out.println("Arc "+j+": "+ds.arcStart[i]+" "+ds.arcEnd[i]);
                 
                 // arcCost
                 x = Math.abs(x1 - x2);
