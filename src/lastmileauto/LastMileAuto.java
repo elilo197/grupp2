@@ -11,7 +11,6 @@ public class LastMileAuto {
     BluetoothReceiver bre;
     
     LastMileAuto(){
-
         /*
          * Initialize the DataStore call where all "global" data will be stored
          */
@@ -22,11 +21,12 @@ public class LastMileAuto {
          * This sets the file path and read network text file. Adjust for your needs.
          */
         
-//  ds.setFileName("/Users/eliselord/Documents/grupp2/streets.txt");
-        ds.setFileName("C:\\Users\\Helena\\Documents\\GitHub\\grupp2/streets.txt");
+        // ds.setFileName("C:\\Users\\Helena\\Documents\\GitHub\\grupp2/streets.txt");
+     //  ds.setFileName("/Users/eliselord/Documents/grupp2/streets.txt");
+        //ds.setFileName("C:\\Users\\Helena\\Documents\\GitHub\\grupp2/streets.txt");
      // ds.setFileName("/Users/eliselord/Documents/grupp2/streets.txt");
         // ds.setFileName("/Users/Veronika/Desktop/streets.txt");
-      // ds.setFileName("/Users/aliceneu/Documents/grupp2/streets.txt");
+       ds.setFileName("/Users/aliceneu/Documents/grupp2/streets.txt");
        
         ds.readNet();
 
@@ -42,7 +42,7 @@ public class LastMileAuto {
                                             //Tråd för resten, typ main
                                             
         cui.appendStatus("Startar 2 trådar...\n" );
-                       
+                  
         t1.start();
         t2.start();
         
