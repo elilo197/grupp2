@@ -6,6 +6,9 @@
 package lastmileauto;
 
 
+//hcitool scan = visar alla tillgängliga enheter
+//sdptool browse 20:16:01:20:56:82:1 
+
 import java.io.*;
 import javax.microedition.io.*;
 import javax.bluetooth.*;
@@ -19,7 +22,7 @@ public class BluetoothReceiver {
 
             StreamConnectionNotifier service = (StreamConnectionNotifier) 
 
-          Connector.open("btspp://localhost:" + new UUID(0x1101).toString() + 
+          Connector.open("btspp://201601205682:1" + new UUID(0x1101).toString() + 
                   ";name=TNK111-test");
 
             StreamConnection anslutning = (StreamConnection) 
