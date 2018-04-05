@@ -16,30 +16,30 @@ import javax.bluetooth.*;
 public class BluetoothReceiver {
 
     public void BluetoothReceiver() {
-        System.out.println("YEY det funkade!! ");
+        // System.out.println("YEY det funkade!! ");
 
-//        try {
-//
-//            StreamConnectionNotifier service = (StreamConnectionNotifier) 
-//
-//          Connector.open("btspp://201601205682:1" + new UUID(0x1101).toString() + 
-//                  ";name=TNK111-test");
-//
-//            StreamConnection anslutning = (StreamConnection) 
-//        service.acceptAndOpen();
-//             InputStream bluetooth_in = anslutning.openInputStream();
-//
-//             byte buffer[] = new byte[80];
-//             int antal_bytes = bluetooth_in.read(buffer);
-//             String mottaget = new String(buffer, 0, antal_bytes);
-//
-//             System.out.println("\n"+"Mottaget meddelande: " + mottaget);
-//              //cui.appendStatus("\n"+"Mottaget meddelande: " + mottaget);
-//
-//             anslutning.close();
-//
-//        } catch (IOException e) 
-//{   System.err.print(e.toString());    }
+        try {
+
+            StreamConnectionNotifier service = (StreamConnectionNotifier) 
+
+          Connector.open("btspp://201601205682:1" + new UUID(0x1101).toString() + 
+                  ";name=TNK111-test");
+
+            StreamConnection anslutning = (StreamConnection) 
+        service.acceptAndOpen();
+             InputStream bluetooth_in = anslutning.openInputStream();
+
+             byte buffer[] = new byte[80];
+             int antal_bytes = bluetooth_in.read(buffer);
+             String mottaget = new String(buffer, 0, antal_bytes);
+
+             System.out.println("\n"+"Mottaget meddelande: " + mottaget);
+              //cui.appendStatus("\n"+"Mottaget meddelande: " + mottaget);
+
+             anslutning.close();
+
+        } catch (IOException e) 
+{   System.err.print(e.toString());    }
 }
     
 }
