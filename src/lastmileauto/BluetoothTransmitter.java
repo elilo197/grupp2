@@ -13,13 +13,21 @@ public class BluetoothTransmitter {
 
  private  DataStore ds;
  private String message;
+ private BluetoothTransceiver btc; 
  
 //private message = new String;
     
     public BluetoothTransmitter(String message) {
         this.ds = ds;
          System.out.println(message);
+         btc = new BluetoothTransceiver();
          
+         //Utan att koppla och istället använda tranciver. 
+         
+         btc.bluetooth_ut.println(message);
+       
+         
+       //Från labben;   
 //    try {
 //        StreamConnection anslutning = (StreamConnection) 
 //    Connector.open("btspp://001A7DDA7106:1");
@@ -27,7 +35,7 @@ public class BluetoothTransmitter {
 //       PrintStream bluetooth_ut = new 
 //        PrintStream(anslutning.openOutputStream());
 //
-//        bluetooth_ut.println(ds.F);
+//        bluetooth_ut.println(massage);
 //       
 //        Thread.sleep(500);
 //        anslutning.close();
