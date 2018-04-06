@@ -5,7 +5,6 @@
  */
 package lastmileauto;
 //Denna tror vi ska kopplas ihop med Bluetooth reciver. 
-
 import java.util.Random;
 
 public class RobotRead implements Runnable {
