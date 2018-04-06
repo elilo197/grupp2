@@ -283,13 +283,15 @@ public class ControlUI extends javax.swing.JFrame {
 
     private void startActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startActionPerformed
         /*Vill starta uppdrag */
-        btm = new BluetoothTransmitter();
+        btm = new BluetoothTransmitter(ds.F);
+        
         
     }//GEN-LAST:event_startActionPerformed
 
     private void avslutaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_avslutaActionPerformed
         
         //vill avsluta uppdrag
+         btm = new BluetoothTransmitter(ds.S);
     }//GEN-LAST:event_avslutaActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
