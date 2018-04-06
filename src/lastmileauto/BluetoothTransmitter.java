@@ -12,11 +12,14 @@ import javax.bluetooth.*;
 public class BluetoothTransmitter {
 
  private  DataStore ds;
+ private String message;
+ 
+//private message = new String;
     
-    public BluetoothTransmitter() {
+    public BluetoothTransmitter(String message) {
         this.ds = ds;
-         System.out.println("Vi är i Trasnmitter! Awesome!");
-
+         System.out.println(message);
+         
 //    try {
 //        StreamConnection anslutning = (StreamConnection) 
 //    Connector.open("btspp://001A7DDA7106:1");

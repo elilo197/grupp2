@@ -20,7 +20,7 @@ public class BluetoothTransceiver implements Runnable {
 @Override    
 public void run (){
     
-    System.out.print("Nu är vi i Transceiver! Good job!");
+    System.out.println("Nu är vi i Transceiver! Good job!");
 //        try {
 //
 ////            StreamConnection anslutning = (StreamConnection) 
