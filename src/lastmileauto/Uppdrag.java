@@ -15,9 +15,11 @@ import java.net.URL;
 
 public class Uppdrag {
     
+    public Uppdrag() {
+    
+    //System.out.println("Vi är i Uppdrag! Good job!");    
     //http://tnk111.n7.se/listaplatser.php}
-    public static void main(String[] args) {
-        // TODO code application logic here
+    
      try {
 
          Uppdrag http = new Uppdrag();
@@ -49,6 +51,5 @@ public class Uppdrag {
         }
     
      catch (Exception e) { System.out.print(e.toString()); }
-
 }
 }
