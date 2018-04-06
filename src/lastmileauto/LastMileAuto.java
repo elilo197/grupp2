@@ -62,6 +62,6 @@ public class LastMileAuto {
         */
         LastMileAuto x = new LastMileAuto();
         
-        Uppdrag uppdrag1 = new Uppdrag();
+
     }       
 }
