@@ -3,6 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
+// Kan vi använda Timer istället för trådning i denna?
+
 package lastmileauto;
 
 import java.io.BufferedReader;
@@ -10,10 +13,6 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-/**
- *
- * @author Helena
- */
 public class Uppdrag {
     
     //http://tnk111.n7.se/listaplatser.php}

@@ -8,21 +8,25 @@ public class LastMileAuto {
     ControlUI cui;
     RobotRead r;
     GuiUpdate g;
+    BluetoothReceiver bre;
     
     LastMileAuto(){
-
         /*
          * Initialize the DataStore call where all "global" data will be stored
          */
         ds = new DataStore();
+        bre = new BluetoothReceiver();
 
         /*
          * This sets the file path and read network text file. Adjust for your needs.
          */
         
-        ds.setFileName("C:\\Users\\Helena\\Documents\\GitHub\\grupp2/streets.txt");
+        // ds.setFileName("C:\\Users\\Helena\\Documents\\GitHub\\grupp2/streets.txt");
      //  ds.setFileName("/Users/eliselord/Documents/grupp2/streets.txt");
+        //ds.setFileName("C:\\Users\\Helena\\Documents\\GitHub\\grupp2/streets.txt");
+     // ds.setFileName("/Users/eliselord/Documents/grupp2/streets.txt");
         // ds.setFileName("/Users/Veronika/Desktop/streets.txt");
+       ds.setFileName("/Users/aliceneu/Documents/grupp2/streets.txt");
        
         ds.readNet();
 
@@ -30,13 +34,15 @@ public class LastMileAuto {
         cui.setVisible(true);
         cui.showStatus();
         
-        r = new RobotRead(ds, cui);
+        r = new RobotRead(ds, cui, bre);    //Tråd som lyssnar på AGV via Bluetoothreciever
         Thread t1 = new Thread(r);
-        g =  new GuiUpdate(ds, cui);
+        g =  new GuiUpdate(ds, cui);        //Tråd som uppdaterar kartan med var AGV är
         Thread t2 = new Thread(g);
-        
+                                            //Tråd som håller kontakt med AGV via BluetoothTranceiver
+                                            //Tråd för resten, typ main
+                                            
         cui.appendStatus("Startar 2 trådar...\n" );
-                       
+                  
         t1.start();
         t2.start();
         
