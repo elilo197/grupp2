@@ -15,6 +15,7 @@ public class BluetoothTransmitter implements Runnable{
  private String message;
  private BluetoothTransceiver btc; 
  
+ 
 //private message = new String;
     
  public BluetoothTransmitter (String message)   {
@@ -31,7 +32,6 @@ public void run (){
          btc = new BluetoothTransceiver();
          
          //Utan att koppla och istället använda tranciver. 
-         
          btc.bluetooth_ut.println(message);
        
          
