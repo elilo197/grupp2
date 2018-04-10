@@ -22,6 +22,10 @@ public class LastMileAuto {
          */
         
    //ds.setFileName("C:\\Users\\Helena\\Documents\\GitHub\\grupp2/streets.txt");
+
+     ds.setFileName("/Users/eliselord/Documents/grupp2/streets.txt");
+   //ds.setFileName("C:\\Users\\Helena\\Documents\\GitHub\\grupp2/streets.txt");
+
      // ds.setFileName("/Users/eliselord/Documents/grupp2/streets.txt");
         // ds.setFileName("/Users/Veronika/Desktop/streets.txt");
        //ds.setFileName("/Users/aliceneu/Documents/grupp2/streets.txt");
@@ -41,10 +45,10 @@ public class LastMileAuto {
                                             //Tråd som håller kontakt med AGV via BluetoothTranceiver
                                             //Tråd för resten, typ main
                                             
-        cui.appendStatus("Startar 2 trådar...\n" );
+        cui.appendStatus("Startar programmet \n" );
                   
-        t1.start();
-        t2.start();
+       // t1.start();
+        //t2.start();   Glöm ej ta bort dessa kommentarer sen !! 
         
         cui.appendStatus("Avslutar main.\n");
         
