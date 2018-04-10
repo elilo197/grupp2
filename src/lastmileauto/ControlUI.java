@@ -286,6 +286,10 @@ public class ControlUI extends javax.swing.JFrame {
         /*Vill starta uppdrag */
         btm = new BluetoothTransmitter(ds.F);
         uppdrag1= new Uppdrag();
+       Thread t4 = new Thread(btm);
+       t4.start();
+       
+       Uppdrag uppdrag1 = new Uppdrag();
         
     }//GEN-LAST:event_startActionPerformed
 
