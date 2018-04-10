@@ -12,7 +12,7 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-
+import java.lang.*;
 public class Uppdrag {
     
     public Uppdrag() {
@@ -43,8 +43,9 @@ public class Uppdrag {
         while ((inkommande_text = inkommande.readLine()) != null) {
                 inkommande_samlat.append(inkommande_text);
         }
-    
+        //String [] ink_sam = inkommande_samlat.split(" "); Skapa mellanrum mellan de olika raderna EJ KLART
         inkommande.close();
+               
 
         System.out.println(inkommande_samlat.toString());
         }
@@ -80,14 +81,38 @@ public class Uppdrag {
  
         while ((inkommande_text = inkommande.readLine()) != null) {
                 inkommande_samlat.append(inkommande_text);
+                
+                String ink_sam = inkommande_samlat.toString();
+                String [] ink_s = ink_sam.split(" ");
+                System.out.println(ink_s);
+               for(String ink : ink_s){
+                    System.out.println(ink);}
         }
-    
+        
+       
         inkommande.close();
-
-        System.out.println(inkommande_text.toString());
+  
         }
     
      catch (Exception e) { System.out.print(e.toString()); }
+     
+     //Här ska de hända massa spännande saker.
+     //Kolla om det finns uppdrag
+            //Om det EJ finns, sök ny startnod
+            //Om det finns, fortsätt på följande:
+        //Spara kapacitet i en string/var, spara samåkning i en string/var
+        //Ta första uppdaget och kolla om kapacitet är ok
+            //Om kapacitet är ok --> kolla om samåkning är ok
+                //Om samåkning är ok, kolla vidare i listan och spara "nuvarande" passagerare
+                //Om samåkning EJ är ok, anropa nekas/beviljas 
+                    //Om beviljas --> Dijkstra/OptPlan/Compass -->kör
+                    //Om nekas --> sök nytt uppdrag
+            //Om kapacitet Ej är ok, kolla vidare i uppdragslistan
+            //Om kapacitet är = antal passagerare, kör anropa nekas/beviljas
+                    //Om beviljas  --> Dijkstra/OptPlan/Compass -->kör
+                    //Om nekas --> sök nytt uppdrag
+    
+            
      
 }
     
