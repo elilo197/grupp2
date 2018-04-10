@@ -9,21 +9,29 @@ import java.io.*;
 import javax.microedition.io.*;
 import javax.bluetooth.*;
 
-public class BluetoothTransmitter {
+public class BluetoothTransmitter implements Runnable{
 
  private  DataStore ds;
  private String message;
  private BluetoothTransceiver btc; 
  
+ 
 //private message = new String;
     
-    public BluetoothTransmitter(String message) {
-        this.ds = ds;
+ public BluetoothTransmitter (String message)   {
+      this.ds = ds;
+}
+    
+@Override    
+public void run (){
+    
+
+
+        
          System.out.println(message);
          btc = new BluetoothTransceiver();
          
          //Utan att koppla och istället använda tranciver. 
-         
          btc.bluetooth_ut.println(message);
        
          
@@ -41,5 +49,7 @@ public class BluetoothTransmitter {
 //        anslutning.close();
 //
 //    } catch (Exception e) {  System.out.print(e.toString());   }
- }
+
+
+        }
 }

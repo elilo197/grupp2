@@ -18,8 +18,7 @@ public class Uppdrag {
     public Uppdrag() {
     
     //System.out.println("Vi är i Uppdrag! Good job!");    
-    //http://tnk111.n7.se/listaplatser.php}
-    
+        
      try {
 
          //Uppdrag http = new Uppdrag();
