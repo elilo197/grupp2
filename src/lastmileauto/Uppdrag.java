@@ -83,9 +83,9 @@ public class Uppdrag {
                 inkommande_samlat.append(inkommande_text);
                 
                 String ink_sam = inkommande_samlat.toString();
-                String [] ink_s = ink_sam.split(" ");
-                System.out.println(ink_s);
-               for(String ink : ink_s){
+               // String[] ink_s = ink_sam.split(" ");
+               //System.out.println(ink_s);
+               for(String ink : ink_sam.split(" ")){
                     System.out.println(ink);}
         }
         
