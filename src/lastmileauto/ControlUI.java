@@ -11,6 +11,7 @@ public class ControlUI extends javax.swing.JFrame {
     DataStore ds;
     BluetoothTransceiver btc;
     BluetoothTransmitter btm;
+    Uppdrag uppdrag1;
     
 
     /**
@@ -284,7 +285,7 @@ public class ControlUI extends javax.swing.JFrame {
     private void startActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startActionPerformed
         /*Vill starta uppdrag */
         btm = new BluetoothTransmitter(ds.F);
-        Uppdrag uppdrag1 = new Uppdrag();
+        uppdrag1= new Uppdrag();
         
     }//GEN-LAST:event_startActionPerformed
 
