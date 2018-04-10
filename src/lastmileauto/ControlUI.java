@@ -28,6 +28,16 @@ public class ControlUI extends javax.swing.JFrame {
         jTextArea1.append(s+"\n");
         jTextArea1.setCaretPosition(jTextArea1.getDocument().getLength());
     } 
+        // Försöker lägga in text i en annan ruta. 
+         public void appendBluetoothAdress(String s){
+        jTextArea2.append(s+"\n"); 
+        jTextArea2.setCaretPosition(jTextArea2.getDocument().getLength());
+    } 
+         //
+             public void appendBluetoothKanal(String s){
+        jTextArea3.append(s+"\n"); 
+        jTextArea3.setCaretPosition(jTextArea3.getDocument().getLength());
+    }
 
     public void showStatus(){
         jTextArea1.append("Nodes: "+ds.nodes);
