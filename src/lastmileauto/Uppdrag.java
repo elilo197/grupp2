@@ -9,16 +9,22 @@
 package lastmileauto;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.lang.*;
 public class Uppdrag {
     
-    public Uppdrag() {
+    public Uppdrag() {}
     
     //System.out.println("Vi är i Uppdrag! Good job!");    
-        
+
+    /**
+     *
+     */
+    public static String listaplatser(String[] args){
+        String test = "Hej"; //Ta bort sen
      try {
 
          //Uppdrag http = new Uppdrag();
@@ -50,8 +56,13 @@ public class Uppdrag {
         System.out.println(inkommande_samlat.toString());
         }
     
-     catch (Exception e) { System.out.print(e.toString()); }
+     catch (IOException e) { System.out.print(e.toString()); }
+     return test;//Ta bort sen
+     }   
      
+    public static String listauppdrag(String[] plats){
+        String x = "Hej"; //Ta bort sen
+       
      //Någon funktion som räknar ut vilken upphämtningsplats som är närmst, spara som en var/string(?)
      //Använd Dijkstra och OptPlan för att hitta närmsta plats
      //Kalla på Compass och kör till platsen
@@ -83,9 +94,9 @@ public class Uppdrag {
                 inkommande_samlat.append(inkommande_text);
                 
                 String ink_sam = inkommande_samlat.toString();
-                String [] ink_s = ink_sam.split(" ");
-                System.out.println(ink_s);
-               for(String ink : ink_s){
+               // String[] ink_s = ink_sam.split(" ");
+               //System.out.println(ink_s);
+               for(String ink : ink_sam.split(" ")){
                     System.out.println(ink);}
         }
         
@@ -95,12 +106,12 @@ public class Uppdrag {
         }
     
      catch (Exception e) { System.out.print(e.toString()); }
-     
-     //Här ska de hända massa spännande saker.
-     //Kolla om det finns uppdrag
-            //Om det EJ finns, sök ny startnod
-            //Om det finns, fortsätt på följande:
-        //Spara kapacitet i en string/var, spara samåkning i en string/var
+      return x; //Ta bort sen
+    }     
+    
+    //Kan behövas ändras till en String[], själva metoden
+    public static String tauppdrag(String plats, String id, String pax, String grupp){
+       
         //Ta första uppdaget och kolla om kapacitet är ok
             //Om kapacitet är ok --> kolla om samåkning är ok
                 //Om samåkning är ok, kolla vidare i listan och spara "nuvarande" passagerare
@@ -111,9 +122,61 @@ public class Uppdrag {
             //Om kapacitet är = antal passagerare, kör anropa nekas/beviljas
                     //Om beviljas  --> Dijkstra/OptPlan/Compass -->kör
                     //Om nekas --> sök nytt uppdrag
+    try {
+
+         //Uppdrag http = new Uppdrag();
+         //Glöm ej att ändra gruppnummer till 2
+         String X = "Test";
+//         String id = "1";
+//         String pax = "8";
+//         String grupp = "2";
+         String url = " http://tnk111.n7.se/tauppdrag.php?plats=" + plats + "&id="+id+"&passagerare="+pax+"&grupp="+grupp; 
+         URL urlobjekt = new URL(url);       
+         HttpURLConnection anslutning = (HttpURLConnection)
+         urlobjekt.openConnection();
+
+         System.out.println("\nAnropar: " + url);
+ 
+         int mottagen_status = anslutning.getResponseCode();
+
+         System.out.println("Statuskod: " + mottagen_status);
+
+ 
+         BufferedReader inkommande = new BufferedReader(new
+
+        InputStreamReader(anslutning.getInputStream()));
+        String inkommande_text;
+        StringBuffer inkommande_samlat = new StringBuffer();
+ 
+        while ((inkommande_text = inkommande.readLine()) != null) {
+                inkommande_samlat.append(inkommande_text);
+        }
+        //String [] ink_sam = inkommande_samlat.split(" "); Skapa mellanrum mellan de olika raderna EJ KLART
+        inkommande.close();
+               
+
+        System.out.println(inkommande_samlat.toString());
+        }
     
+     catch (Exception e) { System.out.print(e.toString()); }
+       
+    return plats;
+    }
+     
+    public static String aterstall(String scenario){
+    return scenario;
+    }
+
+     
+     //Här ska de hända massa spännande saker.
+     //Kolla om det finns uppdrag
+            //Om det EJ finns, sök ny startnod
+            //Om det finns, fortsätt på följande:
+        //Spara kapacitet i en string/var, spara samåkning i en string/var
+        
+        
             
      
 }
     
-}
+
