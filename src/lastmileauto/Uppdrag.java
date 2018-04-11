@@ -20,7 +20,8 @@ public class Uppdrag {
     
     //System.out.println("Vi är i Uppdrag! Good job!");    
 
-    /**
+    /**I denna metod måste vi också använda 
+     * Dijkstras och OptPlan för att hitta närmsta väg
      *
      */
     public static String listaplatser(String[] args){
@@ -60,13 +61,23 @@ public class Uppdrag {
      return test;//Ta bort sen
      }   
      
+    
+        /*Här ska de hända massa spännande saker.
+        *Kolla om det finns uppdrag när vi kommer till upphämtningsplatsen
+        *Måste kalla på denna metod när vi stannar
+            *Om det EJ finns, sök ny startnod
+            *Om det finns, fortsätt på följande:
+        *Spara kapacitet i en string/var, spara samåkning i en string/var
+        */
+    
     public static String listauppdrag(String[] plats){
         String x = "Hej"; //Ta bort sen
        
-     //Någon funktion som räknar ut vilken upphämtningsplats som är närmst, spara som en var/string(?)
-     //Använd Dijkstra och OptPlan för att hitta närmsta plats
-     //Kalla på Compass och kör till platsen
-     //String X = "A";
+     /*Någon funktion som räknar ut vilken upphämtningsplats som är närmst, spara som en var/string(?)
+     *Använd Dijkstra och OptPlan för att hitta närmsta plats
+     *Kalla på Compass och kör till platsen
+     *String X = "A";
+     */
      
      try {
          //Kalla på metoden ovan för att hämta x
@@ -112,16 +123,17 @@ public class Uppdrag {
     //Kan behövas ändras till en String[], själva metoden
     public static String tauppdrag(String plats, String id, String pax, String grupp){
        
-        //Ta första uppdaget och kolla om kapacitet är ok
-            //Om kapacitet är ok --> kolla om samåkning är ok
-                //Om samåkning är ok, kolla vidare i listan och spara "nuvarande" passagerare
-                //Om samåkning EJ är ok, anropa nekas/beviljas 
-                    //Om beviljas --> Dijkstra/OptPlan/Compass -->kör
-                    //Om nekas --> sök nytt uppdrag
-            //Om kapacitet Ej är ok, kolla vidare i uppdragslistan
-            //Om kapacitet är = antal passagerare, kör anropa nekas/beviljas
-                    //Om beviljas  --> Dijkstra/OptPlan/Compass -->kör
-                    //Om nekas --> sök nytt uppdrag
+        /*Ta första uppdaget och kolla om kapacitet är ok
+            *Om kapacitet är ok --> kolla om samåkning är ok
+                *Om samåkning är ok, kolla vidare i listan och spara "nuvarande" passagerare
+                *Om samåkning EJ är ok, anropa nekas/beviljas 
+                    *Om beviljas --> Dijkstra/OptPlan/Compass -->kör
+                    *Om nekas --> sök nytt uppdrag
+            *Om kapacitet Ej är ok, kolla vidare i uppdragslistan
+            *Om kapacitet är = antal passagerare, kör anropa nekas/beviljas
+                    *Om beviljas  --> Dijkstra/OptPlan/Compass -->kör
+                    *Om nekas --> sök nytt uppdrag
+        */
     try {
 
          //Uppdrag http = new Uppdrag();
@@ -168,11 +180,7 @@ public class Uppdrag {
     }
 
      
-     //Här ska de hända massa spännande saker.
-     //Kolla om det finns uppdrag
-            //Om det EJ finns, sök ny startnod
-            //Om det finns, fortsätt på följande:
-        //Spara kapacitet i en string/var, spara samåkning i en string/var
+
         
         
             
