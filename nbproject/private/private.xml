@@ -3,11 +3,49 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+            <file>file:/C:/Users/Helena/Documents/GitHub/grupp2/src/lastmileauto/RobotRead.java</file>
+            <file>file:/C:/Users/Helena/Documents/GitHub/grupp2/src/lastmileauto/BluetoothTransceiver.java</file>
+            <file>file:/C:/Users/Helena/Documents/GitHub/grupp2/src/lastmileauto/DataStore.java</file>
+            <file>file:/C:/Users/Helena/Documents/GitHub/grupp2/src/lastmileauto/OptPlan.java</file>
+            <file>file:/C:/Users/Helena/Documents/GitHub/grupp2/src/lastmileauto/Uppdrag.java</file>
+            <file>file:/C:/Users/Helena/Documents/GitHub/grupp2/src/lastmileauto/BluetoothTransmitter.java</file>
+            <file>file:/C:/Users/Helena/Documents/GitHub/grupp2/src/lastmileauto/BluetoothReceiver.java</file>
+            <file>file:/C:/Users/Helena/Documents/GitHub/grupp2/src/lastmileauto/LastMileAuto.java</file>
+            <file>file:/C:/Users/Helena/Documents/GitHub/grupp2/src/lastmileauto/ControlUI.java</file>
+=======
+<<<<<<< HEAD
+            <file>file:/Users/aliceneu/Documents/grupp2/src/lastmileauto/Uppdrag.java</file>
+            <file>file:/Users/aliceneu/Documents/grupp2/src/lastmileauto/BluetoothTransceiver.java</file>
+            <file>file:/Users/aliceneu/Documents/grupp2/src/lastmileauto/ControlUI.java</file>
+            <file>file:/Users/aliceneu/Documents/grupp2/src/lastmileauto/GuiUpdate.java</file>
+            <file>file:/Users/aliceneu/Documents/grupp2/src/lastmileauto/DijkstraAlgorithm.java</file>
+            <file>file:/Users/aliceneu/Documents/grupp2/src/lastmileauto/MapPanel.java</file>
+            <file>file:/Users/aliceneu/Documents/grupp2/src/lastmileauto/DataStore.java</file>
+            <file>file:/Users/aliceneu/Documents/grupp2/src/lastmileauto/LastMileAuto.java</file>
+            <file>file:/Users/aliceneu/Documents/grupp2/src/lastmileauto/RobotRead.java</file>
+            <file>file:/Users/aliceneu/Documents/grupp2/src/lastmileauto/OptPlan.java</file>
+=======
+<<<<<<< HEAD
+            <file>file:/Users/eliselord/Documents/grupp2/src/lastmileauto/ControlUI.java</file>
+            <file>file:/Users/eliselord/Documents/grupp2/src/lastmileauto/LastMileAuto.java</file>
+            <file>file:/Users/eliselord/Documents/grupp2/src/lastmileauto/RobotRead.java</file>
+            <file>file:/Users/eliselord/Documents/grupp2/src/lastmileauto/BluetoothTransceiver.java</file>
+=======
+>>>>>>> 9b9e0b1f562f2056228e6e5eea32982cf01a8a5c
             <file>file:/Users/Veronika/Documents/grupp2/src/lastmileauto/Uppdrag.java</file>
             <file>file:/Users/Veronika/Documents/grupp2/src/lastmileauto/LastMileAuto.java</file>
             <file>file:/Users/Veronika/Documents/grupp2/src/lastmileauto/ControlUI.java</file>
             <file>file:/Users/Veronika/Documents/grupp2/src/lastmileauto/Compass.java</file>
             <file>file:/Users/Veronika/Documents/grupp2/src/lastmileauto/DataStore.java</file>
+<<<<<<< HEAD
+=======
+>>>>>>> 2ec9abf845cc3bf89f4f315cd59933103602af8d
+>>>>>>> fa628ac9cf4caf49ea2f4c376c16d80b98c56397
+>>>>>>> 74dc089606756f29cddbe05f284063323217a586
+>>>>>>> 9b9e0b1f562f2056228e6e5eea32982cf01a8a5c
         </group>
     </open-files>
 </project-private>
