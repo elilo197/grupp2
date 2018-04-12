@@ -32,8 +32,9 @@ public void run (){
          btc = new BluetoothTransceiver();
          
          //Utan att koppla och istället använda tranciver. 
+         
+         btc.bluetooth_ut.println(message); 
 
-         btc.bluetooth_ut.println(message);
 
        
          
