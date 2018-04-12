@@ -12,9 +12,15 @@ import javax.bluetooth.*;
 
 public class BluetoothTransceiver implements Runnable {
     PrintStream bluetooth_ut;
+<<<<<<< HEAD
     
     ControlUI cui;
  
+=======
+
+     ControlUI cui;
+
+>>>>>>> 9b9e0b1f562f2056228e6e5eea32982cf01a8a5c
     public BluetoothTransceiver() {
          
         
@@ -30,11 +36,19 @@ public void run (){
 
             StreamConnection anslutning = (StreamConnection) 
 
+<<<<<<< HEAD
                     Connector.open("btspp://201601205682:1");
+=======
+            Connector.open("btspp://201601205682:1");
+>>>>>>> 9b9e0b1f562f2056228e6e5eea32982cf01a8a5c
             
             //testar lite 
             cui.appendBluetoothAdress("Bluetooth adress: 201601205682" );
             cui.appendBluetoothKanal("Kanal: 1");
+<<<<<<< HEAD
+=======
+
+>>>>>>> 9b9e0b1f562f2056228e6e5eea32982cf01a8a5c
 
             PrintStream bluetooth_ut = new 
                     PrintStream(anslutning.openOutputStream());
