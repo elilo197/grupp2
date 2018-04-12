@@ -13,6 +13,8 @@ public class RobotRead implements Runnable {
     private ControlUI cui;
     private DataStore ds;
     private BluetoothReceiver bre;
+    String Status; 
+    int time; 
 
     public RobotRead(DataStore ds, ControlUI cui, BluetoothReceiver bre) {
         this.cui = cui;
@@ -23,6 +25,16 @@ public class RobotRead implements Runnable {
 
 @Override
 public void run () {
+    
+    if(time > 250){
+       
+        // send "c" to agda 
+        cui.appendStatus("Något är fel");
+          
+    }
+    else{
+        
+    }
     
 
 }
