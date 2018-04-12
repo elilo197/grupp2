@@ -32,7 +32,12 @@ public void run (){
          btc = new BluetoothTransceiver();
          
          //Utan att koppla och istället använda tranciver. 
+<<<<<<< HEAD
+         
+         btc.bluetooth_ut.println(message); 
+=======
          btc.bluetooth_ut.println(message);
+>>>>>>> 74dc089606756f29cddbe05f284063323217a586
        
          
        //Från labben;   
