@@ -39,7 +39,6 @@ public void run (){
             cui.appendBluetoothAdress("Bluetooth adress: 201601205682" );
             cui.appendBluetoothKanal("Kanal: 1");
 
-
             PrintStream bluetooth_ut = new 
                     PrintStream(anslutning.openOutputStream());
 
