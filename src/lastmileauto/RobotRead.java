@@ -7,15 +7,15 @@ package lastmileauto;
 //Denna tror vi ska kopplas ihop med Bluetooth reciver. 
 import java.util.*;
 
-public class RobotRead implements Runnable {
+public class RobotRead implements Runnable  {
     private int sleepTime;
     private static Random generator = new Random();
     private ControlUI cui;
     private DataStore ds;
     private BluetoothReceiver bre;
-    String Status; 
-    Timer timer; 
-    long time;
+    private BluetoothTransceiver btc;
+    long start;
+    long timemilli = 0;
 
     public RobotRead(DataStore ds, ControlUI cui, BluetoothReceiver bre) {
         this.cui = cui;
@@ -26,30 +26,33 @@ public class RobotRead implements Runnable {
 
 @Override
 public void run () {
-   // timer = new Timer();
-time = System.nanoTime();
-
-    if(time < 250){
-        System.out.println("Tiden är: " + time);
+// while (anslutning == true) {// timenano = System.nanoTime();
+   start = System.currentTimeMillis();
+   System.out.println("Starttid: " + System.currentTimeMillis());
+   
+   while (System.currentTimeMillis() - start < 2500){
+      
+        System.out.println("Tiden i millisekunder är: " + (System.currentTimeMillis() - start));
 //        if (bre.mottaget == XY){
-//        
-
-
-//          } 
-
+//        }
 
 //        if (bre.mottaget == 1){
-//        time = 0;
-//    } 
-    }
-    else{
-        cui.appendStatus("Något är fel");      
-    }
-    
+//           start = System.currentTimeMillis();
+//        }
+//    
+   }
+   cui.appendStatus("Nu har det gått för lång tid."); 
+   //Kolla connection, om ok börja om från run()
+   
+//Här borde det hända nått för att tiden är ute
+// 
 
+//}
+ btc = new BluetoothTransceiver(); 
+ 
+ 
 }
 }
-
 
 
 

@@ -42,8 +42,8 @@ public class LastMileAuto {
                                             
         cui.appendStatus("Startar programmet \n" );
                   
-       // t1.start();
-        //t2.start();   Glöm ej ta bort dessa kommentarer sen !! 
+       t1.start();
+       t2.start();   
         
         cui.appendStatus("Avslutar main.\n");
         
