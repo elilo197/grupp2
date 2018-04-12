@@ -11,6 +11,7 @@ public class ControlUI extends javax.swing.JFrame {
     DataStore ds;
     BluetoothTransceiver btc;
     BluetoothTransmitter btm;
+    Uppdrag uppdrag1;
     
 
     /**
@@ -27,6 +28,16 @@ public class ControlUI extends javax.swing.JFrame {
         jTextArea1.append(s+"\n");
         jTextArea1.setCaretPosition(jTextArea1.getDocument().getLength());
     } 
+        // Försöker lägga in text i en annan ruta. 
+         public void appendBluetoothAdress(String s){
+        jTextArea2.append(s+"\n"); 
+        jTextArea2.setCaretPosition(jTextArea2.getDocument().getLength());
+    } 
+         //
+             public void appendBluetoothKanal(String s){
+        jTextArea3.append(s+"\n"); 
+        jTextArea3.setCaretPosition(jTextArea3.getDocument().getLength());
+    }
 
     public void showStatus(){
         jTextArea1.append("Nodes: "+ds.nodes);
@@ -284,6 +295,7 @@ public class ControlUI extends javax.swing.JFrame {
     private void startActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startActionPerformed
         /*Vill starta uppdrag */
         btm = new BluetoothTransmitter(ds.F);
+        uppdrag1= new Uppdrag();
        Thread t4 = new Thread(btm);
        t4.start();
        
