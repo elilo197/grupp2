@@ -296,15 +296,15 @@ public class ControlUI extends javax.swing.JFrame {
 
     private void startActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startActionPerformed
         /*Vill starta uppdrag */
-        btm = new BluetoothTransmitter(ds.F);
+//        btm = new BluetoothTransmitter(ds.F);
         uppdrag1= new Uppdrag();
         g =  new GuiUpdate(ds, cui, ds.start);        //Tråd som uppdaterar kartan med var AGV är
         Thread t2 = new Thread(g);
         t2.start();   
 
-       Thread t4 = new Thread(btm);
-       t4.start();
-       
+//       Thread t4 = new Thread(btm);
+//       t4.start();
+//       
        Uppdrag uppdrag1 = new Uppdrag();
         
     }//GEN-LAST:event_startActionPerformed
