@@ -30,16 +30,13 @@ public void run (){
 
             StreamConnection anslutning = (StreamConnection) 
 
-
                     Connector.open("btspp://201601205682:1");
 
-            
-            //testar lite 
             cui.appendBluetoothAdress("Bluetooth adress: 201601205682" );
             cui.appendBluetoothKanal("Kanal: 1");
 
-            PrintStream bluetooth_ut = new 
-                    PrintStream(anslutning.openOutputStream());
+//            PrintStream bluetooth_ut = new 
+//                    PrintStream(anslutning.openOutputStream());
 
             BufferedReader bluetooth_in = new BufferedReader(new 
                 InputStreamReader(anslutning.openInputStream()));

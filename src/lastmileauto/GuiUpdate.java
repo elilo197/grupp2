@@ -26,7 +26,7 @@ public void run (){
     try {
         cui.appendStatus("GuiUpdate startar och kommer att köra i "
         + sleepTime + " millisekunder." );
-        com = new Compass();
+        
         
         int i = 1;    
         while(i <= 20){
@@ -34,7 +34,7 @@ public void run (){
             if(ds.updateUIflag == true){
 //            cui.appendStatus ("Jag är tråd GuiUpdate! För " 
 //            + i + ":te gången.");
-          //  ds.robotX = ds.robotX - 10; 
+        //  ds.robotX = ds.robotX - 10; 
             
         ds.robotX = ds.nodeX[xy]; 
         ds.robotY = ds.nodeY[xy];
