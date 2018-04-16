@@ -30,7 +30,7 @@ public void run () {
    
    while (System.currentTimeMillis() - start < 2500){
       
-        System.out.println("Tiden i millisekunder är: " + (System.currentTimeMillis() - start));
+       // System.out.println("Tiden i millisekunder är: " + (System.currentTimeMillis() - start));
 //        if (bre.mottaget == XY){
             // här vill vi kalla på gui update. 
 
