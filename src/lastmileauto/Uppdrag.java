@@ -16,16 +16,23 @@ import java.net.URL;
 import java.lang.*;
 public class Uppdrag {
     
-    public Uppdrag() {}
+    //public Uppdrag() {}
+    
+    public static void main(String args){
+        listaplatser();
+        listauppdrag("A");
+        
+    
+    }
     
     //System.out.println("Vi är i Uppdrag! Good job!");    
 
-    /**I denna metod måste vi också använda 
-     * Dijkstras och OptPlan för att hitta närmsta väg
-     *
+    /*Här listar vi antalet upphämtningsplatser och vi måste även beräkna vilken
+     *upphämtningsplats som är närmast. Sen ska vi skicka informationen till 
+     * AGVn
      */
-    public static String listaplatser(String[] args){
-        String test = "Hej"; //Ta bort sen
+    public static void listaplatser() {
+        
      try {
 
          //Uppdrag http = new Uppdrag();
@@ -52,14 +59,14 @@ public class Uppdrag {
         }
         //String [] ink_sam = inkommande_samlat.split(" "); Skapa mellanrum mellan de olika raderna EJ KLART
         inkommande.close();
-               
+              
 
         System.out.println(inkommande_samlat.toString());
         }
     
      catch (IOException e) { System.out.print(e.toString()); }
-     return test;//Ta bort sen
-     }   
+     
+    }
      
     
         /*Här ska de hända massa spännande saker.
@@ -70,7 +77,8 @@ public class Uppdrag {
         *Spara kapacitet i en string/var, spara samåkning i en string/var
         */
     
-    public static String listauppdrag(String[] plats){
+   
+    public static String listauppdrag(String plats){
         String x = "Hej"; //Ta bort sen
        
      /*Någon funktion som räknar ut vilken upphämtningsplats som är närmst, spara som en var/string(?)
