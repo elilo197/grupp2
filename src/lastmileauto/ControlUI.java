@@ -289,26 +289,23 @@ public class ControlUI extends javax.swing.JFrame {
         /*Vill ansluta med rätt Bluetooth adress och kanal och detta ska sedan
         visas i den mindre rutan till vänster*/
         //BluetoothTransceiver obj1 = new BluetoothTransceiver();
-//       btc = new BluetoothTransceiver();
-//       Thread t3 = new Thread(btc);
-//       t3.start();
+       btc = new BluetoothTransceiver();
+       Thread t3 = new Thread(btc);
+       t3.start();
         //System.out.println("Hej");
-        com = new Compass();
-        Thread t5 = new Thread(com);
-        t5.start();
+//        com = new Compass();
+//        Thread t5 = new Thread(com);
+//        t5.start();
         
     }//GEN-LAST:event_anslutActionPerformed
 
     private void startActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startActionPerformed
         /*Vill starta uppdrag */
 //        btm = new BluetoothTransmitter(ds.F);
-<<<<<<< HEAD
 
       ///  btm = new BluetoothTransmitter(ds.F);
 
-=======
       ///  btm = new BluetoothTransmitter(ds.F);
->>>>>>> 2cd53b06af3a475ae8d19079b697e1c0807f5268
         uppdrag1= new Uppdrag();
         g =  new GuiUpdate(ds, cui, ds.start);        //Tråd som uppdaterar kartan med var AGV är
         Thread t2 = new Thread(g);

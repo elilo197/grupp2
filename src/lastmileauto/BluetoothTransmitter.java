@@ -16,7 +16,8 @@ public class BluetoothTransmitter implements Runnable{
  private  DataStore ds;
  private String message;
  private BluetoothTransceiver btc; 
- 
+   PrintStream bluetooth_ut;
+   StreamConnection anslutning;
  
 //private message = new String;
     
@@ -26,7 +27,10 @@ public class BluetoothTransmitter implements Runnable{
     
 @Override    
 public void run (){
-    
+   
+    try {
+         PrintStream bluetooth_ut = new 
+                    PrintStream(anslutning.openOutputStream());
 
         
         
@@ -35,9 +39,9 @@ public void run (){
          
          //Utan att koppla och istället använda tranciver. 
          
-         btc.bluetooth_ut.println(message); 
+         btc.bluetooth_ut.println(message);             //Om bluetooth_ut från transciever används
 
-
+   } catch (Exception e) {  System.out.print(e.toString());   }
        
          
        //Från labben;   
