@@ -1,10 +1,15 @@
-
+<<<<<<< HEAD
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package lastmileauto;
 
 import java.time.Clock;
 
 
-public class Compass{
+public class Compass implements Runnable{
     
     BluetoothTransmitter btm;
     DataStore ds; 
@@ -18,7 +23,8 @@ public class Compass{
     // n = vår position, noden vi står i just nu
     // n+1 = nästa position, noden vi är på väg till
     
-    public Compass(){
+    @Override
+    public void run(){
         
         ds = new DataStore();
         opt = new OptPlan(ds);
@@ -27,9 +33,7 @@ public class Compass{
         F = ds.F;
         R = ds.R;
         L = ds.L;
-        
-    
-        
+               
         for(int i =0; i <opt.path.size(); i++)
         {
         System.out.println(opt.path.get(i));
@@ -82,7 +86,7 @@ public class Compass{
 //           }  
 //       }
         //
-//        
+        
 //       if((x(n+1) - x(n) > 0) && (y(n+1) - y(n) == 0)){ //Agda kör österut
 //           //Kolla två framåt: x(n+2)-x(n+1)
 //           if((x(n+1) - x(n) > 0) && (y(n+1) - y(n) == 0)){
@@ -151,6 +155,7 @@ public class Compass{
 }
 
 //
+=======
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -186,126 +191,77 @@ public class Compass implements Runnable{
         R = ds.R;
         L = ds.L;
         
-    
-        
         for(int i =0; i <opt.path.size(); i++)
         {
         System.out.println(opt.path.get(i));
         }   
-        
-        
-//        
-//       if((x(n+1) - x(n) > 0) && (y(n+1) - y(n) == 0)){ //Agda kör österut
-//           if((x(n+1) - x(n) > 0) && (y(n+1) - y(n) == 0)){
-//               btm = new BluetoothTransmitter(F);
-//           }
-//           else if((x(n+1) - x(n) == 0) && (y(n+1) - y(n) < 0)){
-//               btm = new BluetoothTransmitter(R);
-//           } 
-//           else if((x(n+1) - x(n) == 0) && (y(n+1) - y(n) > 0)){
-//               btm = new BluetoothTransmitter(L);
-//           }  
-//       } 
-//       else if((x(n+1) - x(n) < 0) && (y(n+1) - y(n) == 0)){ //Agda kör västerut
-//           if((x(n+1) - x(n) < 0) && (y(n+1) - y(n) == 0)){
-//                btm = new BluetoothTransmitter(F);
-//           }
-//           else if((x(n+1) - x(n) == 0) && (y(n+1) - y(n) > 0)){
-//                btm = new BluetoothTransmitter(R);
-//           }
-//           else if((x(n+1) - x(n) == 0) && (y(n+1) - y(n) < 0)){
-//                btm = new BluetoothTransmitter(L);
-//           } 
-//       }
-//       else if((x(n+1) - x(n) == 0) && (y(n+1) - y(n) > 0)){ //Agda kör norrut
-//           if((x(n+1) - x(n) == 0) && (y(n+1) - y(n) > 0)){
-//                btm = new BluetoothTransmitter(F);
-//           }
-//           else if((x(n+1) - x(n) > 0) && (y(n+1) - y(n) == 0)){
-//                btm = new BluetoothTransmitter(R);
-//           }
-//           else if((x(n+1) - x(n) < 0) && (y(n+1) - y(n) == 0)){
-//                btm = new BluetoothTransmitter(L);
-//           } 
-//       }
-//       else if((x(n+1) - x(n) == 0) && (y(n+1) - y(n) < 0)) { //Agda kör söderut 
-//           if((x(n+1) - x(n) == 0) && (y(n+1) - y(n) < 0)){
-//                btm = new BluetoothTransmitter(F);
-//           }
-//           else if((x(n+1) - x(n) < 0) && (y(n+1) - y(n) == 0)){
-//                btm = new BluetoothTransmitter(R);
-//           }
-//           else if((x(n+1) - x(n) > 0) && (y(n+1) - y(n) == 0)){
-//                btm = new BluetoothTransmitter(L);
-//           }  
-//       }
-        //
-        
-//       if((x(n+1) - x(n) > 0) && (y(n+1) - y(n) == 0)){ //Agda kör österut
-//           //Kolla två framåt: x(n+2)-x(n+1)
-//           if((x(n+1) - x(n) > 0) && (y(n+1) - y(n) == 0)){
-//               btm = new BluetoothTransmitter(F);
-//           }
-//           else if((x(n+1) - x(n) == 0) && (y(n+1) - y(n) < 0)){
-//               btm = new BluetoothTransmitter(R);
-//           } 
-//           else if((x(n+1) - x(n) == 0) && (y(n+1) - y(n) > 0)){
-//               btm = new BluetoothTransmitter(L);
-//           }  
-//           else if((x(n+1) - x(n) > 0) && (y(n+1) - y(n) > 0)){
-//               btm = new BluetoothTransmitter(F);
-//           }
-//       } 
-//       else if((x(n+1) - x(n) < 0) && (y(n+1) - y(n) == 0)){ //Agda kör västerut
-//           //Kolla två framåt: x(n+2)-x(n+1)
-//           if((x(n+1) - x(n) < 0) && (y(n+1) - y(n) == 0)){
-//                btm = new BluetoothTransmitter(F);
-//           }
-//           else if((x(n+1) - x(n) == 0) && (y(n+1) - y(n) > 0)){
-//                btm = new BluetoothTransmitter(R);
-//           }
-//           else if((x(n+1) - x(n) == 0) && (y(n+1) - y(n) < 0)){
-//                btm = new BluetoothTransmitter(L);
-//           } 
-//
-//       }
-//       else if((x(n+1) - x(n) == 0) && (y(n+1) - y(n) > 0)){ //Agda kör norrut
-//           //Kolla två framåt: x(n+2)-x(n+1)
-//           if((x(n+1) - x(n) == 0) && (y(n+1) - y(n) > 0)){
-//                btm = new BluetoothTransmitter(F);
-//           }
-//           else if((x(n+1) - x(n) > 0) && (y(n+1) - y(n) == 0)){
-//                btm = new BluetoothTransmitter(R);
-//           }
-//           else if((x(n+1) - x(n) < 0) && (y(n+1) - y(n) == 0)){
-//                btm = new BluetoothTransmitter(L);
-//           } 
-//           else if((x(n+1) - x(n) > 0) && (y(n+1) - y(n) > 0)){
-//               btm = new BluetoothTransmitter(R);
-//           }
-//           else if((x(n+1) - x(n) < 0) && (y(n+1) - y(n) < 0)){
-//               btm = new BluetoothTransmitter(L);
-//           }
-//       }
-//       else if((x(n+1) - x(n) == 0) && (y(n+1) - y(n) < 0)) { //Agda kör söderut
-//           //Kolla två framåt: x(n+2)-x(n+1)
-//           if((x(n+1) - x(n) == 0) && (y(n+1) - y(n) < 0)){
-//                btm = new BluetoothTransmitter(F);
-//           }
-//           else if((x(n+1) - x(n) < 0) && (y(n+1) - y(n) == 0)){
-//                btm = new BluetoothTransmitter(R);
-//           }
-//           else if((x(n+1) - x(n) > 0) && (y(n+1) - y(n) == 0)){
-//                btm = new BluetoothTransmitter(L);
-//           } 
-//           else if((x(n+1) - x(n) > 0) && (y(n+1) - y(n) > 0)){
-//               btm = new BluetoothTransmitter(L);
-//           }
-//           else if((x(n+1) - x(n) < 0) && (y(n+1) - y(n) < 0)){
-//               btm = new BluetoothTransmitter(R);
-//           }
-//       }
+               
+       if((x(n+1) - x(n) > 0) && (y(n+1) - y(n) == 0)){ //Agda kör österut
+           //Kolla två framåt: x(n+2)-x(n+1)
+           if((x(n+1) - x(n) > 0) && (y(n+1) - y(n) == 0)){
+               btm = new BluetoothTransmitter(F);
+           }
+           else if((x(n+1) - x(n) == 0) && (y(n+1) - y(n) < 0)){
+               btm = new BluetoothTransmitter(R);
+           } 
+           else if((x(n+1) - x(n) == 0) && (y(n+1) - y(n) > 0)){
+               btm = new BluetoothTransmitter(L);
+           }  
+           else if((x(n+1) - x(n) > 0) && (y(n+1) - y(n) > 0)){
+               btm = new BluetoothTransmitter(F);
+           }
+       } 
+       else if((x(n+1) - x(n) < 0) && (y(n+1) - y(n) == 0)){ //Agda kör västerut
+           //Kolla två framåt: x(n+2)-x(n+1)
+           if((x(n+1) - x(n) < 0) && (y(n+1) - y(n) == 0)){
+                btm = new BluetoothTransmitter(F);
+           }
+           else if((x(n+1) - x(n) == 0) && (y(n+1) - y(n) > 0)){
+                btm = new BluetoothTransmitter(R);
+           }
+           else if((x(n+1) - x(n) == 0) && (y(n+1) - y(n) < 0)){
+                btm = new BluetoothTransmitter(L);
+           } 
+
+       }
+       else if((x(n+1) - x(n) == 0) && (y(n+1) - y(n) > 0)){ //Agda kör norrut
+           //Kolla två framåt: x(n+2)-x(n+1)
+           if((x(n+1) - x(n) == 0) && (y(n+1) - y(n) > 0)){
+                btm = new BluetoothTransmitter(F);
+           }
+           else if((x(n+1) - x(n) > 0) && (y(n+1) - y(n) == 0)){
+                btm = new BluetoothTransmitter(R);
+           }
+           else if((x(n+1) - x(n) < 0) && (y(n+1) - y(n) == 0)){
+                btm = new BluetoothTransmitter(L);
+           } 
+           else if((x(n+1) - x(n) > 0) && (y(n+1) - y(n) > 0)){
+               btm = new BluetoothTransmitter(R);
+           }
+           else if((x(n+1) - x(n) < 0) && (y(n+1) - y(n) < 0)){
+               btm = new BluetoothTransmitter(L);
+           }
+       }
+       else if((x(n+1) - x(n) == 0) && (y(n+1) - y(n) < 0)) { //Agda kör söderut
+           //Kolla två framåt: x(n+2)-x(n+1)
+           if((x(n+1) - x(n) == 0) && (y(n+1) - y(n) < 0)){
+                btm = new BluetoothTransmitter(F);
+           }
+           else if((x(n+1) - x(n) < 0) && (y(n+1) - y(n) == 0)){
+                btm = new BluetoothTransmitter(R);
+           }
+           else if((x(n+1) - x(n) > 0) && (y(n+1) - y(n) == 0)){
+                btm = new BluetoothTransmitter(L);
+           } 
+           else if((x(n+1) - x(n) > 0) && (y(n+1) - y(n) > 0)){
+               btm = new BluetoothTransmitter(L);
+           }
+           else if((x(n+1) - x(n) < 0) && (y(n+1) - y(n) < 0)){
+               btm = new BluetoothTransmitter(R);
+           }
+       }
     }
 }
 
-//
+
+>>>>>>> 31953f7ec234d4b4fd576ac98efa4a74b306557e
