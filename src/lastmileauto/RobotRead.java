@@ -1,8 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
+
+// Fråga till clas: kan vi på något sätt se om det finns en anslutning ? 
 package lastmileauto;
 //Denna tror vi ska kopplas ihop med Bluetooth reciver. 
 import java.util.*;
@@ -34,6 +32,8 @@ public void run () {
       
         System.out.println("Tiden i millisekunder är: " + (System.currentTimeMillis() - start));
 //        if (bre.mottaget == XY){
+            // här vill vi kalla på gui update. 
+
 //        }
 
 //        if (bre.mottaget == 1){
