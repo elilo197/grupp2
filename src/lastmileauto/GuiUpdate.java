@@ -10,10 +10,13 @@ public class GuiUpdate implements Runnable {
     private static Random generator = new Random();
     private ControlUI cui;
     private DataStore ds;
+    private int xy;
+ 
 
-    public GuiUpdate(DataStore ds, ControlUI cui){
+    public GuiUpdate(DataStore ds, ControlUI cui, int xy){
         this.cui = cui;
         this.ds = ds;
+        this.xy = xy;
         sleepTime = generator.nextInt(20000);
     }
 @Override
@@ -27,9 +30,13 @@ public void run (){
         while(i <= 20){
             Thread.sleep(sleepTime /20);
             if(ds.updateUIflag == true){
-            cui.appendStatus ("Jag är tråd GuiUpdate! För " 
-            + i + ":te gången.");
-            ds.robotX = ds.robotX - 10; 
+//            cui.appendStatus ("Jag är tråd GuiUpdate! För " 
+//            + i + ":te gången.");
+          //  ds.robotX = ds.robotX - 10; 
+            
+        ds.robotX = ds.nodeX[xy]; 
+        ds.robotY = ds.nodeY[xy];
+
             cui.repaint();
             i++;      
             }

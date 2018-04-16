@@ -21,8 +21,8 @@ public class DataStore {
     double robotY; 
     // Dessa två bör ha samma nummer (tror vi) 
     // Nod 71 i streets är  nod 70 här..
-    int startX = 70;
-    int startY = 70; 
+    int start = 70;
+   // int startY = startX; 
     int[] arcColor;
     int startRutt = 70; //start node nummer
     int slutRutt = 23; //slut node nummer.
@@ -120,8 +120,8 @@ public class DataStore {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        robotX = nodeX[startX]; //Node index för startposition
-        robotY = nodeY[startY];
+        robotX = nodeX[start]; //Node index för startposition
+        robotY = nodeY[start];
     }
 
 }
