@@ -87,7 +87,7 @@ public class DataStore {
                 nodeX[i] = Double.parseDouble(sline[1].trim());
                 nodeY[i] = Double.parseDouble(sline[2].trim());
                 //Testa om detta funkar. 
-               // nodeNr[i] = Double.parseDouble(sline[0].trim());
+                //nodeNr[i] = Double.parseDouble(sline[0].trim());
                 
                 int j = i+1; //Ändrar nodnummer så att den börjar vid 1
                 
