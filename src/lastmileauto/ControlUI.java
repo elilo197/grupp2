@@ -289,13 +289,13 @@ public class ControlUI extends javax.swing.JFrame {
         /*Vill ansluta med rätt Bluetooth adress och kanal och detta ska sedan
         visas i den mindre rutan till vänster*/
         //BluetoothTransceiver obj1 = new BluetoothTransceiver();
-//       btc = new BluetoothTransceiver();
-//       Thread t3 = new Thread(btc);
-//       t3.start();
+       btc = new BluetoothTransceiver();
+       Thread t3 = new Thread(btc);
+       t3.start();
         //System.out.println("Hej");
-        com = new Compass();
-        Thread t5 = new Thread(com);
-        t5.start();
+//        com = new Compass();
+//        Thread t5 = new Thread(com);
+//        t5.start();
         
     }//GEN-LAST:event_anslutActionPerformed
 

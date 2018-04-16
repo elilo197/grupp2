@@ -32,9 +32,7 @@ public class Compass implements Runnable{
         F = ds.F;
         R = ds.R;
         L = ds.L;
-        
-    
-        
+               
         for(int i =0; i <opt.path.size(); i++)
         {
         System.out.println(opt.path.get(i));

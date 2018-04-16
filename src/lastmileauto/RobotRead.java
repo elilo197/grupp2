@@ -6,10 +6,12 @@ package lastmileauto;
 import java.util.*;
 
 public class RobotRead implements Runnable  {
+   private int xy;
     private int sleepTime;
     private static Random generator = new Random();
     private ControlUI cui;
     private DataStore ds;
+    private GuiUpdate gui; 
     private BluetoothReceiver bre;
     private BluetoothTransceiver btc;
     long start;
@@ -32,7 +34,8 @@ public void run () {
       
         System.out.println("Tiden i millisekunder är: " + (System.currentTimeMillis() - start));
 //        if (bre.mottaget == XY){
-            // här vill vi kalla på gui update. 
+       //  xy=bre.mottaget; 
+           gui = new GuiUpdate(ds, cui, xy);
 
 //        }
 
