@@ -9,6 +9,8 @@ public class OptPlan {
     private List<Vertex> nodes;    
     private List<Edge> edges;
     private DataStore ds; 
+    LinkedList<Vertex>path;
+    
      
    
     public OptPlan(DataStore ds){
@@ -39,7 +41,7 @@ public class OptPlan {
 
      // Compute shortest path
         dijkstra.execute(nodes.get(ds.startRutt-1)); //Startnod 
-        LinkedList<Vertex>path =dijkstra.getPath(nodes.get(ds.slutRutt-1)); //Slutnod
+        path =dijkstra.getPath(nodes.get(ds.slutRutt-1)); //Slutnod   ändrade här!!!! 
     
     // Get shortest path
         for(int i =0; i <path.size(); i++)

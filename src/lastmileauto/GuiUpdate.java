@@ -10,6 +10,7 @@ public class GuiUpdate implements Runnable {
     private static Random generator = new Random();
     private ControlUI cui;
     private DataStore ds;
+    Compass com; 
 
     public GuiUpdate(DataStore ds, ControlUI cui){
         this.cui = cui;
@@ -22,6 +23,7 @@ public void run (){
     try {
         cui.appendStatus("GuiUpdate startar och kommer att köra i "
         + sleepTime + " millisekunder." );
+        com = new Compass();
         
         int i = 1;    
         while(i <= 20){
@@ -32,6 +34,7 @@ public void run (){
             ds.robotX = ds.robotX - 10; 
             cui.repaint();
             i++;      
+            
             }
                        }
         
