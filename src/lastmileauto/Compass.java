@@ -8,7 +8,7 @@ package lastmileauto;
 import java.time.Clock;
 
 
-public class Compass{
+public class Compass implements Runnable{
     
     BluetoothTransmitter btm;
     DataStore ds; 
@@ -22,7 +22,8 @@ public class Compass{
     // n = vår position, noden vi står i just nu
     // n+1 = nästa position, noden vi är på väg till
     
-    public Compass(){
+    @Override
+    public void run(){
         
         ds = new DataStore();
         opt = new OptPlan(ds);
@@ -87,70 +88,70 @@ public class Compass{
 //       }
         //
         
-       if((x(n+1) - x(n) > 0) && (y(n+1) - y(n) == 0)){ //Agda kör österut
-           //Kolla två framåt: x(n+2)-x(n+1)
-           if((x(n+1) - x(n) > 0) && (y(n+1) - y(n) == 0)){
-               btm = new BluetoothTransmitter(F);
-           }
-           else if((x(n+1) - x(n) == 0) && (y(n+1) - y(n) < 0)){
-               btm = new BluetoothTransmitter(R);
-           } 
-           else if((x(n+1) - x(n) == 0) && (y(n+1) - y(n) > 0)){
-               btm = new BluetoothTransmitter(L);
-           }  
-           else if((x(n+1) - x(n) > 0) && (y(n+1) - y(n) > 0)){
-               btm = new BluetoothTransmitter(F);
-           }
-       } 
-       else if((x(n+1) - x(n) < 0) && (y(n+1) - y(n) == 0)){ //Agda kör västerut
-           //Kolla två framåt: x(n+2)-x(n+1)
-           if((x(n+1) - x(n) < 0) && (y(n+1) - y(n) == 0)){
-                btm = new BluetoothTransmitter(F);
-           }
-           else if((x(n+1) - x(n) == 0) && (y(n+1) - y(n) > 0)){
-                btm = new BluetoothTransmitter(R);
-           }
-           else if((x(n+1) - x(n) == 0) && (y(n+1) - y(n) < 0)){
-                btm = new BluetoothTransmitter(L);
-           } 
-
-       }
-       else if((x(n+1) - x(n) == 0) && (y(n+1) - y(n) > 0)){ //Agda kör norrut
-           //Kolla två framåt: x(n+2)-x(n+1)
-           if((x(n+1) - x(n) == 0) && (y(n+1) - y(n) > 0)){
-                btm = new BluetoothTransmitter(F);
-           }
-           else if((x(n+1) - x(n) > 0) && (y(n+1) - y(n) == 0)){
-                btm = new BluetoothTransmitter(R);
-           }
-           else if((x(n+1) - x(n) < 0) && (y(n+1) - y(n) == 0)){
-                btm = new BluetoothTransmitter(L);
-           } 
-           else if((x(n+1) - x(n) > 0) && (y(n+1) - y(n) > 0)){
-               btm = new BluetoothTransmitter(R);
-           }
-           else if((x(n+1) - x(n) < 0) && (y(n+1) - y(n) < 0)){
-               btm = new BluetoothTransmitter(L);
-           }
-       }
-       else if((x(n+1) - x(n) == 0) && (y(n+1) - y(n) < 0)) { //Agda kör söderut
-           //Kolla två framåt: x(n+2)-x(n+1)
-           if((x(n+1) - x(n) == 0) && (y(n+1) - y(n) < 0)){
-                btm = new BluetoothTransmitter(F);
-           }
-           else if((x(n+1) - x(n) < 0) && (y(n+1) - y(n) == 0)){
-                btm = new BluetoothTransmitter(R);
-           }
-           else if((x(n+1) - x(n) > 0) && (y(n+1) - y(n) == 0)){
-                btm = new BluetoothTransmitter(L);
-           } 
-           else if((x(n+1) - x(n) > 0) && (y(n+1) - y(n) > 0)){
-               btm = new BluetoothTransmitter(L);
-           }
-           else if((x(n+1) - x(n) < 0) && (y(n+1) - y(n) < 0)){
-               btm = new BluetoothTransmitter(R);
-           }
-       }
+//       if((x(n+1) - x(n) > 0) && (y(n+1) - y(n) == 0)){ //Agda kör österut
+//           //Kolla två framåt: x(n+2)-x(n+1)
+//           if((x(n+1) - x(n) > 0) && (y(n+1) - y(n) == 0)){
+//               btm = new BluetoothTransmitter(F);
+//           }
+//           else if((x(n+1) - x(n) == 0) && (y(n+1) - y(n) < 0)){
+//               btm = new BluetoothTransmitter(R);
+//           } 
+//           else if((x(n+1) - x(n) == 0) && (y(n+1) - y(n) > 0)){
+//               btm = new BluetoothTransmitter(L);
+//           }  
+//           else if((x(n+1) - x(n) > 0) && (y(n+1) - y(n) > 0)){
+//               btm = new BluetoothTransmitter(F);
+//           }
+//       } 
+//       else if((x(n+1) - x(n) < 0) && (y(n+1) - y(n) == 0)){ //Agda kör västerut
+//           //Kolla två framåt: x(n+2)-x(n+1)
+//           if((x(n+1) - x(n) < 0) && (y(n+1) - y(n) == 0)){
+//                btm = new BluetoothTransmitter(F);
+//           }
+//           else if((x(n+1) - x(n) == 0) && (y(n+1) - y(n) > 0)){
+//                btm = new BluetoothTransmitter(R);
+//           }
+//           else if((x(n+1) - x(n) == 0) && (y(n+1) - y(n) < 0)){
+//                btm = new BluetoothTransmitter(L);
+//           } 
+//
+//       }
+//       else if((x(n+1) - x(n) == 0) && (y(n+1) - y(n) > 0)){ //Agda kör norrut
+//           //Kolla två framåt: x(n+2)-x(n+1)
+//           if((x(n+1) - x(n) == 0) && (y(n+1) - y(n) > 0)){
+//                btm = new BluetoothTransmitter(F);
+//           }
+//           else if((x(n+1) - x(n) > 0) && (y(n+1) - y(n) == 0)){
+//                btm = new BluetoothTransmitter(R);
+//           }
+//           else if((x(n+1) - x(n) < 0) && (y(n+1) - y(n) == 0)){
+//                btm = new BluetoothTransmitter(L);
+//           } 
+//           else if((x(n+1) - x(n) > 0) && (y(n+1) - y(n) > 0)){
+//               btm = new BluetoothTransmitter(R);
+//           }
+//           else if((x(n+1) - x(n) < 0) && (y(n+1) - y(n) < 0)){
+//               btm = new BluetoothTransmitter(L);
+//           }
+//       }
+//       else if((x(n+1) - x(n) == 0) && (y(n+1) - y(n) < 0)) { //Agda kör söderut
+//           //Kolla två framåt: x(n+2)-x(n+1)
+//           if((x(n+1) - x(n) == 0) && (y(n+1) - y(n) < 0)){
+//                btm = new BluetoothTransmitter(F);
+//           }
+//           else if((x(n+1) - x(n) < 0) && (y(n+1) - y(n) == 0)){
+//                btm = new BluetoothTransmitter(R);
+//           }
+//           else if((x(n+1) - x(n) > 0) && (y(n+1) - y(n) == 0)){
+//                btm = new BluetoothTransmitter(L);
+//           } 
+//           else if((x(n+1) - x(n) > 0) && (y(n+1) - y(n) > 0)){
+//               btm = new BluetoothTransmitter(L);
+//           }
+//           else if((x(n+1) - x(n) < 0) && (y(n+1) - y(n) < 0)){
+//               btm = new BluetoothTransmitter(R);
+//           }
+//       }
     }
 }
 
