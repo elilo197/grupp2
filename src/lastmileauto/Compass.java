@@ -85,6 +85,73 @@ public class Compass{
 //                btm = new BluetoothTransmitter(L);
 //           }  
 //       }
+        //
+        
+       if((x(n+1) - x(n) > 0) && (y(n+1) - y(n) == 0)){ //Agda kör österut
+           //Kolla två framåt: x(n+2)-x(n+1)
+           if((x(n+1) - x(n) > 0) && (y(n+1) - y(n) == 0)){
+               btm = new BluetoothTransmitter(F);
+           }
+           else if((x(n+1) - x(n) == 0) && (y(n+1) - y(n) < 0)){
+               btm = new BluetoothTransmitter(R);
+           } 
+           else if((x(n+1) - x(n) == 0) && (y(n+1) - y(n) > 0)){
+               btm = new BluetoothTransmitter(L);
+           }  
+           else if((x(n+1) - x(n) > 0) && (y(n+1) - y(n) > 0)){
+               btm = new BluetoothTransmitter(F);
+           }
+       } 
+       else if((x(n+1) - x(n) < 0) && (y(n+1) - y(n) == 0)){ //Agda kör västerut
+           //Kolla två framåt: x(n+2)-x(n+1)
+           if((x(n+1) - x(n) < 0) && (y(n+1) - y(n) == 0)){
+                btm = new BluetoothTransmitter(F);
+           }
+           else if((x(n+1) - x(n) == 0) && (y(n+1) - y(n) > 0)){
+                btm = new BluetoothTransmitter(R);
+           }
+           else if((x(n+1) - x(n) == 0) && (y(n+1) - y(n) < 0)){
+                btm = new BluetoothTransmitter(L);
+           } 
+
+       }
+       else if((x(n+1) - x(n) == 0) && (y(n+1) - y(n) > 0)){ //Agda kör norrut
+           //Kolla två framåt: x(n+2)-x(n+1)
+           if((x(n+1) - x(n) == 0) && (y(n+1) - y(n) > 0)){
+                btm = new BluetoothTransmitter(F);
+           }
+           else if((x(n+1) - x(n) > 0) && (y(n+1) - y(n) == 0)){
+                btm = new BluetoothTransmitter(R);
+           }
+           else if((x(n+1) - x(n) < 0) && (y(n+1) - y(n) == 0)){
+                btm = new BluetoothTransmitter(L);
+           } 
+           else if((x(n+1) - x(n) > 0) && (y(n+1) - y(n) > 0)){
+               btm = new BluetoothTransmitter(R);
+           }
+           else if((x(n+1) - x(n) < 0) && (y(n+1) - y(n) < 0)){
+               btm = new BluetoothTransmitter(L);
+           }
+       }
+       else if((x(n+1) - x(n) == 0) && (y(n+1) - y(n) < 0)) { //Agda kör söderut
+           //Kolla två framåt: x(n+2)-x(n+1)
+           if((x(n+1) - x(n) == 0) && (y(n+1) - y(n) < 0)){
+                btm = new BluetoothTransmitter(F);
+           }
+           else if((x(n+1) - x(n) < 0) && (y(n+1) - y(n) == 0)){
+                btm = new BluetoothTransmitter(R);
+           }
+           else if((x(n+1) - x(n) > 0) && (y(n+1) - y(n) == 0)){
+                btm = new BluetoothTransmitter(L);
+           } 
+           else if((x(n+1) - x(n) > 0) && (y(n+1) - y(n) > 0)){
+               btm = new BluetoothTransmitter(L);
+           }
+           else if((x(n+1) - x(n) < 0) && (y(n+1) - y(n) < 0)){
+               btm = new BluetoothTransmitter(R);
+           }
+       }
     }
 }
 
+//
