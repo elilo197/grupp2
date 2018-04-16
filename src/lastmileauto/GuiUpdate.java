@@ -26,7 +26,6 @@ public void run (){
     try {
         cui.appendStatus("GuiUpdate startar och kommer att köra i "
         + sleepTime + " millisekunder." );
-        com = new Compass();
         
         int i = 1;    
         while(i <= 20){
