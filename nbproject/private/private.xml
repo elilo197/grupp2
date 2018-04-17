@@ -3,6 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/Users/Veronika/Documents/grupp2/src/lastmileauto/OptPlan.java</file>
             <file>file:/Users/Veronika/Documents/grupp2/src/lastmileauto/Vertex.java</file>
             <file>file:/Users/Veronika/Documents/grupp2/src/lastmileauto/Uppdrag.java</file>
@@ -14,6 +15,47 @@
             <file>file:/Users/Veronika/Documents/grupp2/src/lastmileauto/DijkstraAlgorithm.java</file>
             <file>file:/Users/Veronika/Documents/grupp2/src/lastmileauto/Edge.java</file>
             <file>file:/Users/Veronika/Documents/grupp2/src/lastmileauto/RobotRead.java</file>
+=======
+<<<<<<< HEAD
+            <file>file:/Users/hannamellqvist/Documents/Kandidat/grupp2/src/lastmileauto/GuiUpdate.java</file>
+            <file>file:/Users/hannamellqvist/Documents/Kandidat/grupp2/src/lastmileauto/RobotRead.java</file>
+            <file>file:/Users/hannamellqvist/Documents/Kandidat/grupp2/src/lastmileauto/Compass.java</file>
+            <file>file:/Users/hannamellqvist/Documents/Kandidat/grupp2/src/lastmileauto/Graph.java</file>
+            <file>file:/Users/hannamellqvist/Documents/Kandidat/grupp2/src/lastmileauto/Vertex.java</file>
+            <file>file:/Users/hannamellqvist/Documents/Kandidat/grupp2/src/lastmileauto/DijkstraAlgorithm.java</file>
+            <file>file:/Users/hannamellqvist/Documents/Kandidat/grupp2/src/lastmileauto/OptPlan.java</file>
+            <file>file:/Users/hannamellqvist/Documents/Kandidat/grupp2/src/lastmileauto/MapPanel.java</file>
+            <file>file:/Users/hannamellqvist/Documents/Kandidat/grupp2/src/lastmileauto/Uppdrag.java</file>
+            <file>file:/Users/hannamellqvist/Documents/Kandidat/grupp2/src/lastmileauto/LastMileAuto.java</file>
+            <file>file:/Users/hannamellqvist/Documents/Kandidat/grupp2/src/lastmileauto/ControlUI.java</file>
+            <file>file:/Users/hannamellqvist/Documents/Kandidat/grupp2/src/lastmileauto/DataStore.java</file>
+=======
+<<<<<<< HEAD
+            <file>file:/Users/eliselord/Documents/grupp2/src/lastmileauto/Compass.java</file>
+=======
+<<<<<<< HEAD
+            <file>file:/Users/aliceneu/Documents/grupp2/src/lastmileauto/Uppdrag.java</file>
+            <file>file:/Users/aliceneu/Documents/grupp2/src/lastmileauto/BluetoothTransceiver.java</file>
+            <file>file:/Users/aliceneu/Documents/grupp2/src/lastmileauto/ControlUI.java</file>
+            <file>file:/Users/aliceneu/Documents/grupp2/src/lastmileauto/Compass.java</file>
+            <file>file:/Users/aliceneu/Documents/grupp2/src/lastmileauto/GuiUpdate.java</file>
+            <file>file:/Users/aliceneu/Documents/grupp2/src/lastmileauto/DijkstraAlgorithm.java</file>
+            <file>file:/Users/aliceneu/Documents/grupp2/src/lastmileauto/MapPanel.java</file>
+            <file>file:/Users/aliceneu/Documents/grupp2/src/lastmileauto/DataStore.java</file>
+            <file>file:/Users/aliceneu/Documents/grupp2/src/lastmileauto/LastMileAuto.java</file>
+            <file>file:/Users/aliceneu/Documents/grupp2/src/lastmileauto/RobotRead.java</file>
+            <file>file:/Users/aliceneu/Documents/grupp2/src/lastmileauto/OptPlan.java</file>
+=======
+>>>>>>> 04883640c94275774ef1fae5302d34037b3afa60
+            <file>file:/Users/eliselord/Documents/grupp2/src/lastmileauto/ControlUI.java</file>
+            <file>file:/Users/eliselord/Documents/grupp2/src/lastmileauto/OptPlan.java</file>
+            <file>file:/Users/eliselord/Documents/grupp2/src/lastmileauto/LastMileAuto.java</file>
+            <file>file:/Users/eliselord/Documents/grupp2/src/lastmileauto/RobotRead.java</file>
+            <file>file:/Users/eliselord/Documents/grupp2/src/lastmileauto/GuiUpdate.java</file>
+            <file>file:/Users/eliselord/Documents/grupp2/src/lastmileauto/DataStore.java</file>
+>>>>>>> 06e1a9cd9dec9cdd6fd4cb779d56a9524cf8b41e
+>>>>>>> 7520f9411b4572b82a76342db33526cd8393317c
+>>>>>>> 4040502f50a890947fb9abc428531ecfb6de2fb2
         </group>
     </open-files>
 </project-private>
