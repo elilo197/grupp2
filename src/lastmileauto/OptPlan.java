@@ -46,7 +46,7 @@ public class OptPlan {
     // Get shortest path
         for(int i =0; i <path.size(); i++)
         {
-        //    System.out.println(path.get(i));
+           System.out.println(path.get(i));
         }   
         
         // Arc in the shoretest path
