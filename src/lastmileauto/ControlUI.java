@@ -11,7 +11,7 @@ public class ControlUI extends javax.swing.JFrame {
     DataStore ds;
     BluetoothTransceiver btc;
     BluetoothTransmitter btm;
-    Uppdrag uppdrag1;
+    //Uppdrag uppdrag1;
     GuiUpdate g;
     ControlUI cui;
     Compass com; 
@@ -306,7 +306,7 @@ public class ControlUI extends javax.swing.JFrame {
       ///  btm = new BluetoothTransmitter(ds.F);
 
       ///  btm = new BluetoothTransmitter(ds.F);
-        uppdrag1= new Uppdrag();
+        //uppdrag1= new Uppdrag();
         g =  new GuiUpdate(ds, cui, ds.start);        //Tråd som uppdaterar kartan med var AGV är
         Thread t2 = new Thread(g);
         t2.start();   
