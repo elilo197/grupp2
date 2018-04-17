@@ -28,7 +28,6 @@ public class LastMileAuto {
        //ds.setFileName("/Users/aliceneu/Documents/grupp2/streets.txt");
        
         ds.readNet();
-
         cui = new ControlUI(ds);
         cui.setVisible(true);
         cui.showStatus();
