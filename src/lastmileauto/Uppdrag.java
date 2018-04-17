@@ -18,12 +18,12 @@ public class Uppdrag {
     
     //public Uppdrag() {}
     
-    public static void main(String args){
-        listaplatser();
-        listauppdrag("A");
-        
-    
-    }
+//    public static void main(String args){
+//        listaplatser();
+//        listauppdrag("A");
+//        
+//    
+//    }
     
     //System.out.println("Vi är i Uppdrag! Good job!");    
 

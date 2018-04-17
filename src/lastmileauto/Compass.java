@@ -34,12 +34,12 @@ public class Compass implements Runnable{
         R = ds.R;
         L = ds.L;
         
+      
+        
         for(int i =0; i <opt.path.size(); i++)
         {
-        //System.out.println(opt.path.get(i));
-        
-            x = ds.nodeX[i]; 
-            y = ds.nodeY[i];
+            x = ds.nodeX[ds.pathInt[i]]; 
+            y = ds.nodeY[ds.pathInt[i]];
             
             System.out.println("" +x+", " +y);
         }   

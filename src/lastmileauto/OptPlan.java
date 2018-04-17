@@ -10,6 +10,8 @@ public class OptPlan {
     private List<Edge> edges;
     private DataStore ds; 
     LinkedList<Vertex>path;
+    double x; 
+    double y;
     
      
    
@@ -44,9 +46,23 @@ public class OptPlan {
         path =dijkstra.getPath(nodes.get(ds.slutRutt-1)); //Slutnod   ändrade här!!!! 
     
     // Get shortest path
-        for(int i =0; i <path.size(); i++)
+    
+        for(int i=1; i <path.size(); i++)
         {
-           System.out.println(path.get(i));
+           //System.out.println(path.get(i));  // Path innehåller noder. 
+            
+            //Gör om till int. 
+            ds.pathInt[i] = Integer.parseInt(path.get(i).getId());
+            System.out.println(Integer.parseInt(path.get(i).getId()));
+            //System.out.println(ds.pathInt[i]);
+            
+            
+            x = ds.nodeX[ds.pathInt[i]]; 
+            y = ds.nodeY[ds.pathInt[i]];
+            
+            System.out.println("" +x+", " +y);
+            
+            
         }   
         
         // Arc in the shoretest path
