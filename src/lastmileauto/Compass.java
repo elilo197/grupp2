@@ -1,9 +1,4 @@
-<<<<<<< HEAD
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package lastmileauto;
 
 import java.time.Clock;
@@ -155,7 +150,6 @@ public class Compass implements Runnable{
 }
 
 //
-=======
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -269,5 +263,3 @@ public class Compass implements Runnable{
     }
 }
 
-
->>>>>>> 31953f7ec234d4b4fd576ac98efa4a74b306557e
