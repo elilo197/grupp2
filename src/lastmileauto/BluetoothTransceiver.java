@@ -35,11 +35,11 @@ public void run (){
             cui.appendBluetoothAdress("Bluetooth adress: 201601205682" );
             cui.appendBluetoothKanal("Kanal: 1");
 
-//            PrintStream bluetooth_ut = new 
-//                    PrintStream(anslutning.openOutputStream());
+           PrintStream bluetooth_ut = new 
+                  PrintStream(anslutning.openOutputStream());       //Skicka delen
 
-            BufferedReader bluetooth_in = new BufferedReader(new 
-                InputStreamReader(anslutning.openInputStream()));
+  //          BufferedReader bluetooth_in = new BufferedReader(new    //Ta emot delen 
+  //            InputStreamReader(anslutning.openInputStream()));
 
 
             BufferedReader tangentbord = new BufferedReader(new 
@@ -57,8 +57,8 @@ public void run (){
 
                 bluetooth_ut.println(meddelande_ut);
                           
-                String meddelande_in = bluetooth_in.readLine();
-                System.out.println("Mottaget: " + meddelande_in);
+//                String meddelande_in = bluetooth_in.readLine();
+//                System.out.println("Mottaget: " + meddelande_in);
                 
                 }
                
