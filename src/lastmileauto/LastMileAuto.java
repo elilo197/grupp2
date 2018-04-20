@@ -15,7 +15,7 @@ public class LastMileAuto {
          * Initialize the DataStore call where all "global" data will be stored
          */
         ds = new DataStore();
-        bre = new BluetoothReceiver();
+        //bre = new BluetoothReceiver();
 
         /*
          * This sets the file path and read network text file. Adjust for your needs.
