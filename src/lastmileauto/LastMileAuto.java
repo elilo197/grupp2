@@ -23,46 +23,11 @@ public class LastMileAuto {
         
 
        ds.setFileName("C:\\Users\\Helena\\Documents\\GitHub\\grupp2/streets.txt");
-
-       //ds.setFileName("C:\\Users\\Helena\\Documents\\GitHub\\grupp2/streets.txt");
-<<<<<<< HEAD
-
-=======
-<<<<<<< HEAD
-
        //ds.setFileName("/Users/eliselord/Documents/grupp2/streets.txt");
        //ds.setFileName("/Users/Veronika/Desktop/streets.txt");
        //ds.setFileName("/Users/hannamellqvist/Documents/Kandidat/grupp2/streets.txt");
-       ds.setFileName("/Users/aliceneu/Documents/grupp2/streets.txt");
-
-      //ds.setFileName("/Users/eliselord/Documents/grupp2/streets.txt");
-      //ds.setFileName("/Users/Veronika/Desktop/streets.txt");
-      //ds.setFileName("/Users/hannamellqvist/Documents/Kandidat/grupp2/streets.txt");
-      //ds.setFileName("/Users/aliceneu/Documents/grupp2/streets.txt");
-     
-=======
-<<<<<<< HEAD
->>>>>>> a1bbe858abb12783aa186a1b4beb14e5489e8ef1
->>>>>>> 8c2755d2ae0e59fa4884bd9b4bf6a924a1f9f7c4
-     //ds.setFileName("/Users/eliselord/Documents/grupp2/streets.txt");
-      //ds.setFileName("/Users/Veronika/Desktop/streets.txt");
-     ds.setFileName("/Users/hannamellqvist/Documents/Kandidat/grupp2/streets.txt");
-
-     //ds.setFileName("/Users/eliselord/Documents/grupp2/streets.txt");
-      ds.setFileName("/Users/Veronika/Desktop/streets.txt");
-
-       //ds.setFileName("/Users/eliselord/Documents/grupp2/streets.txt");
-       //ds.setFileName("/Users/Veronika/Desktop/streets.txt");
-       //ds.setFileName("/Users/hannamellqvist/Documents/Kandidat/grupp2/streets.txt");
-     //  ds.setFileName("/Users/aliceneu/Documents/grupp2/streets.txt");
-     ds.setFileName("/Users/eliselord/Documents/grupp2/streets.txt");
-      //ds.setFileName("/Users/Veronika/Desktop/streets.txt");
-
-     //ds.setFileName("/Users/hannamellqvist/Documents/Kandidat/grupp2/streets.txt");
-
        //ds.setFileName("/Users/aliceneu/Documents/grupp2/streets.txt");
-       
->>>>>>> a04fd04d42133ff46a215bf6dcef07f4e90c59da
+
         ds.readNet();
         cui = new ControlUI(ds);
         cui.setVisible(true);
