@@ -1,6 +1,4 @@
-/*
 
- */
 package lastmileauto;
 
 //Bluetoothnamn flr Arduino 20:16:01:20:56:82
@@ -17,7 +15,6 @@ public class BluetoothTransceiver{
              StreamConnection anslutning = (StreamConnection)
              Connector.open("btspp://201601205682:1");
              bluetooth_in = new BufferedReader(new InputStreamReader(anslutning.openInputStream()));
-             //cui.appendStatus("Bluetoothanslutning upprättad");
          
        } catch (Exception e) {  System.out.print(e.toString());   }
     }
@@ -26,3 +23,5 @@ public class BluetoothTransceiver{
         return meddelande_in;
     }
     }
+
+

@@ -53,8 +53,6 @@ public class Uppdrag {
          int mottagen_status = anslutning.getResponseCode();
 
          System.out.println("Statuskod: " + mottagen_status);
-
- 
          BufferedReader inkommande = new BufferedReader(new
 
         InputStreamReader(anslutning.getInputStream()));
@@ -62,40 +60,23 @@ public class Uppdrag {
         StringBuffer inkommande_samlat = new StringBuffer();
  
         while ((inkommande_text = inkommande.readLine()) != null) {
-                inkommande_samlat.append(inkommande_text);
-        
-                
-        ink_sam = inkommande_samlat.toString();        
-//Ej testad kod
-//        try {
-//      FileInputStream fis = new FileInputStream(file);
-//      char current;
-//      while (fis.available() > 0) {
-//        current = (char) fis.read();
-//        System.out.print(current);
-//      }
-//    } catch (IOException e) {
-//      e.printStackTrace();
-//    }
-
-
+                inkommande_samlat.append(inkommande_text); 
         }
         
+        inkommande.close();
         inkommandetext = new String[1000];
         
         for (int i = 0; i<1000; i++){
         String[] sline;
         sline = new String[1000];
-
         sline = inkommande_text.split(" ");
-    //     inkommandetext[i] = String.parseString(sline[1].trim());
+          //inkommandetext[i] = String.parseString(sline[1].trim());
          //inkommandetext[i] = Double.parseDouble(sline[2].trim());
         // inkommandetext[i] = ink_sam.split(" "); //Skapa mellanrum mellan de olika raderna EJ KLART
         }
-        inkommande.close();
-              
-
-        System.out.println(ink_sam); //(inkommande_samlat.toString());
+        
+        
+        System.out.println(inkommande_samlat.toString()); //(inkommande_samlat.toString());
         }
     
      catch (IOException e) { System.out.print(e.toString()); }
