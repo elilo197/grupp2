@@ -8,7 +8,6 @@ public class LastMileAuto {
     ControlUI cui;
     RobotRead r;
     GuiUpdate g;
-    BluetoothReceiver bre;
     
     LastMileAuto(){
         /*
@@ -24,7 +23,7 @@ public class LastMileAuto {
 
 
       // ds.setFileName("C:\\Users\\Helena\\Documents\\GitHub\\grupp2/streets.txt");
-       //ds.setFileName("/Users/eliselord/Documents/grupp2/streets.txt");
+       ds.setFileName("/Users/eliselord/Documents/grupp2/streets.txt");
        //ds.setFileName("/Users/Veronika/Desktop/streets_gammal.txt");
        //ds.setFileName("/Users/hannamellqvist/Documents/Kandidat/grupp2/streets.txt");
        //ds.setFileName("/Users/aliceneu/Documents/grupp2/streets.txt");
@@ -34,7 +33,7 @@ public class LastMileAuto {
         cui.setVisible(true);
         cui.showStatus();
         
-        r = new RobotRead(ds, cui, bre);    //Tråd som lyssnar på AGV via Bluetoothreciever
+        r = new RobotRead(ds, cui); //,bre   //Tråd som lyssnar på AGV via Bluetoothreciever
         Thread t1 = new Thread(r);
                                             //Tråd som håller kontakt med AGV via BluetoothTranceiver
                                             //Tråd för resten, typ main
