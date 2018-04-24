@@ -30,7 +30,12 @@ public class DataStore {
     String R = "R";  //Kör Right
     String L = "L";   //Kör Left 
     String S = "S";   //Stop i 5 sek. 
+    String C = "c";
     int[] pathInt;
+    BluetoothTransceiver btc;
+    BluetoothTransmitter btm;
+    BluetoothReceiver btr; 
+    ControlUI cui;
 
     
 
