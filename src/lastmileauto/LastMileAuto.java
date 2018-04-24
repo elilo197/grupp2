@@ -41,6 +41,11 @@ public class LastMileAuto {
 <<<<<<< HEAD
 >>>>>>> a1bbe858abb12783aa186a1b4beb14e5489e8ef1
      //ds.setFileName("/Users/eliselord/Documents/grupp2/streets.txt");
+      //ds.setFileName("/Users/Veronika/Desktop/streets.txt");
+     ds.setFileName("/Users/hannamellqvist/Documents/Kandidat/grupp2/streets.txt");
+=======
+<<<<<<< HEAD
+     //ds.setFileName("/Users/eliselord/Documents/grupp2/streets.txt");
       ds.setFileName("/Users/Veronika/Desktop/streets.txt");
 =======
        //ds.setFileName("/Users/eliselord/Documents/grupp2/streets.txt");
@@ -54,6 +59,7 @@ public class LastMileAuto {
 >>>>>>> 288dc0b602fb35a3b1a32c7b834ea040db37a260
 >>>>>>> a1bbe858abb12783aa186a1b4beb14e5489e8ef1
      //ds.setFileName("/Users/hannamellqvist/Documents/Kandidat/grupp2/streets.txt");
+>>>>>>> a1bbe858abb12783aa186a1b4beb14e5489e8ef1
        //ds.setFileName("/Users/aliceneu/Documents/grupp2/streets.txt");
        
 >>>>>>> a04fd04d42133ff46a215bf6dcef07f4e90c59da
