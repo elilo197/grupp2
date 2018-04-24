@@ -88,7 +88,7 @@ public class Uppdrag {
         sline = new String[1000];
 
         sline = inkommande_text.split(" ");
-         inkommandetext[i] = String.parseString(sline[1].trim());
+    //     inkommandetext[i] = String.parseString(sline[1].trim());
          //inkommandetext[i] = Double.parseDouble(sline[2].trim());
         // inkommandetext[i] = ink_sam.split(" "); //Skapa mellanrum mellan de olika raderna EJ KLART
         }

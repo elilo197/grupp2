@@ -23,23 +23,17 @@ public class LastMileAuto {
 
 
 
-       ds.setFileName("C:\\Users\\Helena\\Documents\\GitHub\\grupp2/streets.txt");
+       //ds.setFileName("C:\\Users\\Helena\\Documents\\GitHub\\grupp2/streets.txt");
        //ds.setFileName("/Users/eliselord/Documents/grupp2/streets.txt");
       // ds.setFileName("/Users/Veronika/Desktop/streets.txt");
-
       // ds.setFileName("C:\\Users\\Helena\\Documents\\GitHub\\grupp2/streets.txt");
-<<<<<<< HEAD
-
        //ds.setFileName("/Users/eliselord/Documents/grupp2/streets.txt");
        //ds.setFileName("/Users/Veronika/Desktop/streets.txt");
        //ds.setFileName("/Users/Veronika/Desktop/streets_gammal.txt");
-=======
        ds.setFileName("/Users/eliselord/Documents/grupp2/streets.txt");
        //ds.setFileName("/Users/eliselord/Documents/grupp2/streets.txt");
        //ds.setFileName("/Users/Veronika/Desktop/streets.txt");
        //ds.setFileName("/Users/Veronika/Desktop/streets_gammal.txt");
-
->>>>>>> 3308da9f36940e836160412ec4514b6f1b743075
        //ds.setFileName("/Users/hannamellqvist/Documents/Kandidat/grupp2/streets.txt");
        //ds.setFileName("/Users/aliceneu/Documents/grupp2/streets.txt");
 
