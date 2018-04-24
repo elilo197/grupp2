@@ -15,8 +15,7 @@ import javax.bluetooth.*;
 
 public class BluetoothReceiver implements Runnable{
   BluetoothTransceiver btc;
-  InputStream bluetooth_in;
-  StreamConnectionNotifier service;
+  DataStore ds;
   String mottaget;
   
     
@@ -24,27 +23,16 @@ public class BluetoothReceiver implements Runnable{
         this.btc = btc1;
 }
     
-   // public void recive(ControlUI cui){
     @Override
     public void run(){
         try{
             while(true){
-                bluetooth_in = btc.anslutning.openInputStream();
                 
-                byte buffer[] = new byte[80];
-                int antal_bytes = bluetooth_in.read(buffer);
-                String mottaget = new String(buffer, 0, antal_bytes);
-                System.out.println("/n" + "Mottaget meddelande: " + mottaget);
-                
+                String meddelande_in = btc.bluetooth_in.readLine();
+                System.out.println("Mottaget: " + meddelande_in);
+     
             }
-        }catch (IOException e){
-            System.out.print(e.toString());
-            System.out.println("Gick dåligt!!");
-        }
-    }
-    
-    public String getMessage(){
-        return mottaget;
+        }catch (Exception e){System.out.print(e.toString()); }
     }
     
 }

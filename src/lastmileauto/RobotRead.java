@@ -6,16 +6,17 @@ package lastmileauto;
 import java.util.*;
 
 public class RobotRead implements Runnable  {
-    private int sleepTime;
+    int sleepTime;
     private static Random generator = new Random();
-    private ControlUI cui;
-    private DataStore ds;
-    private GuiUpdate gui; 
-    private BluetoothReceiver bre;
-    private BluetoothTransceiver btc;
+    ControlUI cui;
+    DataStore ds;
+    GuiUpdate gui; 
+    BluetoothReceiver bre;
+    BluetoothTransceiver btc;
     long start;
     long timemilli = 0;
     int mottagenInt;
+    String meddelande; 
 
     public RobotRead(DataStore ds, ControlUI cui, BluetoothReceiver bre) {
         this.cui = cui;
@@ -26,11 +27,17 @@ public class RobotRead implements Runnable  {
 
 @Override
 public void run () {
-// while (anslutning == true) {// timenano = System.nanoTime();
+ while (true) {// timenano = System.nanoTime();
 //    mottagenInt = Integer.parseInt(bre.mottaget); //Gör om deras string till en int innehåll nodnummer.
 
+    meddelande = bre.getMessage();
+    if(meddelande != null){
+        cui.appendStatus(meddelande);
+    }  
+    
    start = System.currentTimeMillis(); //start tid 
    System.out.println("Starttid: " + System.currentTimeMillis());
+   
    
    while (System.currentTimeMillis() - start < 2500){
       
