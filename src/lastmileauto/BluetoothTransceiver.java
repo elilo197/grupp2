@@ -9,14 +9,14 @@ import javax.microedition.io.*;
 
 public class BluetoothTransceiver{
     String meddelande_in;
-   // ControlUI cui;
+     BufferedReader bluetooth_in;
 
     public BluetoothTransceiver() {
         
        try {
              StreamConnection anslutning = (StreamConnection)
              Connector.open("btspp://201601205682:1");
-             BufferedReader bluetooth_in = new BufferedReader(new InputStreamReader(anslutning.openInputStream()));
+             bluetooth_in = new BufferedReader(new InputStreamReader(anslutning.openInputStream()));
              //cui.appendStatus("Bluetoothanslutning upprättad");
          
        } catch (Exception e) {  System.out.print(e.toString());   }

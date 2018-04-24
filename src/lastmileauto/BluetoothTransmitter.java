@@ -10,8 +10,6 @@ package lastmileauto;
 public class BluetoothTransmitter{
 
  private BluetoothTransceiver btc; 
-
-//private message = new String;
     
  public BluetoothTransmitter (BluetoothTransceiver btc1)   {
       this.btc = btc1;
