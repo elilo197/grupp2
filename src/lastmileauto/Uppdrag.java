@@ -14,6 +14,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.lang.*;
+import java.util.ArrayList;
 
 public class Uppdrag {
     String inkommandetext []; 
@@ -58,25 +59,23 @@ public class Uppdrag {
         InputStreamReader(anslutning.getInputStream()));
         String inkommande_text;
         StringBuffer inkommande_samlat = new StringBuffer();
- 
+        
+        
+        //Arraylist är dynamiska, vi behöver alltså inte ha en "längd" 
+         ArrayList<String> ink = new ArrayList<String>();
         while ((inkommande_text = inkommande.readLine()) != null) {
-                inkommande_samlat.append(inkommande_text); 
+            //System.out.println("Inkommande: " + inkommande_text);
+                inkommande_samlat.append(" " + inkommande_text); 
+                ink.add(inkommande_text);
         }
         
+        System.out.println("Ink:");
+        for(int k = 0; k < ink.size(); k++){
+            System.out.println(ink.get(k));
+        }
         inkommande.close();
-        inkommandetext = new String[1000];
         
-        for (int i = 0; i<1000; i++){
-        String[] sline;
-        sline = new String[1000];
-        sline = inkommande_text.split(" ");
-          //inkommandetext[i] = String.parseString(sline[1].trim());
-         //inkommandetext[i] = Double.parseDouble(sline[2].trim());
-        // inkommandetext[i] = ink_sam.split(" "); //Skapa mellanrum mellan de olika raderna EJ KLART
-        }
-        
-        
-        System.out.println(inkommande_samlat.toString()); //(inkommande_samlat.toString());
+        //System.out.println(inkommande_samlat.toString()); //(inkommande_samlat.toString());
         }
     
      catch (IOException e) { System.out.print(e.toString()); }
