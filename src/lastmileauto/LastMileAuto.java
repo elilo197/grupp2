@@ -21,8 +21,12 @@ public class LastMileAuto {
          * This sets the file path and read network text file. Adjust for your needs.
          */
         
+<<<<<<< HEAD
+       ds.setFileName("C:\\Users\\Helena\\Documents\\GitHub\\grupp2/streets.txt");
+=======
        //ds.setFileName("C:\\Users\\Helena\\Documents\\GitHub\\grupp2/streets.txt");
 <<<<<<< HEAD
+>>>>>>> a1bbe858abb12783aa186a1b4beb14e5489e8ef1
      //ds.setFileName("/Users/eliselord/Documents/grupp2/streets.txt");
       //ds.setFileName("/Users/Veronika/Desktop/streets.txt");
      ds.setFileName("/Users/hannamellqvist/Documents/Kandidat/grupp2/streets.txt");
@@ -37,7 +41,10 @@ public class LastMileAuto {
      //  ds.setFileName("/Users/aliceneu/Documents/grupp2/streets.txt");
      ds.setFileName("/Users/eliselord/Documents/grupp2/streets.txt");
       //ds.setFileName("/Users/Veronika/Desktop/streets.txt");
+<<<<<<< HEAD
+=======
 >>>>>>> 288dc0b602fb35a3b1a32c7b834ea040db37a260
+>>>>>>> a1bbe858abb12783aa186a1b4beb14e5489e8ef1
      //ds.setFileName("/Users/hannamellqvist/Documents/Kandidat/grupp2/streets.txt");
 >>>>>>> a1bbe858abb12783aa186a1b4beb14e5489e8ef1
        //ds.setFileName("/Users/aliceneu/Documents/grupp2/streets.txt");
