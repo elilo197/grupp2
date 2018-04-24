@@ -299,13 +299,13 @@ public class ControlUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void anslutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_anslutActionPerformed
+      /*Ta bort kommentarerna nedan för att köra bluetooth!! 
       ds.btc = new BluetoothTransceiver();
       ds.btm = new BluetoothTransmitter(ds.btc);
       ds.btr = new BluetoothReceiver(ds.btc);
       Thread t4 = new Thread(ds.btr);
       t4.start();
-      
-      appendStatus("Bluetoothanslutning upprättad");
+      appendStatus("Bluetoothanslutning upprättad");*/
       
        //Thread t3 = new Thread(btc);
        //t3.start();
@@ -318,8 +318,9 @@ public class ControlUI extends javax.swing.JFrame {
 
     private void startActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startActionPerformed
         //Skrickar ett F
+        /*Ta bort kommentaren nedan för att köra bluetooth
         ds.btm.send(ds.F);
-        appendStatus("Skickade meddelande: " + ds.F);
+        appendStatus("Skickade meddelande: " + ds.F);*/
         
         uppdrag1= new Uppdrag();
         g =  new GuiUpdate(ds, ds.cui, ds.start);        //Tråd som uppdaterar kartan med var AGV är
@@ -330,8 +331,9 @@ public class ControlUI extends javax.swing.JFrame {
     }//GEN-LAST:event_startActionPerformed
 
     private void avslutaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_avslutaActionPerformed
-         ds.btm.send(ds.C);
-        appendStatus("Skickade meddelande: " + ds.C);
+        /*Ta bort kommentaren nedan för att köra bluetooth
+        ds.btm.send(ds.C);
+        appendStatus("Skickade meddelande: " + ds.C);*/
     }//GEN-LAST:event_avslutaActionPerformed
 
     private void avbrytBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_avbrytBTActionPerformed

@@ -18,7 +18,7 @@ public class RobotRead implements Runnable  {
     int mottagenInt;
     String meddelande; 
 
-    public RobotRead(DataStore ds, ControlUI cui, BluetoothReceiver bre) {
+    public RobotRead(DataStore ds, ControlUI cui ){       //, BluetoothReceiver bre) {
         this.cui = cui;
         this.ds = ds;
         this.bre = bre;
