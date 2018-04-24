@@ -9,13 +9,8 @@ import javax.microedition.io.*;
 
 public class BluetoothTransceiver{
     String meddelande_in;
-<<<<<<< HEAD
      BufferedReader bluetooth_in;
-=======
     PrintStream bluetoothanslutning;
-   // ControlUI cui;
->>>>>>> 0c7076932f4d2f650958311f1a588de830ba4bef
-
     public BluetoothTransceiver() {
         
        try {
