@@ -45,7 +45,7 @@ public void run () {
 //        if (bre.mottaget == XY){
             // här vill vi kalla på gui update. 
 
-        System.out.println("Tiden i millisekunder är: " + (System.currentTimeMillis() - start));
+       // System.out.println("Tiden i millisekunder är: " + (System.currentTimeMillis() - start));
        // System.out.println("Tiden i millisekunder är: " + (System.currentTimeMillis() - start));
 //        if (bre.mottaget == XY){
             // här vill vi kalla på gui update. 
