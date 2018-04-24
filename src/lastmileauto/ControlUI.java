@@ -325,7 +325,7 @@ public class ControlUI extends javax.swing.JFrame {
         uppdrag1= new Uppdrag();
         g =  new GuiUpdate(ds, ds.cui, ds.start);        //Tråd som uppdaterar kartan med var AGV är
         Thread t2 = new Thread(g);
-        t2.start();   
+     //   t2.start();   
           
         
     }//GEN-LAST:event_startActionPerformed

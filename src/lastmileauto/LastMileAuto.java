@@ -22,21 +22,15 @@ public class LastMileAuto {
         
 
 
-<<<<<<< HEAD
+
        ds.setFileName("C:\\Users\\Helena\\Documents\\GitHub\\grupp2/streets.txt");
        //ds.setFileName("/Users/eliselord/Documents/grupp2/streets.txt");
       // ds.setFileName("/Users/Veronika/Desktop/streets.txt");
-=======
+
       // ds.setFileName("C:\\Users\\Helena\\Documents\\GitHub\\grupp2/streets.txt");
-<<<<<<< HEAD
-       ds.setFileName("/Users/eliselord/Documents/grupp2/streets.txt");
-=======
+
        //ds.setFileName("/Users/eliselord/Documents/grupp2/streets.txt");
-<<<<<<< HEAD
-       ds.setFileName("/Users/Veronika/Desktop/streets.txt");
-=======
->>>>>>> f074932fc8cfacd5ab61e3d62f4551f84fea14ee
->>>>>>> 47b3bc89d629f79f05023513e4cc8890c9fb4e49
+       //ds.setFileName("/Users/Veronika/Desktop/streets.txt");
        //ds.setFileName("/Users/Veronika/Desktop/streets_gammal.txt");
        //ds.setFileName("/Users/hannamellqvist/Documents/Kandidat/grupp2/streets.txt");
        //ds.setFileName("/Users/aliceneu/Documents/grupp2/streets.txt");
@@ -46,14 +40,14 @@ public class LastMileAuto {
         cui.setVisible(true);
         cui.showStatus();
         
-        r = new RobotRead(ds, cui); //,bre   //Tråd som lyssnar på AGV via Bluetoothreciever
-        Thread t1 = new Thread(r);
+      //  r = new RobotRead(ds, cui); //,bre   //Tråd som lyssnar på AGV via Bluetoothreciever
+      //  Thread t1 = new Thread(r);
                                             //Tråd som håller kontakt med AGV via BluetoothTranceiver
                                             //Tråd för resten, typ main
                                             
         cui.appendStatus("Startar programmet \n" );
                   
-       t1.start();
+       //t1.start();
 
         
         cui.appendStatus("Avslutar main.\n");
