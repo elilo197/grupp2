@@ -16,7 +16,7 @@ import java.net.URL;
 import java.lang.*;
 public class Uppdrag {
     
-    //public Uppdrag() {}
+    public Uppdrag() {}
     
 //    public static void main(String args){
 //        listaplatser();
@@ -27,8 +27,8 @@ public class Uppdrag {
     
     //System.out.println("Vi är i Uppdrag! Good job!");    
 
-    /*Här listar vi antalet upphämtningsplatser och vi måste även beräkna vilken
-     *upphämtningsplats som är närmast. Sen ska vi skicka informationen till 
+    /** Här listar vi antalet upphämtningsplatser och vi måste även beräkna vilken
+     * upphämtningsplats som är närmast. Sen ska vi skicka informationen till 
      * AGVn
      */
     public static void listaplatser() {
@@ -36,7 +36,7 @@ public class Uppdrag {
      try {
 
          //Uppdrag http = new Uppdrag();
-         String url = " http://tnk111.n7.se/listaplatser.php"; 
+         String url = "http://tnk111.n7.se/listaplatser.php"; 
          URL urlobjekt = new URL(url);       
          HttpURLConnection anslutning = (HttpURLConnection)
          urlobjekt.openConnection();
@@ -69,19 +69,23 @@ public class Uppdrag {
     }
      
     
-        /*Här ska de hända massa spännande saker.
-        *Kolla om det finns uppdrag när vi kommer till upphämtningsplatsen
+        /** Här ska de hända massa spännande saker.
+        *Kolla om det finns uppdrag när vi kommer till upphämtningsplatsen, kan köras
+        *när som helst
         *Måste kalla på denna metod när vi stannar
             *Om det EJ finns, sök ny startnod
             *Om det finns, fortsätt på följande:
         *Spara kapacitet i en string/var, spara samåkning i en string/var
+        * 
+        * Om inga uppdrag finns, stanna AGVn vid närmsta båge. Sen söker vi efter 
+        * en ny upphämtningsplats som har uppdrag.
         */
     
    
     public static String listauppdrag(String plats){
         String x = "Hej"; //Ta bort sen
        
-     /*Någon funktion som räknar ut vilken upphämtningsplats som är närmst, spara som en var/string(?)
+     /**Någon funktion som räknar ut vilken upphämtningsplats som är närmst, spara som en var/string(?)
      *Använd Dijkstra och OptPlan för att hitta närmsta plats
      *Kalla på Compass och kör till platsen
      *String X = "A";
@@ -131,7 +135,7 @@ public class Uppdrag {
     //Kan behövas ändras till en String[], själva metoden
     public static String tauppdrag(String plats, String id, String pax, String grupp){
        
-        /*Ta första uppdaget och kolla om kapacitet är ok
+        /**Ta första uppdaget och kolla om kapacitet är ok
             *Om kapacitet är ok --> kolla om samåkning är ok
                 *Om samåkning är ok, kolla vidare i listan och spara "nuvarande" passagerare
                 *Om samåkning EJ är ok, anropa nekas/beviljas 
@@ -173,9 +177,17 @@ public class Uppdrag {
         }
         //String [] ink_sam = inkommande_samlat.split(" "); Skapa mellanrum mellan de olika raderna EJ KLART
         inkommande.close();
-               
+        
+        //Testa följande typ av loop för att försöka splitta
+//        for (int i=0; i < nodes; i++){
+//                line = scanner.nextLine();
+//                //split space separated data on line
+//                sline = line.split(" ");
+//                nodeX[i] = Double.parseDouble(sline[1].trim());
 
         System.out.println(inkommande_samlat.toString());
+        System.out.println("Hej");
+        
         }
     
      catch (Exception e) { System.out.print(e.toString()); }
