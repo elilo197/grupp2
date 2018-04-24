@@ -22,15 +22,12 @@ public class LastMileAuto {
          */
         
 
-<<<<<<< HEAD
+
       // ds.setFileName("C:\\Users\\Helena\\Documents\\GitHub\\grupp2/streets.txt");
-=======
-       //ds.setFileName("C:\\Users\\Helena\\Documents\\GitHub\\grupp2/streets.txt");
->>>>>>> d27a814eb6d1eace635765af536003c369c09228
        //ds.setFileName("/Users/eliselord/Documents/grupp2/streets.txt");
        ds.setFileName("/Users/Veronika/Desktop/streets_gammal.txt");
        //ds.setFileName("/Users/hannamellqvist/Documents/Kandidat/grupp2/streets.txt");
-       ds.setFileName("/Users/aliceneu/Documents/grupp2/streets.txt");
+       //ds.setFileName("/Users/aliceneu/Documents/grupp2/streets.txt");
 
         ds.readNet();
         cui = new ControlUI(ds);
