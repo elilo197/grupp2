@@ -11,10 +11,11 @@ public class ControlUI extends javax.swing.JFrame {
     DataStore ds;
     BluetoothTransceiver btc;
     BluetoothTransmitter btm;
-    //Uppdrag uppdrag1;
+    Uppdrag uppdrag1;
     GuiUpdate g;
     ControlUI cui;
     Compass com; 
+    BluetoothReceiver b;
     
 
     /**
@@ -288,10 +289,12 @@ public class ControlUI extends javax.swing.JFrame {
     private void anslutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_anslutActionPerformed
         /*Vill ansluta med rätt Bluetooth adress och kanal och detta ska sedan
         visas i den mindre rutan till vänster*/
-        //BluetoothTransceiver obj1 = new BluetoothTransceiver();
-       btc = new BluetoothTransceiver();
-       Thread t3 = new Thread(btc);
-       t3.start();
+      ds.btc = new BluetoothTransceiver();
+      ds.btm = new BluetoothTransmitter(ds.btc);
+      ds.btr = new BluetoothReceiver(ds.btc);
+        appendStatus("Bluetoothanslutning upprättad");
+       //Thread t3 = new Thread(btc);
+       //t3.start();
         //System.out.println("Hej");
 //        com = new Compass();
 //        Thread t5 = new Thread(com);
@@ -306,10 +309,15 @@ public class ControlUI extends javax.swing.JFrame {
       ///  btm = new BluetoothTransmitter(ds.F);
 
       ///  btm = new BluetoothTransmitter(ds.F);
-        //uppdrag1= new Uppdrag();
+        uppdrag1= new Uppdrag();
         g =  new GuiUpdate(ds, cui, ds.start);        //Tråd som uppdaterar kartan med var AGV är
         Thread t2 = new Thread(g);
         t2.start();   
+        ds.btm.send(ds.F);
+        appendStatus("Skickade meddelande: " + ds.F);
+       
+        b = new BluetoothReceiver(ds.btc);
+        Thread t4 = new Thread(b);
 
 //       Thread t4 = new Thread(btm);
 //       t4.start();
@@ -321,7 +329,7 @@ public class ControlUI extends javax.swing.JFrame {
     private void avslutaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_avslutaActionPerformed
         
         //vill avsluta uppdrag
-         btm = new BluetoothTransmitter(ds.S);
+         ds.btm.send(ds.C);
     }//GEN-LAST:event_avslutaActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

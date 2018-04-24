@@ -3,8 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package lastmileauto;
-
+package lastmileauto;  //Denna är inte rätt, inte heller cui är klar, 
 
 //hcitool scan = visar alla tillgängliga enheter
 //sdptool browse 20:16:01:20:56:82:1 
@@ -14,50 +13,38 @@ import javax.microedition.io.*;
 import javax.bluetooth.*;
 
 
-
-
-public class BluetoothReceiver{
-
+public class BluetoothReceiver implements Runnable{
+  BluetoothTransceiver btc;
+  InputStream bluetooth_in;
+  StreamConnectionNotifier service;
+  String mottaget;
+  
     
-    
-private ControlUI cui;    
-    
-    public void BluetoothReceiver(ControlUI cui) {
-        this.cui = cui;
-        // System.out.println("YEY det funkade!! ");
-        
-      
-        cui.appendStatus("\n"+"Mottaget meddelande: ");
-//        
-//        try {
-//
-//            StreamConnectionNotifier service = (StreamConnectionNotifier) 
-//
-//          Connector.open("btspp://201601205682:1" + new UUID(0x1101).toString() + 
-//                  ";name=TNK111-test");
-//
-//            StreamConnection anslutning = (StreamConnection) 
-//        service.acceptAndOpen();
-//             InputStream bluetooth_in = anslutning.openInputStream();
-//
-//             byte buffer[] = new byte[80];
-//             int antal_bytes = bluetooth_in.read(buffer);
-//             String mottaget = new String(buffer, 0, antal_bytes);
-//
-//            // System.out.println("\n"+"Mottaget meddelande: " + mottaget);
-//            cui.appendStatus("\n"+"Mottaget meddelande: " + mottaget);
-//
-
-            //if (mottaget == 1) {
-            //    
-            //}
-
-
-
-//             anslutning.close();
-//
-//        } catch (IOException e) 
-//{   System.err.print(e.toString());    }
+    public BluetoothReceiver(BluetoothTransceiver btc1) {
+        this.btc = btc1;
 }
+    
+   // public void recive(ControlUI cui){
+    @Override
+    public void run(){
+        try{
+            while(true){
+                bluetooth_in = btc.anslutning.openInputStream();
+                
+                byte buffer[] = new byte[80];
+                int antal_bytes = bluetooth_in.read(buffer);
+                String mottaget = new String(buffer, 0, antal_bytes);
+                System.out.println("/n" + "Mottaget meddelande: " + mottaget);
+                
+            }
+        }catch (IOException e){
+            System.out.print(e.toString());
+            System.out.println("Gick dåligt!!");
+        }
+    }
+    
+    public String getMessage(){
+        return mottaget;
+    }
     
 }

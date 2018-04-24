@@ -9,64 +9,24 @@ import java.io.*;
 import javax.microedition.io.*;
 import javax.bluetooth.*;
 
-public class BluetoothTransceiver implements Runnable {
-    PrintStream bluetooth_ut;
-    
+public class BluetoothTransceiver{
+    PrintStream bluetoothanslutning;
+    StreamConnection anslutning;
+    DataStore ds;
     ControlUI cui;
 
-
     public BluetoothTransceiver() {
+        
+        System.out.println("Nu är vi i tranciver");
+        
+         try {
+             anslutning = (StreamConnection)
+                     Connector.open("btspp://201601205682:1");
+             bluetoothanslutning = new PrintStream(anslutning.openDataOutputStream());
+             cui.appendStatus("Bluetoothanslutning upprättad");
          
+       } catch (Exception e) {  System.out.print(e.toString());   }
         
    
     }
-   
-    
-@Override    
-public void run (){
-    
-    System.out.println("Nu är vi i Transceiver! Good job!");
-        try {
-
-            StreamConnection anslutning = (StreamConnection) 
-
-                    Connector.open("btspp://201601205682:1");
-
-            cui.appendBluetoothAdress("Bluetooth adress: 201601205682" );
-            cui.appendBluetoothKanal("Kanal: 1");
-
-           PrintStream bluetooth_ut = new 
-                  PrintStream(anslutning.openOutputStream());       //Skicka delen
-
-  //          BufferedReader bluetooth_in = new BufferedReader(new    //Ta emot delen 
-  //            InputStreamReader(anslutning.openInputStream()));
-
-
-            BufferedReader tangentbord = new BufferedReader(new 
-                    InputStreamReader(System.in));
-
-            while(true) {
-
-                String meddelande_ut = tangentbord.readLine();
-              
-
-                if (meddelande_ut==null) {
-                            break;
-
-                }
-
-                bluetooth_ut.println(meddelande_ut);
-                          
-//                String meddelande_in = bluetooth_in.readLine();
-//                System.out.println("Mottaget: " + meddelande_in);
-                
-                }
-               
-            
-            anslutning.close();
-
-        } catch (Exception e) {  System.out.print(e.toString());   }
-
-}
-}
-
+    }

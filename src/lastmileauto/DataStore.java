@@ -30,6 +30,13 @@ public class DataStore {
     String R = "R";  //Kör Right
     String L = "L";   //Kör Left 
     String S = "S";   //Stop i 5 sek. 
+    String C = "c";
+    int[] pathInt;
+    BluetoothTransceiver btc;
+    BluetoothTransmitter btm;
+    BluetoothReceiver btr; 
+    ControlUI cui;
+
     
 
     
@@ -45,6 +52,7 @@ public class DataStore {
         updateUIflag = false; 
         networkRead = false;
         arcColor = new int[1000];
+        pathInt = new int[1000];
        
         
     }

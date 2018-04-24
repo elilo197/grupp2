@@ -27,29 +27,37 @@ public class RobotRead implements Runnable  {
 @Override
 public void run () {
 // while (anslutning == true) {// timenano = System.nanoTime();
-    mottagenInt = Integer.parseInt(bre.mottaget); //Gör om deras string till en int innehåll nodnummer.
+//    mottagenInt = Integer.parseInt(bre.mottaget); //Gör om deras string till en int innehåll nodnummer.
 
    start = System.currentTimeMillis(); //start tid 
    System.out.println("Starttid: " + System.currentTimeMillis());
    
    while (System.currentTimeMillis() - start < 2500){
       
+<<<<<<< HEAD
 
        // System.out.println("Tiden i millisekunder är: " + (System.currentTimeMillis() - start));
 //        if (bre.mottaget == XY){
             // här vill vi kalla på gui update. 
 
         System.out.println("Tiden i millisekunder är: " + (System.currentTimeMillis() - start));
+=======
+       // System.out.println("Tiden i millisekunder är: " + (System.currentTimeMillis() - start));
+//        if (bre.mottaget == XY){
+            // här vill vi kalla på gui update. 
+        //System.out.println("Tiden i millisekunder är: " + (System.currentTimeMillis() - start));
+>>>>>>> a1bbe858abb12783aa186a1b4beb14e5489e8ef1
 
 
-        if (bre.mottaget =="ok"){
-          start = System.currentTimeMillis();
-      }
-        else{
-           gui = new GuiUpdate(ds, cui, mottagenInt);
-       }
-//    
-   }
+
+//        if (bre.mottaget =="ok"){
+//          start = System.currentTimeMillis();
+//      }
+//        else{
+//           gui = new GuiUpdate(ds, cui, mottagenInt);
+//       }
+////    
+//   }
    cui.appendStatus("Nu har det gått för lång tid."); 
    //Kolla connection, om ok börja om från run()
    
@@ -61,7 +69,7 @@ public void run () {
  
  
 }
-}
+}}
 
 
 
