@@ -27,7 +27,7 @@ public class Uppdrag {
     
     //System.out.println("Vi är i Uppdrag! Good job!");    
 
-    /*Här listar vi antalet upphämtningsplatser och vi måste även beräkna vilken
+    /**Här listar vi antalet upphämtningsplatser och vi måste även beräkna vilken
      *upphämtningsplats som är närmast. Sen ska vi skicka informationen till 
      * AGVn
      */
@@ -69,8 +69,9 @@ public class Uppdrag {
     }
      
     
-        /*Här ska de hända massa spännande saker.
-        *Kolla om det finns uppdrag när vi kommer till upphämtningsplatsen
+        /**Här ska de hända massa spännande saker.
+        *Kolla om det finns uppdrag när vi kommer till upphämtningsplatsen, kan köras
+        *när som helst
         *Måste kalla på denna metod när vi stannar
             *Om det EJ finns, sök ny startnod
             *Om det finns, fortsätt på följande:
@@ -81,7 +82,7 @@ public class Uppdrag {
     public static String listauppdrag(String plats){
         String x = "Hej"; //Ta bort sen
        
-     /*Någon funktion som räknar ut vilken upphämtningsplats som är närmst, spara som en var/string(?)
+     /**Någon funktion som räknar ut vilken upphämtningsplats som är närmst, spara som en var/string(?)
      *Använd Dijkstra och OptPlan för att hitta närmsta plats
      *Kalla på Compass och kör till platsen
      *String X = "A";
@@ -131,7 +132,7 @@ public class Uppdrag {
     //Kan behövas ändras till en String[], själva metoden
     public static String tauppdrag(String plats, String id, String pax, String grupp){
        
-        /*Ta första uppdaget och kolla om kapacitet är ok
+        /**Ta första uppdaget och kolla om kapacitet är ok
             *Om kapacitet är ok --> kolla om samåkning är ok
                 *Om samåkning är ok, kolla vidare i listan och spara "nuvarande" passagerare
                 *Om samåkning EJ är ok, anropa nekas/beviljas 
