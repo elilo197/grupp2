@@ -34,13 +34,12 @@ public void run () {
    
    while (System.currentTimeMillis() - start < 2500){
       
-<<<<<<< HEAD
+
        // System.out.println("Tiden i millisekunder är: " + (System.currentTimeMillis() - start));
 //        if (bre.mottaget == XY){
             // här vill vi kalla på gui update. 
-=======
+
         System.out.println("Tiden i millisekunder är: " + (System.currentTimeMillis() - start));
->>>>>>> ba84cf2c66aa4e939b7a27494b221714e945e224
 
 
         if (bre.mottaget =="ok"){

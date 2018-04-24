@@ -28,7 +28,7 @@ public class Compass implements Runnable{
         
         ds = new DataStore();
         opt = new OptPlan(ds);
-        //x = ds.nodeX;
+        //x = ds.nodeX[path.get;
         //y = ds.nodeY;
         F = ds.F;
         R = ds.R;
@@ -37,8 +37,8 @@ public class Compass implements Runnable{
         for(int i =0; i <opt.path.size(); i++)
         {
         //System.out.println(opt.path.get(i));
-        
-            x = ds.nodeX[i]; 
+
+            x = ds.nodeX[opt.path.get(i)]; 
             y = ds.nodeY[i];
             
             System.out.println("" +x+", " +y);
