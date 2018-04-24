@@ -30,7 +30,7 @@ public void run () {
  while (true) {// timenano = System.nanoTime();
 //    mottagenInt = Integer.parseInt(bre.mottaget); //Gör om deras string till en int innehåll nodnummer.
 
-    meddelande = bre.getMessage();
+    //meddelande = bre.getMessage();
     if(meddelande != null){
         cui.appendStatus(meddelande);
     }  
@@ -72,7 +72,7 @@ public void run () {
  
  
 }
-}}
+}}}
 
 
 
