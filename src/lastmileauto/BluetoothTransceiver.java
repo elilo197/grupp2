@@ -13,14 +13,17 @@ public class BluetoothTransceiver{
     PrintStream bluetoothanslutning;
     StreamConnection anslutning;
     DataStore ds;
+    ControlUI cui;
 
     public BluetoothTransceiver() {
+        
+        System.out.println("Nu är vi i tranciver");
         
          try {
              anslutning = (StreamConnection)
                      Connector.open("btspp://201601205682:1");
              bluetoothanslutning = new PrintStream(anslutning.openDataOutputStream());
-             
+             cui.appendStatus("Bluetoothanslutning upprättad");
          
        } catch (Exception e) {  System.out.print(e.toString());   }
         
