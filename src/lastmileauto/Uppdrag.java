@@ -187,9 +187,84 @@ public class Uppdrag {
     return scenario;
     }
 
-     
+    public static void messtogroup() {
+       //skicka meddelande till den andra gruppen 
+     try {
+            //Olika if-satser beroende på vad vi vill skicka
+                //if x = 1, y = uppdragsid + pax + antal vi tar
+                //if x = 2, 
+         String x = "Hej";
+         String y = "test"; 
+         //Uppdrag http = new Uppdrag();
+         String url = " http://tnk111.n7.se/putmessage.php?groupid=23&messagetype= " +x+"&message="+y; 
+         URL urlobjekt = new URL(url);       
+         HttpURLConnection anslutning = (HttpURLConnection)
+         urlobjekt.openConnection();
 
-        
+         System.out.println("\nAnropar: " + url);
+ 
+         int mottagen_status = anslutning.getResponseCode();
+
+         System.out.println("Statuskod: " + mottagen_status);
+
+ 
+         BufferedReader inkommande = new BufferedReader(new
+
+        InputStreamReader(anslutning.getInputStream()));
+        String inkommande_text;
+        StringBuffer inkommande_samlat = new StringBuffer();
+ 
+        while ((inkommande_text = inkommande.readLine()) != null) {
+                inkommande_samlat.append(inkommande_text);
+        }
+   
+        inkommande.close();
+              
+
+        System.out.println(inkommande_samlat.toString());
+        }
+    
+     catch (IOException e) { System.out.print(e.toString()); }
+     
+    }
+
+     public static void messfromgroup() {
+       //meddelande från den andra gruppen 
+     try {
+            
+         String x = "Hej"; 
+         //Uppdrag http = new Uppdrag();
+         String url = "  http://tnk111.n7.se/getmessage.php?messagetype=" + x; //x är det meddelande vi hämtar
+         URL urlobjekt = new URL(url);       
+         HttpURLConnection anslutning = (HttpURLConnection)
+         urlobjekt.openConnection();
+
+         System.out.println("\nAnropar: " + url);
+ 
+         int mottagen_status = anslutning.getResponseCode();
+
+         System.out.println("Statuskod: " + mottagen_status);
+
+ 
+         BufferedReader inkommande = new BufferedReader(new
+
+        InputStreamReader(anslutning.getInputStream()));
+        String inkommande_text;
+        StringBuffer inkommande_samlat = new StringBuffer();
+ 
+        while ((inkommande_text = inkommande.readLine()) != null) {
+                inkommande_samlat.append(inkommande_text);
+        }
+   
+        inkommande.close();
+              
+
+        System.out.println(inkommande_samlat.toString());
+        }
+    
+     catch (IOException e) { System.out.print(e.toString()); }
+     
+    }    
         
             
      
