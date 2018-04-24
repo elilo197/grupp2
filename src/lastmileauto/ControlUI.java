@@ -15,6 +15,7 @@ public class ControlUI extends javax.swing.JFrame {
     GuiUpdate g;
     ControlUI cui;
     Compass com; 
+    BluetoothReceiver b;
     
 
     /**
@@ -314,7 +315,9 @@ public class ControlUI extends javax.swing.JFrame {
         t2.start();   
         ds.btm.send(ds.F);
         appendStatus("Skickade meddelande: " + ds.F);
-        ds.btr.recive(cui);
+       
+        b = new BluetoothReceiver(ds.btc);
+        Thread t4 = new Thread(b);
 
 //       Thread t4 = new Thread(btm);
 //       t4.start();

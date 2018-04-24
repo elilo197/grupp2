@@ -13,16 +13,20 @@ import javax.microedition.io.*;
 import javax.bluetooth.*;
 
 
-public class BluetoothReceiver{
+public class BluetoothReceiver implements Runnable{
   BluetoothTransceiver btc;
   InputStream bluetooth_in;
   StreamConnectionNotifier service;
+  String mottaget;
   
     
-    public void BluetoothReceiver(BluetoothTransceiver btc1) {
+    public BluetoothReceiver(BluetoothTransceiver btc1) {
         this.btc = btc1;
 }
-    public void recive(ControlUI cui){
+    
+   // public void recive(ControlUI cui){
+    @Override
+    public void run(){
         try{
             while(true){
                 bluetooth_in = btc.anslutning.openInputStream();
@@ -31,12 +35,16 @@ public class BluetoothReceiver{
                 int antal_bytes = bluetooth_in.read(buffer);
                 String mottaget = new String(buffer, 0, antal_bytes);
                 System.out.println("/n" + "Mottaget meddelande: " + mottaget);
-                cui.appendStatus("/n" + "Mottaget meddelande: " + mottaget);
+                
             }
         }catch (IOException e){
             System.out.print(e.toString());
             System.out.println("Gick dåligt!!");
         }
+    }
+    
+    public String getMessage(){
+        return mottaget;
     }
     
 }
