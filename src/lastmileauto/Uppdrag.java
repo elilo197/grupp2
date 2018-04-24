@@ -27,8 +27,8 @@ public class Uppdrag {
     
     //System.out.println("Vi är i Uppdrag! Good job!");    
 
-    /**Här listar vi antalet upphämtningsplatser och vi måste även beräkna vilken
-     *upphämtningsplats som är närmast. Sen ska vi skicka informationen till 
+    /** Här listar vi antalet upphämtningsplatser och vi måste även beräkna vilken
+     * upphämtningsplats som är närmast. Sen ska vi skicka informationen till 
      * AGVn
      */
     public static void listaplatser() {
@@ -36,7 +36,7 @@ public class Uppdrag {
      try {
 
          //Uppdrag http = new Uppdrag();
-         String url = " http://tnk111.n7.se/listaplatser.php"; 
+         String url = "http://tnk111.n7.se/listaplatser.php"; 
          URL urlobjekt = new URL(url);       
          HttpURLConnection anslutning = (HttpURLConnection)
          urlobjekt.openConnection();
@@ -69,13 +69,16 @@ public class Uppdrag {
     }
      
     
-        /**Här ska de hända massa spännande saker.
+        /** Här ska de hända massa spännande saker.
         *Kolla om det finns uppdrag när vi kommer till upphämtningsplatsen, kan köras
         *när som helst
         *Måste kalla på denna metod när vi stannar
             *Om det EJ finns, sök ny startnod
             *Om det finns, fortsätt på följande:
         *Spara kapacitet i en string/var, spara samåkning i en string/var
+        * 
+        * Om inga uppdrag finns, stanna AGVn vid närmsta båge. Sen söker vi efter 
+        * en ny upphämtningsplats som har uppdrag.
         */
     
    
