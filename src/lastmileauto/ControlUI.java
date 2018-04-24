@@ -16,7 +16,7 @@ public class ControlUI extends javax.swing.JFrame {
     ControlUI cui;
     Compass com; 
     BluetoothReceiver b;
-    
+   
 
     /**
      * Creates new form ControlUI
