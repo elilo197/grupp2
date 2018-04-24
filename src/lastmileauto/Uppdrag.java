@@ -16,7 +16,7 @@ import java.net.URL;
 import java.lang.*;
 public class Uppdrag {
     
-    //public Uppdrag() {}
+    public Uppdrag() {}
     
 //    public static void main(String args){
 //        listaplatser();
@@ -177,9 +177,17 @@ public class Uppdrag {
         }
         //String [] ink_sam = inkommande_samlat.split(" "); Skapa mellanrum mellan de olika raderna EJ KLART
         inkommande.close();
-               
+        
+        //Testa följande typ av loop för att försöka splitta
+//        for (int i=0; i < nodes; i++){
+//                line = scanner.nextLine();
+//                //split space separated data on line
+//                sline = line.split(" ");
+//                nodeX[i] = Double.parseDouble(sline[1].trim());
 
         System.out.println(inkommande_samlat.toString());
+        System.out.println("Hej");
+        
         }
     
      catch (Exception e) { System.out.print(e.toString()); }
