@@ -3,8 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package lastmileauto;
-
+package lastmileauto;  //Denna är inte rätt, inte heller cui är klar, 
 
 //hcitool scan = visar alla tillgängliga enheter
 //sdptool browse 20:16:01:20:56:82:1 
@@ -17,9 +16,7 @@ import javax.bluetooth.*;
 
 
 public class BluetoothReceiver{
-
-    
-    
+  
 private ControlUI cui;    
     
     public void BluetoothReceiver(ControlUI cui) {

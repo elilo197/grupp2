@@ -27,30 +27,28 @@ public class RobotRead implements Runnable  {
 @Override
 public void run () {
 // while (anslutning == true) {// timenano = System.nanoTime();
-    mottagenInt = Integer.parseInt(bre.mottaget); //Gör om deras string till en int innehåll nodnummer.
+//    mottagenInt = Integer.parseInt(bre.mottaget); //Gör om deras string till en int innehåll nodnummer.
 
    start = System.currentTimeMillis(); //start tid 
    System.out.println("Starttid: " + System.currentTimeMillis());
    
    while (System.currentTimeMillis() - start < 2500){
       
-<<<<<<< HEAD
        // System.out.println("Tiden i millisekunder är: " + (System.currentTimeMillis() - start));
 //        if (bre.mottaget == XY){
             // här vill vi kalla på gui update. 
-=======
-        System.out.println("Tiden i millisekunder är: " + (System.currentTimeMillis() - start));
->>>>>>> ba84cf2c66aa4e939b7a27494b221714e945e224
+        //System.out.println("Tiden i millisekunder är: " + (System.currentTimeMillis() - start));
 
 
-        if (bre.mottaget =="ok"){
-          start = System.currentTimeMillis();
-      }
-        else{
-           gui = new GuiUpdate(ds, cui, mottagenInt);
-       }
-//    
-   }
+
+//        if (bre.mottaget =="ok"){
+//          start = System.currentTimeMillis();
+//      }
+//        else{
+//           gui = new GuiUpdate(ds, cui, mottagenInt);
+//       }
+////    
+//   }
    cui.appendStatus("Nu har det gått för lång tid."); 
    //Kolla connection, om ok börja om från run()
    
@@ -62,7 +60,7 @@ public void run () {
  
  
 }
-}
+}}
 
 
 
