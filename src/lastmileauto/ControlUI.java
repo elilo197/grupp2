@@ -16,7 +16,7 @@ public class ControlUI extends javax.swing.JFrame {
     ControlUI cui;
     Compass com; 
     BluetoothReceiver b;
-    
+   
 
     /**
      * Creates new form ControlUI
@@ -180,6 +180,7 @@ public class ControlUI extends javax.swing.JFrame {
         jTextArea2 = new javax.swing.JTextArea();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTextArea3 = new javax.swing.JTextArea();
+        avbrytBT = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(700, 350));
@@ -235,6 +236,14 @@ public class ControlUI extends javax.swing.JFrame {
         jTextArea3.setAutoscrolls(false);
         jScrollPane3.setViewportView(jTextArea3);
 
+        avbrytBT.setText("Avbryt BT");
+        avbrytBT.setActionCommand("avbrytBT");
+        avbrytBT.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                avbrytBTActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -254,7 +263,9 @@ public class ControlUI extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(anslut)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(anslut, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(avbrytBT, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(start)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -272,7 +283,10 @@ public class ControlUI extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(start, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(avsluta)
-                            .addComponent(anslut)))
+                            .addComponent(anslut))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(avbrytBT)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -316,24 +330,28 @@ public class ControlUI extends javax.swing.JFrame {
         ds.btm.send(ds.F);
         appendStatus("Skickade meddelande: " + ds.F);
        
-        b = new BluetoothReceiver(ds.btc);
-        Thread t4 = new Thread(b);
-
+       
 //       Thread t4 = new Thread(btm);
 //       t4.start();
 //       
-       Uppdrag uppdrag1 = new Uppdrag();
+   //     Uppdrag uppdrag1 = new Uppdrag();
         
     }//GEN-LAST:event_startActionPerformed
 
     private void avslutaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_avslutaActionPerformed
         
         //vill avsluta uppdrag
-         ds.btm.send(ds.C);
+        ds.btm.send(ds.C);
     }//GEN-LAST:event_avslutaActionPerformed
+
+    private void avbrytBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_avbrytBTActionPerformed
+        // Avbryt Bluetooth-kommunikationen
+        ds.btc.bluetoothanslutning.close();
+    }//GEN-LAST:event_avbrytBTActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton anslut;
+    private javax.swing.JButton avbrytBT;
     private javax.swing.JButton avsluta;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
