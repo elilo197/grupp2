@@ -30,7 +30,7 @@ public void run () {
  while (true) {// timenano = System.nanoTime();
 //    mottagenInt = Integer.parseInt(bre.mottaget); //Gör om deras string till en int innehåll nodnummer.
 
-    meddelande = bre.getMessage();
+    //meddelande = bre.getMessage();
     if(meddelande != null){
         cui.appendStatus(meddelande);
     }  
@@ -41,19 +41,15 @@ public void run () {
    
    while (System.currentTimeMillis() - start < 2500){
       
-<<<<<<< HEAD
-
        // System.out.println("Tiden i millisekunder är: " + (System.currentTimeMillis() - start));
 //        if (bre.mottaget == XY){
             // här vill vi kalla på gui update. 
 
         System.out.println("Tiden i millisekunder är: " + (System.currentTimeMillis() - start));
-=======
        // System.out.println("Tiden i millisekunder är: " + (System.currentTimeMillis() - start));
 //        if (bre.mottaget == XY){
             // här vill vi kalla på gui update. 
         //System.out.println("Tiden i millisekunder är: " + (System.currentTimeMillis() - start));
->>>>>>> a1bbe858abb12783aa186a1b4beb14e5489e8ef1
 
 
 
@@ -76,7 +72,7 @@ public void run () {
  
  
 }
-}}
+}}}
 
 
 
