@@ -330,20 +330,18 @@ public class ControlUI extends javax.swing.JFrame {
         ds.btm.send(ds.F);
         appendStatus("Skickade meddelande: " + ds.F);
        
-        b = new BluetoothReceiver(ds.btc);
-        Thread t4 = new Thread(b);
-
+       
 //       Thread t4 = new Thread(btm);
 //       t4.start();
 //       
-       Uppdrag uppdrag1 = new Uppdrag();
+   //     Uppdrag uppdrag1 = new Uppdrag();
         
     }//GEN-LAST:event_startActionPerformed
 
     private void avslutaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_avslutaActionPerformed
         
         //vill avsluta uppdrag
-         ds.btm.send(ds.C);
+        ds.btm.send(ds.C);
     }//GEN-LAST:event_avslutaActionPerformed
 
     private void avbrytBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_avbrytBTActionPerformed
