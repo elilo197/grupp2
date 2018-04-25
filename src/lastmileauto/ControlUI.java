@@ -103,21 +103,13 @@ public class ControlUI extends javax.swing.JFrame {
             }
             
         });
-<<<<<<< HEAD
-        avbrytBT.setText("AvbrytBT");
-        avbrytBT.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                avbrytBTActionPerformed(evt);
-            }
-        });
-=======
+   
 //         avbrytBT.setText("AvbrytBT");
 //        avbrytBT.addActionListener(new java.awt.event.ActionListener() {
 //            public void actionPerformed(java.awt.event.ActionEvent evt) {
 //                avbrytBTActionPerformed(evt);
 //            }
 //        });
->>>>>>> aea4276f277c9bf88ff221f49b3516e93883ea0e
 
         jTextArea2.setColumns(20);
         jTextArea2.setRows(5);
