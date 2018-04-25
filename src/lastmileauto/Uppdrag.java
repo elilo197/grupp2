@@ -72,10 +72,10 @@ public class Uppdrag {
         System.out.println("Ink:");
         for(int k = 0; k < ink.size(); k++){
             System.out.println(ink.get(k));
+            
         }
         inkommande.close();
         
-        //System.out.println(inkommande_samlat.toString()); //(inkommande_samlat.toString());
         }
     
      catch (IOException e) { System.out.print(e.toString()); }
