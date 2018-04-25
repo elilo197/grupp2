@@ -24,16 +24,7 @@ public class Uppdrag {
          listaplatser();
          // listauppdrag("A");
      
-    }
-    
-//    public static void main(String args){
-//        listaplatser();
-//        listauppdrag("A");
-//        
-//    
-//    }
-    
-    //System.out.println("Vi är i Uppdrag! Good job!");    
+    }   
 
     /** Här listar vi antalet upphämtningsplatser och vi måste även beräkna vilken
      * upphämtningsplats som är närmast. Sen ska vi skicka informationen till 
