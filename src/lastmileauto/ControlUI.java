@@ -103,6 +103,7 @@ public class ControlUI extends javax.swing.JFrame {
             }
             
         });
+   
 //         avbrytBT.setText("AvbrytBT");
 //        avbrytBT.addActionListener(new java.awt.event.ActionListener() {
 //            public void actionPerformed(java.awt.event.ActionEvent evt) {
