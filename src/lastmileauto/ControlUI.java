@@ -332,7 +332,7 @@ public class ControlUI extends javax.swing.JFrame {
         ds.btm.send(ds.F);
         appendStatus("Skickade meddelande: " + ds.F);*/
         
-        uppdrag1= new Uppdrag();
+        uppdrag1= new Uppdrag(ds);
         g =  new GuiUpdate(ds, ds.cui, ds.start);        //Tråd som uppdaterar kartan med var AGV är
         Thread t2 = new Thread(g);
      //   t2.start();   
