@@ -23,19 +23,19 @@ public class LastMileAuto {
 
 
 
-       ds.setFileName("C:\\Users\\Helena\\Documents\\GitHub\\grupp2/streets.txt");
+       //ds.setFileName("C:\\Users\\Helena\\Documents\\GitHub\\grupp2/streets.txt");
        //ds.setFileName("/Users/eliselord/Documents/grupp2/streets.txt");
-      // ds.setFileName("/Users/Veronika/Desktop/streets.txt");
-      // ds.setFileName("C:\\Users\\Helena\\Documents\\GitHub\\grupp2/streets.txt");
+       //ds.setFileName("/Users/Veronika/Desktop/streets.txt");
+       //ds.setFileName("C:\\Users\\Helena\\Documents\\GitHub\\grupp2/streets.txt");
        //ds.setFileName("/Users/eliselord/Documents/grupp2/streets.txt");
        //ds.setFileName("/Users/eliselord/Documents/grupp2/streets.txt");
        //ds.setFileName("/Users/eliselord/Documents/grupp2/streets.txt");
 <<<<<<< HEAD
-       //ds.setFileName("/Users/Veronika/Desktop/streets.txt");
+       ds.setFileName("/Users/Veronika/Desktop/streets.txt");
        //ds.setFileName("/Users/Veronika/Desktop/streets_gammal.txt");
        //ds.setFileName("/Users/hannamellqvist/Documents/Kandidat/grupp2/streets.txt");
 =======
-       ds.setFileName("/Users/hannamellqvist/Documents/Kandidat/grupp2/streets.txt");
+       //ds.setFileName("/Users/hannamellqvist/Documents/Kandidat/grupp2/streets.txt");
 >>>>>>> 424898d39ead9e89a44459b1dccb9ed830c24ee6
        //ds.setFileName("/Users/aliceneu/Documents/grupp2/streets.txt");
 
