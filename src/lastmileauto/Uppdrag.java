@@ -22,8 +22,11 @@ public class Uppdrag {
     
     String [] linkNod1;
     String [] linkNod2;
+    int IntStorlek;
+    DataStore ds;
 
-    public Uppdrag() {
+    public Uppdrag(DataStore ds1) {
+        this.ds = ds1;
          listaplatser();
          // listauppdrag("A");
      
@@ -65,7 +68,6 @@ public class Uppdrag {
                 ink.add(inkommande_text);      
         }
         
-<<<<<<< HEAD
         System.out.println("Ink:");
         for(int k = 0; k < ink.size(); k++){
             System.out.println(ink.get(k));
@@ -73,10 +75,9 @@ public class Uppdrag {
         }
         inkommande.close();
         
-=======
         //Variabler
         String StringStorlek = ink.get(0);
-        int IntStorlek = Integer.parseInt(StringStorlek);
+        IntStorlek = Integer.parseInt(StringStorlek);
         String [] link = new String[IntStorlek];
         linkNod1 = new String[IntStorlek];
         linkNod2 = new String[IntStorlek];
@@ -97,8 +98,7 @@ public class Uppdrag {
            
         }
         inkommande.close();
->>>>>>> ad7be19c33d085f23d1c8a4e0ddb1e2c2f76aff2
-        }
+       }
     
      catch (IOException e) { System.out.print(e.toString()); }
      
@@ -313,7 +313,39 @@ public class Uppdrag {
      catch (IOException e) { System.out.print(e.toString()); }
      
     }    
+    
+public void avstand() {
+
+ double [] distance; 
+ double xstart;
+ double ystart; 
+ double xslut;
+ double yslut;  
+
+                  
+ distance = new double [IntStorlek];    
+         
+
         
+            for (int i =0; i<IntStorlek; i++) {
+            xstart= ds.nodeX[linkNod1[i]];
+            //System.out.println("Startnod: " + linkNod1[i]);
+            xslut = ds.nodeX[linkNod1[i]];
+            ystart= in.nodY[in.startnod[i]];
+            yslut = in.nodY[in.slutnod[i]];
+            System.out.println("X: " + xstart + " - " + xslut);
+            System.out.println("Y: " + ystart + " - " + yslut);
+            
+            
+            int j=i+1;
+            distance[i] = Math.hypot(xslut-xstart, yslut-ystart);    
+           // System.out.println("Avstånd för uppdrag " + j + ": " + distance[i]);
+            }
+    
+    
+    
+}     
+     
             
      
 }
