@@ -20,8 +20,8 @@ public class Uppdrag {
     String inkommandetext []; 
     String ink_sam;
     
-    String [] linkNod1;
-    String [] linkNod2;
+    int [] linkNod1;
+    int [] linkNod2;
 
     public Uppdrag() {
          listaplatser();
@@ -69,8 +69,8 @@ public class Uppdrag {
         String StringStorlek = ink.get(0);
         int IntStorlek = Integer.parseInt(StringStorlek);
         String [] link = new String[IntStorlek];
-        linkNod1 = new String[IntStorlek];
-        linkNod2 = new String[IntStorlek];
+        linkNod1 = new int[IntStorlek];
+        linkNod2 = new int[IntStorlek];
         String [] sline;
       
         for(int k = 1; k <IntStorlek+1 ; k++){
@@ -81,8 +81,8 @@ public class Uppdrag {
 
         for(int j = 0; j <IntStorlek; j++){
             sline = link[j].split(",");    
-            linkNod1[j] = sline[0];
-            linkNod2[j] = sline[1];
+            linkNod1[j] =Integer.parseInt( sline[0]);
+            linkNod2[j] =Integer.parseInt( sline[1]);
 //           System.out.println(linkNod1[j]);
 //           System.out.println(linkNod2[j]);
            
