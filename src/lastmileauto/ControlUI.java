@@ -103,6 +103,7 @@ public class ControlUI extends javax.swing.JFrame {
             }
             
         });
+   
 //         avbrytBT.setText("AvbrytBT");
 //        avbrytBT.addActionListener(new java.awt.event.ActionListener() {
 //            public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -314,13 +315,15 @@ public class ControlUI extends javax.swing.JFrame {
       t4.start();
       appendStatus("Bluetoothanslutning upprättad");*/
       
+        appendBluetoothAdress("Adress: 20:16:01:20:56:82");
+        appendBluetoothKanal("Kanal: 1");
+      
        //Thread t3 = new Thread(btc);
        //t3.start();
         //System.out.println("Hej");
 //        com = new Compass();
 //        Thread t5 = new Thread(com);
 //        t5.start();
-        
     }//GEN-LAST:event_anslutActionPerformed
 
     private void startActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startActionPerformed

@@ -20,20 +20,14 @@ public class Uppdrag {
     String inkommandetext []; 
     String ink_sam;
     
+    String [] linkNod1;
+    String [] linkNod2;
+
     public Uppdrag() {
          listaplatser();
          // listauppdrag("A");
      
-    }
-    
-//    public static void main(String args){
-//        listaplatser();
-//        listauppdrag("A");
-//        
-//    
-//    }
-    
-    //System.out.println("Vi är i Uppdrag! Good job!");    
+    }   
 
     /** Här listar vi antalet upphämtningsplatser och vi måste även beräkna vilken
      * upphämtningsplats som är närmast. Sen ska vi skicka informationen till 
@@ -63,12 +57,15 @@ public class Uppdrag {
         
         //Arraylist är dynamiska, vi behöver alltså inte ha en "längd" 
          ArrayList<String> ink = new ArrayList<String>();
+
+         
         while ((inkommande_text = inkommande.readLine()) != null) {
             //System.out.println("Inkommande: " + inkommande_text);
                 inkommande_samlat.append(inkommande_text); 
-                ink.add(inkommande_text);
+                ink.add(inkommande_text);      
         }
         
+<<<<<<< HEAD
         System.out.println("Ink:");
         for(int k = 0; k < ink.size(); k++){
             System.out.println(ink.get(k));
@@ -76,6 +73,31 @@ public class Uppdrag {
         }
         inkommande.close();
         
+=======
+        //Variabler
+        String StringStorlek = ink.get(0);
+        int IntStorlek = Integer.parseInt(StringStorlek);
+        String [] link = new String[IntStorlek];
+        linkNod1 = new String[IntStorlek];
+        linkNod2 = new String[IntStorlek];
+        String [] sline;
+      
+        for(int k = 1; k <IntStorlek+1 ; k++){
+            sline = ink.get(k).split(";");
+            link[k-1] = sline[1];
+           // System.out.println(link[k-1]);         
+        }
+
+        for(int j = 0; j <IntStorlek; j++){
+            sline = link[j].split(",");    
+            linkNod1[j] = sline[0];
+            linkNod2[j] = sline[1];
+//           System.out.println(linkNod1[j]);
+//           System.out.println(linkNod2[j]);
+           
+        }
+        inkommande.close();
+>>>>>>> ad7be19c33d085f23d1c8a4e0ddb1e2c2f76aff2
         }
     
      catch (IOException e) { System.out.print(e.toString()); }
@@ -84,8 +106,8 @@ public class Uppdrag {
      
     
         /** Här ska de hända massa spännande saker.
-        *Kolla om det finns uppdrag när vi kommer till upphämtningsplatsen, kan köras
-        *när som helst
+        *Kolla om det finns uppdrag när vi kommer till upphämtningsplatsen, 
+        *kan köras när som helst
         *Måste kalla på denna metod när vi stannar
             *Om det EJ finns, sök ny startnod
             *Om det finns, fortsätt på följande:
