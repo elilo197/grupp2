@@ -19,16 +19,10 @@ import java.util.ArrayList;
 public class Uppdrag {
     String inkommandetext []; 
     String ink_sam;
-    
-<<<<<<< HEAD
-    String [] linkNod1;
-    String [] linkNod2;
     int IntStorlek;
     DataStore ds;
-=======
     int [] linkNod1;
     int [] linkNod2;
->>>>>>> f66d1d0c5d119a3ceacfacf20b74114c4ed29e1e
 
     public Uppdrag(DataStore ds1) {
         this.ds = ds1;
@@ -96,8 +90,8 @@ public class Uppdrag {
 
         for(int j = 0; j <IntStorlek; j++){
             sline = link[j].split(",");    
-            linkNod1[j] =Integer.parseInt( sline[0]);
-            linkNod2[j] =Integer.parseInt( sline[1]);
+            linkNod1[j] =Integer.parseInt(sline[0]);
+            linkNod2[j] =Integer.parseInt(sline[1]);
 //           System.out.println(linkNod1[j]);
 //           System.out.println(linkNod2[j]);
            
