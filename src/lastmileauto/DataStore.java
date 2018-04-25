@@ -24,8 +24,8 @@ public class DataStore {
     int start = 70;
    // int startY = startX; 
     int[] arcColor;
-    int startRutt = 70; //start node nummer
-    int slutRutt = 23; //slut node nummer.
+    int startRutt = 18; //start node nummer
+    int slutRutt = 5; //slut node nummer.
     String F = "F"; //Kör forward 
     String R = "R";  //Kör Right
     String L = "L";   //Kör Left 
@@ -36,6 +36,7 @@ public class DataStore {
     BluetoothTransmitter btm;
     BluetoothReceiver btr; 
     ControlUI cui;
+ 
     
 
     
@@ -43,7 +44,7 @@ public class DataStore {
     
     public DataStore() {
         // Initialize the datastore with fixed size arrays for storing the network data
-        nodes = 0;
+        nodes = 0; 
         arcs = 0;
         nodeX = new double[1000];
         nodeY = new double[1000];

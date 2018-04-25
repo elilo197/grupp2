@@ -68,13 +68,13 @@ public class OptPlan {
         // Arc in the shoretest path
         for(int i =0; i <path.size()-1; i++)
         {
-            for(int j =0;j <ds.arcs; j++)
+            for(int j = 0;j <ds.arcs; j++)
             {
                 if(ds.arcStart[j]==Integer.parseInt(path.get(i).getId())
                         && ds.arcEnd[j]==Integer.parseInt(path.get(i+1).getId()))
                 {
                    // System.out.println("Arc in shortest path: "+j);
-                    ds.arcColor[j-1] = 1;
+                    ds.arcColor[j-2] = 1;
 
                 }
            
