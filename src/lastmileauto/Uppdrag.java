@@ -19,6 +19,9 @@ import java.util.ArrayList;
 public class Uppdrag {
     String inkommandetext []; 
     String ink_sam;
+    
+    String [] linkNod1;
+    String [] linkNod2;
 
     public Uppdrag() {
          listaplatser();
@@ -66,8 +69,8 @@ public class Uppdrag {
         String StringStorlek = ink.get(0);
         int IntStorlek = Integer.parseInt(StringStorlek);
         String [] link = new String[IntStorlek];
-        String [] linkNod1 = new String[IntStorlek];
-        String [] linkNod2 = new String[IntStorlek];
+        linkNod1 = new String[IntStorlek];
+        linkNod2 = new String[IntStorlek];
         String [] sline;
       
         for(int k = 1; k <IntStorlek+1 ; k++){
@@ -75,28 +78,16 @@ public class Uppdrag {
             link[k-1] = sline[1];
            // System.out.println(link[k-1]);         
         }
-        
-        System.out.println(link[0]);
-        System.out.println(link[1]);
-        
+
         for(int j = 0; j <IntStorlek; j++){
             sline = link[j].split(",");    
             linkNod1[j] = sline[0];
             linkNod2[j] = sline[1];
-           System.out.println(linkNod1[j]);
-           System.out.println(linkNod2[j]);
+//           System.out.println(linkNod1[j]);
+//           System.out.println(linkNod2[j]);
            
         }
-        
-           
-        
-       
-
-
-
         inkommande.close();
-        
-        //System.out.println(inkommande_samlat.toString()); //(inkommande_samlat.toString());
         }
     
      catch (IOException e) { System.out.print(e.toString()); }
