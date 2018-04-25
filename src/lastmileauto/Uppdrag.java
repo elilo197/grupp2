@@ -75,8 +75,8 @@ public class Uppdrag {
      
     
         /** Här ska de hända massa spännande saker.
-        *Kolla om det finns uppdrag när vi kommer till upphämtningsplatsen, kan köras
-        *när som helst
+        *Kolla om det finns uppdrag när vi kommer till upphämtningsplatsen, 
+        *kan köras när som helst
         *Måste kalla på denna metod när vi stannar
             *Om det EJ finns, sök ny startnod
             *Om det finns, fortsätt på följande:
