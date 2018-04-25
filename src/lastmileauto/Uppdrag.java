@@ -65,6 +65,15 @@ public class Uppdrag {
                 ink.add(inkommande_text);      
         }
         
+<<<<<<< HEAD
+        System.out.println("Ink:");
+        for(int k = 0; k < ink.size(); k++){
+            System.out.println(ink.get(k));
+            
+        }
+        inkommande.close();
+        
+=======
         //Variabler
         String StringStorlek = ink.get(0);
         int IntStorlek = Integer.parseInt(StringStorlek);
@@ -88,6 +97,7 @@ public class Uppdrag {
            
         }
         inkommande.close();
+>>>>>>> ad7be19c33d085f23d1c8a4e0ddb1e2c2f76aff2
         }
     
      catch (IOException e) { System.out.print(e.toString()); }

@@ -33,17 +33,27 @@ public class LastMileAuto {
       // ds.setFileName("/Users/hannamellqvist/Documents/Kandidat/grupp2/streets.txt");
        //ds.setFileName("/Users/eliselord/Documents/grupp2/streets.txt");
        //ds.setFileName("/Users/eliselord/Documents/grupp2/streets.txt");
+<<<<<<< HEAD
+
+=======
      //  ds.setFileName("/Users/Veronika/Desktop/streets.txt");
        //ds.setFileName("/Users/Veronika/Desktop/streets_gammal.txt");
        //ds.setFileName("/Users/hannamellqvist/Documents/Kandidat/grupp2/streets.txt");
        //ds.setFileName("/Users/hannamellqvist/Documents/Kandidat/grupp2/streets.txt");
+>>>>>>> ad7be19c33d085f23d1c8a4e0ddb1e2c2f76aff2
        //ds.setFileName("/Users/Veronika/Desktop/streets.txt");
        //ds.setFileName("/Users/Veronika/Desktop/streets_gammal.txt");
        //ds.setFileName("/Users/hannamellqvist/Documents/Kandidat/grupp2/streets.txt");
       // ds.setFileName("/Users/hannamellqvist/Documents/Kandidat/grupp2/streets.txt");
+<<<<<<< HEAD
+
+       //ds.setFileName("/Users/aliceneu/Documents/grupp2/streets.txt");
+
+=======
 //       ds.setFileName("/Users/aliceneu/Documents/grupp2/streets.txt");
 //       ds.setFileName("/Users/hannamellqvist/Documents/Kandidat/grupp2/streets.txt");
 //       //ds.setFileName("/Users/aliceneu/Documents/grupp2/streets.txt");
+>>>>>>> ad7be19c33d085f23d1c8a4e0ddb1e2c2f76aff2
         ds.readNet();
         cui = new ControlUI(ds);
         cui.setVisible(true);
