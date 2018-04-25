@@ -19,7 +19,7 @@ import java.util.ArrayList;
 public class Uppdrag {
     String inkommandetext []; 
     String ink_sam;
-    
+
     public Uppdrag() {
          listaplatser();
          // listauppdrag("A");
@@ -54,16 +54,46 @@ public class Uppdrag {
         
         //Arraylist är dynamiska, vi behöver alltså inte ha en "längd" 
          ArrayList<String> ink = new ArrayList<String>();
+
+         
         while ((inkommande_text = inkommande.readLine()) != null) {
             //System.out.println("Inkommande: " + inkommande_text);
                 inkommande_samlat.append(inkommande_text); 
-                ink.add(inkommande_text);
+                ink.add(inkommande_text);      
         }
         
-        System.out.println("Ink:");
-        for(int k = 0; k < ink.size(); k++){
-            System.out.println(ink.get(k));
+        //Variabler
+        String StringStorlek = ink.get(0);
+        int IntStorlek = Integer.parseInt(StringStorlek);
+        String [] link = new String[IntStorlek];
+        String [] linkNod1 = new String[IntStorlek];
+        String [] linkNod2 = new String[IntStorlek];
+        String [] sline;
+      
+        for(int k = 1; k <IntStorlek+1 ; k++){
+            sline = ink.get(k).split(";");
+            link[k-1] = sline[1];
+           // System.out.println(link[k-1]);         
         }
+        
+        System.out.println(link[0]);
+        System.out.println(link[1]);
+        
+        for(int j = 0; j <IntStorlek; j++){
+            sline = link[j].split(",");    
+            linkNod1[j] = sline[0];
+            linkNod2[j] = sline[1];
+           System.out.println(linkNod1[j]);
+           System.out.println(linkNod2[j]);
+           
+        }
+        
+           
+        
+       
+
+
+
         inkommande.close();
         
         //System.out.println(inkommande_samlat.toString()); //(inkommande_samlat.toString());
