@@ -1,7 +1,3 @@
-/*
-
- */
-
 package lastmileauto;
 
 public class BluetoothTransmitter{
