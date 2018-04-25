@@ -65,7 +65,7 @@ public class Uppdrag {
          ArrayList<String> ink = new ArrayList<String>();
         while ((inkommande_text = inkommande.readLine()) != null) {
             //System.out.println("Inkommande: " + inkommande_text);
-                inkommande_samlat.append(" " + inkommande_text); 
+                inkommande_samlat.append(inkommande_text); 
                 ink.add(inkommande_text);
         }
         
