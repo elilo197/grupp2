@@ -23,10 +23,12 @@ public class Uppdrag {
     DataStore ds;
     int [] linkNod1;
     int [] linkNod2;
+    OptPlan opt;
 
-    public Uppdrag(DataStore ds1) {
+    public Uppdrag(DataStore ds1, OptPlan op1) {
         this.ds = ds1;
-         listaplatser();
+        this.opt = op1; 
+        listaplatser();
          // listauppdrag("A");
      
     }   
@@ -66,13 +68,14 @@ public class Uppdrag {
                 inkommande_samlat.append(inkommande_text); 
                 ink.add(inkommande_text);      
         }
-        
+         inkommande.close();
+         
         System.out.println("Ink:");
         for(int k = 0; k < ink.size(); k++){
             System.out.println(ink.get(k));
             
         }
-        inkommande.close();
+       
         
         //Variabler
         String StringStorlek = ink.get(0);
@@ -96,7 +99,17 @@ public class Uppdrag {
 //           System.out.println(linkNod2[j]);
            
         }
-        inkommande.close();
+        
+//Nu har vi nod-nr på uppdragen. Dags att beräkna avstånd! 
+        //Sätt startnod och slutnod i ds till robotens position och linkNod1
+        ds.startRutt = 2+1;     //Om man lägger till en etta på noden man vill ha blir det rätt
+        ds.slutRutt = 37+1;     //Här behöver man också adda en etta för att få rätt nod
+        
+        OptPlan oppis1 = new OptPlan(ds);
+        oppis1.createPlan();
+        
+        
+        
        }
     
      catch (IOException e) { System.out.print(e.toString()); }
@@ -315,33 +328,33 @@ public class Uppdrag {
     
 public void avstand() {
 
- double [] distance; 
- double xstart;
- double ystart; 
- double xslut;
- double yslut;  
-
-                  
- distance = new double [IntStorlek];    
-         
-
-        
-            for (int i =0; i<IntStorlek; i++) {
-            xstart= ds.nodeX[linkNod1[i]];
-            //System.out.println("Startnod: " + linkNod1[i]);
-            xslut = ds.nodeX[linkNod1[i]];
-            ystart= in.nodY[in.startnod[i]];
-            yslut = in.nodY[in.slutnod[i]];
-            System.out.println("X: " + xstart + " - " + xslut);
-            System.out.println("Y: " + ystart + " - " + yslut);
-            
-            
-            int j=i+1;
-            distance[i] = Math.hypot(xslut-xstart, yslut-ystart);    
-           // System.out.println("Avstånd för uppdrag " + j + ": " + distance[i]);
-            }
-    
-    
+// double [] distance; 
+// double xstart;
+// double ystart; 
+// double xslut;
+// double yslut;  
+//
+//                  
+// distance = new double [IntStorlek];    
+//         
+//
+//        
+//            for (int i =0; i<IntStorlek; i++) {
+//            xstart= ds.nodeX[linkNod1[i]];
+//            //System.out.println("Startnod: " + linkNod1[i]);
+//            xslut = ds.nodeX[linkNod1[i]];
+//            ystart= in.nodY[in.startnod[i]];
+//            yslut = in.nodY[in.slutnod[i]];
+//            System.out.println("X: " + xstart + " - " + xslut);
+//            System.out.println("Y: " + ystart + " - " + yslut);
+//            
+//            
+//            int j=i+1;
+//            distance[i] = Math.hypot(xslut-xstart, yslut-ystart);    
+//           // System.out.println("Avstånd för uppdrag " + j + ": " + distance[i]);
+//            }
+//    
+//    
     
 }     
      
