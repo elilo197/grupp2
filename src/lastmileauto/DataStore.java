@@ -37,7 +37,7 @@ public class DataStore {
     BluetoothTransmitter btm;
     BluetoothReceiver btr; 
     ControlUI cui;
-
+    MapPanel map;
     Uppdrag upp;
 
     

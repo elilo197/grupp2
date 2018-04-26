@@ -16,7 +16,7 @@ public class MapPanel extends JPanel {
         this.ds = ds;
     }
 
-    protected void paintComponent(Graphics g) {
+    public void paintComponent(Graphics g) {        //Denna var protected istället för public från början
         super.paintComponent(g);
         final Color LIGHT_COLOR = new Color(150, 150, 150);
         final Color DARK_COLOR = new Color(0, 0, 0);
@@ -100,4 +100,9 @@ public class MapPanel extends JPanel {
             
         }
     } // end paintComponent
+    
+    public int[] getTotalArcCost(){
+     return tot_arcCost;   
+    }
+    
 }
