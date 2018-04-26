@@ -13,12 +13,10 @@ public class LastMileAuto {
     BluetoothTransmitter btm; 
     Compass com; 
     DijkstraAlgorithm dijkstra; 
-    Edge edge; 
     Graph gra; 
     MapPanel map; 
     OptPlan opt; 
     Uppdrag upp; 
-    Vertex ver; 
     
     
     
