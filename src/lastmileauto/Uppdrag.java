@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 // Kan vi använda Timer istället för trådning i denna?
 
 package lastmileauto;
@@ -130,6 +129,8 @@ public class Uppdrag {
               System.out.println("Oppis1 totalkostnad so far: " + tot_kostnad);
 
             }
+            /* När vi löst det andra problemet så vill vi skapa en lopp som 
+            gör detta, alltså vi vill skapa instanser av optplan i loopen */
 
        }
     
