@@ -10,7 +10,7 @@ public class MapPanel extends JPanel {
 
     DataStore ds; 
     int[] tot_arcCost;
-    //int tot_arcCost; 
+    int dummy = 10; 
     
     MapPanel(DataStore ds) {
         this.ds = ds;
@@ -102,7 +102,7 @@ public class MapPanel extends JPanel {
     } // end paintComponent
     
     public int[] getTotalArcCost(){
-     return tot_arcCost;   
+     return this.tot_arcCost;   
     }
     
 }

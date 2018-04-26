@@ -24,7 +24,8 @@ public class Uppdrag {
     int [] linkNod1;
     int [] linkNod2;
     OptPlan opt;
-    //MapPanel map;
+    MapPanel map;
+    
 
     public Uppdrag(DataStore ds1, OptPlan op1) {
         this.ds = ds1;
@@ -39,7 +40,7 @@ public class Uppdrag {
      * AGVn
      */
     public  void listaplatser() { //tagit bort static
-        
+   
      try {
 
          //Uppdrag http = new Uppdrag();
@@ -108,30 +109,25 @@ public class Uppdrag {
         //Här borde en loop börja
             ds.startRutt = 2+1;     //Om man lägger till en etta på noden man vill ha blir det rätt
             ds.slutRutt = 37+1;     //Här behöver man också adda en etta för att få rätt nod
-            double tot_kostnad = 0;
-            double kostnad = 0;
-            int testkostnad[];
+            double tot_kostnad = 0;         //Totala kostnaden för en väg/alla bågar i en väg
+            double kostnad = 0;             //Kostnad för en båge
+            int total_arccost[];              //Kostnad för samtliga bågar
             
             OptPlan oppis1 = new OptPlan(ds);
-            testkostnad = new int[1000];
+            total_arccost = new int[1000];
             oppis1.createPlan();
 
             //Bågarna i path (med ovanstående noder) ska in som index i tot_arccost. 
-            //Plussa ihop dessa och du har avståndet/kostnaden!
+            //Sen ska alla arccostnader plussas ihop för att få ut totala kostnaden/avståndet
             for (int i=0; i< oppis1.path.size(); i++){
-                System.out.println("I i-loopen.");
-                int vertexint = Integer.parseInt(oppis1.path.get(i).getId());
-     
-               // kostnad = map.tot_arcCost[vertexint];
-               
-               testkostnad = ds.map.getTotalArcCost(); 
-                 for (int j=0; j< oppis1.path.size(); j++){
-                    
-                    System.out.println("Oppis1 bågkostnader " + testkostnad[j]);
-                 }   
-                //tot_kostnad = tot_kostnad + kostnad;
-                //System.out.println("Oppis1 totalkostnad: " + tot_kostnad);
                 
+              int vertexint = Integer.parseInt(oppis1.path.get(i).getId()); //Gör om path till ints
+                                     
+              total_arccost = map.getTotalArcCost();          //PROBLEM!!! Blir null.
+              kostnad = total_arccost[vertexint];
+              tot_kostnad = tot_kostnad + kostnad;
+              
+              System.out.println("Oppis1 totalkostnad so far: " + tot_kostnad);
 
             }
 
