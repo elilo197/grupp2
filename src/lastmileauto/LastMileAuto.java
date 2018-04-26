@@ -8,6 +8,19 @@ public class LastMileAuto {
     ControlUI cui;
     RobotRead r;
     GuiUpdate g;
+    BluetoothReceiver btr; 
+    BluetoothTransceiver btc; 
+    BluetoothTransmitter btm; 
+    Compass com; 
+    DijkstraAlgorithm dijkstra; 
+    Edge edge; 
+    Graph gra; 
+    MapPanel map; 
+    OptPlan opt; 
+    Uppdrag upp; 
+    Vertex ver; 
+    
+    
     
     LastMileAuto(){
         /*
