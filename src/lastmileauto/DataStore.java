@@ -36,7 +36,11 @@ public class DataStore {
     BluetoothTransmitter btm;
     BluetoothReceiver btr; 
     ControlUI cui;
+<<<<<<< HEAD
  
+=======
+    Uppdrag upp;
+>>>>>>> b6849b6c78c069bbfea8b85baf2568ae425881bd
     
 
     

@@ -19,8 +19,13 @@ import java.util.ArrayList;
 public class Uppdrag {
     String inkommandetext []; 
     String ink_sam;
-    
-    public Uppdrag() {
+    int IntStorlek;
+    DataStore ds;
+    int [] linkNod1;
+    int [] linkNod2;
+
+    public Uppdrag(DataStore ds1) {
+        this.ds = ds1;
          listaplatser();
          // listauppdrag("A");
      
@@ -54,20 +59,45 @@ public class Uppdrag {
         
         //Arraylist är dynamiska, vi behöver alltså inte ha en "längd" 
          ArrayList<String> ink = new ArrayList<String>();
+
+         
         while ((inkommande_text = inkommande.readLine()) != null) {
             //System.out.println("Inkommande: " + inkommande_text);
                 inkommande_samlat.append(inkommande_text); 
-                ink.add(inkommande_text);
+                ink.add(inkommande_text);      
         }
         
         System.out.println("Ink:");
         for(int k = 0; k < ink.size(); k++){
             System.out.println(ink.get(k));
+            
         }
         inkommande.close();
         
-        //System.out.println(inkommande_samlat.toString()); //(inkommande_samlat.toString());
+        //Variabler
+        String StringStorlek = ink.get(0);
+        IntStorlek = Integer.parseInt(StringStorlek);
+        String [] link = new String[IntStorlek];
+        linkNod1 = new int[IntStorlek];
+        linkNod2 = new int[IntStorlek];
+        String [] sline;
+      
+        for(int k = 1; k <IntStorlek+1 ; k++){
+            sline = ink.get(k).split(";");
+            link[k-1] = sline[1];
+           // System.out.println(link[k-1]);         
         }
+
+        for(int j = 0; j <IntStorlek; j++){
+            sline = link[j].split(",");    
+            linkNod1[j] =Integer.parseInt(sline[0]);
+            linkNod2[j] =Integer.parseInt(sline[1]);
+//           System.out.println(linkNod1[j]);
+//           System.out.println(linkNod2[j]);
+           
+        }
+        inkommande.close();
+       }
     
      catch (IOException e) { System.out.print(e.toString()); }
      
@@ -282,7 +312,39 @@ public class Uppdrag {
      catch (IOException e) { System.out.print(e.toString()); }
      
     }    
+    
+public void avstand() {
+
+ double [] distance; 
+ double xstart;
+ double ystart; 
+ double xslut;
+ double yslut;  
+
+                  
+ distance = new double [IntStorlek];    
+         
+
         
+            for (int i =0; i<IntStorlek; i++) {
+            xstart= ds.nodeX[linkNod1[i]];
+            //System.out.println("Startnod: " + linkNod1[i]);
+            xslut = ds.nodeX[linkNod1[i]];
+            ystart= in.nodY[in.startnod[i]];
+            yslut = in.nodY[in.slutnod[i]];
+            System.out.println("X: " + xstart + " - " + xslut);
+            System.out.println("Y: " + ystart + " - " + yslut);
+            
+            
+            int j=i+1;
+            distance[i] = Math.hypot(xslut-xstart, yslut-ystart);    
+           // System.out.println("Avstånd för uppdrag " + j + ": " + distance[i]);
+            }
+    
+    
+    
+}     
+     
             
      
 }
