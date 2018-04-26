@@ -106,8 +106,8 @@ public class Uppdrag {
     
         
         //Här borde en loop börja
-            ds.startRutt = 2+1;     //Om man lägger till en etta på noden man vill ha blir det rätt
-            ds.slutRutt = 37+1;     //Här behöver man också adda en etta för att få rätt nod
+            ds.startRutt = 2;   
+            ds.slutRutt = 37;  
             double tot_kostnad = 0;         //Totala kostnaden för en väg/alla bågar i en väg
             double kostnad = 0;             //Kostnad för en båge
             int total_arccost[];              //Kostnad för samtliga bågar

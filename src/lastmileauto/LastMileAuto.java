@@ -6,17 +6,7 @@ public class LastMileAuto {
 
     DataStore ds;
     ControlUI cui;
-    RobotRead r;
-    GuiUpdate g;
-    BluetoothReceiver btr; 
-    BluetoothTransceiver btc; 
-    BluetoothTransmitter btm; 
-    Compass com; 
-    DijkstraAlgorithm dijkstra; 
-    Graph gra; 
-    MapPanel map; 
-    OptPlan opt; 
-    Uppdrag upp; 
+
     
     
     
@@ -32,8 +22,8 @@ public class LastMileAuto {
          */   
 
 
-       ds.setFileName("C:\\Users\\Helena\\Documents\\GitHub\\grupp2/streets.txt");
-      // ds.setFileName("/Users/eliselord/Documents/grupp2/streets.txt");
+       //ds.setFileName("C:\\Users\\Helena\\Documents\\GitHub\\grupp2/streets.txt");
+       ds.setFileName("/Users/eliselord/Documents/grupp2/streets.txt");
        //ds.setFileName("/Users/Veronika/Desktop/streets.txt");
         // ds.setFileName("/Users/hannamellqvist/Documents/Kandidat/grupp2/streets.txt");
         //ds.setFileName("/Users/aliceneu/Documents/grupp2/streets.txt");

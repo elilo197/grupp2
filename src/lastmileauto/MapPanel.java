@@ -54,14 +54,21 @@ public class MapPanel extends JPanel {
             tot_arcCost = new int[ds.arcs];
             
             // Draw arcs
+            g.setColor(MAGENTA_COLOR);
             for (int i = 0; i < ds.arcs; i++) {
+                if (ds.arcColor[i] == 0){
+                    g.setColor(DARK_COLOR);    
+                }
+                else if(ds.arcColor[i]==1) {
+                    g.setColor(MAGENTA_COLOR);
+                }
+                
                 x1 = (int) (ds.nodeX[ds.arcStart[i] - 1] * xscale);
                 y1 = (int) (ds.nodeY[ds.arcStart[i] - 1] * yscale);
                 x2 = (int) (ds.nodeX[ds.arcEnd[i] - 1] * xscale);
                 y2 = (int) (ds.nodeY[ds.arcEnd[i] - 1] * yscale);
                 g.drawLine(x1, height - y1, x2, height - y2);
                 
-                int j = i+1;
                 
                 // Glöm ej ta bort denna sen !
                // System.out.println("Arc "+j+": "+ds.arcStart[i]+" "+ds.arcEnd[i]);
@@ -71,6 +78,8 @@ public class MapPanel extends JPanel {
                 y = Math.abs(y1 - y2);
                 
                 tot_arcCost[i] = x + y;
+                
+                
                 g.drawString("" + tot_arcCost[i], (x1+x2)/2,((height - y1 ) + (height - y2))/2);
                 //System.out.println("Bågkostnad båge " + i + ": " + tot_arcCost[i]);
 //                
@@ -81,10 +90,7 @@ public class MapPanel extends JPanel {
                 // glöm ej ta bort denna sen !
                 // System.out.println("Arc cost: " + tot_arcCost + "\n");
              
-                if (ds.arcColor[i] == 1){
-                    g.setColor(MAGENTA_COLOR);    
-                }
-                else g.setColor(DARK_COLOR);
+                
            
             }
             // Draw robot
