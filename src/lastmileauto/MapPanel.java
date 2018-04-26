@@ -9,7 +9,9 @@ import javax.swing.JPanel;
 public class MapPanel extends JPanel {
 
     DataStore ds; 
-
+   // int[] tot_arcCost;
+    //int tot_arcCost; 
+    
     MapPanel(DataStore ds) {
         this.ds = ds;
     }
@@ -46,9 +48,11 @@ public class MapPanel extends JPanel {
                 y = (int) (ds.nodeY[i] * yscale);
                 
                 g.fillOval(x - (circlesize / 2), height - y - circlesize / 2, circlesize, circlesize);
-               // g.drawString(" " + ds.nodeNr[i], x, y);
+               //g.drawString(" " + ds.nodeNr[i], x, y);
             }
-
+            
+            //tot_arcCost = new int[ds.arcs];
+            
             // Draw arcs
             for (int i = 0; i < ds.arcs; i++) {
                 x1 = (int) (ds.nodeX[ds.arcStart[i] - 1] * xscale);
@@ -66,9 +70,14 @@ public class MapPanel extends JPanel {
                 x = Math.abs(x1 - x2);
                 y = Math.abs(y1 - y2);
                 
+               // tot_arcCost[i] = x + y;
+//                g.drawString("" + tot_arcCost[i], (x1+x2)/2,((height - y1 ) + (height - y2))/2);
+//                System.out.println(tot_arcCost[i]);
+//                
                 int tot_arcCost = x + y;
                 g.drawString("" + tot_arcCost, (x1+x2)/2,((height - y1 ) + (height - y2))/2);
-                
+                System.out.println(tot_arcCost);
+             
                 // glöm ej ta bort denna sen !
                 // System.out.println("Arc cost: " + tot_arcCost + "\n");
              

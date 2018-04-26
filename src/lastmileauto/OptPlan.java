@@ -6,13 +6,13 @@ import java.util.*;
 // Genomför billigaste väg beräkningar + Gör färdplanering
 
 public class OptPlan {
-    private List<Vertex> nodes;    
+    List<Vertex> nodes;    
     private List<Edge> edges;
     private DataStore ds; 
     LinkedList<Vertex>path;
     double x; 
     double y;
-    
+    DijkstraAlgorithm dijkstra;
      
    
     public OptPlan(DataStore ds){
@@ -39,7 +39,7 @@ public class OptPlan {
         }
         
         Graph graph =new Graph(nodes,edges);
-        DijkstraAlgorithm dijkstra =new DijkstraAlgorithm(graph);
+        dijkstra =new DijkstraAlgorithm(graph);
 
      // Compute shortest path
         dijkstra.execute(nodes.get(ds.startRutt-1)); //Startnod 
@@ -52,14 +52,14 @@ public class OptPlan {
             
             //Gör om till int. 
             ds.pathInt[i] = Integer.parseInt(path.get(i).getId());
-            System.out.println(Integer.parseInt(path.get(i).getId()));
+            //System.out.println(Integer.parseInt(path.get(i).getId()));
             //System.out.println(ds.pathInt[i]);
             
             
             x = ds.nodeX[ds.pathInt[i]]; 
             y = ds.nodeY[ds.pathInt[i]];
             
-            System.out.println("" +x+", " +y);
+           // System.out.println("" +x+", " +y);
             
             
         }   
@@ -67,12 +67,12 @@ public class OptPlan {
         // Arc in the shoretest path
         for(int i =0; i <path.size()-1; i++)
         {
-            for(int j =0;j <ds.arcs; j++)
+            for(int j = 0;j <ds.arcs; j++)
             {
                 if(ds.arcStart[j]==Integer.parseInt(path.get(i).getId())
                         && ds.arcEnd[j]==Integer.parseInt(path.get(i+1).getId()))
                 {
-                   // System.out.println("Arc in shortest path: "+j);
+                    System.out.println("Arc in shortest path: "+j);
                     ds.arcColor[j-1] = 1;
 
                 }
