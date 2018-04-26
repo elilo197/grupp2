@@ -9,14 +9,14 @@ import javax.swing.JPanel;
 public class MapPanel extends JPanel {
 
     DataStore ds; 
-   // int[] tot_arcCost;
-    //int tot_arcCost; 
+    int[] tot_arcCost;
+    int dummy = 10; 
     
     MapPanel(DataStore ds) {
         this.ds = ds;
     }
 
-    protected void paintComponent(Graphics g) {
+    public void paintComponent(Graphics g) {        //Denna var protected istället för public från början
         super.paintComponent(g);
         final Color LIGHT_COLOR = new Color(150, 150, 150);
         final Color DARK_COLOR = new Color(0, 0, 0);
@@ -51,7 +51,7 @@ public class MapPanel extends JPanel {
                //g.drawString(" " + ds.nodeNr[i], x, y);
             }
             
-            //tot_arcCost = new int[ds.arcs];
+            tot_arcCost = new int[ds.arcs];
             
             // Draw arcs
             for (int i = 0; i < ds.arcs; i++) {
@@ -70,13 +70,13 @@ public class MapPanel extends JPanel {
                 x = Math.abs(x1 - x2);
                 y = Math.abs(y1 - y2);
                 
-               // tot_arcCost[i] = x + y;
-//                g.drawString("" + tot_arcCost[i], (x1+x2)/2,((height - y1 ) + (height - y2))/2);
-//                System.out.println(tot_arcCost[i]);
+                tot_arcCost[i] = x + y;
+                g.drawString("" + tot_arcCost[i], (x1+x2)/2,((height - y1 ) + (height - y2))/2);
+                //System.out.println("Bågkostnad båge " + i + ": " + tot_arcCost[i]);
 //                
-                int tot_arcCost = x + y;
-                g.drawString("" + tot_arcCost, (x1+x2)/2,((height - y1 ) + (height - y2))/2);
-                System.out.println(tot_arcCost);
+//                int tot_arcCost = x + y;
+//                g.drawString("" + tot_arcCost, (x1+x2)/2,((height - y1 ) + (height - y2))/2);
+//                System.out.println(tot_arcCost);
              
                 // glöm ej ta bort denna sen !
                 // System.out.println("Arc cost: " + tot_arcCost + "\n");
@@ -100,4 +100,9 @@ public class MapPanel extends JPanel {
             
         }
     } // end paintComponent
+    
+    public int[] getTotalArcCost(){
+     return this.tot_arcCost;   
+    }
+    
 }

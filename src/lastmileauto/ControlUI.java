@@ -15,6 +15,7 @@ public class ControlUI extends javax.swing.JFrame {
     BluetoothReceiver b;
     BluetoothTransmitter btm; 
     OptPlan op;
+    MapPanel map1;
 
     /**
      * Creates new form ControlUI

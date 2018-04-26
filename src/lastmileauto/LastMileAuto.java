@@ -8,6 +8,17 @@ public class LastMileAuto {
     ControlUI cui;
     RobotRead r;
     GuiUpdate g;
+    BluetoothReceiver btr; 
+    BluetoothTransceiver btc; 
+    BluetoothTransmitter btm; 
+    Compass com; 
+    DijkstraAlgorithm dijkstra; 
+    Graph gra; 
+    MapPanel map; 
+    OptPlan opt; 
+    Uppdrag upp; 
+    
+    
     
     LastMileAuto(){
         /*
@@ -20,46 +31,16 @@ public class LastMileAuto {
          * This sets the file path and read network text file. Adjust for your needs.
          */   
 
-<<<<<<< HEAD
-       //ds.setFileName("C:\\Users\\Helena\\Documents\\GitHub\\grupp2/streets.txt");
+
+       ds.setFileName("C:\\Users\\Helena\\Documents\\GitHub\\grupp2/streets.txt");
       // ds.setFileName("/Users/eliselord/Documents/grupp2/streets.txt");
        //ds.setFileName("/Users/Veronika/Desktop/streets.txt");
-       //ds.setFileName("C:\\Users\\Helena\\Documents\\GitHub\\grupp2/streets.txt");
-       //ds.setFileName("/Users/eliselord/Documents/grupp2/streets.txt");
-       //ds.setFileName("/Users/Veronika/Desktop/streets.txt");
-       //ds.setFileName("/Users/Veronika/Desktop/streets_gammal.txt");
-       //ds.setFileName("/Users/eliselord/Documents/grupp2/streets.txt");
-       //ds.setFileName("/Users/Veronika/Desktop/streets.txt");
-       //ds.setFileName("/Users/Veronika/Desktop/streets_gammal.txt");
-      // ds.setFileName("/Users/hannamellqvist/Documents/Kandidat/grupp2/streets.txt");
-       //ds.setFileName("/Users/eliselord/Documents/grupp2/streets.txt");
-=======
-       ds.setFileName("C:\\Users\\Helena\\Documents\\GitHub\\grupp2/streets.txt");
->>>>>>> e1cd862620c80ec9f75abfe8da04385acf0f4321
-       //ds.setFileName("/Users/eliselord/Documents/grupp2/streets.txt");
-       //ds.setFileName("/Users/Veronika/Desktop/streets.txt");
-<<<<<<< HEAD
-       //ds.setFileName("/Users/Veronika/Desktop/streets_gammal.txt");
-       //ds.setFileName("/Users/hannamellqvist/Documents/Kandidat/grupp2/streets.txt");
-
-
-       //ds.setFileName("/Users/aliceneu/Documents/grupp2/streets.txt");
-     //ds.setFileName("/Users/hannamellqvist/Documents/Kandidat/grupp2/streets.txt");
-       //ds.setFileName("/Users/aliceneu/Documents/grupp2/streets.txt");
-       //ds.setFileName("/Users/aliceneu/Documents/grupp2/streets.txt");
-
-      // ds.setFileName("/Users/hannamellqvist/Documents/Kandidat/grupp2/streets.txt");
-       //ds.setFileName("/Users/aliceneu/Documents/grupp2/streets.txt");
-//       ds.setFileName("/Users/aliceneu/Documents/grupp2/streets.txt");
-//       ds.setFileName("/Users/hannamellqvist/Documents/Kandidat/grupp2/streets.txt");
-//       ds.setFileName("/Users/aliceneu/Documents/grupp2/streets.txt");
-
-=======
-       // ds.setFileName("/Users/hannamellqvist/Documents/Kandidat/grupp2/streets.txt");
-       //ds.setFileName("/Users/aliceneu/Documents/grupp2/streets.txt");
->>>>>>> e1cd862620c80ec9f75abfe8da04385acf0f4321
-        ds.readNet();
-        cui = new ControlUI(ds);
+        // ds.setFileName("/Users/hannamellqvist/Documents/Kandidat/grupp2/streets.txt");
+        //ds.setFileName("/Users/aliceneu/Documents/grupp2/streets.txt");
+    
+       
+       ds.readNet();
+       cui = new ControlUI(ds);
         cui.setVisible(true);
         cui.showStatus();
         
