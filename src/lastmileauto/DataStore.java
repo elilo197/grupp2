@@ -24,13 +24,9 @@ public class DataStore {
     int start = 70;
    // int startY = startX; 
     int[] arcColor;
-<<<<<<< HEAD
+
     int startRutt = 2+1; //start node nummer
     int slutRutt = 37+1; //slut node nummer.
-=======
-    int startRutt = 18; //start node nummer
-    int slutRutt = 5; //slut node nummer.
->>>>>>> 4eb3f9720522f3c411e505e288620d42283145ee
     String F = "F"; //Kör forward 
     String R = "R";  //Kör Right
     String L = "L";   //Kör Left 
@@ -41,18 +37,8 @@ public class DataStore {
     BluetoothTransmitter btm;
     BluetoothReceiver btr; 
     ControlUI cui;
-<<<<<<< HEAD
-<<<<<<< HEAD
- 
-=======
     Uppdrag upp;
->>>>>>> b6849b6c78c069bbfea8b85baf2568ae425881bd
-=======
-    Uppdrag upp;
->>>>>>> b6849b6c78c069bbfea8b85baf2568ae425881bd
-    
 
-    
 
     
     public DataStore() {
