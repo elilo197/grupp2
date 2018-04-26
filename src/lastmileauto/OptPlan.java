@@ -46,7 +46,6 @@ public class OptPlan {
         path =dijkstra.getPath(nodes.get(ds.slutRutt-1)); //Slutnod   ändrade här!!!! 
     
     // Get shortest path
-    
         for(int i=1; i <path.size(); i++)
         {
            //System.out.println(path.get(i));  // Path innehåller noder. 
