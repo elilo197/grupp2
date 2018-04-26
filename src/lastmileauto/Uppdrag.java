@@ -24,10 +24,12 @@ public class Uppdrag {
     int [] linkNod1;
     int [] linkNod2;
     OptPlan opt;
+    MapPanel map;
 
-    public Uppdrag(DataStore ds1, OptPlan op1) {
+    public Uppdrag(DataStore ds1, OptPlan op1, MapPanel map1) {
         this.ds = ds1;
         this.opt = op1; 
+        this.map = map1; 
         listaplatser();
          // listauppdrag("A");
      
@@ -102,14 +104,32 @@ public class Uppdrag {
         
 //Nu har vi nod-nr på uppdragen. Dags att beräkna avstånd! 
         //Sätt startnod och slutnod i ds till robotens position och linkNod1
-        ds.startRutt = 2+1;     //Om man lägger till en etta på noden man vill ha blir det rätt
-        ds.slutRutt = 37+1;     //Här behöver man också adda en etta för att få rätt nod
+    
         
-        OptPlan oppis1 = new OptPlan(ds);
-        oppis1.createPlan();
-        
-        
-        
+        //Här borde en loop börja
+            ds.startRutt = 2+1;     //Om man lägger till en etta på noden man vill ha blir det rätt
+            ds.slutRutt = 37+1;     //Här behöver man också adda en etta för att få rätt nod
+            double tot_kostnad = 0;
+            double kostnad = 0;
+            
+            OptPlan oppis1 = new OptPlan(ds);
+            //MapPanel mappis1 = new MapPanel(ds);
+            oppis1.createPlan();
+
+            //Bågarna i path (med ovanstående noder) ska in som index i tot_arccost. 
+            //Plussa ihop dessa och du har avståndet/kostnaden!
+            for (int i=0; i< oppis1.path.size(); i++){
+                
+                int vertexint = ds.pathInt[i] = Integer.parseInt(oppis1.path.get(i).getId());
+     
+               // kostnad = map.tot_arcCost[vertexint];    
+                System.out.println(map.tot_arcCost[i]);   
+                //tot_kostnad = tot_kostnad + kostnad;
+                //System.out.println("Oppis1 totalkostnad: " + tot_kostnad);
+                
+
+            }
+
        }
     
      catch (IOException e) { System.out.print(e.toString()); }
