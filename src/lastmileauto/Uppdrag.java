@@ -213,7 +213,7 @@ public class Uppdrag {
                     *Om nekas --> sök nytt uppdrag
             *Om kapacitet Ej är ok, kolla vidare i uppdragslistan
             *Om kapacitet är = antal passagerare, kör anropa nekas/beviljas
-                    *Om beviljas  --> Dijkstra/OptPlan/Compass -->kör
+            *Om beviljas  --> Dijkstra/OptPlan/Compass -->kör
                     *Om nekas --> sök nytt uppdrag
         */
     try {
