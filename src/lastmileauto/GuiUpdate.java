@@ -10,7 +10,6 @@ public class GuiUpdate implements Runnable {
     private static Random generator = new Random();
     private ControlUI cui;
     private DataStore ds;
-    private Compass com; 
     private int xy;
  
 

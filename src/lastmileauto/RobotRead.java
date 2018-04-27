@@ -10,7 +10,6 @@ public class RobotRead implements Runnable  {
     private static Random generator = new Random();
     ControlUI cui;
     DataStore ds;
-    GuiUpdate gui; 
     BluetoothReceiver bre;
     BluetoothTransceiver btc;
     long start;

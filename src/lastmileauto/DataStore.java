@@ -24,7 +24,6 @@ public class DataStore {
     int start = 70;
    // int startY = startX; 
     int[] arcColor;
-
     int startRutt = 17; //start node nummer
     int slutRutt = 5; //slut node nummer.
     String F = "F"; //Kör forward 
@@ -36,7 +35,8 @@ public class DataStore {
     BluetoothTransceiver btc;
     BluetoothTransmitter btm;
     BluetoothReceiver btr; 
-    ControlUI cui;
+    int[] tot_arcCost;
+   
 
     
     public DataStore() {

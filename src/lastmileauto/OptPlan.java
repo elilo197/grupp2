@@ -6,13 +6,9 @@ import java.util.*;
 // Genomför billigaste väg beräkningar + Gör färdplanering
 
 public class OptPlan {
-    List<Vertex> nodes;    
-    private List<Edge> edges;
     private DataStore ds; 
     LinkedList<Vertex>path;
-    double x; 
-    double y;
-    DijkstraAlgorithm dijkstra;
+
      
    
     public OptPlan(DataStore ds){
@@ -21,8 +17,10 @@ public class OptPlan {
     
     // Genomför billigaste väg beräkningen
     public void createPlan(){
-        nodes =new ArrayList<Vertex>();
-        edges =new ArrayList<Edge>();
+        double x; 
+        double y;
+        List<Vertex> nodes =new ArrayList<Vertex>();
+        List<Edge> edges =new ArrayList<Edge>();
         
         // Set up network
         for(int i =0; i <ds.nodes; i++)
@@ -39,7 +37,7 @@ public class OptPlan {
         }
         
         Graph graph =new Graph(nodes,edges);
-        dijkstra =new DijkstraAlgorithm(graph);
+            DijkstraAlgorithm dijkstra =new DijkstraAlgorithm(graph);
 
      // Compute shortest path
         dijkstra.execute(nodes.get(ds.startRutt)); //Startnod 

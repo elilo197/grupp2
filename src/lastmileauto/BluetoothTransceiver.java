@@ -9,6 +9,7 @@ public class BluetoothTransceiver{
     String meddelande_in;
      BufferedReader bluetooth_in;
     PrintStream bluetoothanslutning;
+    
     public BluetoothTransceiver() {
         
        try {
