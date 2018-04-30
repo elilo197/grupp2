@@ -9,7 +9,8 @@ public class OptPlan {
     private DataStore ds; 
     LinkedList<Vertex>path;
 
-     
+      double [] x; 
+      double [] y;
    
     public OptPlan(DataStore ds){
         this.ds = ds; 
@@ -17,8 +18,8 @@ public class OptPlan {
     
     // Genomför billigaste väg beräkningen
     public void createPlan(){
-        double x; 
-        double y;
+        //double [] x; 
+        //double [] y;
         List<Vertex> nodes =new ArrayList<Vertex>();
         List<Edge> edges =new ArrayList<Edge>();
         
@@ -44,6 +45,10 @@ public class OptPlan {
         path =dijkstra.getPath(nodes.get(ds.slutRutt)); //Slutnod   ändrade här!!!! 
     
     // Get shortest path
+    
+      x = new double[ds.pathInt.length];
+      y = new double[ds.pathInt.length];
+      
         for(int i=0; i <path.size()-1; i++)
         {
              for(int j = 0; j <ds.arcs; j++)
@@ -65,29 +70,50 @@ public class OptPlan {
             //System.out.println(ds.pathInt[i]);
             
             
-            x = ds.nodeX[ds.pathInt[i]]; 
-            y = ds.nodeY[ds.pathInt[i]];
+            x[i] = ds.nodeX[ds.pathInt[i]]; 
+            y[i]= ds.nodeY[ds.pathInt[i]];
             
-           // System.out.println("" +x+", " +y);
+           
+           System.out.println("hej kolla detta: " +x[i]+", " +y[i]);
             
             
         }   
-        
-        // Arc in the shoretest path
-//        for(int i =0; i <path.size()-1; i++)
-//        {
-//            for(int j = 0;j <ds.arcs; j++)
-//            {
-//                if(ds.arcStart[j]==Integer.parseInt(path.get(i).getId())
-//                        && ds.arcEnd[j]==Integer.parseInt(path.get(i+1).getId()))
-//                {
-//                    System.out.println("Arc in shortest path: "+j);
-//                    ds.arcColor[j-1] = 1;
-//
-//                }
-//           
-//            }
-//        }
+         
+
     }
 
+    public String[] compass(){
+          createPlan(); 
+          String[] test = {"testar", "testarigen"};
+        for(int i =0; i <ds.pathInt.length; i++)
+        {
+//             x = new double[ds.pathInt.length];
+//             y = new double[ds.pathInt.length];
+//            x[i] = ds.nodeX[ds.pathInt[i]]; //Måste vi kalla på dessa igen? kan det göras på något annat sätt?
+//            y[i]= ds.nodeY[ds.pathInt[i]];
+            //ds.pathInt[i] = Integer.parseInt(path.get(i).getId());
+           
+        System.out.println("se hit" + ds.pathInt[i]); //bågens nummer
+        System.out.println("nu är vi i compass: " +x[i]+", " +y[i]);
+         
+   
+           // System.out.println("tjena" +ds.nodeX[i]+", " +ds.nodeY[i]);
+           if((x[i+1] - x[i] > 0) && (y[i+1] - y[i] == 0)){ //Agda kör österut
+           //Kolla två framåt: x(n+2)-x(n+1)
+                if((x[i+1] - x[i] > 0) && (y[i+1] - y[i] == 0)){
+                    btm = new BluetoothTransmitter(F);
+                }
+                else if((x[i+1] - x[i] == 0) && (y[i+1] - y[i] < 0)){
+                    btm = new BluetoothTransmitter(R);
+                } 
+                else if((x[i+1] - x[i] == 0) && (y[i+1] - y[i] > 0)){
+                    btm = new BluetoothTransmitter(L);
+                }  
+                else if((x[i+1] - x[i] > 0) && (y[i+1] - y[i] > 0)){
+                    btm = new BluetoothTransmitter(F);
+                }
+            } 
+        }
+        return test;
+    }
 }

@@ -11,6 +11,7 @@ public class ControlUI extends javax.swing.JFrame {
     // I orginalen är det bara en datastore. 
     DataStore ds;
     ControlUI cui;
+    Compass com;
     /**
      * Creates new form ControlUI
      */
@@ -314,9 +315,10 @@ public class ControlUI extends javax.swing.JFrame {
        //Thread t3 = new Thread(btc);
        //t3.start();
         //System.out.println("Hej");
-//        Compass com = new Compass();
-//        Thread t5 = new Thread(com);
-//        t5.start();
+//       com = new Compass();
+//        Thread t6 = new Thread(com);
+//        t6.start();
+
     }//GEN-LAST:event_anslutActionPerformed
 
     private void startActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startActionPerformed
@@ -329,7 +331,8 @@ public class ControlUI extends javax.swing.JFrame {
        GuiUpdate g =  new GuiUpdate(ds, cui, ds.start);        //Tråd som uppdaterar kartan med var AGV är
         Thread t2 = new Thread(g);
      //   t2.start();   
-          
+     OptPlan comp = new OptPlan(ds);
+      comp.compass();     
         
     }//GEN-LAST:event_startActionPerformed
 

@@ -63,7 +63,7 @@ public class Uppdrag {
 
          
         while ((inkommande_text = inkommande.readLine()) != null) {
-            //System.out.println("Inkommande: " + inkommande_text);
+            System.out.println("Inkommande: " + inkommande_text);
                 inkommande_samlat.append(inkommande_text); 
                 ink.add(inkommande_text);      
         }
@@ -94,7 +94,7 @@ public class Uppdrag {
             sline = link[j].split(",");    
             linkNod1[j] =Integer.parseInt(sline[0]);
             linkNod2[j] =Integer.parseInt(sline[1]);
-//           System.out.println(linkNod1[j]);
+           //System.out.println(linkNod1[j]);
 //           System.out.println(linkNod2[j]);
            
         }
@@ -117,16 +117,16 @@ public class Uppdrag {
             for (int i=0; i< oppis1.path.size(); i++){
                 
               int vertexint = Integer.parseInt(oppis1.path.get(i).getId()); //Gör om path till ints
-<<<<<<< HEAD
+
                                      
 //              total_arccost = map.getTotalArcCost();          //PROBLEM!!! Blir null.
               kostnad = total_arccost[vertexint];
-=======
+
               
              // total_arccost = map.getTotalArcCost();          //PROBLEM!!! Blir null.
              // Istället för detta skriver vi bara ds.tot_arcCost[i] och den vi vill ha se nedan.                                  
               kostnad = ds.tot_arcCost[vertexint];
->>>>>>> d9f48dc6b1d7df8207c965ac92ddef752b58d608
+
               tot_kostnad = tot_kostnad + kostnad;
               
               System.out.println("Oppis1 totalkostnad so far: " + tot_kostnad);
