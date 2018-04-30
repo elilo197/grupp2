@@ -73,12 +73,10 @@ public class OptPlan {
             x[i] = ds.nodeX[ds.pathInt[i]]; 
             y[i]= ds.nodeY[ds.pathInt[i]];
             
-<<<<<<< HEAD
-           
+
            System.out.println("hej kolla detta: " +x[i]+", " +y[i]);
-=======
             System.out.println("" +x+", " +y);
->>>>>>> 481abc02f5d4408f50da3a374bb1c3fa2d416bc5
+
             
             
         }   

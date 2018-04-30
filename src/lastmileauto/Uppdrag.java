@@ -63,12 +63,10 @@ public class Uppdrag {
 
          
         while ((inkommande_text = inkommande.readLine()) != null) {
-<<<<<<< HEAD
             System.out.println("Inkommande: " + inkommande_text);
                 inkommande_samlat.append(inkommande_text); 
-=======
+
                  inkommande_samlat.append(inkommande_text); 
->>>>>>> 481abc02f5d4408f50da3a374bb1c3fa2d416bc5
                 ink.add(inkommande_text);      
         }
          inkommande.close();
@@ -101,13 +99,7 @@ public class Uppdrag {
         for(int j = 0; j <IntStorlek; j++){
             sline = link[j].split(",");    
             linkNod1[j] =Integer.parseInt(sline[0]);
-            linkNod2[j] =Integer.parseInt(sline[1]);
-<<<<<<< HEAD
-           //System.out.println(linkNod1[j]);
-//           System.out.println(linkNod2[j]);
-=======
->>>>>>> 481abc02f5d4408f50da3a374bb1c3fa2d416bc5
-           
+            linkNod2[j] =Integer.parseInt(sline[1]);         
         }
         
 //Nu har vi nod-nr på uppdragen. Dags att beräkna avstånd! 
@@ -123,26 +115,17 @@ public class Uppdrag {
             
             //Den här loopen räknar ut kostnaden för rutten till den aktuella upphämtningsplatsen
             for (int i=0; i< oppis[j].path.size(); i++){      
-                
-<<<<<<< HEAD
-              int vertexint = Integer.parseInt(oppis1.path.get(i).getId()); //Gör om path till ints
-
-                                     
-//              total_arccost = map.getTotalArcCost();          //PROBLEM!!! Blir null.
-              kostnad = total_arccost[vertexint];
-
-              
+         
+            int vertexint = Integer.parseInt(oppis[j].path.get(i).getId()); //Gör om path till ints
+                                                        
              // total_arccost = map.getTotalArcCost();          //PROBLEM!!! Blir null.
              // Istället för detta skriver vi bara ds.tot_arcCost[i] och den vi vill ha se nedan.                                  
               kostnad = ds.tot_arcCost[vertexint];
 
-=======
-            int vertexint = Integer.parseInt(oppis[j].path.get(i).getId()); //Gör om path till ints
              
              // total_arccost = map.getTotalArcCost();          //PROBLEM!!! Blir null.
              // Istället för detta skriver vi bara ds.tot_arcCost[i] och den vi vill ha se nedan.                                  
               kostnad = ds.tot_arcCost[vertexint];
->>>>>>> 481abc02f5d4408f50da3a374bb1c3fa2d416bc5
               tot_kostnad = tot_kostnad + kostnad;
               
             }
