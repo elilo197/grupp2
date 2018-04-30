@@ -68,7 +68,7 @@ public class OptPlan {
             x = ds.nodeX[ds.pathInt[i]]; 
             y = ds.nodeY[ds.pathInt[i]];
             
-           // System.out.println("" +x+", " +y);
+            System.out.println("" +x+", " +y);
             
             
         }   
