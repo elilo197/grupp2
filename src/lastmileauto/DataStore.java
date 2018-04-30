@@ -24,9 +24,8 @@ public class DataStore {
     int start = 70;
    // int startY = startX; 
     int[] arcColor;
-
-    int startRutt = 2+1; //start node nummer
-    int slutRutt = 37+1; //slut node nummer.
+    int startRutt = 17; //start node nummer
+    int slutRutt = 5; //slut node nummer.
     String F = "F"; //Kör forward 
     String R = "R";  //Kör Right
     String L = "L";   //Kör Left 
@@ -36,9 +35,8 @@ public class DataStore {
     BluetoothTransceiver btc;
     BluetoothTransmitter btm;
     BluetoothReceiver btr; 
-    ControlUI cui;
-    MapPanel map;
-    Uppdrag upp;
+    int[] tot_arcCost;
+   
 
     
     public DataStore() {
@@ -52,7 +50,7 @@ public class DataStore {
         arcCost = new int[1000];
         updateUIflag = false; 
         networkRead = false;
-        arcColor = new int[1000];
+        arcColor = new int[128];
         pathInt = new int[1000];
        
         
@@ -98,7 +96,7 @@ public class DataStore {
                 //Testa om detta funkar. 
                 //nodeNr[i] = Double.parseDouble(sline[0].trim());
                 
-                int j = i+1; //Ändrar nodnummer så att den börjar vid 1
+                //int j = i+1; //Ändrar nodnummer så att den börjar vid 1
                 
                // System.out.println("Node "+j+": "+nodeX[i]+" "+nodeY[i]); //loopar igenom alla noder och visar position
             }

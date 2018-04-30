@@ -7,16 +7,13 @@ import javax.swing.JPanel;
 // Ritar ut allt på kartan, ex. robot osv. 
 
 public class MapPanel extends JPanel {
-
     DataStore ds; 
-    int[] tot_arcCost;
-    int dummy = 10; 
-    
+ 
     MapPanel(DataStore ds) {
         this.ds = ds;
     }
 
-    public void paintComponent(Graphics g) {        //Denna var protected istället för public från början
+    protected void paintComponent(Graphics g) { 
         super.paintComponent(g);
         final Color LIGHT_COLOR = new Color(150, 150, 150);
         final Color DARK_COLOR = new Color(0, 0, 0);
@@ -26,7 +23,6 @@ public class MapPanel extends JPanel {
         int x2, y2;
         int robotPosX;
         int robotPosY; 
-
         final int circlesize = 10;
         final int ysize = 350;
         final int xsize = 700;
@@ -51,17 +47,24 @@ public class MapPanel extends JPanel {
                //g.drawString(" " + ds.nodeNr[i], x, y);
             }
             
-            tot_arcCost = new int[ds.arcs];
+            ds.tot_arcCost = new int[ds.arcs];
             
             // Draw arcs
+            g.setColor(MAGENTA_COLOR);
             for (int i = 0; i < ds.arcs; i++) {
+                if (ds.arcColor[i] == 0){
+                    g.setColor(DARK_COLOR);    
+                }
+                else if(ds.arcColor[i]==1) {
+                    g.setColor(MAGENTA_COLOR);
+                }
+                
                 x1 = (int) (ds.nodeX[ds.arcStart[i] - 1] * xscale);
                 y1 = (int) (ds.nodeY[ds.arcStart[i] - 1] * yscale);
                 x2 = (int) (ds.nodeX[ds.arcEnd[i] - 1] * xscale);
                 y2 = (int) (ds.nodeY[ds.arcEnd[i] - 1] * yscale);
                 g.drawLine(x1, height - y1, x2, height - y2);
                 
-                int j = i+1;
                 
                 // Glöm ej ta bort denna sen !
                // System.out.println("Arc "+j+": "+ds.arcStart[i]+" "+ds.arcEnd[i]);
@@ -70,8 +73,9 @@ public class MapPanel extends JPanel {
                 x = Math.abs(x1 - x2);
                 y = Math.abs(y1 - y2);
                 
-                tot_arcCost[i] = x + y;
-                g.drawString("" + tot_arcCost[i], (x1+x2)/2,((height - y1 ) + (height - y2))/2);
+                ds.tot_arcCost[i] = x + y; // här är skillnaden, fyller liksom ds variabeln här så vi kan hämta den i ds sen 
+ 
+                g.drawString("" + ds.tot_arcCost[i], (x1+x2)/2,((height - y1 ) + (height - y2))/2);
                 //System.out.println("Bågkostnad båge " + i + ": " + tot_arcCost[i]);
 //                
 //                int tot_arcCost = x + y;
@@ -81,12 +85,10 @@ public class MapPanel extends JPanel {
                 // glöm ej ta bort denna sen !
                 // System.out.println("Arc cost: " + tot_arcCost + "\n");
              
-                if (ds.arcColor[i] == 1){
-                    g.setColor(MAGENTA_COLOR);    
-                }
-                else g.setColor(DARK_COLOR);
+                
            
             }
+
             // Draw robot
             robotPosX = (int)((ds.robotX) * xscale);
             robotPosY = (int)((ds.robotY)*yscale);
@@ -100,9 +102,6 @@ public class MapPanel extends JPanel {
             
         }
     } // end paintComponent
-    
-    public int[] getTotalArcCost(){
-     return this.tot_arcCost;   
-    }
+ 
     
 }

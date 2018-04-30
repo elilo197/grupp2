@@ -23,12 +23,10 @@ public class Uppdrag {
     int [] linkNod1;
     int [] linkNod2;
     OptPlan opt;
-    MapPanel map;
     
 
-    public Uppdrag(DataStore ds1, OptPlan op1) {
-        this.ds = ds1;
-        this.opt = op1; 
+    public Uppdrag(DataStore ds) {
+        this.ds = ds;
         listaplatser();
          // listauppdrag("A");
      
@@ -38,7 +36,7 @@ public class Uppdrag {
      * upphämtningsplats som är närmast. Sen ska vi skicka informationen till 
      * AGVn
      */
-    public  void listaplatser() { //tagit bort static
+    public void listaplatser() { //tagit bort static
    
      try {
 
@@ -106,14 +104,12 @@ public class Uppdrag {
     
         
         //Här borde en loop börja
-            ds.startRutt = 2+1;     //Om man lägger till en etta på noden man vill ha blir det rätt
-            ds.slutRutt = 37+1;     //Här behöver man också adda en etta för att få rätt nod
+            ds.startRutt = 2;   
+            ds.slutRutt = 37;  
             double tot_kostnad = 0;         //Totala kostnaden för en väg/alla bågar i en väg
-            double kostnad = 0;             //Kostnad för en båge
-            int total_arccost[];              //Kostnad för samtliga bågar
+            double kostnad = 0;             //Kostnad för en båg
             
             OptPlan oppis1 = new OptPlan(ds);
-            total_arccost = new int[1000];
             oppis1.createPlan();
 
             //Bågarna i path (med ovanstående noder) ska in som index i tot_arccost. 
@@ -121,14 +117,24 @@ public class Uppdrag {
             for (int i=0; i< oppis1.path.size(); i++){
                 
               int vertexint = Integer.parseInt(oppis1.path.get(i).getId()); //Gör om path till ints
+<<<<<<< HEAD
                                      
 //              total_arccost = map.getTotalArcCost();          //PROBLEM!!! Blir null.
               kostnad = total_arccost[vertexint];
+=======
+              
+             // total_arccost = map.getTotalArcCost();          //PROBLEM!!! Blir null.
+             // Istället för detta skriver vi bara ds.tot_arcCost[i] och den vi vill ha se nedan.                                  
+              kostnad = ds.tot_arcCost[vertexint];
+>>>>>>> d9f48dc6b1d7df8207c965ac92ddef752b58d608
               tot_kostnad = tot_kostnad + kostnad;
               
               System.out.println("Oppis1 totalkostnad so far: " + tot_kostnad);
 
             }
+             System.out.println("Oppis1 totalkostnad total " + tot_kostnad);
+            
+           
             /* När vi löst det andra problemet så vill vi skapa en lopp som 
             gör detta, alltså vi vill skapa instanser av optplan i loopen */
 
