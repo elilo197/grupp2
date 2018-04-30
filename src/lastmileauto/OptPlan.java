@@ -52,7 +52,7 @@ public class OptPlan {
                         && ds.arcEnd[j]==Integer.parseInt(path.get(i+1).getId()))
                 {
                     ds.arcColor[j] = 1;
-                    System.out.println("Arc in shortest path: "+j);
+                   // System.out.println("Arc in shortest path: "+j);
                 }
            
             }
