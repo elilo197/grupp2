@@ -6,7 +6,6 @@ package lastmileauto;
 public class BluetoothReceiver implements Runnable{
   BluetoothTransceiver btc;
   DataStore ds;
-  String mottaget;
   
     
     public BluetoothReceiver(BluetoothTransceiver btc1) {
