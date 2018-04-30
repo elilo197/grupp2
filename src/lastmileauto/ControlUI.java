@@ -329,11 +329,15 @@ public class ControlUI extends javax.swing.JFrame {
         
        Uppdrag uppdrag1= new Uppdrag(ds);
        GuiUpdate g =  new GuiUpdate(ds, cui, ds.start);        //Tråd som uppdaterar kartan med var AGV är
-        Thread t2 = new Thread(g);
+       Thread t2 = new Thread(g);
      //   t2.start();   
+<<<<<<< HEAD
      OptPlan comp = new OptPlan(ds);
       comp.compass();     
         
+=======
+           
+>>>>>>> 481abc02f5d4408f50da3a374bb1c3fa2d416bc5
     }//GEN-LAST:event_startActionPerformed
 
     private void avslutaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_avslutaActionPerformed

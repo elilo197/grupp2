@@ -21,7 +21,7 @@ public class DataStore {
     double robotY; 
     // Dessa två bör ha samma nummer (tror vi) 
     // Nod 71 i streets är  nod 70 här..
-    int start = 70;
+    int start = 22;
    // int startY = startX; 
     int[] arcColor;
     int startRutt = 17; //start node nummer
@@ -31,11 +31,12 @@ public class DataStore {
     String L = "L";   //Kör Left 
     String S = "S";   //Stop i 5 sek. 
     String C = "c";
-    int[] pathInt;
+    int[] pathInt; //Noderna i ints
     BluetoothTransceiver btc;
     BluetoothTransmitter btm;
     BluetoothReceiver btr; 
     int[] tot_arcCost;
+    int robotpos = start;       //Robotens aktuella position, initieras till startpositionen
    
 
     
