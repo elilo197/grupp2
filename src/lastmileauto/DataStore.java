@@ -31,7 +31,7 @@ public class DataStore {
     String L = "L";   //Kör Left 
     String S = "S";   //Stop i 5 sek. 
     String C = "c";
-    int[] pathInt;
+    int[] pathInt; //Noderna i ints
     BluetoothTransceiver btc;
     BluetoothTransmitter btm;
     BluetoothReceiver btr; 
