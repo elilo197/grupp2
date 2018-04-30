@@ -36,6 +36,7 @@ public class DataStore {
     BluetoothTransmitter btm;
     BluetoothReceiver btr; 
     int[] tot_arcCost;
+    int robotpos = start;       //Robotens aktuella position, initieras till startpositionen
    
 
     
