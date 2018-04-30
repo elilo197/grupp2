@@ -122,7 +122,7 @@ public class Uppdrag {
                 
               int vertexint = Integer.parseInt(oppis1.path.get(i).getId()); //Gör om path till ints
                                      
-              total_arccost = map.getTotalArcCost();          //PROBLEM!!! Blir null.
+//              total_arccost = map.getTotalArcCost();          //PROBLEM!!! Blir null.
               kostnad = total_arccost[vertexint];
               tot_kostnad = tot_kostnad + kostnad;
               
