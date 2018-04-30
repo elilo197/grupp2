@@ -23,6 +23,7 @@ public class Uppdrag {
     int [] linkNod1;
     int [] linkNod2;
     OptPlan opt;
+    OptPlan [] oppis;
     
 
     public Uppdrag(DataStore ds) {
@@ -58,20 +59,18 @@ public class Uppdrag {
         StringBuffer inkommande_samlat = new StringBuffer();
         
         
-        //Arraylist är dynamiska, vi behöver alltså inte ha en "längd" 
          ArrayList<String> ink = new ArrayList<String>();
 
          
         while ((inkommande_text = inkommande.readLine()) != null) {
-            //System.out.println("Inkommande: " + inkommande_text);
-                inkommande_samlat.append(inkommande_text); 
+                 inkommande_samlat.append(inkommande_text); 
                 ink.add(inkommande_text);      
         }
          inkommande.close();
          
         System.out.println("Ink:");
         for(int k = 0; k < ink.size(); k++){
-            System.out.println(ink.get(k));
+            System.out.println("Ink: " + ink.get(k));
             
         }
        
@@ -82,20 +81,24 @@ public class Uppdrag {
         String [] link = new String[IntStorlek];
         linkNod1 = new int[IntStorlek];
         linkNod2 = new int[IntStorlek];
+        oppis = new OptPlan[IntStorlek];
         String [] sline;
+        String [] plats = new String[IntStorlek];
+        double tot_kostnad = 0;         //Totala kostnaden för en väg/alla bågar i en väg
+        String narmstaPlats = "Start";
+        int narmstaNod = ds.start;
+        double lagstaKostnad = 1000000;
       
         for(int k = 1; k <IntStorlek+1 ; k++){
             sline = ink.get(k).split(";");
             link[k-1] = sline[1];
-           // System.out.println(link[k-1]);         
+            plats[k-1] = sline[0];       
         }
 
         for(int j = 0; j <IntStorlek; j++){
             sline = link[j].split(",");    
             linkNod1[j] =Integer.parseInt(sline[0]);
             linkNod2[j] =Integer.parseInt(sline[1]);
-//           System.out.println(linkNod1[j]);
-//           System.out.println(linkNod2[j]);
            
         }
         
@@ -104,35 +107,48 @@ public class Uppdrag {
     
         
         //Här borde en loop börja
-            ds.startRutt = 2;   
-            ds.slutRutt = 37;  
-            double tot_kostnad = 0;         //Totala kostnaden för en väg/alla bågar i en väg
+        for (int j=0; j<IntStorlek; j++){       //Den här ska loopa över alla upphämtningsplatser
+            ds.startRutt = ds.start;        //Den här behöver uppdateras med robotens aktuella position, är nu endast startnod
+            ds.slutRutt = linkNod1[j];
+            //System.out.println("Startnod: " + ds.startRutt + ", slutnod: " + ds.slutRutt);
+            
+            //double tot_kostnad = 0;         //Totala kostnaden för en väg/alla bågar i en väg
             double kostnad = 0;             //Kostnad för en båg
             
-            OptPlan oppis1 = new OptPlan(ds);
-            oppis1.createPlan();
+            oppis[j] = new OptPlan(ds);
+            oppis[j].createPlan();
+            
+            //Nedanstående är från när vi bara gjorde en instans, ej loop
+           // OptPlan oppis1 = new OptPlan(ds);
+            //oppis1.createPlan();
 
             //Bågarna i path (med ovanstående noder) ska in som index i tot_arccost. 
             //Sen ska alla arccostnader plussas ihop för att få ut totala kostnaden/avståndet
-            for (int i=0; i< oppis1.path.size(); i++){
+            //Den här loopen räknar ut kostnaden för rutten till den aktuella upphämtningsplatsen
+            for (int i=0; i< oppis[j].path.size(); i++){      
                 
-              int vertexint = Integer.parseInt(oppis1.path.get(i).getId()); //Gör om path till ints
-
-                                     
+            int vertexint = Integer.parseInt(oppis[j].path.get(i).getId()); //Gör om path till ints
              
              // total_arccost = map.getTotalArcCost();          //PROBLEM!!! Blir null.
              // Istället för detta skriver vi bara ds.tot_arcCost[i] och den vi vill ha se nedan.                                  
               kostnad = ds.tot_arcCost[vertexint];
               tot_kostnad = tot_kostnad + kostnad;
               
-             // System.out.println("Oppis1 totalkostnad so far: " + tot_kostnad);
-
             }
-             System.out.println("Oppis1 totalkostnad total " + tot_kostnad);
-            
+             System.out.println("Upphämtningsplats " + plats[j] + " innebär en rutt från " + ds.startRutt + " till "  
+                   + ds.slutRutt + " vilket ger en totalkostnad på "  + tot_kostnad);
            
-            /* När vi löst det andra problemet så vill vi skapa en lopp som 
-            gör detta, alltså vi vill skapa instanser av optplan i loopen */
+             System.out.println();      //Blankrad
+                
+             if (tot_kostnad < lagstaKostnad){
+                 lagstaKostnad = tot_kostnad;
+                 narmstaPlats = plats[j];
+                 narmstaNod = ds.slutRutt;
+             }
+             
+        }
+             System.out.println("Närmaste upphämtningsplats är plats " + narmstaPlats + " med nodnummer " + narmstaNod);
+             System.out.println("Kostnaden för att ta sig dit är " + lagstaKostnad);
 
        }
     
@@ -350,38 +366,7 @@ public class Uppdrag {
      
     }    
     
-public void avstand() {
-
-// double [] distance; 
-// double xstart;
-// double ystart; 
-// double xslut;
-// double yslut;  
-//
-//                  
-// distance = new double [IntStorlek];    
-//         
-//
-//        
-//            for (int i =0; i<IntStorlek; i++) {
-//            xstart= ds.nodeX[linkNod1[i]];
-//            //System.out.println("Startnod: " + linkNod1[i]);
-//            xslut = ds.nodeX[linkNod1[i]];
-//            ystart= in.nodY[in.startnod[i]];
-//            yslut = in.nodY[in.slutnod[i]];
-//            System.out.println("X: " + xstart + " - " + xslut);
-//            System.out.println("Y: " + ystart + " - " + yslut);
-//            
-//            
-//            int j=i+1;
-//            distance[i] = Math.hypot(xslut-xstart, yslut-ystart);    
-//           // System.out.println("Avstånd för uppdrag " + j + ": " + distance[i]);
-//            }
-//    
-//    
-    
-}     
-     
+   
             
      
 }
