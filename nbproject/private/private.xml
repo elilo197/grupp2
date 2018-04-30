@@ -3,6 +3,23 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
 <<<<<<< HEAD
+        <group>
+            <file>file:/Users/hannamellqvist/Documents/Kandidat/grupp2/src/lastmileauto/GuiUpdate.java</file>
+            <file>file:/Users/hannamellqvist/Documents/Kandidat/grupp2/src/lastmileauto/Edge.java</file>
+            <file>file:/Users/hannamellqvist/Documents/Kandidat/grupp2/src/lastmileauto/RobotRead.java</file>
+            <file>file:/Users/hannamellqvist/Documents/Kandidat/grupp2/src/lastmileauto/Vertex.java</file>
+            <file>file:/Users/hannamellqvist/Documents/Kandidat/grupp2/src/lastmileauto/DijkstraAlgorithm.java</file>
+            <file>file:/Users/hannamellqvist/Documents/Kandidat/grupp2/src/lastmileauto/LastMileAuto.java</file>
+            <file>file:/Users/hannamellqvist/Documents/Kandidat/grupp2/src/lastmileauto/ControlUI.java</file>
+            <file>file:/Users/hannamellqvist/Documents/Kandidat/grupp2/src/lastmileauto/Compass.java</file>
+            <file>file:/Users/hannamellqvist/Documents/Kandidat/grupp2/src/lastmileauto/Graph.java</file>
+            <file>file:/Users/hannamellqvist/Documents/Kandidat/grupp2/src/lastmileauto/OptPlan.java</file>
+            <file>file:/Users/hannamellqvist/Documents/Kandidat/grupp2/src/lastmileauto/MapPanel.java</file>
+            <file>file:/Users/hannamellqvist/Documents/Kandidat/grupp2/src/lastmileauto/Uppdrag.java</file>
+            <file>file:/Users/hannamellqvist/Documents/Kandidat/grupp2/src/lastmileauto/DataStore.java</file>
+            <file>file:/Users/hannamellqvist/Documents/Kandidat/grupp2/src/lastmileauto/BluetoothTransceiver.java</file>
+=======
+<<<<<<< HEAD
         <group/>
 =======
         <group>
@@ -21,6 +38,7 @@
             <file>file:/Users/eliselord/Documents/grupp2/src/lastmileauto/GuiUpdate.java</file>
             <file>file:/Users/eliselord/Documents/grupp2/src/lastmileauto/Vertex.java</file>
             <file>file:/Users/eliselord/Documents/grupp2/src/lastmileauto/Edge.java</file>
+>>>>>>> 48826a6462b8a6000bb97da29db73934e486f44c
         </group>
 >>>>>>> d9f48dc6b1d7df8207c965ac92ddef752b58d608
     </open-files>
