@@ -8,7 +8,8 @@ import java.util.*;
 public class OptPlan {
     private DataStore ds; 
     LinkedList<Vertex>path;
-
+    BluetoothTransmitter btm; 
+    BluetoothTransceiver btc;
       double [] x; 
       double [] y;
    
@@ -74,8 +75,8 @@ public class OptPlan {
             y[i]= ds.nodeY[ds.pathInt[i]];
             
 
-           System.out.println("hej kolla detta: " +x[i]+", " +y[i]);
-            System.out.println("" +x+", " +y);
+           System.out.println("Koordinater från createPlan: " +x[i]+", " +y[i]);
+           // System.out.println("" +x+", " +y);
 
             
             
@@ -95,24 +96,25 @@ public class OptPlan {
 //            y[i]= ds.nodeY[ds.pathInt[i]];
             //ds.pathInt[i] = Integer.parseInt(path.get(i).getId());
            
-        System.out.println("se hit" + ds.pathInt[i]); //bågens nummer
-        System.out.println("nu är vi i compass: " +x[i]+", " +y[i]);
-         
+        System.out.println("Nodnr från compass: " + ds.pathInt[i]); //bågens nummer
+        System.out.println("Koordinater från compass: " +x[i]+", " +y[i]);
+        btc= new BluetoothTransceiver();
+        btm = new BluetoothTransmitter(btc); 
    
            // System.out.println("tjena" +ds.nodeX[i]+", " +ds.nodeY[i]);
            if((x[i+1] - x[i] > 0) && (y[i+1] - y[i] == 0)){ //Agda kör österut
            //Kolla två framåt: x(n+2)-x(n+1)
                 if((x[i+1] - x[i] > 0) && (y[i+1] - y[i] == 0)){
-                    btm = new BluetoothTransmitter(F);
+                //btm.send(ds.F);    
                 }
                 else if((x[i+1] - x[i] == 0) && (y[i+1] - y[i] < 0)){
-                    btm = new BluetoothTransmitter(R);
+               // btm.send(ds.R);      
                 } 
                 else if((x[i+1] - x[i] == 0) && (y[i+1] - y[i] > 0)){
-                    btm = new BluetoothTransmitter(L);
+                  // btm.send(ds.L);
                 }  
                 else if((x[i+1] - x[i] > 0) && (y[i+1] - y[i] > 0)){
-                    btm = new BluetoothTransmitter(F);
+                    //btm.send(ds.F);
                 }
             } 
         }
