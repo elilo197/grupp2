@@ -2,6 +2,7 @@ package lastmileauto;
 
 import java.io.File;
 import java.util.Scanner;
+import java.util.ArrayList;
 
 // Sparar data + håller i kopplingen till GUIUpdate och RobotRead
 
@@ -12,6 +13,7 @@ public class DataStore {
     int arcs;
     double[] nodeX;
     double[] nodeY;
+    int[] nodenr;
     int[] arcStart;
     int[] arcEnd;
     int[] arcCost;
@@ -24,19 +26,21 @@ public class DataStore {
     int start = 22;
    // int startY = startX; 
     int[] arcColor;
-    int startRutt = 17; //start node nummer
-    int slutRutt = 5; //slut node nummer.
+    int startRutt = 5; //startnod, om vi säger 1 tar den 2 osv
+    int slutRutt = 33; //slutnod, om vi säger 1 tar den 2 osv
     String F = "F"; //Kör forward 
     String R = "R";  //Kör Right
     String L = "L";   //Kör Left 
     String S = "S";   //Stop i 5 sek. 
     String C = "c";
-    int[] pathInt; //Noderna i ints
+    ArrayList<Integer> pathInt; 
+    //int[] pathInt; //Noderna i ints
     BluetoothTransceiver btc;
     BluetoothTransmitter btm;
     BluetoothReceiver btr; 
     int[] tot_arcCost;
     int robotpos = start;       //Robotens aktuella position, initieras till startpositionen
+    String[] kommandon;
    
 
     
@@ -46,15 +50,16 @@ public class DataStore {
         arcs = 0;
         nodeX = new double[1000];
         nodeY = new double[1000];
+        nodenr = new int[1000];
         arcStart = new int[1000];
         arcEnd = new int[1000];
         arcCost = new int[1000];
         updateUIflag = false; 
         networkRead = false;
         arcColor = new int[128];
-        pathInt = new int[1000];
-       
-        
+        pathInt = new ArrayList<Integer>();
+        kommandon = new String[3];//3 är fulkodning, denna ska va 2 mindre än pathInt
+
     }
 
     public void setFileName(String newFileName) {
@@ -92,14 +97,13 @@ public class DataStore {
                 line = scanner.nextLine();
                 //split space separated data on line
                 sline = line.split(" ");
+                nodenr[i] = Integer.parseInt(sline[0].trim());
                 nodeX[i] = Double.parseDouble(sline[1].trim());
                 nodeY[i] = Double.parseDouble(sline[2].trim());
-                //Testa om detta funkar. 
-                //nodeNr[i] = Double.parseDouble(sline[0].trim());
                 
                 //int j = i+1; //Ändrar nodnummer så att den börjar vid 1
                 
-               // System.out.println("Node "+j+": "+nodeX[i]+" "+nodeY[i]); //loopar igenom alla noder och visar position
+              //  System.out.println("Node "+ nodenr[i] +": "+nodeX[i]+" "+nodeY[i]); //loopar igenom alla noder och visar position
             }
 
             // Debug printout: print data for node 1
