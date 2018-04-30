@@ -3,8 +3,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
             <file>file:/Users/hannamellqvist/Documents/Kandidat/grupp2/src/lastmileauto/GuiUpdate.java</file>
+            <file>file:/Users/hannamellqvist/Documents/Kandidat/grupp2/src/lastmileauto/Edge.java</file>
             <file>file:/Users/hannamellqvist/Documents/Kandidat/grupp2/src/lastmileauto/RobotRead.java</file>
             <file>file:/Users/hannamellqvist/Documents/Kandidat/grupp2/src/lastmileauto/Vertex.java</file>
             <file>file:/Users/hannamellqvist/Documents/Kandidat/grupp2/src/lastmileauto/DijkstraAlgorithm.java</file>
@@ -17,22 +17,6 @@
             <file>file:/Users/hannamellqvist/Documents/Kandidat/grupp2/src/lastmileauto/Uppdrag.java</file>
             <file>file:/Users/hannamellqvist/Documents/Kandidat/grupp2/src/lastmileauto/DataStore.java</file>
             <file>file:/Users/hannamellqvist/Documents/Kandidat/grupp2/src/lastmileauto/BluetoothTransceiver.java</file>
-=======
-<<<<<<< HEAD
-            <file>file:/Users/eliselord/Documents/grupp2/src/lastmileauto/ControlUI.java</file>
-            <file>file:/Users/eliselord/Documents/grupp2/src/lastmileauto/LastMileAuto.java</file>
-            <file>file:/Users/eliselord/Documents/grupp2/src/lastmileauto/Uppdrag.java</file>
-            <file>file:/Users/eliselord/Documents/grupp2/src/lastmileauto/BluetoothTransmitter.java</file>
-            <file>file:/Users/eliselord/Documents/grupp2/src/lastmileauto/RobotRead.java</file>
-            <file>file:/Users/eliselord/Documents/grupp2/src/lastmileauto/GuiUpdate.java</file>
-            <file>file:/Users/eliselord/Documents/grupp2/src/lastmileauto/DataStore.java</file>
-=======
-            <file>file:/Users/Veronika/Documents/grupp2/src/lastmileauto/Uppdrag.java</file>
-            <file>file:/Users/Veronika/Documents/grupp2/src/lastmileauto/LastMileAuto.java</file>
-            <file>file:/Users/Veronika/Documents/grupp2/src/lastmileauto/ControlUI.java</file>
-            <file>file:/Users/Veronika/Documents/grupp2/src/lastmileauto/GuiUpdate.java</file>
->>>>>>> 5cc381d4673a9218d428b143328079cefa7c9420
->>>>>>> aea4276f277c9bf88ff221f49b3516e93883ea0e
         </group>
     </open-files>
 </project-private>
