@@ -1,9 +1,4 @@
-//
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package lastmileauto;
 
 import java.time.Clock;
@@ -14,8 +9,8 @@ public class Compass implements Runnable{
     BluetoothTransmitter btm;
     DataStore ds; 
     OptPlan opt;
-    double x; 
-    double y; 
+   // double [] x; 
+    //double [] y; 
     String F; 
     String R; 
     String L;  
@@ -33,39 +28,54 @@ public class Compass implements Runnable{
         F = ds.F;
         R = ds.R;
         L = ds.L;
+       
+    //  x = new double[10];
+      //y = new double[ds.pathInt.length];
         
-      
-        
-        for(int i =0; i <opt.path.size(); i++)
+        for(int i =0; i <ds.pathInt.length; i++)
         {
 
-        //System.out.println(opt.path.get(i));
+        System.out.println("kolla hit" + ds.pathInt[i]);
 
-            x = ds.nodeX[opt.path.get(i)]; 
-            y = ds.nodeY[i];
+         
 
-            x = ds.nodeX[ds.pathInt[i]]; 
-            y = ds.nodeY[ds.pathInt[i]];
+           // x[i] = ds.nodeX[ds.pathInt[i]]; 
+            //y[i] = ds.nodeY[ds.pathInt[i]];
 
             
-            System.out.println("" +x+", " +y);
+            System.out.println("tjena" +ds.x[i]+", " +y[i]);
+           if((x[i+1] - x[i] > 0) && (y[i+1] - y[i] == 0)){ //Agda kör österut
+           //Kolla två framåt: x(n+2)-x(n+1)
+                if((x(n+1) - x(n) > 0) && (y(n+1) - y(n) == 0)){
+                    btm = new BluetoothTransmitter(F);
+                }
+                else if((x(n+1) - x(n) == 0) && (y(n+1) - y(n) < 0)){
+                    btm = new BluetoothTransmitter(R);
+                } 
+                else if((x(n+1) - x(n) == 0) && (y(n+1) - y(n) > 0)){
+                    btm = new BluetoothTransmitter(L);
+                }  
+                else if((x(n+1) - x(n) > 0) && (y(n+1) - y(n) > 0)){
+                    btm = new BluetoothTransmitter(F);
+                }
+       } 
         }   
                
-       if((x(n+1) - x(n) > 0) && (y(n+1) - y(n) == 0)){ //Agda kör österut
-           //Kolla två framåt: x(n+2)-x(n+1)
-           if((x(n+1) - x(n) > 0) && (y(n+1) - y(n) == 0)){
-               btm = new BluetoothTransmitter(F);
-           }
-           else if((x(n+1) - x(n) == 0) && (y(n+1) - y(n) < 0)){
-               btm = new BluetoothTransmitter(R);
-           } 
-           else if((x(n+1) - x(n) == 0) && (y(n+1) - y(n) > 0)){
-               btm = new BluetoothTransmitter(L);
-           }  
-           else if((x(n+1) - x(n) > 0) && (y(n+1) - y(n) > 0)){
-               btm = new BluetoothTransmitter(F);
-           }
-       } 
+//       if((x[i+1] - x[i] > 0) && (y[i+1] - y[i] == 0)){ //Agda kör österut
+//           //Kolla två framåt: x(n+2)-x(n+1)
+//           if((x(n+1) - x(n) > 0) && (y(n+1) - y(n) == 0)){
+//               btm = new BluetoothTransmitter(F);
+//           }
+//           else if((x(n+1) - x(n) == 0) && (y(n+1) - y(n) < 0)){
+//               btm = new BluetoothTransmitter(R);
+//           } 
+//           else if((x(n+1) - x(n) == 0) && (y(n+1) - y(n) > 0)){
+//               btm = new BluetoothTransmitter(L);
+//           }  
+//           else if((x(n+1) - x(n) > 0) && (y(n+1) - y(n) > 0)){
+//               btm = new BluetoothTransmitter(F);
+//           }
+//       } 
        else if((x(n+1) - x(n) < 0) && (y(n+1) - y(n) == 0)){ //Agda kör västerut
            //Kolla två framåt: x(n+2)-x(n+1)
            if((x(n+1) - x(n) < 0) && (y(n+1) - y(n) == 0)){

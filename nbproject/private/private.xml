@@ -3,6 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/Users/aliceneu/Documents/grupp2/src/lastmileauto/Compass.java</file>
             <file>file:/Users/aliceneu/Documents/grupp2/src/lastmileauto/GuiUpdate.java</file>
             <file>file:/Users/aliceneu/Documents/grupp2/src/lastmileauto/MapPanel.java</file>
@@ -16,6 +17,14 @@
             <file>file:/Users/aliceneu/Documents/grupp2/src/lastmileauto/Vertex.java</file>
             <file>file:/Users/aliceneu/Documents/grupp2/src/lastmileauto/RobotRead.java</file>
             <file>file:/Users/aliceneu/Documents/grupp2/src/lastmileauto/OptPlan.java</file>
+=======
+            <file>file:/Users/Veronika/Documents/grupp2/src/lastmileauto/OptPlan.java</file>
+            <file>file:/Users/Veronika/Documents/grupp2/src/lastmileauto/Uppdrag.java</file>
+            <file>file:/Users/Veronika/Documents/grupp2/src/lastmileauto/LastMileAuto.java</file>
+            <file>file:/Users/Veronika/Documents/grupp2/src/lastmileauto/ControlUI.java</file>
+            <file>file:/Users/Veronika/Documents/grupp2/src/lastmileauto/Compass.java</file>
+            <file>file:/Users/Veronika/Documents/grupp2/src/lastmileauto/DataStore.java</file>
+>>>>>>> d8ba53d9d5987ee068f392033393b2255e88631f
         </group>
     </open-files>
 </project-private>

@@ -6,54 +6,33 @@ public class LastMileAuto {
 
     DataStore ds;
     ControlUI cui;
-    RobotRead r;
-    GuiUpdate g;
+    Compass com;
     
     LastMileAuto(){
         /*
          * Initialize the DataStore call where all "global" data will be stored
-         */
+         */ 
         ds = new DataStore();
-        //bre = new BluetoothReceiver();
 
         /*
-         * This sets the file path and read network text file. Adjust for your needs.
+         * This sets the file path and read network text file.
          */   
 
-       //ds.setFileName("C:\\Users\\Helena\\Documents\\GitHub\\grupp2/streets.txt");
-       ds.setFileName("/Users/eliselord/Documents/grupp2/streets.txt");
-       //ds.setFileName("/Users/Veronika/Desktop/streets.txt");
-       //ds.setFileName("C:\\Users\\Helena\\Documents\\GitHub\\grupp2/streets.txt");
+       ds.setFileName("C:\\Users\\Helena\\Documents\\GitHub\\grupp2/streets.txt");
        //ds.setFileName("/Users/eliselord/Documents/grupp2/streets.txt");
-       //ds.setFileName("/Users/Veronika/Desktop/streets.txt");
-       //ds.setFileName("/Users/Veronika/Desktop/streets_gammal.txt");
-       //ds.setFileName("/Users/eliselord/Documents/grupp2/streets.txt");
-       //ds.setFileName("/Users/Veronika/Desktop/streets.txt");
-       //ds.setFileName("/Users/Veronika/Desktop/streets_gammal.txt");
-      // ds.setFileName("/Users/hannamellqvist/Documents/Kandidat/grupp2/streets.txt");
-       //ds.setFileName("/Users/eliselord/Documents/grupp2/streets.txt");
-       //ds.setFileName("/Users/eliselord/Documents/grupp2/streets.txt");
-     //  ds.setFileName("/Users/Veronika/Desktop/streets.txt");
-       //ds.setFileName("/Users/Veronika/Desktop/streets_gammal.txt");
-       //ds.setFileName("/Users/hannamellqvist/Documents/Kandidat/grupp2/streets.txt");
-       //ds.setFileName("/Users/hannamellqvist/Documents/Kandidat/grupp2/streets.txt");
-       //ds.setFileName("/Users/Veronika/Desktop/streets.txt");
-       //ds.setFileName("/Users/Veronika/Desktop/streets_gammal.txt");
-       //ds.setFileName("/Users/hannamellqvist/Documents/Kandidat/grupp2/streets.txt");
-<<<<<<< HEAD
-       ds.setFileName("/Users/aliceneu/Documents/grupp2/streets.txt");
+   //    ds.setFileName("/Users/Veronika/Documents/grupp2/streets.txt");
 
-=======
-      // ds.setFileName("/Users/hannamellqvist/Documents/Kandidat/grupp2/streets.txt");
-       //ds.setFileName("/Users/aliceneu/Documents/grupp2/streets.txt");
-//       ds.setFileName("/Users/aliceneu/Documents/grupp2/streets.txt");
-//       ds.setFileName("/Users/hannamellqvist/Documents/Kandidat/grupp2/streets.txt");
-//       //ds.setFileName("/Users/aliceneu/Documents/grupp2/streets.txt");
->>>>>>> 67b5a426924dfd399b9dd0d5159a48fcf479b339
-        ds.readNet();
-        cui = new ControlUI(ds);
-        cui.setVisible(true);
-        cui.showStatus();
+       //ds.setFileName("C:\\Users\\Helena\\Documents\\GitHub\\grupp2/streets.txt");
+       //ds.setFileName("/Users/eliselord/Documents/grupp2/streets.txt");
+       //ds.setFileName("/Users/Veronika/Desktop/streets.txt");
+     //    ds.setFileName("/Users/hannamellqvist/Documents/Kandidat/grupp2/streets.txt");
+        //ds.setFileName("/Users/aliceneu/Documents/grupp2/streets.txt");
+    
+       
+       ds.readNet();
+       cui = new ControlUI(ds);
+       cui.setVisible(true);
+       cui.showStatus();
         
       //  r = new RobotRead(ds, cui); //,bre   //Tråd som lyssnar på AGV via Bluetoothreciever
       //  Thread t1 = new Thread(r);
@@ -68,9 +47,24 @@ public class LastMileAuto {
         cui.appendStatus("Avslutar main.\n");
         
         OptPlan op = new OptPlan(ds);
-        op.createPlan();
-        
+        //int [] pathInt = new int[ds.pathInt.length];
+ 
+          ds.pathInt = op.createPlan();
+       // for (int i =0; i< ds.pathInt.length; i++){
+        //System.out.println("Hej här kommer pathInt från LastMileAuto!" + ds.pathInt);
+        op.compass(ds.pathInt);
+//        for (int i=0; i<ds.nodeX.length; i++) {
+//        System.out.println("Kommandon "+ i + " : " + ds.kommandon[i]);
+//             }
+
     }
+        
+        
+        //com = new Compass();
+        //Thread t6 = new Thread(com);
+        //t6.start();
+        
+    //}
     
     /**
      * @param args the command line arguments
