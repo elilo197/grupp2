@@ -58,8 +58,11 @@ public class OptPlan {
                         && ds.arcEnd[j]==Integer.parseInt(path.get(i+1).getId()))
                 {
                     ds.arcColor[j] = 1;
-                   // System.out.println("arcStart: "+ds.arcStart[j]);
+
+                    System.out.println("Arc in shortest path: "+j);
+            // System.out.println("arcStart: "+ds.arcStart[j]);
                     //System.out.println("arcEnd: "+ds.arcEnd[j]);
+
                 }
            
             }
@@ -78,7 +81,8 @@ public class OptPlan {
             //y[i]= ds.nodeY[ds.pathInt[i]];
                     
         }   
-                ds.pathInt.add(ds.slutRutt);
+    
+        ds.pathInt.add(ds.slutRutt);
     return ds.pathInt;     
 
     }
@@ -92,11 +96,14 @@ public class OptPlan {
         
           //nodlista = createPlan(); 
           System.out.println("Nodlista från compass: " + nodlista);
-          String[] test = {"testar", "testarigen"};
+         
           
           //Här gör vi om arraylist till array med ints
           for(int i =0; i <nodlista.size(); i++)
         {
+
+
+
          nodlistaInt = nodlista.stream().mapToInt(k -> k).toArray();  
        //  System.out.println("Nodlista: " + nodlistaInt[i]);
         } 
@@ -108,32 +115,28 @@ public class OptPlan {
         y[i]= ds.nodeY[nodlistaInt[i]-1];  //+2 är fulkodning  
        //System.out.println("Koordinater från compass: " +x[i]+", " +y[i]);
     }
-    
-       // btc= new BluetoothTransceiver();
-        //btm = new BluetoothTransmitter(btc); 
+
+
      for(int i =0; i <ds.kommandon.length; i++)  {    //nodlista.size(); i++)  {
+
            if((x[i+1] - x[i] > 0) && (y[i+1] - y[i] == 0)){ //Agda kör österut
                System.out.println("Nu kör Agda österut.");
            //Kolla två framåt: x(n+2)-x(n+1)
                 if((x[i+2] - x[i+1] > 0) && (y[i+2] - y[i] == 0)){
-                //btm.send(ds.F); 
-                System.out.println("Nu ska Agda köra rakt fram.");
-                ds.kommandon[i] = ds.F;
+                    System.out.println("Nu ska Agda köra rakt fram.");
+                    ds.kommandon[i] = ds.F;
                 }
                 else if((x[i+2] - x[i+1] == 0) && (y[i+2] - y[i+1] < 0)){
-               // btm.send(ds.R);  
-               ds.kommandon[i] = ds.R;
-               System.out.println("Nu ska Agda svänga höger.");
+                    ds.kommandon[i] = ds.R;
+                System.out.println("Nu ska Agda svänga höger.");
                 } 
                 else if((x[i+2] - x[i+1] == 0) && (y[i+2] - y[i+1] > 0)){
-                 // btm.send(ds.L);
-                ds.kommandon[i] = ds.L;
-                System.out.println("Nu ska Agda svänga vänster.");
+                    ds.kommandon[i] = ds.L;
+                    System.out.println("Nu ska Agda svänga vänster.");
                 }  
                 else if((x[i+2] - x[i+1] > 0) && (y[i+2] - y[i+1] > 0)){
-                    //btm.send(ds.F);
                     System.out.println("Nu ska Agda köra rakt fram.");
-                   ds.kommandon[i] = ds.F;
+                    ds.kommandon[i] = ds.F;
                 }
             }
            
@@ -141,17 +144,14 @@ public class OptPlan {
                System.out.println("Nu kör Agda västerut.");
            //Kolla två framåt: x(n+2)-x(n+1)
                if((x[i+2] - x[i+1] < 0) && (y[i+2] - y[i+1] == 0)){
-                   // btm = new BluetoothTransmitter(F);
                    System.out.println("Nu ska Agda köra rakt fram.");
                    ds.kommandon[i] = ds.F;
                }
                else if((x[i+2] - x[i+1] == 0) && (y[i+2] - y[i+1] > 0)){
-                   // btm = new BluetoothTransmitter(R);
                    System.out.println("Nu ska Agda svänga höger.");
                    ds.kommandon[i] = ds.R;
                }
                else if((x[i+2] - x[i+1] == 0) && (y[i+2] - y[i+1] < 0)){
-                 //   btm = new BluetoothTransmitter(L);
                  System.out.println("Nu ska Agda svänga vänster.");
                  ds.kommandon[i] = ds.L;
                } 
@@ -161,29 +161,24 @@ public class OptPlan {
                //Kolla två framåt: x(n+2)-x(n+1)
                System.out.println("Nu kör Agda norrut.");
                if((x[i+2] - x[i+1] == 0) && (y[i+2] - y[i+1] > 0)){
-                   // btm = new BluetoothTransmitter(F);
-                   System.out.println("Nu ska Agda köra rakt fram.");
-                   ds.kommandon[i] = ds.F;
+                    System.out.println("Nu ska Agda köra rakt fram.");
+                    ds.kommandon[i] = ds.F;
                }
                else if((x[i+2] - x[i+1] > 0) && (y[i+2] - y[i+1] == 0)){
-                  //  btm = new BluetoothTransmitter(R);
-                  System.out.println("Nu ska Agda svänga höger.");
-                  ds.kommandon[i] = ds.R;
+                    System.out.println("Nu ska Agda svänga höger.");
+                    ds.kommandon[i] = ds.R;
                }
                else if((x[i+2] - x[i+1] < 0) && (y[i+2] - y[i+1] == 0)){
-               //     btm = new BluetoothTransmitter(L);
-               System.out.println("Nu ska Agda svänga vänster.");
-               ds.kommandon[i] = ds.L;
+                    System.out.println("Nu ska Agda svänga vänster.");
+                    ds.kommandon[i] = ds.L;
                } 
                else if((x[i+2] - x[i+1] > 0) && (y[i+2] - y[i+1] > 0)){
-               //    btm = new BluetoothTransmitter(R);
-               System.out.println("Nu ska Agda svänga höger snedsväng.");
-               ds.kommandon[i] = ds.R;
+                    System.out.println("Nu ska Agda svänga höger snedsväng.");
+                    ds.kommandon[i] = ds.R;
                }
                else if((x[i+2] - x[i+1] < 0) && (y[i+2] - y[i+1] < 0)){
-                  // btm = new BluetoothTransmitter(L);
-                  System.out.println("Nu ska Agda köra vänster snedsväng.");
-                  ds.kommandon[i] = ds.L;
+                    System.out.println("Nu ska Agda köra vänster snedsväng.");
+                    ds.kommandon[i] = ds.L;
                }
               // System.out.println("Kommandon: " + ds.kommandon[i]);
                
@@ -193,29 +188,24 @@ public class OptPlan {
                System.out.println("Nu kör Agda söderut.");
                //Kolla två framåt: x(n+2)-x(n+1)
                if((x[i+2] - x[i+1] == 0) && (y[i+2] - y[i+1] < 0)){
-                 //   btm = new BluetoothTransmitter(F);
-                 System.out.println("Nu ska Agda köra rakt fram.");
-                 ds.kommandon[i] = ds.F;
+                    System.out.println("Nu ska Agda köra rakt fram.");
+                    ds.kommandon[i] = ds.F;
                }
                else if((x[i+2] - x[i+1] < 0) && (y[i+2] - y[i+1] == 0)){
-                  //  btm = new BluetoothTransmitter(R);
-                  System.out.println("Nu ska Agda svänga höger.");
-                  ds.kommandon[i] = ds.R;
+                    System.out.println("Nu ska Agda svänga höger.");
+                    ds.kommandon[i] = ds.R;
                }
                else if((x[i+2] - x[i+1] > 0) && (y[i+2] - y[i+1] == 0)){
-                 //   btm = new BluetoothTransmitter(L);
-                 System.out.println("Nu ska Agda svänga vänster.");
-                 ds.kommandon[i] = ds.L;
+                    System.out.println("Nu ska Agda svänga vänster.");
+                    ds.kommandon[i] = ds.L;
                } 
                else if((x[i+2] - x[i+1] > 0) && (y[i+2] - y[i+1] > 0)){
-                 //  btm = new BluetoothTransmitter(L);
-                 System.out.println("Nu ska Agda svänga vänster snedsväng.");
-                 ds.kommandon[i] = ds.L;
+                    System.out.println("Nu ska Agda svänga vänster snedsväng.");
+                    ds.kommandon[i] = ds.L;
                }
                else if((x[i+2] - x[i+1] < 0) && (y[i+2] - y[i+1] < 0)){
-                  // btm = new BluetoothTransmitter(R);
-                  System.out.println("Nu ska Agda svänga höger snedsväng.");
-                  ds.kommandon[i] = ds.R;
+                    System.out.println("Nu ska Agda svänga höger snedsväng.");
+                    ds.kommandon[i] = ds.R;
                }
             }
          
@@ -225,5 +215,8 @@ public class OptPlan {
 System.out.println("Kommandon: " + ds.kommandon[i]); 
    }
          return ds.kommandon;
+
 }
+
 }
+
