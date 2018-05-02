@@ -247,5 +247,8 @@ public class OptPlan {
    
 
          return ds.kommandon;
+
+}
+     return ds.kommandon;
 }
 }
