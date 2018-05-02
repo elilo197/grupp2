@@ -4,7 +4,24 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
 <<<<<<< HEAD
+<<<<<<< HEAD
+            <file>file:/Users/hannamellqvist/Documents/Kandidat/grupp2/src/lastmileauto/GuiUpdate.java</file>
+            <file>file:/Users/hannamellqvist/Documents/Kandidat/grupp2/src/lastmileauto/Edge.java</file>
+            <file>file:/Users/hannamellqvist/Documents/Kandidat/grupp2/src/lastmileauto/RobotRead.java</file>
+            <file>file:/Users/hannamellqvist/Documents/Kandidat/grupp2/src/lastmileauto/Vertex.java</file>
+            <file>file:/Users/hannamellqvist/Documents/Kandidat/grupp2/src/lastmileauto/DijkstraAlgorithm.java</file>
+            <file>file:/Users/hannamellqvist/Documents/Kandidat/grupp2/src/lastmileauto/LastMileAuto.java</file>
+            <file>file:/Users/hannamellqvist/Documents/Kandidat/grupp2/src/lastmileauto/ControlUI.java</file>
+            <file>file:/Users/hannamellqvist/Documents/Kandidat/grupp2/src/lastmileauto/Compass.java</file>
+            <file>file:/Users/hannamellqvist/Documents/Kandidat/grupp2/src/lastmileauto/Graph.java</file>
+            <file>file:/Users/hannamellqvist/Documents/Kandidat/grupp2/src/lastmileauto/OptPlan.java</file>
+            <file>file:/Users/hannamellqvist/Documents/Kandidat/grupp2/src/lastmileauto/MapPanel.java</file>
+            <file>file:/Users/hannamellqvist/Documents/Kandidat/grupp2/src/lastmileauto/Uppdrag.java</file>
+            <file>file:/Users/hannamellqvist/Documents/Kandidat/grupp2/src/lastmileauto/DataStore.java</file>
+            <file>file:/Users/hannamellqvist/Documents/Kandidat/grupp2/src/lastmileauto/BluetoothTransceiver.java</file>
+=======
             <file>file:/C:/Users/Helena/Documents/GitHub/grupp2/src/lastmileauto/Uppdrag.java</file>
+>>>>>>> c8fc4ddf8c113eee1499d9e626a47cc64647b0dd
 =======
 <<<<<<< HEAD
             <file>file:/Users/aliceneu/Documents/grupp2/src/lastmileauto/Compass.java</file>
