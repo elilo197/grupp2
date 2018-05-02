@@ -8,8 +8,9 @@ public class BluetoothReceiver implements Runnable{
   DataStore ds;
   
     
-    public BluetoothReceiver(BluetoothTransceiver btc1) {
+    public BluetoothReceiver(BluetoothTransceiver btc1, DataStore ds) {
         this.btc = btc1;
+        this.ds = ds;
 }
     
     @Override
@@ -17,8 +18,8 @@ public class BluetoothReceiver implements Runnable{
         try{
             while(true){
                 
-                String meddelande_in = btc.bluetooth_in.readLine();
-                System.out.println("Mottaget: " + meddelande_in);
+                ds.meddelande_in = btc.bluetooth_in.readLine();
+                System.out.println("Mottaget: " + ds.meddelande_in);
      
             }
         }catch (Exception e){System.out.print(e.toString()); }

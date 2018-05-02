@@ -43,6 +43,8 @@ public class DataStore {
     String[] kommandon;
     int kapacitet = 10;
     String grupp = "2";
+    ControlUI cui;
+    String meddelande_in;
    
 
     

@@ -5,7 +5,7 @@ package lastmileauto;
 public class LastMileAuto {
 
     DataStore ds;
-    ControlUI cui;
+ //   ControlUI cui;
     
     
     LastMileAuto(){
@@ -29,16 +29,16 @@ public class LastMileAuto {
     
        
        ds.readNet();
-       cui = new ControlUI(ds);
-       cui.setVisible(true);
-       cui.showStatus();
+       ds.cui = new ControlUI(ds);
+       ds.cui.setVisible(true);
+       ds.cui.showStatus();
         
       //  r = new RobotRead(ds, cui); //,bre   //Tråd som lyssnar på AGV via Bluetoothreciever
       //  Thread t1 = new Thread(r);
                                             //Tråd som håller kontakt med AGV via BluetoothTranceiver
                                             //Tråd för resten, typ main
                                             
-        cui.appendStatus("Startar programmet \n" );
+        ds.cui.appendStatus("Startar programmet \n" );
                   
        //t1.start();
 

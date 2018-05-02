@@ -304,7 +304,7 @@ public class ControlUI extends javax.swing.JFrame {
       /*Ta bort kommentarerna nedan för att köra bluetooth!! 
       ds.btc = new BluetoothTransceiver();
       ds.btm = new BluetoothTransmitter(ds.btc);
-      ds.btr = new BluetoothReceiver(ds.btc);
+      ds.btr = new BluetoothReceiver(ds.btc, ds);
       Thread t4 = new Thread(ds.btr);
       t4.start();
       appendStatus("Bluetoothanslutning upprättad");*/

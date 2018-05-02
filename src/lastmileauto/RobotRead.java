@@ -20,18 +20,18 @@ public class RobotRead implements Runnable  {
     public RobotRead(DataStore ds, ControlUI cui ){       //, BluetoothReceiver bre) {
         this.cui = cui;
         this.ds = ds;
-        this.bre = bre;
         sleepTime = generator.nextInt (20000);
     }
 
 @Override
 public void run () {
  while (true) {// timenano = System.nanoTime();
-//    mottagenInt = Integer.parseInt(bre.mottaget); //Gör om deras string till en int innehåll nodnummer.
+     
+     
+    mottagenInt = Integer.parseInt(ds.meddelande_in); //Gör om deras string till en int innehåll nodnummer.
 
-    //meddelande = bre.getMessage();
-    if(meddelande != null){
-        cui.appendStatus(meddelande);
+    if(ds.meddelande_in != null){
+        cui.appendStatus(ds.meddelande_in);
     }  
     
    start = System.currentTimeMillis(); //start tid 
@@ -41,37 +41,28 @@ public void run () {
    while (System.currentTimeMillis() - start < 2500){
       
        // System.out.println("Tiden i millisekunder är: " + (System.currentTimeMillis() - start));
-//        if (bre.mottaget == XY){
-            // här vill vi kalla på gui update. 
-
-       // System.out.println("Tiden i millisekunder är: " + (System.currentTimeMillis() - start));
-       // System.out.println("Tiden i millisekunder är: " + (System.currentTimeMillis() - start));
-//        if (bre.mottaget == XY){
-            // här vill vi kalla på gui update. 
-        //System.out.println("Tiden i millisekunder är: " + (System.currentTimeMillis() - start));
-
-
-
-//        if (bre.mottaget =="ok"){
-//          start = System.currentTimeMillis();
-//      }
-//        else{
-//           gui = new GuiUpdate(ds, cui, mottagenInt);
-//       }
-////    
-//   }
-   cui.appendStatus("Nu har det gått för lång tid."); 
-   //Kolla connection, om ok börja om från run()
-   
-//Här borde det hända nått för att tiden är ute
-// 
-
-//}
- btc = new BluetoothTransceiver(); 
+            if(ds.meddelande_in.equals("OK")){
+                System.out.println("Vi fick meddelandet: " + ds.meddelande_in +"Borde vara OK");
+                start = System.currentTimeMillis();
+            }
+            else if(ds.meddelande_in.equals("D")){
+                System.out.println("Vi fick meddelandet: " + ds.meddelande_in +"Borde vara D");
+                
+            }
+            else{ //Vi fick in en nod. 
+                
+            }
+} // Utanför While-loopen. 
+   cui.appendStatus("Nu har det gått för lång tid är det något fel på Agda?"); 
  
- 
-}
+
 }}}
+
+
+
+  // System.out.println("Tiden i millisekunder är: " + (System.currentTimeMillis() - start));
+       // System.out.println("Tiden i millisekunder är: " + (System.currentTimeMillis() - start));
+        //System.out.println("Tiden i millisekunder är: " + (System.currentTimeMillis() - start));
 
 
 
