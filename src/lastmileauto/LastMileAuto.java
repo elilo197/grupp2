@@ -6,7 +6,6 @@ public class LastMileAuto {
 
     DataStore ds;
     ControlUI cui;
-    Compass com;
     
     LastMileAuto(){
         /*
@@ -20,7 +19,7 @@ public class LastMileAuto {
 
        //ds.setFileName("C:\\Users\\Helena\\Documents\\GitHub\\grupp2/streets.txt");
        //ds.setFileName("/Users/eliselord/Documents/grupp2/streets.txt");
-   //    ds.setFileName("/Users/Veronika/Documents/grupp2/streets.txt");
+       ds.setFileName("/Users/Veronika/Documents/grupp2/streets.txt");
 
        //ds.setFileName("C:\\Users\\Helena\\Documents\\GitHub\\grupp2/streets.txt");
        //ds.setFileName("/Users/eliselord/Documents/grupp2/streets.txt");

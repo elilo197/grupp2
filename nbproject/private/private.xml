@@ -42,10 +42,13 @@
             <file>file:/Users/Veronika/Documents/grupp2/src/lastmileauto/Uppdrag.java</file>
             <file>file:/Users/Veronika/Documents/grupp2/src/lastmileauto/LastMileAuto.java</file>
             <file>file:/Users/Veronika/Documents/grupp2/src/lastmileauto/ControlUI.java</file>
-            <file>file:/Users/Veronika/Documents/grupp2/src/lastmileauto/Compass.java</file>
             <file>file:/Users/Veronika/Documents/grupp2/src/lastmileauto/DataStore.java</file>
+<<<<<<< HEAD
+            <file>file:/Users/Veronika/Documents/grupp2/src/lastmileauto/DijkstraAlgorithm.java</file>
+=======
 >>>>>>> d8ba53d9d5987ee068f392033393b2255e88631f
 >>>>>>> 4038afc3b70eb5ea96bc54801c170ae7f4b3d64f
+>>>>>>> c8fc4ddf8c113eee1499d9e626a47cc64647b0dd
         </group>
     </open-files>
 </project-private>
