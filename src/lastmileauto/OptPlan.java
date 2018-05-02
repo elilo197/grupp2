@@ -58,8 +58,12 @@ public class OptPlan {
                         && ds.arcEnd[j]==Integer.parseInt(path.get(i+1).getId()))
                 {
                     ds.arcColor[j] = 1;
+<<<<<<< HEAD
+                    System.out.println("Arc in shortest path: "+j);
+=======
                    // System.out.println("arcStart: "+ds.arcStart[j]);
                     //System.out.println("arcEnd: "+ds.arcEnd[j]);
+>>>>>>> 4038afc3b70eb5ea96bc54801c170ae7f4b3d64f
                 }
            
             }
@@ -97,11 +101,26 @@ public class OptPlan {
           //Här gör vi om arraylist till array med ints
           for(int i =0; i <nodlista.size(); i++)
         {
+<<<<<<< HEAD
+//             x = new double[ds.pathInt.length];
+//             y = new double[ds.pathInt.length];
+//            x[i] = ds.nodeX[ds.pathInt[i]]; //Måste vi kalla på dessa igen? kan det göras på något annat sätt?
+//            y[i]= ds.nodeY[ds.pathInt[i]];
+            //ds.pathInt[i] = Integer.parseInt(path.get(i).getId());
+           
+        System.out.println("Nodnr från compass: " + ds.pathInt[i]); //bågens nummer
+        System.out.println("Koordinater från compass: " +x[i]+", " +y[i]);
+        //btc= new BluetoothTransceiver();
+        //btm = new BluetoothTransmitter(btc); 
+   
+           // System.out.println("tjena" +ds.nodeX[i]+", " +ds.nodeY[i]);
+=======
          nodlistaInt = nodlista.stream().mapToInt(k -> k).toArray();  
          System.out.println("Nodlista: " + nodlistaInt[i]);
         } 
-        
-    for(int i =0; i <nodlista.size(); i++)  {  
+     
+          
+    for(int i =0; i <nodlista.size(); i++)  {    
          
         x[i] = ds.nodeX[nodlistaInt[i]-1]; //+2 är fulkodning
         y[i]= ds.nodeY[nodlistaInt[i]-1];  //+2 är fulkodning  
@@ -110,7 +129,12 @@ public class OptPlan {
     
        // btc= new BluetoothTransceiver();
         //btm = new BluetoothTransmitter(btc); 
+<<<<<<< HEAD
      for(int i =0; i <nodlista.size(); i++)  {
+>>>>>>> 4038afc3b70eb5ea96bc54801c170ae7f4b3d64f
+=======
+     for(int i =0; i <ds.kommandon.length; i++)  {    //nodlista.size(); i++)  {
+>>>>>>> c8fc4ddf8c113eee1499d9e626a47cc64647b0dd
            if((x[i+1] - x[i] > 0) && (y[i+1] - y[i] == 0)){ //Agda kör österut
                System.out.println("Nu kör Agda österut.");
            //Kolla två framåt: x(n+2)-x(n+1)
