@@ -24,7 +24,7 @@ public class Uppdrag {
     int [] linkNod2;
     OptPlan opt;
     OptPlan [] oppis;
-   String narmstaPlats = "Start";
+   String narmstaPlats;// = "Start";
    String id; 
    String pax;
    String [] uppdragsid;
@@ -34,7 +34,8 @@ public class Uppdrag {
    int [] poang;
    int[] destNod1;
    int[] destNod2;
-   String valtUppdrag = "Start";
+   String valtUppdrag;// = "Start";
+   String svar;
    
 
 
@@ -45,10 +46,11 @@ public class Uppdrag {
         this.ds = ds;
         listaplatser();
         valtUppdrag = listauppdrag(narmstaPlats);           //Skickar in upphämtningsplats, skickar ut vilket uppdrag vi väljer
-        narmstaPlats = getPlats(valtUppdrag);               //Skickar ut upphämtningsplats
-        id = getId(valtUppdrag);                            //Skickar ut id-nr på det valda uppdraget
-        pax = getPassagerare(valtUppdrag);                  //Skickar ut passagerarantal på det valda uppdraget
-        tauppdrag(narmstaPlats, id, pax, ds.grupp);
+         pax = getPassagerare(valtUppdrag);                  //Skickar ut passagerarantal på det valda uppdraget
+       //tauppdrag(narmstaPlats, valtUppdrag, pax, ds.grupp);
+        aterstall("1");
+        
+        
     }   
 
     /** Här listar vi antalet upphämtningsplatser och beräknar vilken som är närmast. 
@@ -241,7 +243,8 @@ public class Uppdrag {
             + ", har " + passant[k-1] + " st passagerare, har följande åsikt till samåkning: " + samaka[k-1]
             + " och ger " + poang[k-1] + " poäng.");      
         }
-
+        
+             
         for(int j = 0; j <IntStorlek; j++){
             sline = destination[j].split(",");    
             destNod1[j] =Integer.parseInt(sline[0]);
@@ -249,41 +252,42 @@ public class Uppdrag {
             System.out.println("Destinationens noder är: " + destNod1[j] + " och " + destNod2[j]);
         }
         
-        
+          System.out.println("Uppdragsid: " + uppdragsid[0]);
+ 
         //Välj uppdrag
         for (int j=0; j<IntStorlek; j++){
-            if (passant[j]<ds.kapacitet) {
-           
+
+            if (passant[j]<=ds.kapacitet) {
                 valtUppdrag = uppdragsid[j];
                 break;
                    
             }
+            
+            else if (j==IntStorlek-1) {
+                System.out.println("För mycket folk!");
+                //Här borde vi börja om på nått sätt, typ kalla på listaplatser och listauppdrag igen
+            }
         }
-  
-       }
+        }
           
     
      catch (Exception e) { System.out.print(e.toString()); }
      
+     System.out.println("Valt uppdrag: " + valtUppdrag);
      return valtUppdrag;
     }     
+
+    public String getId(String valtUppdrag){
+        id = uppdragsid[Integer.parseInt(valtUppdrag)];
+        return id;
+    }
    
-    public String getPlats(String valtUppdrag){
-         return narmstaPlats; 
-    }
-    
-      public String getId(String valtUppdrag){
-          
-      id = uppdragsid[Integer.parseInt(valtUppdrag)];
-        
-        return id; 
-    }
-    
       public String getPassagerare(String valtUppdrag){
       int uppdragInt = Integer.parseInt(valtUppdrag);
-      int paxInt = passant[Integer.parseInt(valtUppdrag)];    
-      pax = Integer.toString(paxInt);  
-        
+    int paxInt = passant[Integer.parseInt(valtUppdrag)-1]; 
+   
+        pax = Integer.toString(paxInt);  
+        //pax = "2";
       return pax; 
     }
       
@@ -305,12 +309,6 @@ public class Uppdrag {
         */
     try {
 
-         //Uppdrag http = new Uppdrag();
-         //Glöm ej att ändra gruppnummer till 2
-         String X = "Test";
-//         String id = "1";
-//         String pax = "8";
-//         String grupp = "2";
          String url = " http://tnk111.n7.se/tauppdrag.php?plats=" + plats + "&id="+id+"&passagerare="+pax+"&grupp="+grupp; 
          URL urlobjekt = new URL(url);       
          HttpURLConnection anslutning = (HttpURLConnection)
@@ -335,24 +333,43 @@ public class Uppdrag {
         //String [] ink_sam = inkommande_samlat.split(" "); Skapa mellanrum mellan de olika raderna EJ KLART
         inkommande.close();
         
-        //Testa följande typ av loop för att försöka splitta
-//        for (int i=0; i < nodes; i++){
-//                line = scanner.nextLine();
-//                //split space separated data on line
-//                sline = line.split(" ");
-//                nodeX[i] = Double.parseDouble(sline[1].trim());
-
-        System.out.println(inkommande_samlat.toString());
+        String inkommande_string = inkommande_samlat.toString();
+        System.out.println(inkommande_string);
         
         }
     
      catch (Exception e) { System.out.print(e.toString()); }
        
-    return plats;
+    return svar;
     }
      
-    public static String aterstall(String scenario){
-    return scenario;
+    public String aterstall(String scenario){       //var static från början
+         try {
+
+         String url = " http://tnk111.n7.se/aterstall.php?scenario=" + scenario; 
+         URL urlobjekt = new URL(url);       
+         HttpURLConnection anslutning = (HttpURLConnection)
+         urlobjekt.openConnection();
+
+        System.out.println("\nAnropar: " + url);
+ 
+        BufferedReader inkommande = new BufferedReader(new
+
+        InputStreamReader(anslutning.getInputStream()));
+        String inkommande_text;
+        StringBuffer inkommande_samlat = new StringBuffer();
+ 
+        while ((inkommande_text = inkommande.readLine()) != null) {
+                inkommande_samlat.append(inkommande_text);
+        }
+  
+        inkommande.close();
+        
+        String inkommande_string = inkommande_samlat.toString();
+        System.out.println(inkommande_string);
+         }
+          catch (Exception e) { System.out.print(e.toString()); }
+    return svar;
     }
 
     public static void messtogroup() {
