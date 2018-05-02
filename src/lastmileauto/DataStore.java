@@ -45,7 +45,7 @@ public class DataStore {
     String grupp = "2";
     ControlUI cui;
     String meddelande_in;
-   
+    int mottagenInt;
 
     
     public DataStore() {

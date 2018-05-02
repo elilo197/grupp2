@@ -57,6 +57,11 @@ public class Uppdrag {
        
             if (svaruppdrag.equals("beviljas")){
                 
+                for(int i=0; i <128; i++){
+            
+                    ds.arcColor[i] = 0;           
+            }
+                
             ds.startRutt = ds.robotpos;        
             ds.slutRutt = linkNod1[Integer.parseInt(valtUppdrag)-1];
                          
@@ -68,6 +73,8 @@ public class Uppdrag {
                          
             oppis2 = new OptPlan(ds);
             oppis2.createPlan();
+            
+            ds.cui.repaint();
              
             // Här ska vi på något sätt få rutten att ritas ut. 
                 
