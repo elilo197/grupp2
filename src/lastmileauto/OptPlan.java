@@ -58,7 +58,7 @@ public class OptPlan {
                         && ds.arcEnd[j]==Integer.parseInt(path.get(i+1).getId()))
                 {
                     ds.arcColor[j] = 1;
-                   // System.out.println("Arc in shortest path: "+j);
+                    System.out.println("Arc in shortest path: "+j);
                 }
            
             }
@@ -98,8 +98,8 @@ public class OptPlan {
            
         System.out.println("Nodnr från compass: " + ds.pathInt[i]); //bågens nummer
         System.out.println("Koordinater från compass: " +x[i]+", " +y[i]);
-        btc= new BluetoothTransceiver();
-        btm = new BluetoothTransmitter(btc); 
+        //btc= new BluetoothTransceiver();
+        //btm = new BluetoothTransmitter(btc); 
    
            // System.out.println("tjena" +ds.nodeX[i]+", " +ds.nodeY[i]);
            if((x[i+1] - x[i] > 0) && (y[i+1] - y[i] == 0)){ //Agda kör österut
