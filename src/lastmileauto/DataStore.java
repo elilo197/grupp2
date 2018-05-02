@@ -41,7 +41,7 @@ public class DataStore {
     int[] tot_arcCost;
     int robotpos = start;       //Robotens aktuella position, initieras till startpositionen
     String[] kommandon;
-    int kapacitet = 4;
+    int kapacitet = 10;
     String grupp = "2";
    
 

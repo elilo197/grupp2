@@ -59,7 +59,7 @@ public class OptPlan {
                 {
                     ds.arcColor[j] = 1;
 
-                    System.out.println("Arc in shortest path: "+j);
+                  //  System.out.println("Arc in shortest path: "+j);
             // System.out.println("arcStart: "+ds.arcStart[j]);
                     //System.out.println("arcEnd: "+ds.arcEnd[j]);
 
@@ -101,11 +101,8 @@ public class OptPlan {
           //Här gör vi om arraylist till array med ints
           for(int i =0; i <nodlista.size(); i++)
         {
-
-
-
-         nodlistaInt = nodlista.stream().mapToInt(k -> k).toArray();  
-       //  System.out.println("Nodlista: " + nodlistaInt[i]);
+        nodlistaInt = nodlista.stream().mapToInt(k -> k).toArray();  
+         System.out.println("Nodlista: " + nodlistaInt[i]);
         } 
      
           
