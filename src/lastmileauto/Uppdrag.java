@@ -175,7 +175,7 @@ public class Uppdrag {
         */
     
    
-    public String  listauppdrag(String plats){      //var static från början
+    public String listauppdrag(String plats){      //var static från början
        ArrayList<String> inkuppdrag = new ArrayList<String>();
              
      /**
@@ -288,7 +288,6 @@ public class Uppdrag {
     }
       
     
-     
     //Kan behövas ändras till en String[], själva metoden
     public  String tauppdrag(String plats, String id, String pax, String grupp){    //Denna var static
        System.out.println("I tauppdrag kommer följande in: Plats: " + plats + " Id: " + id + " Pax: " + pax + " Grupp: " + grupp);
