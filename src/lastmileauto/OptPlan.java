@@ -96,21 +96,13 @@ public class OptPlan {
         
           //nodlista = createPlan(); 
           System.out.println("Nodlista från compass: " + nodlista);
-          String[] test = {"testar", "testarigen"};
+         
           
           //Här gör vi om arraylist till array med ints
           for(int i =0; i <nodlista.size(); i++)
         {
 
-//             x = new double[ds.pathInt.length];
-//             y = new double[ds.pathInt.length];
-//            x[i] = ds.nodeX[ds.pathInt[i]]; //Måste vi kalla på dessa igen? kan det göras på något annat sätt?
-//            y[i]= ds.nodeY[ds.pathInt[i]];
-            //ds.pathInt[i] = Integer.parseInt(path.get(i).getId());
-           
-       // System.out.println("Nodnr från compass: " + ds.pathInt[i]); //bågens nummer
-        //System.out.println("Koordinater från compass: " +x[i]+", " +y[i]);
-        // System.out.println("tjena" +ds.nodeX[i]+", " +ds.nodeY[i]);
+
 
          nodlistaInt = nodlista.stream().mapToInt(k -> k).toArray();  
          System.out.println("Nodlista: " + nodlistaInt[i]);
