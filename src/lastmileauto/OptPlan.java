@@ -109,7 +109,7 @@ public class OptPlan {
             //ds.pathInt[i] = Integer.parseInt(path.get(i).getId());
            
        // System.out.println("Nodnr från compass: " + ds.pathInt[i]); //bågens nummer
-        System.out.println("Koordinater från compass: " +x[i]+", " +y[i]);
+        //System.out.println("Koordinater från compass: " +x[i]+", " +y[i]);
         // System.out.println("tjena" +ds.nodeX[i]+", " +ds.nodeY[i]);
 
          nodlistaInt = nodlista.stream().mapToInt(k -> k).toArray();  
