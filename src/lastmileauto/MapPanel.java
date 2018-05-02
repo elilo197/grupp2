@@ -66,9 +66,6 @@ public class MapPanel extends JPanel {
                 g.drawLine(x1, height - y1, x2, height - y2);
                 
                 
-                // Glöm ej ta bort denna sen !
-               // System.out.println("Arc "+j+": "+ds.arcStart[i]+" "+ds.arcEnd[i]);
-                
                 // arcCost
                 x = Math.abs(x1 - x2);
                 y = Math.abs(y1 - y2);
@@ -76,18 +73,7 @@ public class MapPanel extends JPanel {
                 ds.tot_arcCost[i] = x + y; // här är skillnaden, fyller liksom ds variabeln här så vi kan hämta den i ds sen 
  
                 g.drawString("" + ds.tot_arcCost[i], (x1+x2)/2,((height - y1 ) + (height - y2))/2);
-                //System.out.println("Bågkostnad båge " + i + ": " + tot_arcCost[i]);
-//                
-//                int tot_arcCost = x + y;
-//                g.drawString("" + tot_arcCost, (x1+x2)/2,((height - y1 ) + (height - y2))/2);
-//                System.out.println(tot_arcCost);
-             
-                // glöm ej ta bort denna sen !
-                // System.out.println("Arc cost: " + tot_arcCost + "\n");
-             
-                
-           
-            }
+              }
 
             // Draw robot
             robotPosX = (int)((ds.robotX) * xscale);
