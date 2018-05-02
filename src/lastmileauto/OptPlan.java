@@ -107,7 +107,7 @@ public class OptPlan {
 //            y[i]= ds.nodeY[ds.pathInt[i]];
             //ds.pathInt[i] = Integer.parseInt(path.get(i).getId());
            
-        System.out.println("Nodnr från compass: " + ds.pathInt[i]); //bågens nummer
+       // System.out.println("Nodnr från compass: " + ds.pathInt[i]); //bågens nummer
         System.out.println("Koordinater från compass: " +x[i]+", " +y[i]);
         //btc= new BluetoothTransceiver();
         //btm = new BluetoothTransmitter(btc); 
@@ -129,7 +129,7 @@ public class OptPlan {
        // btc= new BluetoothTransceiver();
         //btm = new BluetoothTransmitter(btc); 
 
-     for(int i =0; i <nodlista.size(); i++)  {
+
 
      for(int i =0; i <ds.kommandon.length; i++)  {    //nodlista.size(); i++)  {
 
