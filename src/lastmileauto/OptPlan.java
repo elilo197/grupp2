@@ -79,8 +79,7 @@ public class OptPlan {
             //x[i] = ds.nodeX[ds.pathInt[i]]; 
             //y[i]= ds.nodeY[ds.pathInt[i]];
                     
-        }   
-      }   
+        }     
     
         ds.pathInt.add(ds.slutRutt);
     return ds.pathInt;     
@@ -216,4 +215,3 @@ System.out.println("Kommandon: " + ds.kommandon[i]);
 }
 
 }
-
