@@ -100,8 +100,9 @@ public class OptPlan {
          nodlistaInt = nodlista.stream().mapToInt(k -> k).toArray();  
          System.out.println("Nodlista: " + nodlistaInt[i]);
         } 
-        
-    for(int i =0; i <nodlista.size(); i++)  {  
+     
+          
+    for(int i =0; i <nodlista.size(); i++)  {    
          
         x[i] = ds.nodeX[nodlistaInt[i]-1]; //+2 är fulkodning
         y[i]= ds.nodeY[nodlistaInt[i]-1];  //+2 är fulkodning  
@@ -110,7 +111,7 @@ public class OptPlan {
     
        // btc= new BluetoothTransceiver();
         //btm = new BluetoothTransmitter(btc); 
-     for(int i =0; i <nodlista.size(); i++)  {
+     for(int i =0; i <ds.kommandon.length; i++)  {    //nodlista.size(); i++)  {
            if((x[i+1] - x[i] > 0) && (y[i+1] - y[i] == 0)){ //Agda kör österut
                System.out.println("Nu kör Agda österut.");
            //Kolla två framåt: x(n+2)-x(n+1)
