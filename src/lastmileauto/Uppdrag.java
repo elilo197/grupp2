@@ -25,14 +25,30 @@ public class Uppdrag {
     OptPlan opt;
     OptPlan [] oppis;
    String narmstaPlats = "Start";
+   String id; 
+   String pax;
+   String [] uppdragsid;
+   String [] destination;
+   int [] passant; 
+   int [] samaka;
+   int [] poang;
+   int[] destNod1;
+   int[] destNod2;
+   String valtUppdrag = "Start";
+   
+
+
 
     
 
     public Uppdrag(DataStore ds) {
         this.ds = ds;
         listaplatser();
-        listauppdrag(narmstaPlats);
-     
+        valtUppdrag = listauppdrag(narmstaPlats);           //Skickar in upphämtningsplats, skickar ut vilket uppdrag vi väljer
+        narmstaPlats = getPlats(valtUppdrag);               //Skickar ut upphämtningsplats
+        id = getId(valtUppdrag);                            //Skickar ut id-nr på det valda uppdraget
+        pax = getPassagerare(valtUppdrag);                  //Skickar ut passagerarantal på det valda uppdraget
+        tauppdrag(narmstaPlats, id, pax, ds.grupp);
     }   
 
     /** Här listar vi antalet upphämtningsplatser och beräknar vilken som är närmast. 
@@ -160,17 +176,8 @@ public class Uppdrag {
     
    
     public String  listauppdrag(String plats){      //var static från början
-        String x = "Hej"; //Ta bort sen
-        String [] uppdragsid;
-        String [] destination;
-        int [] passant; 
-        int [] samaka;
-        int [] poang;
-        int[] destNod1;
-        int[] destNod2;
-        ArrayList<String> inkuppdrag = new ArrayList<String>();
-        String valtUppdrag = "Start";
-        
+       ArrayList<String> inkuppdrag = new ArrayList<String>();
+             
      /**
      *Kalla på Compass och kör till platsen
      *String X = "A";
@@ -242,50 +249,49 @@ public class Uppdrag {
             System.out.println("Destinationens noder är: " + destNod1[j] + " och " + destNod2[j]);
         }
         
+        
+        //Välj uppdrag
         for (int j=0; j<IntStorlek; j++){
             if (passant[j]<ds.kapacitet) {
-                
-                
+           
+                valtUppdrag = uppdragsid[j];
+                break;
+                   
             }
-          
         }
-        
-      
-        
+  
        }
           
     
      catch (Exception e) { System.out.print(e.toString()); }
-   //  System.out.println("Inkuppdrag: " + inkuppdrag.get(2));
-      return valtUppdrag;
+     
+     return valtUppdrag;
     }     
    
-    public String getPlats(ArrayList<String> uppdragslista){
-     
-        
-        
-        return plats; 
+    public String getPlats(String valtUppdrag){
+         return narmstaPlats; 
     }
     
-      public String getId(String uppdragslista){
-        
+      public String getId(String valtUppdrag){
+          
+      id = uppdragsid[Integer.parseInt(valtUppdrag)];
         
         return id; 
     }
     
-      public String getPassagerare(String uppdragslista){
+      public String getPassagerare(String valtUppdrag){
+      int uppdragInt = Integer.parseInt(valtUppdrag);
+      int paxInt = passant[Integer.parseInt(valtUppdrag)];    
+      pax = Integer.toString(paxInt);  
         
-        
-        return pax; 
+      return pax; 
     }
       
     
-    
-    
-    
+     
     //Kan behövas ändras till en String[], själva metoden
-    public static String tauppdrag(String plats, String id, String pax, String grupp){
-       
+    public  String tauppdrag(String plats, String id, String pax, String grupp){    //Denna var static
+       System.out.println("I tauppdrag kommer följande in: Plats: " + plats + " Id: " + id + " Pax: " + pax + " Grupp: " + grupp);
         /**Ta första uppdaget och kolla om kapacitet är ok
             *Om kapacitet är ok --> kolla om samåkning är ok
                 *Om samåkning är ok, kolla vidare i listan och spara "nuvarande" passagerare
@@ -337,7 +343,6 @@ public class Uppdrag {
 //                nodeX[i] = Double.parseDouble(sline[1].trim());
 
         System.out.println(inkommande_samlat.toString());
-        System.out.println("Hej");
         
         }
     
