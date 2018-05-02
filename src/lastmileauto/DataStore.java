@@ -45,9 +45,8 @@ public class DataStore {
     String grupp = "2";
     ControlUI cui;
     String meddelande_in;
-    int mottagenInt;
+    int mottagenInt = 21;
 
-    
     public DataStore() {
         // Initialize the datastore with fixed size arrays for storing the network data
         nodes = 0; 
