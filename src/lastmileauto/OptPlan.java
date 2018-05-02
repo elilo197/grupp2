@@ -98,7 +98,7 @@ public class OptPlan {
           for(int i =0; i <nodlista.size(); i++)
         {
          nodlistaInt = nodlista.stream().mapToInt(k -> k).toArray();  
-         System.out.println("Nodlista: " + nodlistaInt[i]);
+       //  System.out.println("Nodlista: " + nodlistaInt[i]);
         } 
      
           
@@ -106,7 +106,7 @@ public class OptPlan {
          
         x[i] = ds.nodeX[nodlistaInt[i]-1]; //+2 är fulkodning
         y[i]= ds.nodeY[nodlistaInt[i]-1];  //+2 är fulkodning  
-       System.out.println("Koordinater från compass: " +x[i]+", " +y[i]);
+       //System.out.println("Koordinater från compass: " +x[i]+", " +y[i]);
     }
     
        // btc= new BluetoothTransceiver();
@@ -219,7 +219,7 @@ public class OptPlan {
                }
             }
          
-             System.out.println(ds.kommandon[i]); 
+         //    System.out.println(ds.kommandon[i]); 
      }
    
 

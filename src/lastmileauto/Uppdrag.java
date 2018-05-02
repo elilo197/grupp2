@@ -117,11 +117,6 @@ public class Uppdrag {
             for (int i=0; i< oppis[j].path.size(); i++){      
          
             int vertexint = Integer.parseInt(oppis[j].path.get(i).getId()); //Gör om path till ints
-                                                        
-             // total_arccost = map.getTotalArcCost();          //PROBLEM!!! Blir null.
-             // Istället för detta skriver vi bara ds.tot_arcCost[i] och den vi vill ha se nedan.                                  
-              kostnad = ds.tot_arcCost[vertexint];
-
              
              // total_arccost = map.getTotalArcCost();          //PROBLEM!!! Blir null.
              // Istället för detta skriver vi bara ds.tot_arcCost[i] och den vi vill ha se nedan.                                  

@@ -8,6 +8,7 @@ public class LastMileAuto {
     ControlUI cui;
     Compass com;
     
+    
     LastMileAuto(){
         /*
          * Initialize the DataStore call where all "global" data will be stored
@@ -44,7 +45,7 @@ public class LastMileAuto {
        //t1.start();
 
         
-        cui.appendStatus("Avslutar main.\n");
+       // cui.appendStatus("Avslutar main.\n");
         
         OptPlan op = new OptPlan(ds);
         //int [] pathInt = new int[ds.pathInt.length];
@@ -56,6 +57,9 @@ public class LastMileAuto {
 //        for (int i=0; i<ds.nodeX.length; i++) {
 //        System.out.println("Kommandon "+ i + " : " + ds.kommandon[i]);
 //             }
+
+        
+
 
     }
         
