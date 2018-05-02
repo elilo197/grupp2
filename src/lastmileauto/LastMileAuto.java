@@ -6,7 +6,6 @@ public class LastMileAuto {
 
     DataStore ds;
     ControlUI cui;
-    Compass com;
     
     LastMileAuto(){
         /*

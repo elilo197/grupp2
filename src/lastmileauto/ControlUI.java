@@ -11,7 +11,7 @@ public class ControlUI extends javax.swing.JFrame {
     // I orginalen är det bara en datastore. 
     DataStore ds;
     ControlUI cui;
-    Compass com;
+    
     /**
      * Creates new form ControlUI
      */
