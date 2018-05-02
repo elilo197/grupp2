@@ -75,8 +75,6 @@ public class Uppdrag {
             oppis2.createPlan();
             
             ds.cui.repaint();
-             
-            // Här ska vi på något sätt få rutten att ritas ut. 
                 
             ds.startRutt = destNod1[Integer.parseInt(valtUppdrag)-1];
   
