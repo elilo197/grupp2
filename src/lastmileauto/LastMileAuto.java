@@ -42,32 +42,16 @@ public class LastMileAuto {
                   
        //t1.start();
 
-        
-       // cui.appendStatus("Avslutar main.\n");
-        
+     
         OptPlan op = new OptPlan(ds);
-        //int [] pathInt = new int[ds.pathInt.length];
- 
+    
           ds.pathInt = op.createPlan();
-       // for (int i =0; i< ds.pathInt.length; i++){
-        //System.out.println("Hej här kommer pathInt från LastMileAuto!" + ds.pathInt);
-        op.compass(ds.pathInt);
-//        for (int i=0; i<ds.nodeX.length; i++) {
-//        System.out.println("Kommandon "+ i + " : " + ds.kommandon[i]);
-//             }
-
-        
-
+          op.compass(ds.pathInt);
 
     }
         
         
-        //com = new Compass();
-        //Thread t6 = new Thread(com);
-        //t6.start();
-        
-    //}
-    
+   
     /**
      * @param args the command line arguments
      */

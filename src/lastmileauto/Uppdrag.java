@@ -36,6 +36,9 @@ public class Uppdrag {
    int[] destNod2;
    String valtUppdrag;// = "Start";
    String svar;
+   OptPlan oppis1;
+   OptPlan oppis2;
+   MapPanel map;
    
 
 
@@ -46,12 +49,43 @@ public class Uppdrag {
         this.ds = ds;
         listaplatser();
         valtUppdrag = listauppdrag(narmstaPlats);           //Skickar in upphämtningsplats, skickar ut vilket uppdrag vi väljer
-         pax = getPassagerare(valtUppdrag);                  //Skickar ut passagerarantal på det valda uppdraget
-       //tauppdrag(narmstaPlats, valtUppdrag, pax, ds.grupp);
+        pax = getPassagerare(valtUppdrag);                  //Skickar ut passagerarantal på det valda uppdraget
+        
+        
+       String svaruppdrag = tauppdrag(narmstaPlats, valtUppdrag, pax, ds.grupp);
+       
+            if (svaruppdrag.equals("beviljas")){
+                
+            ds.startRutt = ds.robotpos;        
+            ds.slutRutt = linkNod1[Integer.parseInt(valtUppdrag)-1];
+                         
+            oppis1 = new OptPlan(ds);
+            oppis1.createPlan();
+            map = new MapPanel(ds);
+//            map.paintComponent(g);
+//            
+            ds.startRutt = linkNod1[Integer.parseInt(valtUppdrag)-1];       
+            ds.slutRutt = destNod1[Integer.parseInt(valtUppdrag)-1];
+                         
+            oppis2 = new OptPlan(ds);
+            oppis2.createPlan();
+            
+            
+            
+                
+                
+            ds.startRutt = destNod1[Integer.parseInt(valtUppdrag)-1];
+  
+        }
+        else {System.out.println("Svar från hemsida: " + svaruppdrag);}
+        
+        
+        
         aterstall("1");
         
         
-    }   
+    
+    }
 
     /** Här listar vi antalet upphämtningsplatser och beräknar vilken som är närmast. 
      */
@@ -284,7 +318,8 @@ public class Uppdrag {
    
       public String getPassagerare(String valtUppdrag){
       int uppdragInt = Integer.parseInt(valtUppdrag);
-    int paxInt = passant[Integer.parseInt(valtUppdrag)-1]; 
+      System.out.println("Passant index: " + Integer.parseInt(valtUppdrag));
+       int paxInt = passant[Integer.parseInt(valtUppdrag)-1]; 
    
         pax = Integer.toString(paxInt);  
         //pax = "2";
@@ -335,7 +370,8 @@ public class Uppdrag {
         
         String inkommande_string = inkommande_samlat.toString();
         System.out.println(inkommande_string);
-        
+        svar = inkommande_string;
+
         }
     
      catch (Exception e) { System.out.print(e.toString()); }
