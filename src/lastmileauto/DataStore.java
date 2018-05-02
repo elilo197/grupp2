@@ -42,6 +42,7 @@ public class DataStore {
     int robotpos = start;       //Robotens aktuella position, initieras till startpositionen
     String[] kommandon;
     int kapacitet = 4;
+    String grupp = "2";
    
 
     
