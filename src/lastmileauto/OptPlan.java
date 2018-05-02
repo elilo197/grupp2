@@ -72,7 +72,6 @@ public class OptPlan {
             //Gör om till int. 
             ds.pathInt.add(Integer.parseInt(path.get(i).getId()));
   
- 
             //System.out.println("pathInt: " + ds.pathInt);
 
             
