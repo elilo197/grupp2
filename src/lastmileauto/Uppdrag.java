@@ -24,7 +24,7 @@ public class Uppdrag {
     int [] linkNod2;
     OptPlan opt;
     OptPlan [] oppis;
-    String narmstaPlats = "Start";
+   String narmstaPlats = "Start";
 
     
 
@@ -159,7 +159,7 @@ public class Uppdrag {
         */
     
    
-    public  String listauppdrag(String plats){      //var static från början
+    public String  listauppdrag(String plats){      //var static från början
         String x = "Hej"; //Ta bort sen
         String [] uppdragsid;
         String [] destination;
@@ -168,6 +168,8 @@ public class Uppdrag {
         int [] poang;
         int[] destNod1;
         int[] destNod2;
+        ArrayList<String> inkuppdrag = new ArrayList<String>();
+        String valtUppdrag = "Start";
         
      /**
      *Kalla på Compass och kör till platsen
@@ -196,7 +198,7 @@ public class Uppdrag {
         String inkommande_text;
         StringBuffer inkommande_samlat = new StringBuffer();
         
-         ArrayList<String> inkuppdrag = new ArrayList<String>();
+      
         
          while ((inkommande_text = inkommande.readLine()) != null) {
                  inkommande_samlat.append(inkommande_text); 
@@ -206,9 +208,7 @@ public class Uppdrag {
           inkommande.close();
   
              for(int k = 0; k < inkuppdrag.size(); k++){
-            //System.out.println("Inkuppdrag: " + inkuppdrag.get(k));
-         }
-       
+               }
         
         //Variabler
         String StringStorlek = inkuppdrag.get(0);
@@ -241,14 +241,44 @@ public class Uppdrag {
             destNod2[j] =Integer.parseInt(sline[1]);
             System.out.println("Destinationens noder är: " + destNod1[j] + " och " + destNod2[j]);
         }
+        
+        for (int j=0; j<IntStorlek; j++){
+            if (passant[j]<ds.kapacitet) {
+                
+                
+            }
+          
+        }
+        
+      
+        
        }
           
     
      catch (Exception e) { System.out.print(e.toString()); }
-      return x; //Ta bort sen
+   //  System.out.println("Inkuppdrag: " + inkuppdrag.get(2));
+      return valtUppdrag;
     }     
+   
+    public String getPlats(ArrayList<String> uppdragslista){
+     
+        
+        
+        return plats; 
+    }
     
+      public String getId(String uppdragslista){
+        
+        
+        return id; 
+    }
     
+      public String getPassagerare(String uppdragslista){
+        
+        
+        return pax; 
+    }
+      
     
     
     

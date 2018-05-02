@@ -219,10 +219,11 @@ public class OptPlan {
                }
             }
          
-         //    System.out.println(ds.kommandon[i]); 
+             System.out.println(ds.kommandon[i]); 
      }
-   
-
+   for (int i =0; i<ds.kommandon.length; i++){
+System.out.println("Kommandon: " + ds.kommandon[i]); 
+   }
          return ds.kommandon;
 }
 }
