@@ -47,7 +47,7 @@ public class Uppdrag {
 
     public Uppdrag(DataStore ds) { 
         aterstall("1");
-        messfromgroup();
+        //messfromgroup();
         this.ds = ds;
         listaplatser();
         valtUppdrag = listauppdrag(narmstaPlats);           //Skickar in upphämtningsplats, skickar ut vilket uppdrag vi väljer
