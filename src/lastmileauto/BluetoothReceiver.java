@@ -3,7 +3,6 @@ package lastmileauto;
 //hcitool scan = visar alla tillgängliga enheter
 //sdptool browse 20:16:01:20:56:82:1 
 
-import static lastmileauto.RobotRead.isNumeric;
 
 public class BluetoothReceiver implements Runnable{
   BluetoothTransceiver btc;
