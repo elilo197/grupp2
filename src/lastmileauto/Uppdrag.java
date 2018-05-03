@@ -477,7 +477,7 @@ public class Uppdrag {
             
          String x = "Hej"; 
          //Uppdrag http = new Uppdrag();
-         String url = "  http://tnk111.n7.se/getmessage.php?messagetype=" + x; //x är det meddelande vi hämtar
+         String url = "  http://tnk111.n7.se/getmessage.php?messagetype=2"; //Ändra messagetyp
          URL urlobjekt = new URL(url);       
          HttpURLConnection anslutning = (HttpURLConnection)
          urlobjekt.openConnection();
