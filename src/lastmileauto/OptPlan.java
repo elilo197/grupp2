@@ -103,9 +103,11 @@ public class OptPlan {
         y[i]= ds.nodeY[nodlistaInt[i]-1];  //+2 är fulkodning  
        //System.out.println("Koordinater från compass: " +x[i]+", " +y[i]);
     }
+    
+        System.out.println("nodlistaINT: " + nodlistaInt.length);
+        System.out.println("nodlista: " + nodlista.size());
 
-
-     for(int i =0; i <4; i++)  {    //nodlista.size(); i++)  {
+     for(int i =0; i <nodlista.size()-2; i++) {    //nodlista.size(); i++)  {
 
            if((x[i+1] - x[i] > 0) && (y[i+1] - y[i] == 0)){ //Agda kör österut
                System.out.println("Nu kör Agda österut.");
