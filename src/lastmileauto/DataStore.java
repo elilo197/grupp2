@@ -44,7 +44,7 @@ public class DataStore {
     int kapacitet = 10;
     String grupp = "2";
     ControlUI cui;
-    String meddelande_in;
+    String meddelande_in = "OK";
     int mottagenInt = 21;
 
     public DataStore() {
