@@ -23,8 +23,8 @@ public class GuiUpdate implements Runnable {
 public void run (){
    
     try {
-        cui.appendStatus("GuiUpdate startar och kommer att köra i "
-        + sleepTime + " millisekunder." );
+        //cui.appendStatus("GuiUpdate startar och kommer att köra i " KOMMENTARA FRAM EVENTUELLT
+        //+ sleepTime + " millisekunder." );
         ds.updateUIflag = true;
         int i = 1;    
         while(i <= 20){

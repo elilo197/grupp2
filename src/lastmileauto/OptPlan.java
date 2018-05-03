@@ -48,9 +48,7 @@ public class OptPlan {
         path =dijkstra.getPath(nodes.get(ds.slutRutt-1)); //Slutnod  
     
     // Get shortest path
-    
-
-        for(int i=0; i <path.size()-1; i++)
+         for(int i=0; i <path.size()-1; i++)
         {
              for(int j = 0; j <ds.arcs; j++)
             {
@@ -59,26 +57,17 @@ public class OptPlan {
                 {
                     ds.arcColor[j] = 1;
 
-                    System.out.println("Arc in shortest path: "+j);
-             System.out.println("arcStart: "+ds.arcStart[j]);
-             System.out.println("arcEnd: "+ds.arcEnd[j]);
+             //System.out.println("Arc in shortest path: "+j);
+             //System.out.println("arcStart: "+ds.arcStart[j]);
+             //System.out.println("arcEnd: "+ds.arcEnd[j]);
 
                 }
            
             }
-            
-           //System.out.println(path.get(i));  // Path innehåller noder. 
-            
+             
             //Gör om till int. 
             ds.pathInt.add(Integer.parseInt(path.get(i).getId()));
 
-            //System.out.println("pathInt: " + ds.pathInt);
-
-            
-            
-            //x[i] = ds.nodeX[ds.pathInt[i]]; 
-            //y[i]= ds.nodeY[ds.pathInt[i]];
-                    
         }     
     
         ds.pathInt.add(ds.slutRutt);
@@ -91,13 +80,11 @@ public class OptPlan {
      // ds.kommandon = new String[nodlista.size()-2];
       x = new double[nodlista.size()];
       y = new double[nodlista.size()];
-      
-        
-          //nodlista = createPlan(); 
-          System.out.println("Nodlista från compass: " + nodlista);
-         
-          
-          //Här gör vi om arraylist till array med ints
+              
+       //nodlista = createPlan(); 
+        System.out.println("Nodlista från compass: " + nodlista);
+            
+         //Här gör vi om arraylist till array med ints
           for(int i =0; i <nodlista.size(); i++)
         {
         nodlistaInt = nodlista.stream().mapToInt(k -> k).toArray();  
