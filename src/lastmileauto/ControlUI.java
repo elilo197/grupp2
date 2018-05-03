@@ -559,15 +559,11 @@ public class ControlUI extends javax.swing.JFrame {
        GuiUpdate g =  new GuiUpdate(ds, ds.cui, ds.start);        //Tråd som uppdaterar kartan med var AGV är
        Thread t2 = new Thread(g);
        t2.start();   
-<<<<<<< HEAD
-             
-=======
+
        
 //       RobotRead r = new RobotRead(ds, ds.cui);
 //       Thread t3 = new Thread(r);
 //       t3.start(); 
-       
->>>>>>> 766948eb1d26c49024a1aaf858cafa35f84db34b
 
        OptPlan comp = new OptPlan(ds);  
        
