@@ -45,12 +45,14 @@ public class DataStore {
     int kapacitet = 10;
     String grupp = "2";
     ControlUI cui;
-    String meddelande_in = "OK";
+   // String meddelande_string = "hej";
+    String  meddelande_in = "Tom. Tom. Tom."; 
     int mottagenInt = 21;
     int btstatus =0; 
     int dcount = 0; 
     ArrayList<String> vaderStrack; 
     int ncount = 0;
+    int meddelande_int;
 
     public DataStore() {
         // Initialize the datastore with fixed size arrays for storing the network data

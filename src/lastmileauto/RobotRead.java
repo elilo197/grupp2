@@ -22,7 +22,7 @@ public class RobotRead implements Runnable  {
 @Override
 public void run () {
 
-    cui.appendStatusAgv("hejsan, skriver ut från robotread: " + ds.meddelande_in); //testar att den kan skriva ut, ta bort 
+    //cui.appendStatusAgv("hejsan, skriver ut från robotread: " + ds.meddelande_in); //testar att den kan skriva ut, ta bort 
     
 
 

@@ -536,9 +536,9 @@ public class ControlUI extends javax.swing.JFrame {
         
        //Thread t3 = new Thread(btc);
 
-    RobotRead r = new RobotRead(ds, ds.cui);
-    Thread robottråd = new Thread(r);
-    robottråd.start();
+    //RobotRead r = new RobotRead(ds, ds.cui);
+    //Thread robottråd = new Thread(r);
+    //robottråd.start();
     
     //Thread t3 = new Thread(btc);
 
