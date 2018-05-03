@@ -60,19 +60,17 @@ public class Uppdrag {
                 
             ds.startRutt = ds.robotpos;        
             ds.slutRutt = linkNod2[Integer.parseInt(valtUppdrag)-1];
-                         
+                             
             oppis1 = new OptPlan(ds);
             oppis1.createPlan();
   
             ds.startRutt = linkNod1[Integer.parseInt(valtUppdrag)-1];       
-            ds.slutRutt = destNod2[Integer.parseInt(valtUppdrag)-1];
-                         
+            ds.slutRutt = destNod1[Integer.parseInt(valtUppdrag)-1];
+                             
             oppis2 = new OptPlan(ds);
             oppis2.createPlan();
             
             ds.cui.repaint();
-                
-            ds.startRutt = destNod1[Integer.parseInt(valtUppdrag)-1];
   
         }
         else {System.out.println("Svar från hemsida: " + svaruppdrag);}
