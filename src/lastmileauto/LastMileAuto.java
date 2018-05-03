@@ -16,47 +16,13 @@ public class LastMileAuto {
         /*
          * This sets the file path and read network text file.
          */   
-
-<<<<<<< HEAD
-
-       //ds.setFileName("C:\\Users\\Helena\\Documents\\GitHub\\grupp2/streets.txt");
-      // ds.setFileName("/Users/eliselord/Documents/grupp2/streets.txt");
-      // ds.setFileName("/Users/Veronika/Documents/grupp2/streets.txt");
-=======
-       //ds.setFileName("C:\\Users\\Helena\\Documents\\GitHub\\grupp2/streets.txt");
-      // ds.setFileName("/Users/eliselord/Documents/grupp2/streets.txt");
-       //ds.setFileName("/Users/Veronika/Documents/grupp2/streets.txt");
->>>>>>> dd94fe89f36cfddafb32a41ee2ad13d6902a4dd6
-       //ds.setFileName("/Users/eliselord/Documents/grupp2/streets.txt");
-      // ds.setFileName("/Users/Veronika/Documents/grupp2/streets.txt");
-       //ds.setFileName("C:\\Users\\Helena\\Documents\\GitHub\\grupp2/streets.txt");
-       //ds.setFileName("/Users/eliselord/Documents/grupp2/streets.txt");
-       //ds.setFileName("/Users/Veronika/Desktop/streets.txt");
-        //ds.setFileName("/Users/hannamellqvist/Documents/Kandidat/grupp2/streets.txt");
-       // ds.setFileName("/Users/hannamellqvist/Documents/Kandidat/grupp2/streets.txt");
-       // ds.setFileName("/Users/aliceneu/Documents/grupp2/streets.txt");
-     //ds.setFileName("/Users/eliselord/Documents/grupp2/streets.txt");
-     //ds.setFileName("C:\\Users\\Helena\\Documents\\GitHub\\grupp2/streets.txt");
-     //ds.setFileName("/Users/Veronika/Desktop/streets.txt");
-     //ds.setFileName("/Users/hannamellqvist/Documents/Kandidat/grupp2/streets.txt");
-<<<<<<< HEAD
        
-       // ds.setFileName("C:\\Users\\Helena\\Documents\\GitHub\\grupp2/streets.txt");
-       //ds.setFileName("/Users/Veronika/Documents/grupp2/streets.txt");
-          //ds.setFileName("/Users/hannamellqvist/Documents/Kandidat/grupp2/streets.txt");
-       // ds.setFileName("/Users/eliselord/Documents/grupp2/streets.txt");
+        // ds.setFileName("C:\\Users\\Helena\\Documents\\GitHub\\grupp2/streets.txt");
+        // ds.setFileName("/Users/Veronika/Documents/grupp2/streets.txt");
+        // ds.setFileName("/Users/hannamellqvist/Documents/Kandidat/grupp2/streets.txt");
+        // ds.setFileName("/Users/eliselord/Documents/grupp2/streets.txt");
         ds.setFileName("/Users/aliceneu/Documents/grupp2/streets.txt");
      
-=======
-
-       //ds.setFileName("C:\\Users\\Helena\\Documents\\GitHub\\grupp2/streets.txt");
-       //ds.setFileName("/Users/Veronika/Documents/grupp2/streets.txt");
-          //ds.setFileName("/Users/hannamellqvist/Documents/Kandidat/grupp2/streets.txt");
-       // ds.setFileName("/Users/eliselord/Documents/grupp2/streets.txt");
-         // ds.setFileName("/Users/aliceneu/Documents/grupp2/streets.txt");
-        
-
->>>>>>> dd94fe89f36cfddafb32a41ee2ad13d6902a4dd6
        ds.readNet();
        ds.cui = new ControlUI(ds);
        ds.cui.setVisible(true);
