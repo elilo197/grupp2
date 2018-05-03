@@ -238,10 +238,6 @@ public class OptPlan {
      System.out.println(ds.kommandon);
      System.out.println(ds.vaderStrack);
    
-     
-   
          return ds.kommandon;
-
 }
-
 }
