@@ -37,6 +37,7 @@ public void run () {
             if(ds.meddelande_in.equals("D")){
                 System.out.println("Vi fick meddelandet: " + ds.meddelande_in +". Borde vara D");
                 start = System.currentTimeMillis();
+                ds.dcount = ds.dcount +1; 
             }
             else if (isNumeric(ds.meddelande_in) == true) {//Vi fick in en nod.
                  ds.mottagenInt = Integer.parseInt(ds.meddelande_in); //Gör om deras string till en int innehåll nodnummer.
