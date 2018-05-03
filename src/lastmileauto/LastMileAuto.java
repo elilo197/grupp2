@@ -20,8 +20,31 @@ public class LastMileAuto {
 
        ds.setFileName("C:\\Users\\Helena\\Documents\\GitHub\\grupp2/streets.txt");
       // ds.setFileName("/Users/eliselord/Documents/grupp2/streets.txt");
+<<<<<<< HEAD
+       //ds.setFileName("/Users/Veronika/Documents/grupp2/streets.txt");
+=======
      //  ds.setFileName("/Users/Veronika/Documents/grupp2/streets.txt");
+<<<<<<< HEAD
             // ds.setFileName("/Users/hannamellqvist/Documents/Kandidat/grupp2/streets.txt");
+=======
+=======
+       //ds.setFileName("C:\\Users\\Helena\\Documents\\GitHub\\grupp2/streets.txt");
+      ds.setFileName("/Users/eliselord/Documents/grupp2/streets.txt");
+       //ds.setFileName("/Users/Veronika/Documents/grupp2/streets.txt");
+>>>>>>> f98df0c30f4582c45bc88f91a100d8142e2e840c
+>>>>>>> 69c5db2300d2e08815476f6f493be522afc01ef3
+       //ds.setFileName("/Users/eliselord/Documents/grupp2/streets.txt");
+      // ds.setFileName("/Users/Veronika/Documents/grupp2/streets.txt");
+       //ds.setFileName("C:\\Users\\Helena\\Documents\\GitHub\\grupp2/streets.txt");
+       //ds.setFileName("/Users/eliselord/Documents/grupp2/streets.txt");
+       //ds.setFileName("/Users/Veronika/Desktop/streets.txt");
+<<<<<<< HEAD
+        ds.setFileName("/Users/hannamellqvist/Documents/Kandidat/grupp2/streets.txt");
+=======
+        //ds.setFileName("/Users/hannamellqvist/Documents/Kandidat/grupp2/streets.txt");
+       // ds.setFileName("/Users/hannamellqvist/Documents/Kandidat/grupp2/streets.txt");
+>>>>>>> 69c5db2300d2e08815476f6f493be522afc01ef3
+>>>>>>> c572d8f1b8025d16540ac9f90294a56724d5e944
        // ds.setFileName("/Users/aliceneu/Documents/grupp2/streets.txt");
     
        ds.readNet();
