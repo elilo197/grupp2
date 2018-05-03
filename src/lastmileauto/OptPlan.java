@@ -80,6 +80,7 @@ public class OptPlan {
      // ds.kommandon = new String[nodlista.size()-2];
       x = new double[nodlista.size()];
       y = new double[nodlista.size()];
+
       ds.kommandon = new ArrayList<String>();
       
         
@@ -88,6 +89,11 @@ public class OptPlan {
          
           
           //Här gör vi om arraylist till array med ints
+              
+       //nodlista = createPlan(); 
+        System.out.println("Nodlista från compass: " + nodlista);
+            
+         //Här gör vi om arraylist till array med ints
           for(int i =0; i <nodlista.size(); i++)
         {
         nodlistaInt = nodlista.stream().mapToInt(k -> k).toArray();  

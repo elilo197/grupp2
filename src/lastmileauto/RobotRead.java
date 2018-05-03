@@ -29,6 +29,7 @@ public void run () {
  while (true) {
 
      
+
     if(ds.meddelande_in != null){
         cui.appendStatusAgv(ds.meddelande_in);
     }  
@@ -62,13 +63,14 @@ public void run () {
 
                  ds.mottagenInt = Integer.parseInt(ds.meddelande_in); //Gör om deras string till en int innehåll nodnummer.
                  start = System.currentTimeMillis();
-           
             }
             else{  
                 //cui.appendStatus("Oläsbart värde: " + ds.meddelande_in);
+                start = System.currentTimeMillis();
             }
 } // Utanför While-loopen. 
-   cui.appendStatusAgv("Nu har det gått för lång tid är det något fel på Agda?"); 
+
+   cui.appendStatusAgv("Nu har det gått för lång tid. Är det något fel på Agda?"); 
    ds.btstatus = 1;   
    
 }}}}
