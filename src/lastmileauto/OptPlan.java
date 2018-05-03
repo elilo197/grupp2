@@ -75,11 +75,20 @@ public class OptPlan {
 
     }
 
-    public String[] compass(ArrayList<Integer> nodlista){
+    public ArrayList<String> compass(ArrayList<Integer> nodlista){
       int[] nodlistaInt = new int[nodlista.size()];//+2];       //+2 är bara fulkodning för att testa
      // ds.kommandon = new String[nodlista.size()-2];
       x = new double[nodlista.size()];
       y = new double[nodlista.size()];
+
+      ds.kommandon = new ArrayList<String>();
+      
+        
+          //nodlista = createPlan(); 
+          System.out.println("Nodlista från compass: " + nodlista);
+         
+          
+          //Här gör vi om arraylist till array med ints
               
        //nodlista = createPlan(); 
         System.out.println("Nodlista från compass: " + nodlista);
@@ -100,68 +109,86 @@ public class OptPlan {
     }
 
 
-     for(int i =0; i <ds.kommandon.length; i++)  {    //nodlista.size(); i++)  {
+     for(int i =0; i <4; i++)  {    //nodlista.size(); i++)  {
 
            if((x[i+1] - x[i] > 0) && (y[i+1] - y[i] == 0)){ //Agda kör österut
                System.out.println("Nu kör Agda österut.");
+              ds.vaderStrack.add("O"); 
            //Kolla två framåt: x(n+2)-x(n+1)
                 if((x[i+2] - x[i+1] > 0) && (y[i+2] - y[i] == 0)){
                     System.out.println("Nu ska Agda köra rakt fram.");
-                    ds.kommandon[i] = ds.F;
+                   // ds.kommandon[i] = ds.F;
+                    ds.kommandon.add(ds.F);
+                    
                 }
                 else if((x[i+2] - x[i+1] == 0) && (y[i+2] - y[i+1] < 0)){
-                    ds.kommandon[i] = ds.R;
+                   // ds.kommandon[i] = ds.R;
+                    ds.kommandon.add(ds.R);
                 System.out.println("Nu ska Agda svänga höger.");
                 } 
                 else if((x[i+2] - x[i+1] == 0) && (y[i+2] - y[i+1] > 0)){
-                    ds.kommandon[i] = ds.L;
+                    //ds.kommandon[i] = ds.L;
+                    ds.kommandon.add(ds.L);
                     System.out.println("Nu ska Agda svänga vänster.");
                 }  
                 else if((x[i+2] - x[i+1] > 0) && (y[i+2] - y[i+1] > 0)){
                     System.out.println("Nu ska Agda köra rakt fram.");
-                    ds.kommandon[i] = ds.F;
+                    //ds.kommandon[i] = ds.F;
+                    ds.kommandon.add(ds.F);
                 }
             }
            
            else if((x[i+1] - x[i] < 0) && (y[i+1] - y[i] == 0)){ //Agda kör västerut
                System.out.println("Nu kör Agda västerut.");
+               ds.vaderStrack.add("V"); 
+            
            //Kolla två framåt: x(n+2)-x(n+1)
                if((x[i+2] - x[i+1] < 0) && (y[i+2] - y[i+1] == 0)){
                    System.out.println("Nu ska Agda köra rakt fram.");
-                   ds.kommandon[i] = ds.F;
+                  // ds.kommandon[i] = ds.F;
+                   ds.kommandon.add(ds.F);
                }
                else if((x[i+2] - x[i+1] == 0) && (y[i+2] - y[i+1] > 0)){
                    System.out.println("Nu ska Agda svänga höger.");
-                   ds.kommandon[i] = ds.R;
+                   //ds.kommandon[i] = ds.R;
+                   ds.kommandon.add(ds.R);
                }
                else if((x[i+2] - x[i+1] == 0) && (y[i+2] - y[i+1] < 0)){
                  System.out.println("Nu ska Agda svänga vänster.");
-                 ds.kommandon[i] = ds.L;
+                 //ds.kommandon[i] = ds.L;
+                 ds.kommandon.add(ds.L);
                } 
             }
            
            else if((x[i+1] - x[i] == 0) && (y[i+1] - y[i] > 0)){ //Agda kör norrut
+               ds.vaderStrack.add("N"); 
+             
                //Kolla två framåt: x(n+2)-x(n+1)
                System.out.println("Nu kör Agda norrut.");
                if((x[i+2] - x[i+1] == 0) && (y[i+2] - y[i+1] > 0)){
                     System.out.println("Nu ska Agda köra rakt fram.");
-                    ds.kommandon[i] = ds.F;
+                    //ds.kommandon[i] = ds.F;
+                    ds.kommandon.add(ds.F);
                }
                else if((x[i+2] - x[i+1] > 0) && (y[i+2] - y[i+1] == 0)){
                     System.out.println("Nu ska Agda svänga höger.");
-                    ds.kommandon[i] = ds.R;
+                   // ds.kommandon[i] = ds.R;
+                    ds.kommandon.add(ds.R);
                }
                else if((x[i+2] - x[i+1] < 0) && (y[i+2] - y[i+1] == 0)){
                     System.out.println("Nu ska Agda svänga vänster.");
-                    ds.kommandon[i] = ds.L;
+                    //ds.kommandon[i] = ds.L;
+                    ds.kommandon.add(ds.L);
                } 
                else if((x[i+2] - x[i+1] > 0) && (y[i+2] - y[i+1] > 0)){
                     System.out.println("Nu ska Agda svänga höger snedsväng.");
-                    ds.kommandon[i] = ds.R;
+                    //ds.kommandon[i] = ds.R;
+                    ds.kommandon.add(ds.R);
                }
                else if((x[i+2] - x[i+1] < 0) && (y[i+2] - y[i+1] < 0)){
                     System.out.println("Nu ska Agda köra vänster snedsväng.");
-                    ds.kommandon[i] = ds.L;
+                    //ds.kommandon[i] = ds.L;
+                    ds.kommandon.add(ds.L);
                }
               // System.out.println("Kommandon: " + ds.kommandon[i]);
                
@@ -169,35 +196,54 @@ public class OptPlan {
        
            else if((x[i+1] - x[i] == 0) && (y[i+1] - y[i] < 0)) { //Agda kör söderut
                System.out.println("Nu kör Agda söderut.");
+               ds.vaderStrack.add("S"); 
                //Kolla två framåt: x(n+2)-x(n+1)
                if((x[i+2] - x[i+1] == 0) && (y[i+2] - y[i+1] < 0)){
                     System.out.println("Nu ska Agda köra rakt fram.");
-                    ds.kommandon[i] = ds.F;
+                    //ds.kommandon[i] = ds.F;
+                    ds.kommandon.add(ds.F);
                }
                else if((x[i+2] - x[i+1] < 0) && (y[i+2] - y[i+1] == 0)){
                     System.out.println("Nu ska Agda svänga höger.");
-                    ds.kommandon[i] = ds.R;
+                   // ds.kommandon[i] = ds.R;
+                    ds.kommandon.add(ds.R);
                }
                else if((x[i+2] - x[i+1] > 0) && (y[i+2] - y[i+1] == 0)){
                     System.out.println("Nu ska Agda svänga vänster.");
-                    ds.kommandon[i] = ds.L;
+                    //ds.kommandon[i] = ds.L;
+                    ds.kommandon.add(ds.L);
                } 
                else if((x[i+2] - x[i+1] > 0) && (y[i+2] - y[i+1] > 0)){
                     System.out.println("Nu ska Agda svänga vänster snedsväng.");
-                    ds.kommandon[i] = ds.L;
+                   // ds.kommandon[i] = ds.L;
+                    ds.kommandon.add(ds.L);
                }
                else if((x[i+2] - x[i+1] < 0) && (y[i+2] - y[i+1] < 0)){
                     System.out.println("Nu ska Agda svänga höger snedsväng.");
-                    ds.kommandon[i] = ds.R;
+                    //ds.kommandon[i] = ds.R;
+                    ds.kommandon.add(ds.R);
                }
             }
          
-             System.out.println(ds.kommandon[i]); 
+            // System.out.println(ds.kommandon[i]); 
+              
+             
+             
      }
+<<<<<<< HEAD
    
      for (int i =0; i<ds.kommandon.length; i++){
         System.out.println(ds.kommandon[i]); 
         }
+=======
+     ds.kommandon.add(ds.S);
+     
+     System.out.println(ds.kommandon);
+     System.out.println(ds.vaderStrack);
+   
+     
+   
+>>>>>>> 7d8012fb223d05064727417f46dbdc53d0b3ca34
          return ds.kommandon;
 
 }
