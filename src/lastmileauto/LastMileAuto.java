@@ -17,10 +17,10 @@ public class LastMileAuto {
          * This sets the file path and read network text file.
          */   
 
-<<<<<<< HEAD
+
        //ds.setFileName("C:\\Users\\Helena\\Documents\\GitHub\\grupp2/streets.txt");
       // ds.setFileName("/Users/eliselord/Documents/grupp2/streets.txt");
-       ds.setFileName("/Users/Veronika/Documents/grupp2/streets.txt");
+      // ds.setFileName("/Users/Veronika/Documents/grupp2/streets.txt");
        //ds.setFileName("/Users/eliselord/Documents/grupp2/streets.txt");
       // ds.setFileName("/Users/Veronika/Documents/grupp2/streets.txt");
        //ds.setFileName("C:\\Users\\Helena\\Documents\\GitHub\\grupp2/streets.txt");
@@ -33,14 +33,12 @@ public class LastMileAuto {
      //ds.setFileName("/Users/Veronika/Desktop/streets.txt");
      //ds.setFileName("/Users/hannamellqvist/Documents/Kandidat/grupp2/streets.txt");
        
-=======
-       ds.setFileName("C:\\Users\\Helena\\Documents\\GitHub\\grupp2/streets.txt");
+       // ds.setFileName("C:\\Users\\Helena\\Documents\\GitHub\\grupp2/streets.txt");
        //ds.setFileName("/Users/Veronika/Documents/grupp2/streets.txt");
           //ds.setFileName("/Users/hannamellqvist/Documents/Kandidat/grupp2/streets.txt");
        // ds.setFileName("/Users/eliselord/Documents/grupp2/streets.txt");
-         // ds.setFileName("/Users/aliceneu/Documents/grupp2/streets.txt");
-        
->>>>>>> 7d8012fb223d05064727417f46dbdc53d0b3ca34
+        ds.setFileName("/Users/aliceneu/Documents/grupp2/streets.txt");
+     
        ds.readNet();
        ds.cui = new ControlUI(ds);
        ds.cui.setVisible(true);
