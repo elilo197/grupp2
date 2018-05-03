@@ -40,14 +40,19 @@ public class Uppdrag {
    String svar;
    OptPlan oppis1;
    OptPlan oppis2;
-    
+   ArrayList<Integer> oppis1path;
+   ArrayList<Integer> oppis2path;
+   ArrayList<Integer> oppispath;
+     
 
     public Uppdrag(DataStore ds) {    
         this.ds = ds;
         listaplatser();
         valtUppdrag = listauppdrag(narmstaPlats);           //Skickar in upphämtningsplats, skickar ut vilket uppdrag vi väljer
         pax = getPassagerare(valtUppdrag);                  //Skickar ut passagerarantal på det valda uppdraget
-        
+        oppis1path = new ArrayList<Integer>();
+        oppis2path = new ArrayList<Integer>();
+        oppispath = new ArrayList<Integer>();
         
        String svaruppdrag = tauppdrag(narmstaPlats, valtUppdrag, pax, ds.grupp);
        
@@ -60,19 +65,29 @@ public class Uppdrag {
                 
             ds.startRutt = ds.robotpos;        
             ds.slutRutt = linkNod2[Integer.parseInt(valtUppdrag)-1];
-                         
+                             
             oppis1 = new OptPlan(ds);
-            oppis1.createPlan();
+            oppis1path = oppis1.createPlan();
   
             ds.startRutt = linkNod1[Integer.parseInt(valtUppdrag)-1];       
-            ds.slutRutt = destNod2[Integer.parseInt(valtUppdrag)-1];
-                         
+            ds.slutRutt = destNod1[Integer.parseInt(valtUppdrag)-1];
+                             
             oppis2 = new OptPlan(ds);
-            oppis2.createPlan();
+            oppis2path = oppis2.createPlan();
+            
+            for ( int i = 0; i < oppis1path.size(); i++ ){
+            oppispath.add(oppis1path.get(i));
+            }
+             System.out.println("Oppis1path: " + oppis1path);  
+            
+              for ( int i = 0; i < oppis2path.size(); i++ ){
+            oppispath.add(oppis2path.get(i));
+            } 
+             System.out.println("Oppis2path: " + oppis2path);    
+              
+            System.out.println("Oppispath: " + oppispath);  
             
             ds.cui.repaint();
-                
-            ds.startRutt = destNod1[Integer.parseInt(valtUppdrag)-1];
   
         }
         else {System.out.println("Svar från hemsida: " + svaruppdrag);}
@@ -213,7 +228,7 @@ public class Uppdrag {
      */
      
      try {
-         ds.cui.appendStatus("\nNu hämtas lista på uppdrag\n ");
+         ds.cui.appendStatus("\nNu hämtas lista på uppdrag!");
          //Kalla på metoden ovan för att hämta x
         // String X = "A"; //DENNA SKA VA MED I STEGET OVAN
          //Uppdrag http = new Uppdrag();
@@ -304,7 +319,7 @@ public class Uppdrag {
      catch (Exception e) { System.out.print(e.toString()); }
      
 
-      ds.cui.appendStatus("Valt uppdrag: " + valtUppdrag); //HÄR HAR VI BYTT
+      ds.cui.appendStatus("\nValt uppdrag: " + valtUppdrag); //HÄR HAR VI BYTT
 
      return valtUppdrag;
     }     
@@ -340,7 +355,7 @@ public class Uppdrag {
                     *Om nekas --> sök nytt uppdrag
         */
     try {
-        ds.cui.appendStatus("\nNu är vi i tauppdrag \n ");
+        ds.cui.appendStatus("\nNu tar vi uppdrag!");
          String url = " http://tnk111.n7.se/tauppdrag.php?plats=" + plats + "&id="+id+"&passagerare="+pax+"&grupp="+grupp; 
          URL urlobjekt = new URL(url);       
          HttpURLConnection anslutning = (HttpURLConnection)

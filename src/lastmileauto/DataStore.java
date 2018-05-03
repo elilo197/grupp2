@@ -65,7 +65,7 @@ public class DataStore {
         updateUIflag = false; 
         networkRead = false;
         arcColor = new int[128];
-        pathInt = new ArrayList<Integer>();
+        //pathInt = new ArrayList<Integer>();
         //kommandon = new String[3];//3 är fulkodning, denna ska va 2 mindre än pathInt
         
         vaderStrack = new ArrayList<String>();
@@ -101,8 +101,8 @@ public class DataStore {
             arcs = Integer.parseInt(line.trim());
 
             // Debug printout: network size data
-            System.out.println("Nodes: "+nodes);
-            System.out.println("Arcs: "+arcs);
+           // System.out.println("Nodes: "+nodes);
+            //System.out.println("Arcs: "+arcs);
             
             // Read nodes as number, x, y
             for (int i=0; i < nodes; i++){

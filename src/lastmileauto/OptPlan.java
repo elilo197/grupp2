@@ -20,11 +20,12 @@ public class OptPlan {
     }
     
     // Genomför billigaste väg beräkningen
-    public ArrayList<Integer>  createPlan(){      //enna var void först
+    public ArrayList<Integer>  createPlan(){      //denna var void först
         //double [] x; 
         //double [] y;
         List<Vertex> nodes =new ArrayList<Vertex>();
         List<Edge> edges =new ArrayList<Edge>();
+        ds.pathInt = new ArrayList<Integer>();
         
         // Set up network
         for(int i =0; i <ds.nodes; i++)
@@ -82,13 +83,8 @@ public class OptPlan {
       y = new double[nodlista.size()];
 
       ds.kommandon = new ArrayList<String>();
-      
-        
-          //nodlista = createPlan(); 
-          System.out.println("Nodlista från compass: " + nodlista);
-         
-          
-          //Här gör vi om arraylist till array med ints
+                
+       //Här gör vi om arraylist till array med ints
               
        //nodlista = createPlan(); 
         System.out.println("Nodlista från compass: " + nodlista);
@@ -97,7 +93,7 @@ public class OptPlan {
           for(int i =0; i <nodlista.size(); i++)
         {
         nodlistaInt = nodlista.stream().mapToInt(k -> k).toArray();  
-         System.out.println("Nodlista: " + nodlistaInt[i]);
+       //  System.out.println("Nodlista: " + nodlistaInt[i]);
         } 
      
           
@@ -114,7 +110,8 @@ public class OptPlan {
            if((x[i+1] - x[i] > 0) && (y[i+1] - y[i] == 0)){ //Agda kör österut
                System.out.println("Nu kör Agda österut.");
               ds.vaderStrack.add("O"); 
-           //Kolla två framåt: x(n+2)-x(n+1)
+         
+              //Kolla två framåt: x(n+2)-x(n+1)
                 if((x[i+2] - x[i+1] > 0) && (y[i+2] - y[i] == 0)){
                     System.out.println("Nu ska Agda köra rakt fram.");
                    // ds.kommandon[i] = ds.F;
@@ -230,6 +227,10 @@ public class OptPlan {
              
              
      }
+   
+//     for (int i =0; i<ds.kommandon.length; i++){
+//        System.out.println(ds.kommandon[i]); 
+//        }
      ds.kommandon.add(ds.S);
      
      System.out.println(ds.kommandon);
