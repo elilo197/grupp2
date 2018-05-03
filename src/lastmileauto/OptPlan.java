@@ -107,12 +107,8 @@ public class OptPlan {
         System.out.println("nodlistaINT: " + nodlistaInt.length);
         System.out.println("nodlista: " + nodlista.size());
 
-<<<<<<< HEAD
 
-     for(int i =0; i <nodlista.size(); i++)  {    //nodlista.size(); i++)  {
-=======
      for(int i =0; i <nodlista.size()-2; i++) {    //nodlista.size(); i++)  {
->>>>>>> f98df0c30f4582c45bc88f91a100d8142e2e840c
 
            if((x[i+1] - x[i] > 0) && (y[i+1] - y[i] == 0)){ //Agda kör österut
                System.out.println("Nu kör Agda österut.");
@@ -243,13 +239,7 @@ public class OptPlan {
      System.out.println(ds.kommandon);
      System.out.println(ds.vaderStrack);
    
-<<<<<<< HEAD
-     
-   
-    return ds.kommandon;
-
-=======
          return ds.kommandon;
->>>>>>> f98df0c30f4582c45bc88f91a100d8142e2e840c
+
 }
 }
