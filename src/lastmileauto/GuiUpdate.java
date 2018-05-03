@@ -25,7 +25,7 @@ public void run (){
     try {
         cui.appendStatus("GuiUpdate startar och kommer att köra i "
         + sleepTime + " millisekunder." );
-        
+        ds.updateUIflag = true;
         int i = 1;    
         while(i <= 20){
             Thread.sleep(sleepTime /20);
@@ -34,11 +34,14 @@ public void run (){
 //            + i + ":te gången.");
         //  ds.robotX = ds.robotX - 10; 
             
-        ds.robotX = ds.nodeX[xy]; 
-        ds.robotY = ds.nodeY[xy];
+//        ds.robotX = ds.nodeX[xy]; 
+//        ds.robotY = ds.nodeY[xy];
 
-            cui.repaint();
-            i++;      
+          ds.robotX = ds.nodeX[ds.mottagenInt]; 
+          ds.robotY = ds.nodeY[ds.mottagenInt];        
+          
+            cui.repaint();   
+            i++;  
             
             }
                        }
@@ -48,7 +51,12 @@ public void run (){
     catch (InterruptedException exception) {
         }
     
+       
+    
         cui.appendStatus("GuiUpdate är nu klar!");
+          ds.robotX = ds.nodeX[30]; 
+          ds.robotY = ds.nodeY[30];
+          cui.repaint();
     }
 
 }

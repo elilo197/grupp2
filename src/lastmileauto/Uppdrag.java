@@ -7,6 +7,8 @@
 
 package lastmileauto;
 
+import java.awt.Color;
+import java.awt.Graphics;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -38,14 +40,13 @@ public class Uppdrag {
    String svar;
    OptPlan oppis1;
    OptPlan oppis2;
-   MapPanel map;
    
 
 
 
     
 
-    public Uppdrag(DataStore ds) {
+    public Uppdrag(DataStore ds) {    
         this.ds = ds;
         listaplatser();
         valtUppdrag = listauppdrag(narmstaPlats);           //Skickar in upphämtningsplats, skickar ut vilket uppdrag vi väljer
@@ -56,34 +57,31 @@ public class Uppdrag {
        
             if (svaruppdrag.equals("beviljas")){
                 
+                for(int i=0; i <128; i++){
+            
+                    ds.arcColor[i] = 0;           
+            }
+                
             ds.startRutt = ds.robotpos;        
             ds.slutRutt = linkNod1[Integer.parseInt(valtUppdrag)-1];
                          
             oppis1 = new OptPlan(ds);
             oppis1.createPlan();
-            map = new MapPanel(ds);
-//            map.paintComponent(g);
-//            
+  
             ds.startRutt = linkNod1[Integer.parseInt(valtUppdrag)-1];       
             ds.slutRutt = destNod1[Integer.parseInt(valtUppdrag)-1];
                          
             oppis2 = new OptPlan(ds);
             oppis2.createPlan();
             
-            
-            
-                
+            ds.cui.repaint();
                 
             ds.startRutt = destNod1[Integer.parseInt(valtUppdrag)-1];
   
         }
         else {System.out.println("Svar från hemsida: " + svaruppdrag);}
         
-        
-        
         aterstall("1");
-        
-        
     
     }
 

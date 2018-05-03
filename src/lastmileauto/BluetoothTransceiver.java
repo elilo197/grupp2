@@ -6,7 +6,7 @@ import java.io.*;
 import javax.microedition.io.*;
 
 public class BluetoothTransceiver{
-    String meddelande_in;
+    //String meddelande_in;
      BufferedReader bluetooth_in;
     PrintStream bluetoothanslutning;
     
@@ -20,9 +20,9 @@ public class BluetoothTransceiver{
        } catch (Exception e) {  System.out.print(e.toString());   }
     }
     
-    public String getMessage(){
-        return meddelande_in;
-    }
+//    public String getMessage(){
+//        return meddelande_in;
+//    }
     }
 
 
