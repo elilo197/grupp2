@@ -16,6 +16,8 @@ public class BluetoothTransceiver{
              StreamConnection anslutning = (StreamConnection)
              Connector.open("btspp://201601205682:1");
              bluetooth_in = new BufferedReader(new InputStreamReader(anslutning.openInputStream()));
+             
+             
          
        } catch (Exception e) {  System.out.print(e.toString());   }
     }
