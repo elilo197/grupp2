@@ -38,7 +38,16 @@ public void run () {
                 System.out.println("Vi fick meddelandet: " + ds.meddelande_in +". Borde vara D");
                 start = System.currentTimeMillis();
             }
+<<<<<<< HEAD
             else if (isNumeric(ds.meddelande_in) == true) {//Vi fick in en nod.
+=======
+            else if(ds.meddelande_in.equals("D")){
+                System.out.println("Vi fick meddelandet: " + ds.meddelande_in +"Borde vara D");
+                
+                
+            }
+            else{ //Vi fick in en nod. 
+>>>>>>> 8fec529fb1af660d56c8f9c28da62959e3bbf9b0
                  ds.mottagenInt = Integer.parseInt(ds.meddelande_in); //Gör om deras string till en int innehåll nodnummer.
                  start = System.currentTimeMillis();
             }
@@ -46,6 +55,7 @@ public void run () {
                 //cui.appendStatus("Oläsbart värde: " + ds.meddelande_in);
             }
 } // Utanför While-loopen. 
+<<<<<<< HEAD
    cui.appendStatus("Nu har det gått för lång tid. Är det något fel på Agda?"); 
    //Vi borde kolla hur hon mår och om vi kan hjälpa till
 
@@ -66,6 +76,10 @@ public static boolean isNumeric(String str)
   }  
   return true;  
 }   
+=======
+   cui.appendStatus("Nu har det gått för lång tid är det något fel på Agda?"); 
+}}}
+>>>>>>> 8fec529fb1af660d56c8f9c28da62959e3bbf9b0
 
 
 }
