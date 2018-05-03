@@ -494,12 +494,15 @@ public class Uppdrag {
         InputStreamReader(anslutning.getInputStream()));
         String inkommande_text;
         StringBuffer inkommande_samlat = new StringBuffer();
+        
+        ArrayList <String> inkmess = new ArrayList<String>();
  
         while ((inkommande_text = inkommande.readLine()) != null) {
-                inkommande_samlat.append(inkommande_text);
+                //inkommande_samlat.append(inkommande_text);
+                inkmess.add(inkommande_text);
         }
-   
         inkommande.close();
+        
               
 
         System.out.println(inkommande_samlat.toString());
