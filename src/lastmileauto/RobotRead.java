@@ -29,12 +29,10 @@ public void run () {
  while (true) {
 
      
-<<<<<<< HEAD
-=======
+
     if(ds.meddelande_in != null){
         cui.appendStatusAgv(ds.meddelande_in);
     }  
->>>>>>> 13791df0af3d010a42cb9ee016c287ea739b8e55
     
 
    start = System.currentTimeMillis(); //start tid 
@@ -71,17 +69,16 @@ public void run () {
                 start = System.currentTimeMillis();
             }
 } // Utanför While-loopen. 
-<<<<<<< HEAD
+
    cui.appendStatus("Nu har det gått för lång tid. Är det något fel på Agda?");
    
    //Vi borde kolla hur hon mår och om vi kan hjälpa till
 
 
    
-=======
+
    cui.appendStatusAgv("Nu har det gått för lång tid är det något fel på Agda?"); 
    ds.btstatus = 1;   
->>>>>>> 13791df0af3d010a42cb9ee016c287ea739b8e55
    
 }}}}
 
