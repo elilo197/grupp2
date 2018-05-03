@@ -4,6 +4,15 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
 <<<<<<< HEAD
+            <file>file:/C:/Users/Helena/Documents/GitHub/grupp2/src/lastmileauto/RobotRead.java</file>
+            <file>file:/C:/Users/Helena/Documents/GitHub/grupp2/src/lastmileauto/DataStore.java</file>
+            <file>file:/C:/Users/Helena/Documents/GitHub/grupp2/src/lastmileauto/OptPlan.java</file>
+            <file>file:/C:/Users/Helena/Documents/GitHub/grupp2/src/lastmileauto/MapPanel.java</file>
+            <file>file:/C:/Users/Helena/Documents/GitHub/grupp2/src/lastmileauto/Uppdrag.java</file>
+            <file>file:/C:/Users/Helena/Documents/GitHub/grupp2/src/lastmileauto/LastMileAuto.java</file>
+            <file>file:/C:/Users/Helena/Documents/GitHub/grupp2/src/lastmileauto/ControlUI.java</file>
+=======
+<<<<<<< HEAD
             <file>file:/Users/aliceneu/Documents/grupp2/src/lastmileauto/Uppdrag.java</file>
             <file>file:/Users/aliceneu/Documents/grupp2/src/lastmileauto/BluetoothTransceiver.java</file>
             <file>file:/Users/aliceneu/Documents/grupp2/src/lastmileauto/ControlUI.java</file>
@@ -34,6 +43,7 @@
             <file>file:/Users/eliselord/Documents/grupp2/src/lastmileauto/BluetoothTransceiver.java</file>
 >>>>>>> 94d99a136dd75e759036daf8a97178245dac8380
 >>>>>>> 9153ba501dc76c72f9e5e80df138342f4de058a8
+>>>>>>> fb57e70550b3558b2de223bc4ee17677a387de71
         </group>
     </open-files>
 </project-private>

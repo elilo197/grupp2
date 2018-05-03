@@ -11,7 +11,6 @@ public class RobotRead implements Runnable  {
     BluetoothReceiver bre;
     BluetoothTransceiver btc;
     long start;
-    long timemilli = 0;
     String meddelande; 
 
     public RobotRead(DataStore ds, ControlUI cui ){ 
@@ -22,41 +21,55 @@ public class RobotRead implements Runnable  {
 
 @Override
 public void run () {
- while (true) {// timenano = System.nanoTime();
+ while (true) {
      
     if(ds.meddelande_in != null){
         cui.appendStatus(ds.meddelande_in);
     }  
     
-   start = System.currentTimeMillis(); //start tid 
+   start = System.currentTimeMillis(); //starttid 
    System.out.println("Starttid: " + System.currentTimeMillis());
-   
-   
+     
    while (System.currentTimeMillis() - start < 2500){
       
-       // System.out.println("Tiden i millisekunder är: " + (System.currentTimeMillis() - start));
-            if(ds.meddelande_in.equals("OK")){
-                System.out.println("Vi fick meddelandet: " + ds.meddelande_in +"Borde vara OK");
+     //   System.out.println("Tiden i millisekunder är: " + (System.currentTimeMillis() - start));
+
+            if(ds.meddelande_in.equals("D")){
+                System.out.println("Vi fick meddelandet: " + ds.meddelande_in +". Borde vara D");
                 start = System.currentTimeMillis();
+                ds.dcount = ds.dcount +1; 
             }
-            else if(ds.meddelande_in.equals("D")){
-                System.out.println("Vi fick meddelandet: " + ds.meddelande_in +"Borde vara D");
-                
-            }
-            else{ //Vi fick in en nod. 
+            else if (isNumeric(ds.meddelande_in) == true) {//Vi fick in en nod.
                  ds.mottagenInt = Integer.parseInt(ds.meddelande_in); //Gör om deras string till en int innehåll nodnummer.
+                 start = System.currentTimeMillis();
+           
+            }
+            else{  
+                //cui.appendStatus("Oläsbart värde: " + ds.meddelande_in);
             }
 } // Utanför While-loopen. 
-   cui.appendStatus("Nu har det gått för lång tid är det något fel på Agda?"); 
- 
-
-}}}
+   cui.appendStatus("Nu har det gått för lång tid. Är det något fel på Agda?"); 
+   //Vi borde kolla hur hon mår och om vi kan hjälpa till
 
 
+   
+   
+}}
 
-  // System.out.println("Tiden i millisekunder är: " + (System.currentTimeMillis() - start));
-       // System.out.println("Tiden i millisekunder är: " + (System.currentTimeMillis() - start));
-        //System.out.println("Tiden i millisekunder är: " + (System.currentTimeMillis() - start));
+public static boolean isNumeric(String str)  
+{  
+  try  
+  {  
+    double d = Double.parseDouble(str);  
+  }  
+  catch(NumberFormatException nfe)  
+  {  
+    return false;  
+  }  
+  return true;  
+}   
+}
+
 
 
 
