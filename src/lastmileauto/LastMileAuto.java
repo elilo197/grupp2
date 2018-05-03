@@ -19,12 +19,12 @@ public class LastMileAuto {
          */   
 
        //ds.setFileName("C:\\Users\\Helena\\Documents\\GitHub\\grupp2/streets.txt");
-       ds.setFileName("/Users/eliselord/Documents/grupp2/streets.txt");
+       //ds.setFileName("/Users/eliselord/Documents/grupp2/streets.txt");
       // ds.setFileName("/Users/Veronika/Documents/grupp2/streets.txt");
        //ds.setFileName("C:\\Users\\Helena\\Documents\\GitHub\\grupp2/streets.txt");
        //ds.setFileName("/Users/eliselord/Documents/grupp2/streets.txt");
        //ds.setFileName("/Users/Veronika/Desktop/streets.txt");
-        //ds.setFileName("/Users/hannamellqvist/Documents/Kandidat/grupp2/streets.txt");
+        ds.setFileName("/Users/hannamellqvist/Documents/Kandidat/grupp2/streets.txt");
        // ds.setFileName("/Users/aliceneu/Documents/grupp2/streets.txt");
     
        
@@ -39,6 +39,7 @@ public class LastMileAuto {
                                             //Tråd för resten, typ main
                                             
         ds.cui.appendStatus("Startar programmet \n" );
+        ds.cui.appendStatusAgv("Meddelanden från Agda kommer nu \n" );
                   
        //t1.start();
 

@@ -22,32 +22,35 @@ public class RobotRead implements Runnable  {
 
 @Override
 public void run () {
+    cui.appendStatusAgv("hejsan, skriver ut från robotread: " + ds.meddelande_in); //testar att den kan skriva ut, ta bort 
+    
  while (true) {// timenano = System.nanoTime();
      
     if(ds.meddelande_in != null){
-        cui.appendStatus(ds.meddelande_in);
+        cui.appendStatusAgv(ds.meddelande_in);
     }  
     
    start = System.currentTimeMillis(); //start tid 
-   System.out.println("Starttid: " + System.currentTimeMillis());
+   //cui.appendStatus("Starttid: " + System.currentTimeMillis()); //bytt ut sys.out VAD ÄR DENNA BRA FÖR?
    
    
    while (System.currentTimeMillis() - start < 2500){
       
        // System.out.println("Tiden i millisekunder är: " + (System.currentTimeMillis() - start));
             if(ds.meddelande_in.equals("OK")){
-                System.out.println("Vi fick meddelandet: " + ds.meddelande_in +"Borde vara OK");
+                cui.appendStatusAgv("Vi fick meddelandet: " + ds.meddelande_in +"Borde vara OK"); //bytt ut sys.out
                 start = System.currentTimeMillis();
             }
             else if(ds.meddelande_in.equals("D")){
-                System.out.println("Vi fick meddelandet: " + ds.meddelande_in +"Borde vara D");
+                cui.appendStatusAgv("Vi fick meddelandet: " + ds.meddelande_in +"Borde vara D"); //bytt ut sys.out
                 
             }
             else{ //Vi fick in en nod. 
                  ds.mottagenInt = Integer.parseInt(ds.meddelande_in); //Gör om deras string till en int innehåll nodnummer.
             }
 } // Utanför While-loopen. 
-   cui.appendStatus("Nu har det gått för lång tid är det något fel på Agda?"); 
+   cui.appendStatusAgv("Nu har det gått för lång tid är det något fel på Agda?"); 
+   ds.btstatus = 1; 
  
 
 }}}

@@ -113,16 +113,15 @@ public class Uppdrag {
 
          
         while ((inkommande_text = inkommande.readLine()) != null) {
-            System.out.println("Inkommande: " + inkommande_text);
-                inkommande_samlat.append(inkommande_text); 
-
-                 inkommande_samlat.append(inkommande_text); 
+                //System.out.println("Inkommande: " + inkommande_text);
+                //inkommande_samlat.append(inkommande_text); 
+             
                 ink.add(inkommande_text);      
         }
          inkommande.close();
-         
-            for(int k = 0; k < ink.size(); k++){
-            System.out.println("Ink: " + ink.get(k));
+            ds.cui.appendStatus("Antal upphämtningsplatser: " + ink.get(0));
+            for(int k = 1; k < ink.size()-1; k++){
+            ds.cui.appendStatus("Upphämtningsplats: " + ink.get(k));
          }
        
         
@@ -174,7 +173,7 @@ public class Uppdrag {
               tot_kostnad = tot_kostnad + kostnad;
               
             }
-             System.out.println("Upphämtningsplats " + plats[j] + " innebär en rutt från " + ds.startRutt + " till "  
+             ds.cui.appendStatus("Upphämtningsplats " + plats[j] + " innebär en rutt från " + ds.startRutt + " till "  
                    + ds.slutRutt + " vilket ger en totalkostnad på "  + tot_kostnad);
            
              System.out.println();      //Blankrad
@@ -186,7 +185,7 @@ public class Uppdrag {
              }
              
         }
-             System.out.println("Närmaste upphämtningsplats är plats " + narmstaPlats + " med nodnummer " + narmstaNod);
+             ds.cui.appendStatus("\nNärmaste upphämtningsplats är plats " + narmstaPlats + " med nodnummer " + narmstaNod);
              System.out.println("Kostnaden för att ta sig dit är " + lagstaKostnad);
 
        }
@@ -218,6 +217,7 @@ public class Uppdrag {
      */
      
      try {
+         ds.cui.appendStatus("\nNu hämtas lista på uppdrag\n ");
          //Kalla på metoden ovan för att hämta x
         // String X = "A"; //DENNA SKA VA MED I STEGET OVAN
          //Uppdrag http = new Uppdrag();
@@ -271,7 +271,7 @@ public class Uppdrag {
             passant[k-1] = Integer.parseInt(sline[2]);
             samaka[k-1] = Integer.parseInt(sline[3]);
             poang[k-1] = Integer.parseInt(sline[4]);
-            System.out.println("Uppdrag nr "  + uppdragsid[k-1] + " vill åka till " + destination[k-1]
+           ds.cui.appendStatus("Uppdrag nr "  + uppdragsid[k-1] + " vill åka till " + destination[k-1] //HÄR HAR VI BYTT
             + ", har " + passant[k-1] + " st passagerare, har följande åsikt till samåkning: " + samaka[k-1]
             + " och ger " + poang[k-1] + " poäng.");      
         }
@@ -281,10 +281,10 @@ public class Uppdrag {
             sline = destination[j].split(",");    
             destNod1[j] =Integer.parseInt(sline[0]);
             destNod2[j] =Integer.parseInt(sline[1]);
-            System.out.println("Destinationens noder är: " + destNod1[j] + " och " + destNod2[j]);
+            System.out.println("Destinationens noder är: " + destNod1[j] + " och " + destNod2[j]); 
         }
         
-          System.out.println("Uppdragsid: " + uppdragsid[0]);
+          System.out.println("Uppdragsid: " + uppdragsid[0]); //HÄR HAR VI BYTT
  
         //Välj uppdrag
         for (int j=0; j<IntStorlek; j++){
@@ -296,7 +296,7 @@ public class Uppdrag {
             }
             
             else if (j==IntStorlek-1) {
-                System.out.println("För mycket folk!");
+                ds.cui.appendStatus("För mycket folk!"); //HÄR HAR VI BYTT
                 //Här borde vi börja om på nått sätt, typ kalla på listaplatser och listauppdrag igen
             }
         }
@@ -305,7 +305,7 @@ public class Uppdrag {
     
      catch (Exception e) { System.out.print(e.toString()); }
      
-     System.out.println("Valt uppdrag: " + valtUppdrag);
+      ds.cui.appendStatus("Valt uppdrag: " + valtUppdrag); //HÄR HAR VI BYTT
      return valtUppdrag;
     }     
 
@@ -316,7 +316,7 @@ public class Uppdrag {
    
       public String getPassagerare(String valtUppdrag){
       int uppdragInt = Integer.parseInt(valtUppdrag);
-      System.out.println("Passant index: " + Integer.parseInt(valtUppdrag));
+     ds.cui.appendStatus("Passant index: " + Integer.parseInt(valtUppdrag)); //HÄR HAR VI BYTT
        int paxInt = passant[Integer.parseInt(valtUppdrag)-1]; 
    
         pax = Integer.toString(paxInt);  
@@ -340,7 +340,7 @@ public class Uppdrag {
                     *Om nekas --> sök nytt uppdrag
         */
     try {
-
+        ds.cui.appendStatus("\nNu är vi i tauppdrag \n ");
          String url = " http://tnk111.n7.se/tauppdrag.php?plats=" + plats + "&id="+id+"&passagerare="+pax+"&grupp="+grupp; 
          URL urlobjekt = new URL(url);       
          HttpURLConnection anslutning = (HttpURLConnection)
