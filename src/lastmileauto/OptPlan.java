@@ -230,12 +230,10 @@ public class OptPlan {
              
              
      }
-<<<<<<< HEAD
    
      for (int i =0; i<ds.kommandon.length; i++){
         System.out.println(ds.kommandon[i]); 
         }
-=======
      ds.kommandon.add(ds.S);
      
      System.out.println(ds.kommandon);
@@ -243,7 +241,6 @@ public class OptPlan {
    
      
    
->>>>>>> 7d8012fb223d05064727417f46dbdc53d0b3ca34
          return ds.kommandon;
 
 }
