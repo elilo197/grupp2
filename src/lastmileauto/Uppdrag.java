@@ -7,6 +7,8 @@
 
 package lastmileauto;
 
+import java.awt.Color;
+import java.awt.Graphics;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -24,16 +26,64 @@ public class Uppdrag {
     int [] linkNod2;
     OptPlan opt;
     OptPlan [] oppis;
-    String narmstaPlats = "Start";
+   String narmstaPlats;// = "Start";
+   String id; 
+   String pax;
+   String [] uppdragsid;
+   String [] destination;
+   int [] passant; 
+   int [] samaka;
+   int [] poang;
+   int[] destNod1;
+   int[] destNod2;
+   String valtUppdrag;// = "Start";
+   String svar;
+   OptPlan oppis1;
+   OptPlan oppis2;
+   
+
+
 
     
 
-    public Uppdrag(DataStore ds) {
+    public Uppdrag(DataStore ds) {    
         this.ds = ds;
         listaplatser();
-        listauppdrag(narmstaPlats);
-     
-    }   
+        valtUppdrag = listauppdrag(narmstaPlats);           //Skickar in upphämtningsplats, skickar ut vilket uppdrag vi väljer
+        pax = getPassagerare(valtUppdrag);                  //Skickar ut passagerarantal på det valda uppdraget
+        
+        
+       String svaruppdrag = tauppdrag(narmstaPlats, valtUppdrag, pax, ds.grupp);
+       
+            if (svaruppdrag.equals("beviljas")){
+                
+                for(int i=0; i <128; i++){
+            
+                    ds.arcColor[i] = 0;           
+            }
+                
+            ds.startRutt = ds.robotpos;        
+            ds.slutRutt = linkNod1[Integer.parseInt(valtUppdrag)-1];
+                         
+            oppis1 = new OptPlan(ds);
+            oppis1.createPlan();
+  
+            ds.startRutt = linkNod1[Integer.parseInt(valtUppdrag)-1];       
+            ds.slutRutt = destNod1[Integer.parseInt(valtUppdrag)-1];
+                         
+            oppis2 = new OptPlan(ds);
+            oppis2.createPlan();
+            
+            ds.cui.repaint();
+                
+            ds.startRutt = destNod1[Integer.parseInt(valtUppdrag)-1];
+  
+        }
+        else {System.out.println("Svar från hemsida: " + svaruppdrag);}
+        
+        aterstall("1");
+    
+    }
 
     /** Här listar vi antalet upphämtningsplatser och beräknar vilken som är närmast. 
      */
@@ -117,11 +167,6 @@ public class Uppdrag {
             for (int i=0; i< oppis[j].path.size(); i++){      
          
             int vertexint = Integer.parseInt(oppis[j].path.get(i).getId()); //Gör om path till ints
-                                                        
-             // total_arccost = map.getTotalArcCost();          //PROBLEM!!! Blir null.
-             // Istället för detta skriver vi bara ds.tot_arcCost[i] och den vi vill ha se nedan.                                  
-              kostnad = ds.tot_arcCost[vertexint];
-
              
              // total_arccost = map.getTotalArcCost();          //PROBLEM!!! Blir null.
              // Istället för detta skriver vi bara ds.tot_arcCost[i] och den vi vill ha se nedan.                                  
@@ -164,16 +209,9 @@ public class Uppdrag {
         */
     
    
-    public  String listauppdrag(String plats){      //var static från början
-        String x = "Hej"; //Ta bort sen
-        String [] uppdragsid;
-        String [] destination;
-        int [] passant; 
-        int [] samaka;
-        int [] poang;
-        int[] destNod1;
-        int[] destNod2;
-        
+    public String listauppdrag(String plats){      //var static från början
+       ArrayList<String> inkuppdrag = new ArrayList<String>();
+             
      /**
      *Kalla på Compass och kör till platsen
      *String X = "A";
@@ -201,7 +239,7 @@ public class Uppdrag {
         String inkommande_text;
         StringBuffer inkommande_samlat = new StringBuffer();
         
-         ArrayList<String> inkuppdrag = new ArrayList<String>();
+      
         
          while ((inkommande_text = inkommande.readLine()) != null) {
                  inkommande_samlat.append(inkommande_text); 
@@ -211,9 +249,7 @@ public class Uppdrag {
           inkommande.close();
   
              for(int k = 0; k < inkuppdrag.size(); k++){
-            //System.out.println("Inkuppdrag: " + inkuppdrag.get(k));
-         }
-       
+               }
         
         //Variabler
         String StringStorlek = inkuppdrag.get(0);
@@ -239,28 +275,59 @@ public class Uppdrag {
             + ", har " + passant[k-1] + " st passagerare, har följande åsikt till samåkning: " + samaka[k-1]
             + " och ger " + poang[k-1] + " poäng.");      
         }
-
+        
+             
         for(int j = 0; j <IntStorlek; j++){
             sline = destination[j].split(",");    
             destNod1[j] =Integer.parseInt(sline[0]);
             destNod2[j] =Integer.parseInt(sline[1]);
             System.out.println("Destinationens noder är: " + destNod1[j] + " och " + destNod2[j]);
         }
-       }
+        
+          System.out.println("Uppdragsid: " + uppdragsid[0]);
+ 
+        //Välj uppdrag
+        for (int j=0; j<IntStorlek; j++){
+
+            if (passant[j]<=ds.kapacitet) {
+                valtUppdrag = uppdragsid[j];
+                break;
+                   
+            }
+            
+            else if (j==IntStorlek-1) {
+                System.out.println("För mycket folk!");
+                //Här borde vi börja om på nått sätt, typ kalla på listaplatser och listauppdrag igen
+            }
+        }
+        }
           
     
      catch (Exception e) { System.out.print(e.toString()); }
-      return x; //Ta bort sen
+     
+     System.out.println("Valt uppdrag: " + valtUppdrag);
+     return valtUppdrag;
     }     
-    
-    
-    
-    
-    
+
+    public String getId(String valtUppdrag){
+        id = uppdragsid[Integer.parseInt(valtUppdrag)];
+        return id;
+    }
+   
+      public String getPassagerare(String valtUppdrag){
+      int uppdragInt = Integer.parseInt(valtUppdrag);
+      System.out.println("Passant index: " + Integer.parseInt(valtUppdrag));
+       int paxInt = passant[Integer.parseInt(valtUppdrag)-1]; 
+   
+        pax = Integer.toString(paxInt);  
+        //pax = "2";
+      return pax; 
+    }
+      
     
     //Kan behövas ändras till en String[], själva metoden
-    public static String tauppdrag(String plats, String id, String pax, String grupp){
-       
+    public  String tauppdrag(String plats, String id, String pax, String grupp){    //Denna var static
+       System.out.println("I tauppdrag kommer följande in: Plats: " + plats + " Id: " + id + " Pax: " + pax + " Grupp: " + grupp);
         /**Ta första uppdaget och kolla om kapacitet är ok
             *Om kapacitet är ok --> kolla om samåkning är ok
                 *Om samåkning är ok, kolla vidare i listan och spara "nuvarande" passagerare
@@ -274,12 +341,6 @@ public class Uppdrag {
         */
     try {
 
-         //Uppdrag http = new Uppdrag();
-         //Glöm ej att ändra gruppnummer till 2
-         String X = "Test";
-//         String id = "1";
-//         String pax = "8";
-//         String grupp = "2";
          String url = " http://tnk111.n7.se/tauppdrag.php?plats=" + plats + "&id="+id+"&passagerare="+pax+"&grupp="+grupp; 
          URL urlobjekt = new URL(url);       
          HttpURLConnection anslutning = (HttpURLConnection)
@@ -304,25 +365,44 @@ public class Uppdrag {
         //String [] ink_sam = inkommande_samlat.split(" "); Skapa mellanrum mellan de olika raderna EJ KLART
         inkommande.close();
         
-        //Testa följande typ av loop för att försöka splitta
-//        for (int i=0; i < nodes; i++){
-//                line = scanner.nextLine();
-//                //split space separated data on line
-//                sline = line.split(" ");
-//                nodeX[i] = Double.parseDouble(sline[1].trim());
+        String inkommande_string = inkommande_samlat.toString();
+        System.out.println(inkommande_string);
+        svar = inkommande_string;
 
-        System.out.println(inkommande_samlat.toString());
-        System.out.println("Hej");
-        
         }
     
      catch (Exception e) { System.out.print(e.toString()); }
        
-    return plats;
+    return svar;
     }
      
-    public static String aterstall(String scenario){
-    return scenario;
+    public String aterstall(String scenario){       //var static från början
+         try {
+
+         String url = " http://tnk111.n7.se/aterstall.php?scenario=" + scenario; 
+         URL urlobjekt = new URL(url);       
+         HttpURLConnection anslutning = (HttpURLConnection)
+         urlobjekt.openConnection();
+
+        System.out.println("\nAnropar: " + url);
+ 
+        BufferedReader inkommande = new BufferedReader(new
+
+        InputStreamReader(anslutning.getInputStream()));
+        String inkommande_text;
+        StringBuffer inkommande_samlat = new StringBuffer();
+ 
+        while ((inkommande_text = inkommande.readLine()) != null) {
+                inkommande_samlat.append(inkommande_text);
+        }
+  
+        inkommande.close();
+        
+        String inkommande_string = inkommande_samlat.toString();
+        System.out.println(inkommande_string);
+         }
+          catch (Exception e) { System.out.print(e.toString()); }
+    return svar;
     }
 
     public static void messtogroup() {

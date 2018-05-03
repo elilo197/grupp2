@@ -10,7 +10,6 @@ import javax.swing.*;
 public class ControlUI extends javax.swing.JFrame {
     // I orginalen är det bara en datastore. 
     DataStore ds;
-    ControlUI cui;
     
     /**
      * Creates new form ControlUI
@@ -304,7 +303,7 @@ public class ControlUI extends javax.swing.JFrame {
       /*Ta bort kommentarerna nedan för att köra bluetooth!! 
       ds.btc = new BluetoothTransceiver();
       ds.btm = new BluetoothTransmitter(ds.btc);
-      ds.btr = new BluetoothReceiver(ds.btc);
+      ds.btr = new BluetoothReceiver(ds.btc, ds);
       Thread t4 = new Thread(ds.btr);
       t4.start();
       appendStatus("Bluetoothanslutning upprättad");*/
@@ -312,13 +311,10 @@ public class ControlUI extends javax.swing.JFrame {
         appendBluetoothAdress("Adress: 20:16:01:20:56:82");
         appendBluetoothKanal("Kanal: 1");
       
+        
        //Thread t3 = new Thread(btc);
        //t3.start();
         //System.out.println("Hej");
-//       com = new Compass();
-//        Thread t6 = new Thread(com);
-//        t6.start();
-
     }//GEN-LAST:event_anslutActionPerformed
 
     private void startActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startActionPerformed
@@ -328,11 +324,12 @@ public class ControlUI extends javax.swing.JFrame {
         appendStatus("Skickade meddelande: " + ds.F);*/
         
        Uppdrag uppdrag1= new Uppdrag(ds);
-       GuiUpdate g =  new GuiUpdate(ds, cui, ds.start);        //Tråd som uppdaterar kartan med var AGV är
+       GuiUpdate g =  new GuiUpdate(ds, ds.cui, ds.start);        //Tråd som uppdaterar kartan med var AGV är
        Thread t2 = new Thread(g);
-     //   t2.start();   
-     OptPlan comp = new OptPlan(ds);
-      comp.compass();     
+       t2.start();   
+
+     OptPlan comp = new OptPlan(ds);  
+
         
     }//GEN-LAST:event_startActionPerformed
 

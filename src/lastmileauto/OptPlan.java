@@ -60,8 +60,8 @@ public class OptPlan {
                     ds.arcColor[j] = 1;
 
                     System.out.println("Arc in shortest path: "+j);
-            // System.out.println("arcStart: "+ds.arcStart[j]);
-                    //System.out.println("arcEnd: "+ds.arcEnd[j]);
+             System.out.println("arcStart: "+ds.arcStart[j]);
+             System.out.println("arcEnd: "+ds.arcEnd[j]);
 
                 }
            
@@ -71,8 +71,7 @@ public class OptPlan {
             
             //Gör om till int. 
             ds.pathInt.add(Integer.parseInt(path.get(i).getId()));
-  
- 
+
             //System.out.println("pathInt: " + ds.pathInt);
 
             
@@ -80,7 +79,7 @@ public class OptPlan {
             //x[i] = ds.nodeX[ds.pathInt[i]]; 
             //y[i]= ds.nodeY[ds.pathInt[i]];
                     
-        }   
+        }     
     
         ds.pathInt.add(ds.slutRutt);
     return ds.pathInt;     
@@ -101,10 +100,7 @@ public class OptPlan {
           //Här gör vi om arraylist till array med ints
           for(int i =0; i <nodlista.size(); i++)
         {
-
-
-
-         nodlistaInt = nodlista.stream().mapToInt(k -> k).toArray();  
+        nodlistaInt = nodlista.stream().mapToInt(k -> k).toArray();  
          System.out.println("Nodlista: " + nodlistaInt[i]);
         } 
      
@@ -113,7 +109,7 @@ public class OptPlan {
          
         x[i] = ds.nodeX[nodlistaInt[i]-1]; //+2 är fulkodning
         y[i]= ds.nodeY[nodlistaInt[i]-1];  //+2 är fulkodning  
-       System.out.println("Koordinater från compass: " +x[i]+", " +y[i]);
+       //System.out.println("Koordinater från compass: " +x[i]+", " +y[i]);
     }
 
 
@@ -211,11 +207,11 @@ public class OptPlan {
          
              System.out.println(ds.kommandon[i]); 
      }
-   
-
+   for (int i =0; i<ds.kommandon.length; i++){
+System.out.println("Kommandon: " + ds.kommandon[i]); 
+   }
          return ds.kommandon;
 
 }
 
 }
-
