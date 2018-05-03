@@ -11,7 +11,6 @@ public class RobotRead implements Runnable  {
     BluetoothReceiver bre;
     BluetoothTransceiver btc;
     long start;
-    long timemilli = 0;
     String meddelande; 
 
     public RobotRead(DataStore ds, ControlUI cui ){ 
@@ -22,14 +21,19 @@ public class RobotRead implements Runnable  {
 
 @Override
 public void run () {
+
     cui.appendStatusAgv("hejsan, skriver ut från robotread: " + ds.meddelande_in); //testar att den kan skriva ut, ta bort 
     
- while (true) {// timenano = System.nanoTime();
+
+
+ while (true) {
+
      
     if(ds.meddelande_in != null){
         cui.appendStatusAgv(ds.meddelande_in);
     }  
     
+
    start = System.currentTimeMillis(); //start tid 
    //cui.appendStatus("Starttid: " + System.currentTimeMillis()); //bytt ut sys.out VAD ÄR DENNA BRA FÖR?
    
@@ -39,27 +43,50 @@ public void run () {
        // System.out.println("Tiden i millisekunder är: " + (System.currentTimeMillis() - start));
             if(ds.meddelande_in.equals("OK")){
                 cui.appendStatusAgv("Vi fick meddelandet: " + ds.meddelande_in +"Borde vara OK"); //bytt ut sys.out
+
+   start = System.currentTimeMillis(); //starttid 
+   System.out.println("Starttid: " + System.currentTimeMillis());
+     
+   while (System.currentTimeMillis() - start < 2500){
+      
+     //   System.out.println("Tiden i millisekunder är: " + (System.currentTimeMillis() - start));
+
+            if(ds.meddelande_in.equals("D")){
+                System.out.println("Vi fick meddelandet: " + ds.meddelande_in +". Borde vara D");
+
                 start = System.currentTimeMillis();
+                ds.dcount = ds.dcount +1; 
             }
-            else if(ds.meddelande_in.equals("D")){
-                cui.appendStatusAgv("Vi fick meddelandet: " + ds.meddelande_in +"Borde vara D"); //bytt ut sys.out
-                
-            }
-            else{ //Vi fick in en nod. 
+
+            else if (isNumeric(ds.meddelande_in) == true) {//Vi fick in en nod.
+
                  ds.mottagenInt = Integer.parseInt(ds.meddelande_in); //Gör om deras string till en int innehåll nodnummer.
+                 start = System.currentTimeMillis();
+           
+            }
+            else{  
+                //cui.appendStatus("Oläsbart värde: " + ds.meddelande_in);
             }
 } // Utanför While-loopen. 
    cui.appendStatusAgv("Nu har det gått för lång tid är det något fel på Agda?"); 
-   ds.btstatus = 1; 
- 
+   ds.btstatus = 1;   
+   
+}}}}
 
-}}}
+public static boolean isNumeric(String str)  
+{  
+  try  
+  {  
+    double d = Double.parseDouble(str);  
+  }  
+  catch(NumberFormatException nfe)  
+  {  
+    return false;  
+  }  
+  return true;  
+}   
+}
 
-
-
-  // System.out.println("Tiden i millisekunder är: " + (System.currentTimeMillis() - start));
-       // System.out.println("Tiden i millisekunder är: " + (System.currentTimeMillis() - start));
-        //System.out.println("Tiden i millisekunder är: " + (System.currentTimeMillis() - start));
 
 
 

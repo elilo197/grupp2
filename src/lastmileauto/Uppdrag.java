@@ -40,10 +40,6 @@ public class Uppdrag {
    String svar;
    OptPlan oppis1;
    OptPlan oppis2;
-   
-
-
-
     
 
     public Uppdrag(DataStore ds) {    
@@ -248,7 +244,7 @@ public class Uppdrag {
 
           inkommande.close();
   
-             for(int k = 0; k < inkuppdrag.size(); k++){
+        for(int k = 0; k < inkuppdrag.size(); k++){
                }
         
         //Variabler
@@ -284,8 +280,10 @@ public class Uppdrag {
             System.out.println("Destinationens noder är: " + destNod1[j] + " och " + destNod2[j]); 
         }
         
+
           System.out.println("Uppdragsid: " + uppdragsid[0]); //HÄR HAR VI BYTT
  
+
         //Välj uppdrag
         for (int j=0; j<IntStorlek; j++){
 
@@ -305,7 +303,9 @@ public class Uppdrag {
     
      catch (Exception e) { System.out.print(e.toString()); }
      
+
       ds.cui.appendStatus("Valt uppdrag: " + valtUppdrag); //HÄR HAR VI BYTT
+
      return valtUppdrag;
     }     
 
@@ -316,18 +316,18 @@ public class Uppdrag {
    
       public String getPassagerare(String valtUppdrag){
       int uppdragInt = Integer.parseInt(valtUppdrag);
-     ds.cui.appendStatus("Passant index: " + Integer.parseInt(valtUppdrag)); //HÄR HAR VI BYTT
-       int paxInt = passant[Integer.parseInt(valtUppdrag)-1]; 
+
+      int paxInt = passant[Integer.parseInt(valtUppdrag)-1]; 
+
    
-        pax = Integer.toString(paxInt);  
-        //pax = "2";
+      pax = Integer.toString(paxInt);  
       return pax; 
     }
       
     
-    //Kan behövas ändras till en String[], själva metoden
+    
     public  String tauppdrag(String plats, String id, String pax, String grupp){    //Denna var static
-       System.out.println("I tauppdrag kommer följande in: Plats: " + plats + " Id: " + id + " Pax: " + pax + " Grupp: " + grupp);
+    //   System.out.println("I tauppdrag kommer följande in: Plats: " + plats + " Id: " + id + " Pax: " + pax + " Grupp: " + grupp);
         /**Ta första uppdaget och kolla om kapacitet är ok
             *Om kapacitet är ok --> kolla om samåkning är ok
                 *Om samåkning är ok, kolla vidare i listan och spara "nuvarande" passagerare
@@ -362,7 +362,7 @@ public class Uppdrag {
         while ((inkommande_text = inkommande.readLine()) != null) {
                 inkommande_samlat.append(inkommande_text);
         }
-        //String [] ink_sam = inkommande_samlat.split(" "); Skapa mellanrum mellan de olika raderna EJ KLART
+        
         inkommande.close();
         
         String inkommande_string = inkommande_samlat.toString();

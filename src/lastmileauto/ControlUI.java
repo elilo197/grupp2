@@ -471,10 +471,18 @@ public class ControlUI extends javax.swing.JFrame {
       appendStatus("Bluetoothanslutning upprättad");*/
       
         appendBluetoothAdress("Adress: 20:16:01:20:56:82");
+
         appendBluetoothKanal("1");
       
         
        //Thread t3 = new Thread(btc);
+
+    RobotRead r = new RobotRead(ds, ds.cui);
+    Thread robottråd = new Thread(r);
+    robottråd.start();
+    
+    //Thread t3 = new Thread(btc);
+
        //t3.start();
         //System.out.println("Hej");
     }//GEN-LAST:event_anslutActionPerformed
@@ -495,7 +503,7 @@ public class ControlUI extends javax.swing.JFrame {
        t3.start(); 
        
 
-     OptPlan comp = new OptPlan(ds);  
+       OptPlan comp = new OptPlan(ds);  
 
         
     }//GEN-LAST:event_startActionPerformed
