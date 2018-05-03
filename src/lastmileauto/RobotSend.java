@@ -16,7 +16,7 @@ public RobotSend(){
 @Override
 public void run(){
     
-start = System.currentTimeMillis(); //starttid 
+   start = System.currentTimeMillis(); //starttid 
    System.out.println("Starttid: " + System.currentTimeMillis());
      
    while (System.currentTimeMillis() - start == 2500){          //Skicka när det gårr 2500 ms

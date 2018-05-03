@@ -32,7 +32,7 @@ public void run () {
      
    while (System.currentTimeMillis() - start < 2500){
       
-        System.out.println("Tiden i millisekunder är: " + (System.currentTimeMillis() - start));
+     //   System.out.println("Tiden i millisekunder är: " + (System.currentTimeMillis() - start));
 
             if(ds.meddelande_in.equals("D")){
                 System.out.println("Vi fick meddelandet: " + ds.meddelande_in +". Borde vara D");
