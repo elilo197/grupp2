@@ -46,7 +46,11 @@ public class DataStore {
     ControlUI cui;
     String meddelande_in = "OK";
     int mottagenInt = 21;
+<<<<<<< HEAD
+    int btstatus =0; 
+=======
     int dcount = 0; 
+>>>>>>> 3d5f2802db8fca8a63b55e87ae62a0e0ebfa7de6
 
     public DataStore() {
         // Initialize the datastore with fixed size arrays for storing the network data

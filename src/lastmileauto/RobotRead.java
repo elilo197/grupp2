@@ -21,9 +21,32 @@ public class RobotRead implements Runnable  {
 
 @Override
 public void run () {
- while (true) {
-     
+
+    cui.appendStatusAgv("hejsan, skriver ut från robotread: " + ds.meddelande_in); //testar att den kan skriva ut, ta bort 
     
+
+
+ while (true) {
+
+     
+<<<<<<< HEAD
+=======
+    if(ds.meddelande_in != null){
+        cui.appendStatusAgv(ds.meddelande_in);
+    }  
+>>>>>>> 13791df0af3d010a42cb9ee016c287ea739b8e55
+    
+
+   start = System.currentTimeMillis(); //start tid 
+   //cui.appendStatus("Starttid: " + System.currentTimeMillis()); //bytt ut sys.out VAD ÄR DENNA BRA FÖR?
+   
+   
+   while (System.currentTimeMillis() - start < 2500){
+      
+       // System.out.println("Tiden i millisekunder är: " + (System.currentTimeMillis() - start));
+            if(ds.meddelande_in.equals("OK")){
+                cui.appendStatusAgv("Vi fick meddelandet: " + ds.meddelande_in +"Borde vara OK"); //bytt ut sys.out
+
    start = System.currentTimeMillis(); //starttid 
    System.out.println("Starttid: " + System.currentTimeMillis());
      
@@ -33,10 +56,13 @@ public void run () {
 
             if(ds.meddelande_in.equals("D")){
                 System.out.println("Vi fick meddelandet: " + ds.meddelande_in +". Borde vara D");
+
                 start = System.currentTimeMillis();
                 ds.dcount = ds.dcount +1; 
             }
+
             else if (isNumeric(ds.meddelande_in) == true) {//Vi fick in en nod.
+
                  ds.mottagenInt = Integer.parseInt(ds.meddelande_in); //Gör om deras string till en int innehåll nodnummer.
                  start = System.currentTimeMillis();
             }
@@ -45,14 +71,19 @@ public void run () {
                 start = System.currentTimeMillis();
             }
 } // Utanför While-loopen. 
+<<<<<<< HEAD
    cui.appendStatus("Nu har det gått för lång tid. Är det något fel på Agda?");
    
    //Vi borde kolla hur hon mår och om vi kan hjälpa till
 
 
    
+=======
+   cui.appendStatusAgv("Nu har det gått för lång tid är det något fel på Agda?"); 
+   ds.btstatus = 1;   
+>>>>>>> 13791df0af3d010a42cb9ee016c287ea739b8e55
    
-}}
+}}}}
 
 public static boolean isNumeric(String str)  
 {  
