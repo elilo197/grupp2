@@ -70,14 +70,7 @@ public void run () {
             }
 } // Utanför While-loopen. 
 
-   cui.appendStatus("Nu har det gått för lång tid. Är det något fel på Agda?");
-   
-   //Vi borde kolla hur hon mår och om vi kan hjälpa till
-
-
-   
-
-   cui.appendStatusAgv("Nu har det gått för lång tid är det något fel på Agda?"); 
+   cui.appendStatusAgv("Nu har det gått för lång tid. Är det något fel på Agda?"); 
    ds.btstatus = 1;   
    
 }}}}
