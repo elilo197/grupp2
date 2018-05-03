@@ -40,10 +40,6 @@ public class Uppdrag {
    String svar;
    OptPlan oppis1;
    OptPlan oppis2;
-   
-
-
-
     
 
     public Uppdrag(DataStore ds) {    

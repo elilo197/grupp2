@@ -13,4 +13,7 @@ public class BluetoothTransmitter{
 public void send(String message){
    btc.bluetoothanslutning.println(message);
         }
+
+
+
 }

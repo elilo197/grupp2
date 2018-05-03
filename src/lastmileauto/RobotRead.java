@@ -42,14 +42,13 @@ public void run () {
             else if(ds.meddelande_in.equals("D")){
                 System.out.println("Vi fick meddelandet: " + ds.meddelande_in +"Borde vara D");
                 
+                
             }
             else{ //Vi fick in en nod. 
                  ds.mottagenInt = Integer.parseInt(ds.meddelande_in); //Gör om deras string till en int innehåll nodnummer.
             }
 } // Utanför While-loopen. 
    cui.appendStatus("Nu har det gått för lång tid är det något fel på Agda?"); 
- 
-
 }}}
 
 

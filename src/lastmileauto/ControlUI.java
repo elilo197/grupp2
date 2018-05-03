@@ -328,7 +328,7 @@ public class ControlUI extends javax.swing.JFrame {
        Thread t2 = new Thread(g);
        t2.start();   
 
-     OptPlan comp = new OptPlan(ds);  
+       OptPlan comp = new OptPlan(ds);  
 
         
     }//GEN-LAST:event_startActionPerformed
