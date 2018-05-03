@@ -75,18 +75,22 @@ public class Uppdrag {
                              
             oppis2 = new OptPlan(ds);
             oppis2path = oppis2.createPlan();
+               
             
             for ( int i = 0; i < oppis1path.size(); i++ ){
             oppispath.add(oppis1path.get(i));
             }
              System.out.println("Oppis1path: " + oppis1path);  
             
-              for ( int i = 0; i < oppis2path.size(); i++ ){
+              for ( int i = 2; i < oppis2path.size(); i++ ){
             oppispath.add(oppis2path.get(i));
             } 
              System.out.println("Oppis2path: " + oppis2path);    
               
             System.out.println("Oppispath: " + oppispath);  
+            
+            opt = new OptPlan(ds);
+            opt.compass(oppispath);
             
             ds.cui.repaint();
   
