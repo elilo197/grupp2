@@ -21,25 +21,45 @@ public class RobotRead implements Runnable  {
 
 @Override
 public void run () {
+
+    cui.appendStatusAgv("hejsan, skriver ut från robotread: " + ds.meddelande_in); //testar att den kan skriva ut, ta bort 
+    
+
+
  while (true) {
+
      
     if(ds.meddelande_in != null){
-        cui.appendStatus(ds.meddelande_in);
+        cui.appendStatusAgv(ds.meddelande_in);
     }  
     
+
+   start = System.currentTimeMillis(); //start tid 
+   //cui.appendStatus("Starttid: " + System.currentTimeMillis()); //bytt ut sys.out VAD ÄR DENNA BRA FÖR?
+   
+   
+   while (System.currentTimeMillis() - start < 2500){
+      
+       // System.out.println("Tiden i millisekunder är: " + (System.currentTimeMillis() - start));
+            if(ds.meddelande_in.equals("OK")){
+                cui.appendStatusAgv("Vi fick meddelandet: " + ds.meddelande_in +"Borde vara OK"); //bytt ut sys.out
+
    start = System.currentTimeMillis(); //starttid 
    System.out.println("Starttid: " + System.currentTimeMillis());
      
    while (System.currentTimeMillis() - start < 2500){
       
-        System.out.println("Tiden i millisekunder är: " + (System.currentTimeMillis() - start));
+     //   System.out.println("Tiden i millisekunder är: " + (System.currentTimeMillis() - start));
 
             if(ds.meddelande_in.equals("D")){
                 System.out.println("Vi fick meddelandet: " + ds.meddelande_in +". Borde vara D");
+
                 start = System.currentTimeMillis();
                 ds.dcount = ds.dcount +1; 
             }
+
             else if (isNumeric(ds.meddelande_in) == true) {//Vi fick in en nod.
+
                  ds.mottagenInt = Integer.parseInt(ds.meddelande_in); //Gör om deras string till en int innehåll nodnummer.
                  start = System.currentTimeMillis();
            
@@ -48,13 +68,10 @@ public void run () {
                 //cui.appendStatus("Oläsbart värde: " + ds.meddelande_in);
             }
 } // Utanför While-loopen. 
-   cui.appendStatus("Nu har det gått för lång tid. Är det något fel på Agda?"); 
-   //Vi borde kolla hur hon mår och om vi kan hjälpa till
-
-
+   cui.appendStatusAgv("Nu har det gått för lång tid är det något fel på Agda?"); 
+   ds.btstatus = 1;   
    
-   
-}}
+}}}}
 
 public static boolean isNumeric(String str)  
 {  

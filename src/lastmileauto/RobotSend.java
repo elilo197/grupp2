@@ -14,7 +14,7 @@ public RobotSend(DataStore ds){
 @Override
 public void run(){
     
-start = System.currentTimeMillis(); //starttid 
+   start = System.currentTimeMillis(); //starttid 
    System.out.println("Starttid: " + System.currentTimeMillis());
      
    while (System.currentTimeMillis() - start >= 2400 && System.currentTimeMillis() - start <= 2600 ){          //Skicka när det gårr 2500 ms

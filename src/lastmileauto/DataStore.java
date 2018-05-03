@@ -47,6 +47,7 @@ public class DataStore {
     ControlUI cui;
     String meddelande_in = "OK";
     int mottagenInt = 21;
+    int btstatus =0; 
     int dcount = 0; 
     ArrayList<String> vaderStrack; 
     int ncount = 0;

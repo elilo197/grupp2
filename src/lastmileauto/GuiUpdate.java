@@ -60,6 +60,10 @@ public void run (){
 //            if(ds.updateUIflag == true){
 //
 
+        //cui.appendStatus("GuiUpdate startar och kommer att köra i " KOMMENTARA FRAM EVENTUELLT
+        //+ sleepTime + " millisekunder." );
+//            cui.appendStatus ("Jag är tråd GuiUpdate! För " 
+//            + i + ":te gången.");
         //  ds.robotX = ds.robotX - 10; 
         //  ds.robotY = ds.robotY -10;
             
