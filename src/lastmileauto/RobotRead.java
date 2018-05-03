@@ -23,9 +23,6 @@ public class RobotRead implements Runnable  {
 public void run () {
  while (true) {
      
-    if(ds.meddelande_in != null){
-        cui.appendStatus(ds.meddelande_in);
-    }  
     
    start = System.currentTimeMillis(); //starttid 
    System.out.println("Starttid: " + System.currentTimeMillis());
@@ -42,13 +39,14 @@ public void run () {
             else if (isNumeric(ds.meddelande_in) == true) {//Vi fick in en nod.
                  ds.mottagenInt = Integer.parseInt(ds.meddelande_in); //Gör om deras string till en int innehåll nodnummer.
                  start = System.currentTimeMillis();
-           
             }
             else{  
                 //cui.appendStatus("Oläsbart värde: " + ds.meddelande_in);
+                start = System.currentTimeMillis();
             }
 } // Utanför While-loopen. 
-   cui.appendStatus("Nu har det gått för lång tid. Är det något fel på Agda?"); 
+   cui.appendStatus("Nu har det gått för lång tid. Är det något fel på Agda?");
+   
    //Vi borde kolla hur hon mår och om vi kan hjälpa till
 
 
