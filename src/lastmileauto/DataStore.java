@@ -40,13 +40,16 @@ public class DataStore {
     BluetoothReceiver btr; 
     int[] tot_arcCost;
     int robotpos = start;       //Robotens aktuella position, initieras till startpositionen
-    String[] kommandon;
+    //String[] kommandon;
+    ArrayList<String> kommandon;
     int kapacitet = 10;
     String grupp = "2";
     ControlUI cui;
     String meddelande_in = "OK";
     int mottagenInt = 21;
     int dcount = 0; 
+    ArrayList<String> vaderStrack; 
+    int ncount = 0;
 
     public DataStore() {
         // Initialize the datastore with fixed size arrays for storing the network data
@@ -62,7 +65,11 @@ public class DataStore {
         networkRead = false;
         arcColor = new int[128];
         pathInt = new ArrayList<Integer>();
-        kommandon = new String[3];//3 är fulkodning, denna ska va 2 mindre än pathInt
+        //kommandon = new String[3];//3 är fulkodning, denna ska va 2 mindre än pathInt
+        
+        vaderStrack = new ArrayList<String>();
+        
+        
 
     }
 

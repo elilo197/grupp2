@@ -59,13 +59,13 @@ public class Uppdrag {
             }
                 
             ds.startRutt = ds.robotpos;        
-            ds.slutRutt = linkNod1[Integer.parseInt(valtUppdrag)-1];
+            ds.slutRutt = linkNod2[Integer.parseInt(valtUppdrag)-1];
                          
             oppis1 = new OptPlan(ds);
             oppis1.createPlan();
   
             ds.startRutt = linkNod1[Integer.parseInt(valtUppdrag)-1];       
-            ds.slutRutt = destNod1[Integer.parseInt(valtUppdrag)-1];
+            ds.slutRutt = destNod2[Integer.parseInt(valtUppdrag)-1];
                          
             oppis2 = new OptPlan(ds);
             oppis2.createPlan();
@@ -153,7 +153,7 @@ public class Uppdrag {
         //Här borde en loop börja
         for (int j=0; j<IntStorlek; j++){       //Den här ska loopa över alla upphämtningsplatser
             ds.startRutt = ds.robotpos;        
-            ds.slutRutt = linkNod1[j];
+            ds.slutRutt = linkNod2[j];
             //System.out.println("Startnod: " + ds.startRutt + ", slutnod: " + ds.slutRutt);
              
             oppis[j] = new OptPlan(ds);
