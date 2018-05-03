@@ -44,17 +44,14 @@ public class LastMileAuto {
        ds.cui.setVisible(true);
        ds.cui.showStatus();
         
-                                            //Tråd som håller kontakt med AGV via BluetoothTranceiver
-                                            //Tråd för resten, typ main
                                             
-        ds.cui.appendStatus("Startar programmet \n" );
-        ds.cui.appendStatusAgv("Meddelanden från Agda kommer nu \n" );
-                  
-        //t1.start();
+       ds.cui.appendStatus("Startar programmet \n" );
+       ds.cui.appendStatusAgv("Meddelanden från Agda kommer nu. \n" );
+              
 
-        OptPlan op = new OptPlan(ds);
-        ds.pathInt = op.createPlan();
-        op.compass(ds.pathInt);
+//        OptPlan op = new OptPlan(ds);
+//        ds.pathInt = op.createPlan();
+//        op.compass(ds.pathInt);
     }
          
     /**

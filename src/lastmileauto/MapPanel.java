@@ -42,9 +42,9 @@ public class MapPanel extends JPanel {
             for (int i = 0; i < ds.nodes; i++) {
                 x = (int) (ds.nodeX[i] * xscale);
                 y = (int) (ds.nodeY[i] * yscale);
-                
+                int nodnr = i+1;
                 g.fillOval(x - (circlesize / 2), height - y - circlesize / 2, circlesize, circlesize);
-               //g.drawString(" " + ds.nodeNr[i], x, y);
+                g.drawString(" " + nodnr, (x),((height - y ) + (height - y))/2);
             }
             
             ds.tot_arcCost = new int[ds.arcs];
@@ -72,7 +72,7 @@ public class MapPanel extends JPanel {
                 
                 ds.tot_arcCost[i] = x + y; // här är skillnaden, fyller liksom ds variabeln här så vi kan hämta den i ds sen 
  
-                g.drawString("" + ds.tot_arcCost[i], (x1+x2)/2,((height - y1 ) + (height - y2))/2);
+               // g.drawString("" + ds.tot_arcCost[i], (x1+x2)/2,((height - y1 ) + (height - y2))/2);
               }
 
             // Draw robot
