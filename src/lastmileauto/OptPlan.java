@@ -105,7 +105,7 @@ public class OptPlan {
     }
 
 
-     for(int i =0; i <4; i++)  {    //nodlista.size(); i++)  {
+     for(int i =0; i <nodlista.size(); i++)  {    //nodlista.size(); i++)  {
 
            if((x[i+1] - x[i] > 0) && (y[i+1] - y[i] == 0)){ //Agda kör österut
                System.out.println("Nu kör Agda österut.");
@@ -238,7 +238,7 @@ public class OptPlan {
    
      
    
-         return ds.kommandon;
+    return ds.kommandon;
 
 }
 

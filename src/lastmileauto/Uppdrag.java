@@ -45,7 +45,8 @@ public class Uppdrag {
    ArrayList<Integer> oppispath;
      
 
-    public Uppdrag(DataStore ds) {    
+    public Uppdrag(DataStore ds) { 
+        aterstall("1");
         this.ds = ds;
         listaplatser();
         valtUppdrag = listauppdrag(narmstaPlats);           //Skickar in upphämtningsplats, skickar ut vilket uppdrag vi väljer
@@ -99,7 +100,10 @@ public class Uppdrag {
     /** Här listar vi antalet upphämtningsplatser och beräknar vilken som är närmast. 
      */
     public void listaplatser() { //tagit bort static
-   
+      
+    ds.cui.appendStatus("");    
+    ds.cui.appendStatus("Listar platser.");    
+        
      try {
 
          //Uppdrag http = new Uppdrag();
@@ -132,7 +136,7 @@ public class Uppdrag {
          inkommande.close();
             ds.cui.appendStatus("Antal upphämtningsplatser: " + ink.get(0));
             for(int k = 1; k < ink.size()-1; k++){
-            ds.cui.appendStatus("Upphämtningsplats: " + ink.get(k));
+            //ds.cui.appendStatus("Upphämtningsplats: " + ink.get(k));
          }
        
         
@@ -355,7 +359,7 @@ public class Uppdrag {
                     *Om nekas --> sök nytt uppdrag
         */
     try {
-        ds.cui.appendStatus("\nNu tar vi uppdrag!");
+        ds.cui.appendStatus("\nTar uppdrag.");
          String url = " http://tnk111.n7.se/tauppdrag.php?plats=" + plats + "&id="+id+"&passagerare="+pax+"&grupp="+grupp; 
          URL urlobjekt = new URL(url);       
          HttpURLConnection anslutning = (HttpURLConnection)
@@ -383,7 +387,8 @@ public class Uppdrag {
         String inkommande_string = inkommande_samlat.toString();
         System.out.println(inkommande_string);
         svar = inkommande_string;
-
+        ds.cui.appendStatus("Svar: " + svar);
+        
         }
     
      catch (Exception e) { System.out.print(e.toString()); }
@@ -392,6 +397,7 @@ public class Uppdrag {
     }
      
     public String aterstall(String scenario){       //var static från början
+        ds.cui.appendStatus("Återställer.");
          try {
 
          String url = " http://tnk111.n7.se/aterstall.php?scenario=" + scenario; 

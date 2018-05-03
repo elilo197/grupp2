@@ -521,13 +521,13 @@ public class ControlUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void anslutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_anslutActionPerformed
-      /*Ta bort kommentarerna nedan för att köra bluetooth!! 
+      //Ta bort kommentarerna nedan för att köra bluetooth!! 
       ds.btc = new BluetoothTransceiver();
       ds.btm = new BluetoothTransmitter(ds.btc);
       ds.btr = new BluetoothReceiver(ds.btc, ds);
       Thread t4 = new Thread(ds.btr);
       t4.start();
-      appendStatus("Bluetoothanslutning upprättad");*/
+      appendStatus("Bluetoothanslutning upprättad");
       
         appendBluetoothAdress("20:16:01:20:56:82");
 
