@@ -227,6 +227,10 @@ public class OptPlan {
              
              
      }
+   
+     for (int i =0; i<ds.kommandon.length; i++){
+        System.out.println(ds.kommandon[i]); 
+        }
      ds.kommandon.add(ds.S);
      
      System.out.println(ds.kommandon);

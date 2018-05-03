@@ -228,7 +228,7 @@ public class Uppdrag {
      */
      
      try {
-         ds.cui.appendStatus("\nNu hämtas lista på uppdrag\n ");
+         ds.cui.appendStatus("\nNu hämtas lista på uppdrag!");
          //Kalla på metoden ovan för att hämta x
         // String X = "A"; //DENNA SKA VA MED I STEGET OVAN
          //Uppdrag http = new Uppdrag();
@@ -319,7 +319,7 @@ public class Uppdrag {
      catch (Exception e) { System.out.print(e.toString()); }
      
 
-      ds.cui.appendStatus("Valt uppdrag: " + valtUppdrag); //HÄR HAR VI BYTT
+      ds.cui.appendStatus("\nValt uppdrag: " + valtUppdrag); //HÄR HAR VI BYTT
 
      return valtUppdrag;
     }     
@@ -355,7 +355,7 @@ public class Uppdrag {
                     *Om nekas --> sök nytt uppdrag
         */
     try {
-        ds.cui.appendStatus("\nNu är vi i tauppdrag \n ");
+        ds.cui.appendStatus("\nNu tar vi uppdrag!");
          String url = " http://tnk111.n7.se/tauppdrag.php?plats=" + plats + "&id="+id+"&passagerare="+pax+"&grupp="+grupp; 
          URL urlobjekt = new URL(url);       
          HttpURLConnection anslutning = (HttpURLConnection)
