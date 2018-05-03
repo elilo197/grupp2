@@ -43,11 +43,12 @@ public class Uppdrag {
    ArrayList<Integer> oppis1path;
    ArrayList<Integer> oppis2path;
    ArrayList<Integer> oppispath;
+   
      
 
     public Uppdrag(DataStore ds) { 
         aterstall("1");
-        messfromgroup();
+        //messfromgroup();
         this.ds = ds;
         listaplatser();
         valtUppdrag = listauppdrag(narmstaPlats);           //Skickar in upphämtningsplats, skickar ut vilket uppdrag vi väljer
@@ -83,13 +84,16 @@ public class Uppdrag {
             for ( int i = 0; i < oppis1path.size(); i++ ){
             oppispath.add(oppis1path.get(i));
             }
-             System.out.println("Oppis1path: " + oppis1path);  
+             System.out.println("Oppis1path: " + oppis1path);   //På varv 2 och resten vill vi lägga på sistanod innan
             
               for ( int i = 2; i < oppis2path.size(); i++ ){
             oppispath.add(oppis2path.get(i));
-            System.out.println("Detta är sista noden: " + oppis2path.get(oppis2path.size()-1));
+         
             } 
+             //System.out.println("Detta är sista noden: " + oppis2path.get(oppis2path.size()-1));
              System.out.println("Oppis2path: " + oppis2path);    
+              ds.sistanod = (oppis2path.get(oppis2path.size()-1));   //Lägger till sista noden i föregående rutt i en ny arraylist som ska 
+               System.out.println("Testar att skriva sistanoden: " + ds.sistanod);                                                    //adderas innan nästa rutt skapas
               
             System.out.println("Oppispath: " + oppispath);  
             
