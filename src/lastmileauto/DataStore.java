@@ -65,7 +65,7 @@ public class DataStore {
         updateUIflag = false; 
         networkRead = false;
         arcColor = new int[128];
-        pathInt = new ArrayList<Integer>();
+        //pathInt = new ArrayList<Integer>();
         //kommandon = new String[3];//3 är fulkodning, denna ska va 2 mindre än pathInt
         
         vaderStrack = new ArrayList<String>();
