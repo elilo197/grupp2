@@ -401,7 +401,7 @@ public class Uppdrag {
     }
      
     public String aterstall(String scenario){       //var static från början
-        ds.cui.appendStatus("Återställer.");
+//        ds.cui.appendStatus("\nÅterställer.");
          try {
 
          String url = " http://tnk111.n7.se/aterstall.php?scenario=" + scenario; 
