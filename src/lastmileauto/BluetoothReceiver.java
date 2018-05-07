@@ -1,15 +1,11 @@
 
 package lastmileauto;
-//hcitool scan = visar alla tillgängliga enheter
-//sdptool browse 20:16:01:20:56:82:1 
-
 
 public class BluetoothReceiver implements Runnable{
-  BluetoothTransceiver btc;
-  DataStore ds;
-    long start;
- //   String meddelande; 
-  
+BluetoothTransceiver btc;
+DataStore ds;
+long start;
+   
     
     public BluetoothReceiver(BluetoothTransceiver btc1, DataStore ds) {
         this.btc = btc1;
@@ -18,53 +14,53 @@ public class BluetoothReceiver implements Runnable{
     
     @Override
     public void run(){
+        while (true) {
         try{
-             
-        while(true){
-            start = System.currentTimeMillis(); //initiering starttid 
+  
+        start = System.currentTimeMillis(); //initiering starttid 
 
-            ds.cui.appendStatusAgv("Meddelande in från receiver: " + ds.meddelande_in);
-              
-                while (System.currentTimeMillis() - start < 2500){
-                 ds.cui.appendStatusAgv("Meddelande in: " + ds.meddelande_in);
-                 ds.meddelande_in = btc.bluetooth_in.readLine();
- 
+            //Kör följande loop så länge det inte gått mer än 2500 ms
+            while (System.currentTimeMillis() - start < 2500){
 
-                    if(ds.meddelande_in.equals("D")){   //ds.meddelande_in == 100){
-                    // if(ds.meddelande_int == 200){    
-                        ds.cui.appendStatusAgv("Korsning passerad.");
-                        start = System.currentTimeMillis();
-                        ds.dcount = ds.dcount +1; 
-                    }
+              ds.meddelande_in = btc.bluetooth_in.readLine();
 
-                    else{//Vi fick in en nod.
+                //Korsning avklarad, meddelande in är ett D
+                if(ds.meddelande_in.equals("D")){                     
+                    ds.cui.appendStatusAgv("Korsning passerad.");
+                    start = System.currentTimeMillis(); //starta om tiden
+                    ds.dcount = ds.dcount +1;           //räkna upp för att skicka nytt meddelande
+                }
+
+                //Meddelande in är allt annat än en nod
+                else{
+                     
+                     try {
+                        ds.meddelande_int = Integer.parseInt(ds.meddelande_in); //Gör om string till in
+                        ds.cui.appendStatusAgv("Nod " + ds.meddelande_int);             
+                        ds.robotX = ds.nodeX[ds.meddelande_int-1];  //Sätt x-koordinat på roboten baserat på inkommande nodnr
+                        ds.robotY = ds.nodeY[ds.meddelande_int-1];  //Sätt x-koordinat på roboten baserat på inkommande nodnr
+                        ds.cui.repaint();
                          start = System.currentTimeMillis();
-                         ds.cui.appendStatusAgv("Nod " + ds.meddelande_in);  
+                         
+                     } catch (NumberFormatException nfe){       //Om meddelande_in inte är en int hamnar vi här
+                      ds.cui.appendStatusAgv("Fel typ av meddelande. Kan ej behandlas.");
+                      start = System.currentTimeMillis();
+                    //starta om tiden
+                     }
 
-                         try {
-                            ds.meddelande_int = Integer.parseInt(ds.meddelande_in);
-                            ds.robotX = ds.nodeX[ds.meddelande_int-1];
-                            ds.robotY = ds.nodeY[ds.meddelande_int-1];
-                            ds.cui.repaint();
-                         } catch (NumberFormatException nfe){
-                         ds.cui.appendStatusAgv("Fel typ av meddelande. Kan ej behandlas.");
-                         start = System.currentTimeMillis();
-                         }
-                 
-                 
-                 
-                    }
-                } // Utanför While-loopen. 
-         
 
+
+                }
+            } // Utanför While-loopen. 
+
+        
 
    ds.cui.appendStatusAgv("Nu har det gått för lång tid. Är det något fel på Agda?"); 
-   ds.btstatus = 1;   
   
-            }
-        }catch (Exception e){System.out.print("Catch: " + e.toString()); }
+        }catch (Exception e){System.out.print("\n Fångad i catch: " + e.toString()); }
     }
- 
+    }
+    
     //Den här är för att kolla om inkommande string går att göra om till int
     public static boolean isNumeric(String str)  
 {  
