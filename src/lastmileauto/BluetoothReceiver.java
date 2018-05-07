@@ -57,7 +57,7 @@ long start;
 
    ds.cui.appendStatusAgv("Nu har det gått för lång tid. Är det något fel på Agda?"); 
   
-        }catch (Exception e){System.out.print("\n Fångad i catch: " + e.toString()); }
+        }catch (Exception e){System.out.print("\n Fångad i receiver-catch: " + e.toString()); }
     }
     }
     

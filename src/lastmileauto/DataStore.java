@@ -55,8 +55,9 @@ public class DataStore {
     int meddelande_int;
     int sistanod;
     int [] poang;
-    int totPoang = 10;
+    int totPoang = 0;
     int breakflag = 0;
+    int scount = 0;
 
     public DataStore() {
         // Initialize the datastore with fixed size arrays for storing the network data
@@ -75,6 +76,7 @@ public class DataStore {
         //kommandon = new String[3];//3 är fulkodning, denna ska va 2 mindre än pathInt
         
         vaderStrack = new ArrayList<String>();
+
         
         
         
