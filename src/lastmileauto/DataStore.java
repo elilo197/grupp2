@@ -46,7 +46,7 @@ public class DataStore {
     String grupp = "2";
     ControlUI cui;
    // String meddelande_string = "hej";
-    String  meddelande_in = "Tom. Tom. Tom."; 
+    String  meddelande_in = "100"; 
     int mottagenInt = 21;
     int btstatus =0; 
     int dcount = 0; 
