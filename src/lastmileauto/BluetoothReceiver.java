@@ -28,11 +28,12 @@ public class BluetoothReceiver implements Runnable{
 //                String testtid = Long.toString(System.currentTimeMillis() - start);
 //                ds.cui.appendStatusAgv(testtid);
 //            
-      
-     
-          //ds.meddelande_in = Integer.parseInt(ds.meddelande_string);
+//      
+//     
+//          ds.meddelande_in = Integer.parseInt(ds.meddelande_string);
               
          while (System.currentTimeMillis() - start < 2500){
+             ds.cui.appendStatusAgv(ds.meddelande_in);
               //ds.cui.appendStatusAgv(ds.meddelande_string);
              ds.meddelande_in = btc.bluetooth_in.readLine();
  
