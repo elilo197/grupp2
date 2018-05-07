@@ -104,7 +104,7 @@ public class OptPlan {
        //System.out.println("Koordinater från compass: " +x[i]+", " +y[i]);
     }
     
-        System.out.println("nodlistaINT: " + nodlistaInt.length);
+        //System.out.println("nodlistaINT: " + nodlistaInt.length);
         System.out.println("nodlista: " + nodlista.size());
 
 
