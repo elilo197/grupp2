@@ -21,6 +21,7 @@ public class ControlUI extends javax.swing.JFrame {
         setTitle("Planeringssystem");
     }
     
+        //Används för att skriva ut 
         public void appendStatus(String s){
         jTextArea1.append(s+"\n");
         jTextArea1.setCaretPosition(jTextArea1.getDocument().getLength());

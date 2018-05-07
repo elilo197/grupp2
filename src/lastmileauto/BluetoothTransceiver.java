@@ -11,6 +11,7 @@ public class BluetoothTransceiver{
     
     public BluetoothTransceiver() {
         
+       //Skapar anslutningen mellan dator och AGV
        try {
              StreamConnection anslutning = (StreamConnection)
              Connector.open("btspp://201601205682:1");
