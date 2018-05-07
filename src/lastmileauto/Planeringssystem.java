@@ -28,9 +28,9 @@ public class Planeringssystem {
        ds.cui.appendStatusAgv("Meddelanden från Agda kommer nu. \n" );
               
 
-        OptPlan op = new OptPlan(ds);
-        ds.pathInt = op.createPlan();
-        op.compass(ds.pathInt);
+//        OptPlan op = new OptPlan(ds);
+//        ds.pathInt = op.createPlan();
+//        op.compass(ds.pathInt);
     }
          
     /**
