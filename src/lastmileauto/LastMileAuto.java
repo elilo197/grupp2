@@ -17,51 +17,15 @@ public class LastMileAuto {
          * This sets the file path and read network text file.
          */   
 
-<<<<<<< HEAD
 
-       //ds.setFileName("C:\\Users\\Helena\\Documents\\GitHub\\grupp2/streets.txt");
-
-       //ds.setFileName("C:\\Users\\Helena\\Documents\\GitHub\\grupp2/streets.txt");
-
-       ds.setFileName("C:\\Users\\Helena\\Documents\\GitHub\\grupp2/streets.txt");
-     // ds.setFileName("/Users/eliselord/Documents/grupp2/streets.txt");
-
-      // ds.setFileName("/Users/Veronika/Documents/grupp2/streets.txt");
-
-      //ds.setFileName("/Users/eliselord/Documents/grupp2/streets.txt");
-            //ds.setFileName("/Users/hannamellqvist/Documents/Kandidat/grupp2/streets.txt");
-       //ds.setFileName("C:\\Users\\Helena\\Documents\\GitHub\\grupp2/streets.txt");
-      //ds.setFileName("/Users/eliselord/Documents/grupp2/streets.txt");
-
-       //ds.setFileName("/Users/Veronika/Documents/grupp2/streets.txt");
-
-
-       //ds.setFileName("/Users/eliselord/Documents/grupp2/streets.txt");
-
-       //ds.setFileName("/Users/Veronika/Documents/grupp2/streets.txt");
-
-      // ds.setFileName("/Users/Veronika/Documents/grupp2/streets.txt");
-
-
-       //ds.setFileName("/Users/Veronika/Documents/grupp2/streets.txt");
-
-      // ds.setFileName("/Users/Veronika/Documents/grupp2/streets.txt");
-       //ds.setFileName("C:\\Users\\Helena\\Documents\\GitHub\\grupp2/streets.txt");
-       //ds.setFileName("/Users/eliselord/Documents/grupp2/streets.txt");
-       //ds.setFileName("/Users/Veronika/Desktop/streets.txt");
-
-       //ds.setFileName("/Users/aliceneu/Documents/grupp2/streets.txt");
-
-=======
-        
         // ds.setFileName("/Users/hannamellqvist/Documents/Kandidat/grupp2/streets.txt");
       // ds.setFileName("/Users/aliceneu/Documents/grupp2/streets.txt");
-       //ds.setFileName("C:\\Users\\Helena\\Documents\\GitHub\\grupp2/streets.txt");
+       ds.setFileName("C:\\Users\\Helena\\Documents\\GitHub\\grupp2/streets.txt");
       //ds.setFileName("/Users/eliselord/Documents/grupp2/streets.txt");
       //ds.setFileName("/Users/Veronika/Documents/grupp2/streets.txt");
       
       
->>>>>>> af66ad9e00881d78730486cccb80aaed54a3492f
+
     
        ds.readNet();
        ds.cui = new ControlUI(ds);
