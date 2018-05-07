@@ -70,13 +70,15 @@ public class Uppdrag {
                 
             ds.startRutt = ds.robotpos;        
             ds.slutRutt = linkNod2[Integer.parseInt(valtUppdrag)-1];
-                             
+             
+            //Oppis 1 är den optimerade rutten för upphämtningsplats
             oppis1 = new OptPlan(ds);
             oppis1path = oppis1.createPlan();
   
             ds.startRutt = linkNod1[Integer.parseInt(valtUppdrag)-1];       
             ds.slutRutt = destNod1[Integer.parseInt(valtUppdrag)-1];
-                             
+            
+            //Oppis 2 är den optimerade rutten för uppdraget
             oppis2 = new OptPlan(ds);
             oppis2path = oppis2.createPlan();
                
