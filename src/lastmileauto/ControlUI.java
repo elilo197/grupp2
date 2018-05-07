@@ -10,6 +10,7 @@ import javax.swing.*;
 public class ControlUI extends javax.swing.JFrame {
     // I orginalen är det bara en datastore. 
     DataStore ds;
+    Thread robottråd_send;
     
     /**
      * Creates new form ControlUI
@@ -548,7 +549,7 @@ public class ControlUI extends javax.swing.JFrame {
        OptPlan comp = new OptPlan(ds);  
        
        RobotSend send = new RobotSend(ds);
-       Thread robottråd_send = new Thread(send);
+       robottråd_send = new Thread(send);
        robottråd_send.start();
        
 
@@ -559,6 +560,8 @@ public class ControlUI extends javax.swing.JFrame {
         //Ta bort kommentaren nedan för att köra bluetooth
         ds.btm.send(ds.C);
         appendStatus("Skickade meddelande: " + ds.C);
+       ds.breakflag = 1; 
+
         
     }//GEN-LAST:event_avslutaActionPerformed
 

@@ -14,6 +14,7 @@ long start;
     
     @Override
     public void run(){
+        while (true) {
         try{
   
         start = System.currentTimeMillis(); //initiering starttid 
@@ -39,10 +40,12 @@ long start;
                         ds.robotX = ds.nodeX[ds.meddelande_int-1];  //Sätt x-koordinat på roboten baserat på inkommande nodnr
                         ds.robotY = ds.nodeY[ds.meddelande_int-1];  //Sätt x-koordinat på roboten baserat på inkommande nodnr
                         ds.cui.repaint();
+                         start = System.currentTimeMillis();
+                         
                      } catch (NumberFormatException nfe){       //Om meddelande_in inte är en int hamnar vi här
                       ds.cui.appendStatusAgv("Fel typ av meddelande. Kan ej behandlas.");
-                     
-                     start = System.currentTimeMillis();//starta om tiden
+                      start = System.currentTimeMillis();
+                    //starta om tiden
                      }
 
 
@@ -50,13 +53,14 @@ long start;
                 }
             } // Utanför While-loopen. 
 
-
+        
 
    ds.cui.appendStatusAgv("Nu har det gått för lång tid. Är det något fel på Agda?"); 
   
         }catch (Exception e){System.out.print("\n Fångad i catch: " + e.toString()); }
     }
- 
+    }
+    
     //Den här är för att kolla om inkommande string går att göra om till int
     public static boolean isNumeric(String str)  
 {  
