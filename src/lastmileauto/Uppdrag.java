@@ -33,7 +33,6 @@ public class Uppdrag {
    String [] destination;
    int [] passant; 
    int [] samaka;
-   int [] poang;
    int[] destNod1;
    int[] destNod2;
    String valtUppdrag;// = "Start";
@@ -53,6 +52,14 @@ public class Uppdrag {
         listaplatser();
         valtUppdrag = listauppdrag(narmstaPlats);           //Skickar in upphämtningsplats, skickar ut vilket uppdrag vi väljer
         pax = getPassagerare(valtUppdrag);                  //Skickar ut passagerarantal på det valda uppdraget
+        //Räknar totala poänge för uppdragen. 
+        
+        int dummy; 
+        dummy = Integer.parseInt(valtUppdrag);
+        ds.totPoang = ds.totPoang + ds.poang[dummy];
+        System.out.println("Totala poäng: " + ds.totPoang);
+        ds.cui.appendStatus("Totala poäng: " + ds.totPoang);
+        
         oppis1path = new ArrayList<Integer>();
         oppis2path = new ArrayList<Integer>();
         oppispath = new ArrayList<Integer>();
@@ -70,13 +77,15 @@ public class Uppdrag {
                 
             ds.startRutt = ds.robotpos;        
             ds.slutRutt = linkNod2[Integer.parseInt(valtUppdrag)-1];
-                             
+             
+            //Oppis 1 är den optimerade rutten för upphämtningsplatsen
             oppis1 = new OptPlan(ds);
             oppis1path = oppis1.createPlan();
   
             ds.startRutt = linkNod1[Integer.parseInt(valtUppdrag)-1];       
             ds.slutRutt = destNod1[Integer.parseInt(valtUppdrag)-1];
-                             
+            
+            //Oppis 2 är den optimerade rutten för uppdraget
             oppis2 = new OptPlan(ds);
             oppis2path = oppis2.createPlan();
                
@@ -87,14 +96,13 @@ public class Uppdrag {
              System.out.println("Oppis1path: " + oppis1path);   //På varv 2 och resten vill vi lägga på sistanod innan
             
               for ( int i = 2; i < oppis2path.size(); i++ ){
-            oppispath.add(oppis2path.get(i));
-         
-            } 
+                oppispath.add(oppis2path.get(i));
+               } 
              //System.out.println("Detta är sista noden: " + oppis2path.get(oppis2path.size()-1));
              System.out.println("Oppis2path: " + oppis2path);    
-              ds.sistanod = (oppis2path.get(oppis2path.size()-1));   //Lägger till sista noden i föregående rutt i en ny arraylist som ska 
-               System.out.println("Testar att skriva sistanoden: " + ds.sistanod);                                                    //adderas innan nästa rutt skapas
-              
+             ds.sistanod = (oppis2path.get(oppis2path.size()-1));   //Lägger till sista noden i föregående rutt i en ny arraylist som ska 
+             System.out.println("Testar att skriva sistanoden: " + ds.sistanod);                                                    //adderas innan nästa rutt skapas
+                             
             System.out.println("Oppispath: " + oppispath);  
             
             opt = new OptPlan(ds);
@@ -286,7 +294,7 @@ public class Uppdrag {
         destination  = new String[IntStorlek];
         passant  = new int[IntStorlek]; 
         samaka  = new int[IntStorlek];
-        poang = new int[IntStorlek];
+        ds.poang = new int[IntStorlek];
         destNod1 = new int[IntStorlek];
         destNod2 = new int[IntStorlek];
      
@@ -297,10 +305,10 @@ public class Uppdrag {
             destination[k-1] = sline[1];
             passant[k-1] = Integer.parseInt(sline[2]);
             samaka[k-1] = Integer.parseInt(sline[3]);
-            poang[k-1] = Integer.parseInt(sline[4]);
+            ds.poang[k-1] = Integer.parseInt(sline[4]);
            ds.cui.appendStatus("Uppdrag nr "  + uppdragsid[k-1] + " vill åka till " + destination[k-1] //HÄR HAR VI BYTT
             + ", har " + passant[k-1] + " st passagerare, har följande åsikt till samåkning: " + samaka[k-1]
-            + " och ger " + poang[k-1] + " poäng.");      
+            + " och ger " + ds.poang[k-1] + " poäng.");      
         }
         
              
@@ -336,6 +344,7 @@ public class Uppdrag {
      
 
       ds.cui.appendStatus("\nValt uppdrag: " + valtUppdrag); //HÄR HAR VI BYTT
+      ds.cui.appendStatus("");
 
      return valtUppdrag;
     }     
@@ -401,17 +410,17 @@ public class Uppdrag {
         svar = inkommande_string;
         ds.cui.appendStatus("Svar: " + svar);
         
-        }
-    
-     catch (Exception e) { System.out.print(e.toString()); }
+        
+        
+        }catch (Exception e) { System.out.print(e.toString()); }
        
     return svar;
     }
      
     public String aterstall(String scenario){       //var static från början
-//        ds.cui.appendStatus("\nÅterställer.");
-         try {
 
+         try {
+        ds.cui.appendStatus("\nÅterställer.");
          String url = " http://tnk111.n7.se/aterstall.php?scenario=" + scenario; 
          URL urlobjekt = new URL(url);       
          HttpURLConnection anslutning = (HttpURLConnection)
@@ -428,18 +437,19 @@ public class Uppdrag {
         while ((inkommande_text = inkommande.readLine()) != null) {
                 inkommande_samlat.append(inkommande_text);
         }
-  
         inkommande.close();
         
         String inkommande_string = inkommande_samlat.toString();
         System.out.println(inkommande_string);
-         }
-          catch (Exception e) { System.out.print(e.toString()); }
+        
+        
+         }catch (Exception e) { System.out.print(e.toString()); }
     return svar;
     }
 
     public void messtogroup() {
        //skicka meddelande till den andra gruppen 
+       ds.cui.appendStatus("Meddelar grupp 3 vår upphämtningsplats.");
      try {
         
          String url = " http://tnk111.n7.se/putmessage.php?groupid=2&messagetype=23&message="+ narmstaPlats; //Kom överens med grupp 3!!!!!

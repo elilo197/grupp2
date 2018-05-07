@@ -23,7 +23,7 @@ public class DataStore {
     double robotY; 
     // Dessa två bör ha samma nummer (tror vi) 
     // Nod 71 i streets är  nod 70 här..
-    int start = 22;
+    int start = 37;         //Roboten ska stå på en högre än start-värde
    // int startY = startX; 
     int[] arcColor;
     int startRutt = 5; //startnod, om vi säger 1 tar den 2 osv
@@ -46,7 +46,7 @@ public class DataStore {
     String grupp = "2";
     ControlUI cui;
    // String meddelande_string = "hej";
-    String  meddelande_in = "Tom. Tom. Tom."; 
+    String  meddelande_in = "100"; 
     int mottagenInt = 21;
     int btstatus =0; 
     int dcount = 0; 
@@ -54,6 +54,8 @@ public class DataStore {
     int ncount = 0;
     int meddelande_int;
     int sistanod;
+    int [] poang;
+    int totPoang;
 
     public DataStore() {
         // Initialize the datastore with fixed size arrays for storing the network data
@@ -72,6 +74,7 @@ public class DataStore {
         //kommandon = new String[3];//3 är fulkodning, denna ska va 2 mindre än pathInt
         
         vaderStrack = new ArrayList<String>();
+        
         
         
 
