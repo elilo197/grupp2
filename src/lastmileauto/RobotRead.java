@@ -77,29 +77,3 @@
 //}   
 //}
 //
-
-
-
-//Från labben; 
-//    try { 
-//        cui.appendStatus("RobotRead kommer att köra i " + sleepTime + 
-//                " millisekunder.");
-//        
-//           //int i = 1;
-//           while (true) {
-//            Thread.sleep (sleepTime / 20);
-//            cui.appendStatus("Jag är tråd RobotRead!");
-//            //cui.appendStatus("Jag är tråd RobotRead! För "+i+":te gången.");
-//            bre.BluetoothReceiver(cui);
-//            
-////            if (i ==11){
-////                ds.updateUIflag=true;
-////            }
-////            i++;
-//          
-//            }
-//        } catch (InterruptedException exception) {
-//        }
-//    
-//        cui.appendStatus("RobotRead är nu klar!");
-//    }
