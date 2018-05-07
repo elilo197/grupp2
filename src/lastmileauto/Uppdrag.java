@@ -17,7 +17,7 @@ import java.net.URL;
 import java.lang.*;
 import java.util.ArrayList;
 
-public class Uppdrag {
+public class Uppdrag implements Runnable{
     String inkommandetext []; 
     String ink_sam;
     int IntStorlek;
@@ -42,79 +42,103 @@ public class Uppdrag {
    ArrayList<Integer> oppis1path;
    ArrayList<Integer> oppis2path;
    ArrayList<Integer> oppispath;
+    ArrayList<String> ink; 
+   int i = 0;   
    
      
 
     public Uppdrag(DataStore ds) { 
-        aterstall("1");
+        //aterstall("1");
         //messfromgroup();
         this.ds = ds;
-        listaplatser();
-        valtUppdrag = listauppdrag(narmstaPlats);           //Skickar in upphämtningsplats, skickar ut vilket uppdrag vi väljer
-        pax = getPassagerare(valtUppdrag);                  //Skickar ut passagerarantal på det valda uppdraget
-        //Räknar totala poänge för uppdragen. 
-        
-        int dummy; 
-        dummy = Integer.parseInt(valtUppdrag);
-        ds.totPoang = ds.totPoang + ds.poang[dummy];
-        //System.out.println("Totala poäng: " + ds.totPoang);
-        ds.cui.appendPoang(ds.totPoang);
-        
-        oppis1path = new ArrayList<Integer>();
-        oppis2path = new ArrayList<Integer>();
-        oppispath = new ArrayList<Integer>();
-        messfromgroup(); 
-        messtogroup();
-        
-       String svaruppdrag = tauppdrag(narmstaPlats, valtUppdrag, pax, ds.grupp);
-       
-            if (svaruppdrag.equals("beviljas")){
-                
-                for(int i=0; i <128; i++){
-            
-                    ds.arcColor[i] = 0;           
-            }
-                
-            ds.startRutt = ds.robotpos;        
-            ds.slutRutt = linkNod2[Integer.parseInt(valtUppdrag)-1];
-             
-            //Oppis 1 är den optimerade rutten för upphämtningsplatsen
-            oppis1 = new OptPlan(ds);
-            oppis1path = oppis1.createPlan();
-  
-            ds.startRutt = linkNod1[Integer.parseInt(valtUppdrag)-1];       
-            ds.slutRutt = destNod1[Integer.parseInt(valtUppdrag)-1];
-            
-            //Oppis 2 är den optimerade rutten för uppdraget
-            oppis2 = new OptPlan(ds);
-            oppis2path = oppis2.createPlan();
-               
-            
-            for ( int i = 0; i < oppis1path.size(); i++ ){
-            oppispath.add(oppis1path.get(i));
-            }
-             System.out.println("Oppis1path: " + oppis1path);   //På varv 2 och resten vill vi lägga på sistanod innan
-            
-              for ( int i = 2; i < oppis2path.size(); i++ ){
-                oppispath.add(oppis2path.get(i));
-               } 
-             //System.out.println("Detta är sista noden: " + oppis2path.get(oppis2path.size()-1));
-             System.out.println("Oppis2path: " + oppis2path);    
-             ds.sistanod = (oppis2path.get(oppis2path.size()-1));   //Lägger till sista noden i föregående rutt i en ny arraylist som ska 
-             System.out.println("Testar att skriva sistanoden: " + ds.sistanod);                                                    //adderas innan nästa rutt skapas
-                             
-            System.out.println("Oppispath: " + oppispath);  
-            
-            opt = new OptPlan(ds);
-            opt.compass(oppispath);
-            
-            ds.cui.repaint();
-  
-        }
-        else {System.out.println("Svar från hemsida: " + svaruppdrag);}
-        
-        aterstall("1");
+      
+    }
     
+    
+    public void run(){
+      
+    listaplatser();
+    System.out.println("Uppdrag kvar: " + ink.get(0));
+                
+  
+    while (ink.get(0) != null) {
+           
+            while(ds.scount == i){
+                
+                System.out.println("scount: " + ds.scount);
+                
+                valtUppdrag = listauppdrag(narmstaPlats);           //Skickar in upphämtningsplats, skickar ut vilket uppdrag vi väljer
+                pax = getPassagerare(valtUppdrag);                  //Skickar ut passagerarantal på det valda uppdraget
+                //Räknar totala poänge för uppdragen. 
+
+                int dummy; 
+                dummy = Integer.parseInt(valtUppdrag);
+                ds.totPoang = ds.totPoang + ds.poang[dummy];
+                //System.out.println("Totala poäng: " + ds.totPoang);
+                ds.cui.appendPoang(ds.totPoang);
+
+                oppis1path = new ArrayList<Integer>();
+                oppis2path = new ArrayList<Integer>();
+                oppispath = new ArrayList<Integer>();
+                messfromgroup(); 
+                messtogroup();
+
+               String svaruppdrag = tauppdrag(narmstaPlats, valtUppdrag, pax, ds.grupp);
+
+                    if (svaruppdrag.equals("beviljas")){
+
+                        for(int j=0; j <128; j++){
+                            ds.arcColor[j] = 0;           
+                            }
+
+                    ds.startRutt = ds.robotpos;        
+                    ds.slutRutt = linkNod2[Integer.parseInt(valtUppdrag)-1];
+
+                    //Oppis 1 är den optimerade rutten för upphämtningsplatsen
+                    oppis1 = new OptPlan(ds);
+                    oppis1path = oppis1.createPlan();
+
+                    ds.startRutt = linkNod1[Integer.parseInt(valtUppdrag)-1];       
+                    ds.slutRutt = destNod1[Integer.parseInt(valtUppdrag)-1];
+
+                    //Oppis 2 är den optimerade rutten för uppdraget
+                    oppis2 = new OptPlan(ds);
+                    oppis2path = oppis2.createPlan();
+
+
+                    for ( int j = 0; j < oppis1path.size(); j++ ){
+                    oppispath.add(oppis1path.get(i));
+                    }
+                     System.out.println("Oppis1path: " + oppis1path);   //På varv 2 och resten vill vi lägga på sistanod innan
+
+                      for ( int j = 2; j < oppis2path.size(); j++ ){
+                        oppispath.add(oppis2path.get(i));
+                       } 
+                     //System.out.println("Detta är sista noden: " + oppis2path.get(oppis2path.size()-1));
+                     System.out.println("Oppis2path: " + oppis2path);    
+                     ds.sistanod = (oppis2path.get(oppis2path.size()-1));   //Lägger till sista noden i föregående rutt i en ny arraylist som ska 
+                     System.out.println("Testar att skriva sistanoden: " + ds.sistanod); //adderas innan nästa rutt skapas
+
+
+                    System.out.println("Oppispath: " + oppispath);  
+
+                    opt = new OptPlan(ds);
+                    opt.compass(oppispath);
+
+                    ds.cui.repaint();
+
+                }
+                else {System.out.println("Svar från hemsida: " + svaruppdrag);}
+
+               // aterstall("1");
+
+
+
+             ds.start = ds.sistanod;     //Sätt startnod på nästkommande uppdrag till nuvarande uppdrags sistanod
+             i++;
+            }
+            
+    } //while
     }
 
     /** Här listar vi antalet upphämtningsplatser och beräknar vilken som är närmast. 
@@ -144,7 +168,7 @@ public class Uppdrag {
         StringBuffer inkommande_samlat = new StringBuffer();
         
         
-         ArrayList<String> ink = new ArrayList<String>();
+        ink = new ArrayList<String>();
 
          
         while ((inkommande_text = inkommande.readLine()) != null) {
@@ -421,7 +445,7 @@ public class Uppdrag {
 
          try {
         ds.cui.appendStatus("\nÅterställer.");
-         String url = " http://tnk111.n7.se/aterstall.php?scenario=" + scenario; 
+         String url = " http://tnk111.n7.se/aterstall.php?scenario=A";// + scenario; 
          URL urlobjekt = new URL(url);       
          HttpURLConnection anslutning = (HttpURLConnection)
          urlobjekt.openConnection();
@@ -443,7 +467,7 @@ public class Uppdrag {
         System.out.println(inkommande_string);
         
         
-         }catch (Exception e) { System.out.print(e.toString()); }
+         }catch (Exception e) { System.out.print("Fångad i återställs-catch." + e.toString()); }
     return svar;
     }
 

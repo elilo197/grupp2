@@ -5,7 +5,7 @@ package lastmileauto;
 public class Planeringssystem {
 
     DataStore ds;
-    
+       
     Planeringssystem(){
         ds = new DataStore();
 
@@ -22,15 +22,14 @@ public class Planeringssystem {
        ds.cui = new ControlUI(ds);
        ds.cui.setVisible(true);
        ds.cui.showStatus();
+       ds.cui.appendPoang(ds.totPoang);
         
                                             
        ds.cui.appendStatus("Startar programmet \n" );
        ds.cui.appendStatusAgv("Meddelanden från Agda kommer nu. \n" );
               
 
-        OptPlan op = new OptPlan(ds);
-        ds.pathInt = op.createPlan();
-        op.compass(ds.pathInt);
+       
     }
          
     /**

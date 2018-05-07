@@ -11,6 +11,7 @@ public class ControlUI extends javax.swing.JFrame {
     // I orginalen är det bara en datastore. 
     DataStore ds;
     Thread robottråd_send;
+    Uppdrag upp;
     
     /**
      * Creates new form ControlUI
@@ -526,10 +527,14 @@ public class ControlUI extends javax.swing.JFrame {
 
     private void startActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startActionPerformed
                
-       Uppdrag uppdrag1= new Uppdrag(ds);
+       
        GuiUpdate g =  new GuiUpdate(ds, ds.cui, ds.start);        //Tråd som uppdaterar kartan med var AGV är
        Thread t2 = new Thread(g);
-       t2.start();   
+       t2.start();
+       
+       upp = new Uppdrag(ds);
+       Thread uppdragstrad = new Thread(upp);
+       uppdragstrad.start(); 
 
        OptPlan comp = new OptPlan(ds);  
        

@@ -16,7 +16,9 @@ public void run(){
    
     if (ds.breakflag == 0) {    
         try { 
-  
+            
+            System.out.println("Kommandon: " + ds.kommandon);
+            
             for(int i = 0; i <ds.kommandon.size(); i++){//ds.kommandon.size()
             //dcount räknar antalet "D" (Done) som fås från AGVn
             
@@ -29,6 +31,12 @@ public void run(){
                 ds.cui.appendStatus("Skickat meddelande: " + ds.kommandon.get(i));
 
                 }
+               
+               if (ds.kommandon.get(i).equals("S")) {
+                   ds.scount = ds.scount +1;
+               }
+               
+               
                 }
                      ds.dcount = 0; 
 
