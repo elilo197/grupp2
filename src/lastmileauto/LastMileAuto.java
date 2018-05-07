@@ -20,11 +20,8 @@ public class LastMileAuto {
 
        //ds.setFileName("C:\\Users\\Helena\\Documents\\GitHub\\grupp2/streets.txt");
        //ds.setFileName("C:\\Users\\Helena\\Documents\\GitHub\\grupp2/streets.txt");
-<<<<<<< HEAD
       //ds.setFileName("/Users/eliselord/Documents/grupp2/streets.txt");
-=======
       // ds.setFileName("/Users/eliselord/Documents/grupp2/streets.txt");
->>>>>>> 852ef2eb7ee8fc21423c38bbb6922d7c2ddf7418
 
             // ds.setFileName("/Users/hannamellqvist/Documents/Kandidat/grupp2/streets.txt");
 
@@ -42,11 +39,9 @@ public class LastMileAuto {
        //ds.setFileName("/Users/Veronika/Documents/grupp2/streets.txt");
 
        //ds.setFileName("/Users/eliselord/Documents/grupp2/streets.txt");
-<<<<<<< HEAD
        //ds.setFileName("/Users/Veronika/Documents/grupp2/streets.txt");
-=======
+
       // ds.setFileName("/Users/Veronika/Documents/grupp2/streets.txt");
->>>>>>> 64b95d1a92c545d75b415099d7774e0d380fe642
        //ds.setFileName("C:\\Users\\Helena\\Documents\\GitHub\\grupp2/streets.txt");
        //ds.setFileName("/Users/eliselord/Documents/grupp2/streets.txt");
        //ds.setFileName("/Users/Veronika/Desktop/streets.txt");
@@ -56,7 +51,7 @@ public class LastMileAuto {
        // ds.setFileName("/Users/hannamellqvist/Documents/Kandidat/grupp2/streets.txt");
        // ds.setFileName("/Users/hannamellqvist/Documents/Kandidat/grupp2/streets.txt");
 
-       ds.setFileName("/Users/aliceneu/Documents/grupp2/streets.txt");
+      // ds.setFileName("/Users/aliceneu/Documents/grupp2/streets.txt");
      //ds.setFileName("/Users/eliselord/Documents/grupp2/streets.txt");
      //ds.setFileName("C:\\Users\\Helena\\Documents\\GitHub\\grupp2/streets.txt");
      //ds.setFileName("/Users/Veronika/Desktop/streets.txt");

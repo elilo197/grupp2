@@ -71,7 +71,7 @@ public class Uppdrag {
             ds.startRutt = ds.robotpos;        
             ds.slutRutt = linkNod2[Integer.parseInt(valtUppdrag)-1];
              
-            //Oppis 1 är den optimerade rutten för upphämtningsplats
+            //Oppis 1 är den optimerade rutten för upphämtningsplatsen
             oppis1 = new OptPlan(ds);
             oppis1path = oppis1.createPlan();
   
@@ -89,14 +89,13 @@ public class Uppdrag {
              System.out.println("Oppis1path: " + oppis1path);   //På varv 2 och resten vill vi lägga på sistanod innan
             
               for ( int i = 2; i < oppis2path.size(); i++ ){
-            oppispath.add(oppis2path.get(i));
-         
-            } 
+                oppispath.add(oppis2path.get(i));
+               } 
              //System.out.println("Detta är sista noden: " + oppis2path.get(oppis2path.size()-1));
              System.out.println("Oppis2path: " + oppis2path);    
-              ds.sistanod = (oppis2path.get(oppis2path.size()-1));   //Lägger till sista noden i föregående rutt i en ny arraylist som ska 
-               System.out.println("Testar att skriva sistanoden: " + ds.sistanod);                                                    //adderas innan nästa rutt skapas
-              
+             ds.sistanod = (oppis2path.get(oppis2path.size()-1));   //Lägger till sista noden i föregående rutt i en ny arraylist som ska 
+             System.out.println("Testar att skriva sistanoden: " + ds.sistanod);                                                    //adderas innan nästa rutt skapas
+                             
             System.out.println("Oppispath: " + oppispath);  
             
             opt = new OptPlan(ds);
@@ -403,9 +402,9 @@ public class Uppdrag {
         svar = inkommande_string;
         ds.cui.appendStatus("Svar: " + svar);
         
-        }
-    
-     catch (Exception e) { System.out.print(e.toString()); }
+        
+        
+        }catch (Exception e) { System.out.print(e.toString()); }
        
     return svar;
     }
@@ -430,13 +429,13 @@ public class Uppdrag {
         while ((inkommande_text = inkommande.readLine()) != null) {
                 inkommande_samlat.append(inkommande_text);
         }
-  
         inkommande.close();
         
         String inkommande_string = inkommande_samlat.toString();
         System.out.println(inkommande_string);
-         }
-          catch (Exception e) { System.out.print(e.toString()); }
+        
+        
+         }catch (Exception e) { System.out.print(e.toString()); }
     return svar;
     }
 
