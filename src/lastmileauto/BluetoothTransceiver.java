@@ -19,7 +19,7 @@ public class BluetoothTransceiver{
              bluetoothanslutning = new PrintStream(anslutning.openOutputStream());
              
              bluetooth_in = new BufferedReader(new InputStreamReader(anslutning.openInputStream()));
-        
+
        } catch (Exception e) {  System.out.print(e.toString());   }
     }
     

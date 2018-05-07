@@ -53,6 +53,7 @@ public class DataStore {
     ArrayList<String> vaderStrack; 
     int ncount = 0;
     int meddelande_int;
+    int sistanod;
 
     public DataStore() {
         // Initialize the datastore with fixed size arrays for storing the network data
