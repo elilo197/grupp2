@@ -20,6 +20,7 @@ public class LastMileAuto {
 
        //ds.setFileName("C:\\Users\\Helena\\Documents\\GitHub\\grupp2/streets.txt");
        //ds.setFileName("C:\\Users\\Helena\\Documents\\GitHub\\grupp2/streets.txt");
+<<<<<<< HEAD
       //ds.setFileName("/Users/eliselord/Documents/grupp2/streets.txt");
       // ds.setFileName("/Users/eliselord/Documents/grupp2/streets.txt");
 
@@ -30,6 +31,8 @@ public class LastMileAuto {
 
        //ds.setFileName("/Users/Veronika/Documents/grupp2/streets.txt");
        ds.setFileName("/Users/Veronika/Documents/grupp2/streets.txt");
+=======
+>>>>>>> 3e224a335076bfd82d5f0d894f8537e365532cf1
         //ds.setFileName("C:\\Users\\Helena\\Documents\\GitHub\\grupp2/streets.txt");
       //ds.setFileName("/Users/eliselord/Documents/grupp2/streets.txt");
             //ds.setFileName("/Users/hannamellqvist/Documents/Kandidat/grupp2/streets.txt");
@@ -39,11 +42,14 @@ public class LastMileAuto {
        //ds.setFileName("/Users/Veronika/Documents/grupp2/streets.txt");
 
        //ds.setFileName("/Users/eliselord/Documents/grupp2/streets.txt");
+<<<<<<< HEAD
        //ds.setFileName("/Users/Veronika/Documents/grupp2/streets.txt");
 
       // ds.setFileName("/Users/Veronika/Documents/grupp2/streets.txt");
+=======
+>>>>>>> 3e224a335076bfd82d5f0d894f8537e365532cf1
        //ds.setFileName("C:\\Users\\Helena\\Documents\\GitHub\\grupp2/streets.txt");
-       //ds.setFileName("/Users/eliselord/Documents/grupp2/streets.txt");
+       ds.setFileName("/Users/eliselord/Documents/grupp2/streets.txt");
        //ds.setFileName("/Users/Veronika/Desktop/streets.txt");
 
         //ds.setFileName("/Users/hannamellqvist/Documents/Kandidat/grupp2/streets.txt");
@@ -51,7 +57,11 @@ public class LastMileAuto {
        // ds.setFileName("/Users/hannamellqvist/Documents/Kandidat/grupp2/streets.txt");
        // ds.setFileName("/Users/hannamellqvist/Documents/Kandidat/grupp2/streets.txt");
 
+<<<<<<< HEAD
       // ds.setFileName("/Users/aliceneu/Documents/grupp2/streets.txt");
+=======
+       //ds.setFileName("/Users/aliceneu/Documents/grupp2/streets.txt");
+>>>>>>> 3e224a335076bfd82d5f0d894f8537e365532cf1
      //ds.setFileName("/Users/eliselord/Documents/grupp2/streets.txt");
      //ds.setFileName("C:\\Users\\Helena\\Documents\\GitHub\\grupp2/streets.txt");
      //ds.setFileName("/Users/Veronika/Desktop/streets.txt");
