@@ -23,7 +23,7 @@ public class DataStore {
     double robotY; 
     // Dessa två bör ha samma nummer (tror vi) 
     // Nod 71 i streets är  nod 70 här..
-    int start = 22;
+    int start = 37;         //Roboten ska stå på en högre än start-värde
    // int startY = startX; 
     int[] arcColor;
     int startRutt = 5; //startnod, om vi säger 1 tar den 2 osv
