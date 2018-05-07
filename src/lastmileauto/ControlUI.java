@@ -535,12 +535,7 @@ public class ControlUI extends javax.swing.JFrame {
 
      appendBluetoothKanal("1");
 
-
-//     RobotRead r = new RobotRead(ds, ds.cui);
-//     Thread robottråd = new Thread(r);
-//     robottråd.start();
-
-   
+  
     }//GEN-LAST:event_anslutActionPerformed
 
     private void startActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startActionPerformed
@@ -553,8 +548,8 @@ public class ControlUI extends javax.swing.JFrame {
        OptPlan comp = new OptPlan(ds);  
        
        RobotSend send = new RobotSend(ds);
-       Thread robottråd = new Thread(send);
-       robottråd.start();
+       Thread robottråd_send = new Thread(send);
+       robottråd_send.start();
        
 
         

@@ -20,49 +20,41 @@ public class BluetoothReceiver implements Runnable{
     public void run(){
         try{
              
-            while(true){
-                start = System.currentTimeMillis(); //initiering starttid 
+        while(true){
+            start = System.currentTimeMillis(); //initiering starttid 
 
-            //                //System.out.println("Mottaget: " + ds.meddelande_in);
-//                ds.cui.appendStatusAgv(ds.meddelande_string);
-//                String testtid = Long.toString(System.currentTimeMillis() - start);
-//                ds.cui.appendStatusAgv(testtid);
-//            
-//      
-//     
-//          ds.meddelande_in = Integer.parseInt(ds.meddelande_string);
+            ds.cui.appendStatusAgv("Meddelande in från receiver: " + ds.meddelande_in);
               
-         while (System.currentTimeMillis() - start < 2500){
-             ds.cui.appendStatusAgv(ds.meddelande_in);
-              //ds.cui.appendStatusAgv(ds.meddelande_string);
-             ds.meddelande_in = btc.bluetooth_in.readLine();
+                while (System.currentTimeMillis() - start < 2500){
+                 ds.cui.appendStatusAgv("Meddelande in: " + ds.meddelande_in);
+                 ds.meddelande_in = btc.bluetooth_in.readLine();
  
-            //System.out.println("Tiden i millisekunder är: " + (System.currentTimeMillis() - start));
-     
-            if(ds.meddelande_in.equals("D")){   //ds.meddelande_in == 100){
-                ds.cui.appendStatusAgv("Korsning passerad.");
-                start = System.currentTimeMillis();
-                ds.dcount = ds.dcount +1; 
-            }
 
-            else{//Vi fick in en nod.
-                 start = System.currentTimeMillis();
-                 ds.cui.appendStatusAgv("Nod " + ds.meddelande_in);  
+                    if(ds.meddelande_in.equals("D")){   //ds.meddelande_in == 100){
+                    // if(ds.meddelande_int == 200){    
+                        ds.cui.appendStatusAgv("Korsning passerad.");
+                        start = System.currentTimeMillis();
+                        ds.dcount = ds.dcount +1; 
+                    }
+
+                    else{//Vi fick in en nod.
+                         start = System.currentTimeMillis();
+                         ds.cui.appendStatusAgv("Nod " + ds.meddelande_in);  
+
+                         try {
+                            ds.meddelande_int = Integer.parseInt(ds.meddelande_in);
+                            ds.robotX = ds.nodeX[ds.meddelande_int-1];
+                            ds.robotY = ds.nodeY[ds.meddelande_int-1];
+                            ds.cui.repaint();
+                         } catch (NumberFormatException nfe){
+                         ds.cui.appendStatusAgv("Fel typ av meddelande. Kan ej behandlas.");
+                         start = System.currentTimeMillis();
+                         }
                  
-                 try {
-                    ds.meddelande_int = Integer.parseInt(ds.meddelande_in);
-                    ds.robotX = ds.nodeX[ds.meddelande_int-1];
-                    ds.robotY = ds.nodeY[ds.meddelande_int-1];
-                    ds.cui.repaint();
-                 } catch (NumberFormatException nfe){
-                 ds.cui.appendStatusAgv("Fel typ av meddelande. Kan ej behandlas.");
-                 start = System.currentTimeMillis();
-             }
                  
                  
-                 
-            }
-        } // Utanför While-loopen. 
+                    }
+                } // Utanför While-loopen. 
          
 
 
@@ -70,7 +62,7 @@ public class BluetoothReceiver implements Runnable{
    ds.btstatus = 1;   
   
             }
-        }catch (Exception e){System.out.print(e.toString()); }
+        }catch (Exception e){System.out.print("Catch: " + e.toString()); }
     }
  
     //Den här är för att kolla om inkommande string går att göra om till int
