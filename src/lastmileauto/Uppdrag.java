@@ -336,6 +336,7 @@ public class Uppdrag {
      
 
       ds.cui.appendStatus("\nValt uppdrag: " + valtUppdrag); //HÄR HAR VI BYTT
+      ds.cui.appendStatus("");
 
      return valtUppdrag;
     }     
@@ -409,9 +410,9 @@ public class Uppdrag {
     }
      
     public String aterstall(String scenario){       //var static från början
-//        ds.cui.appendStatus("\nÅterställer.");
-         try {
 
+         try {
+        ds.cui.appendStatus("\nÅterställer.");
          String url = " http://tnk111.n7.se/aterstall.php?scenario=" + scenario; 
          URL urlobjekt = new URL(url);       
          HttpURLConnection anslutning = (HttpURLConnection)
@@ -440,6 +441,7 @@ public class Uppdrag {
 
     public void messtogroup() {
        //skicka meddelande till den andra gruppen 
+       ds.cui.appendStatus("Meddelar grupp 3 vår upphämtningsplats.");
      try {
         
          String url = " http://tnk111.n7.se/putmessage.php?groupid=2&messagetype=23&message="+ narmstaPlats; //Kom överens med grupp 3!!!!!
