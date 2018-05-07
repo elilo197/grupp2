@@ -57,8 +57,8 @@ public class Uppdrag {
         int dummy; 
         dummy = Integer.parseInt(valtUppdrag);
         ds.totPoang = ds.totPoang + ds.poang[dummy];
-        System.out.println("Totala poäng: " + ds.totPoang);
-        ds.cui.appendStatus("Totala poäng: " + ds.totPoang);
+        //System.out.println("Totala poäng: " + ds.totPoang);
+        ds.cui.appendPoang(ds.totPoang);
         
         oppis1path = new ArrayList<Integer>();
         oppis2path = new ArrayList<Integer>();

@@ -51,6 +51,11 @@ public class ControlUI extends javax.swing.JFrame {
         jTextArea5.append(s+"\n");
         jTextArea5.setCaretPosition(jTextArea5.getDocument().getLength());
     } 
+        public void appendPoang(int s){
+        jTextArea6.append(s+"\n");
+        jTextArea6.setCaretPosition(jTextArea6.getDocument().getLength());
+        
+    } 
      
     
         private void myinitComponents() {
