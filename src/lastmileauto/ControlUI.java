@@ -522,11 +522,13 @@ public class ControlUI extends javax.swing.JFrame {
 
     private void anslutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_anslutActionPerformed
       //Ta bort kommentarerna nedan för att köra bluetooth!! 
-      ds.btc = new BluetoothTransceiver();
-      ds.btm = new BluetoothTransmitter(ds.btc);
-      ds.btr = new BluetoothReceiver(ds.btc, ds);
-      Thread t4 = new Thread(ds.btr);
-      t4.start();
+      
+      //DETTA HAR MED BLUETOOTH ATT GÖRA, TA INTE BORT
+//      ds.btc = new BluetoothTransceiver();
+//      ds.btm = new BluetoothTransmitter(ds.btc);
+//      ds.btr = new BluetoothReceiver(ds.btc, ds);
+//      Thread t4 = new Thread(ds.btr);
+//      t4.start();
       appendStatus("Bluetoothanslutning upprättad");
       
         appendBluetoothAdress("20:16:01:20:56:82");
@@ -536,9 +538,9 @@ public class ControlUI extends javax.swing.JFrame {
         
        //Thread t3 = new Thread(btc);
 
-    RobotRead r = new RobotRead(ds, ds.cui);
-    Thread robottråd = new Thread(r);
-    robottråd.start();
+    //RobotRead r = new RobotRead(ds, ds.cui);
+    //Thread robottråd = new Thread(r);
+    //robottråd.start();
     
     //Thread t3 = new Thread(btc);
 
@@ -548,21 +550,27 @@ public class ControlUI extends javax.swing.JFrame {
 
     private void startActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startActionPerformed
         //Skrickar ett F
-        /*Ta bort kommentaren nedan för att köra bluetooth
-        ds.btm.send(ds.F);
-        appendStatus("Skickade meddelande: " + ds.F);*/
-        
+        //Ta bort kommentaren nedan för att köra bluetooth
+       // System.out.println("I start.");
+        //appendStatus("Skickade meddelande: " + ds.F);
+        //ds.btm.send(ds.F);
+                
        Uppdrag uppdrag1= new Uppdrag(ds);
        GuiUpdate g =  new GuiUpdate(ds, ds.cui, ds.start);        //Tråd som uppdaterar kartan med var AGV är
        Thread t2 = new Thread(g);
        t2.start();   
+
        
-       RobotRead r = new RobotRead(ds, ds.cui);
-       Thread t3 = new Thread(r);
-       t3.start(); 
-       
+//       RobotRead r = new RobotRead(ds, ds.cui);
+//       Thread t3 = new Thread(r);
+//       t3.start(); 
 
        OptPlan comp = new OptPlan(ds);  
+       
+       RobotSend send = new RobotSend(ds);
+       Thread robottråd = new Thread(send);
+       robottråd.start();
+       
 
         
     }//GEN-LAST:event_startActionPerformed

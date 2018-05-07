@@ -43,10 +43,12 @@ public class Uppdrag {
    ArrayList<Integer> oppis1path;
    ArrayList<Integer> oppis2path;
    ArrayList<Integer> oppispath;
+   
      
 
     public Uppdrag(DataStore ds) { 
         aterstall("1");
+        //messfromgroup();
         this.ds = ds;
         listaplatser();
         valtUppdrag = listauppdrag(narmstaPlats);           //Skickar in upphämtningsplats, skickar ut vilket uppdrag vi väljer
@@ -54,6 +56,8 @@ public class Uppdrag {
         oppis1path = new ArrayList<Integer>();
         oppis2path = new ArrayList<Integer>();
         oppispath = new ArrayList<Integer>();
+        messfromgroup(); 
+        messtogroup();
         
        String svaruppdrag = tauppdrag(narmstaPlats, valtUppdrag, pax, ds.grupp);
        
@@ -80,12 +84,16 @@ public class Uppdrag {
             for ( int i = 0; i < oppis1path.size(); i++ ){
             oppispath.add(oppis1path.get(i));
             }
-             System.out.println("Oppis1path: " + oppis1path);  
+             System.out.println("Oppis1path: " + oppis1path);   //På varv 2 och resten vill vi lägga på sistanod innan
             
               for ( int i = 2; i < oppis2path.size(); i++ ){
             oppispath.add(oppis2path.get(i));
+         
             } 
+             //System.out.println("Detta är sista noden: " + oppis2path.get(oppis2path.size()-1));
              System.out.println("Oppis2path: " + oppis2path);    
+              ds.sistanod = (oppis2path.get(oppis2path.size()-1));   //Lägger till sista noden i föregående rutt i en ny arraylist som ska 
+               System.out.println("Testar att skriva sistanoden: " + ds.sistanod);                                                    //adderas innan nästa rutt skapas
               
             System.out.println("Oppispath: " + oppispath);  
             
@@ -430,16 +438,11 @@ public class Uppdrag {
     return svar;
     }
 
-    public static void messtogroup() {
+    public void messtogroup() {
        //skicka meddelande till den andra gruppen 
      try {
-            //Olika if-satser beroende på vad vi vill skicka
-                //if x = 1, y = uppdragsid + pax + antal vi tar
-                //if x = 2, 
-         String x = "Hej";
-         String y = "test"; 
-         //Uppdrag http = new Uppdrag();
-         String url = " http://tnk111.n7.se/putmessage.php?groupid=23&messagetype= " +x+"&message="+y; 
+        
+         String url = " http://tnk111.n7.se/putmessage.php?groupid=2&messagetype=23&message="+ narmstaPlats; //Kom överens med grupp 3!!!!!
          URL urlobjekt = new URL(url);       
          HttpURLConnection anslutning = (HttpURLConnection)
          urlobjekt.openConnection();
@@ -456,13 +459,18 @@ public class Uppdrag {
         InputStreamReader(anslutning.getInputStream()));
         String inkommande_text;
         StringBuffer inkommande_samlat = new StringBuffer();
+        
+         ArrayList <String> inkfromserv = new ArrayList<String>();
  
         while ((inkommande_text = inkommande.readLine()) != null) {
                 inkommande_samlat.append(inkommande_text);
+                inkfromserv.add(inkommande_text);
         }
    
         inkommande.close();
-              
+         for(int k = 0; k < inkfromserv.size(); k++){
+            ds.cui.appendStatus("Meddelande server: " + inkfromserv.get(k));
+         }
 
         System.out.println(inkommande_samlat.toString());
         }
@@ -471,13 +479,13 @@ public class Uppdrag {
      
     }
 
-     public static void messfromgroup() {
+     public void messfromgroup() {
        //meddelande från den andra gruppen 
      try {
             
          String x = "Hej"; 
          //Uppdrag http = new Uppdrag();
-         String url = "  http://tnk111.n7.se/getmessage.php?messagetype=" + x; //x är det meddelande vi hämtar
+         String url = "  http://tnk111.n7.se/getmessage.php?messagetype=2"; //Ändra messagetyp OBSOBSOBS
          URL urlobjekt = new URL(url);       
          HttpURLConnection anslutning = (HttpURLConnection)
          urlobjekt.openConnection();
@@ -498,11 +506,15 @@ public class Uppdrag {
         ArrayList <String> inkmess = new ArrayList<String>();
  
         while ((inkommande_text = inkommande.readLine()) != null) {
-                //inkommande_samlat.append(inkommande_text);
+                inkommande_samlat.append(inkommande_text);
                 inkmess.add(inkommande_text);
         }
+        
         inkommande.close();
         
+            for(int k = 0; k < inkmess.size(); k++){
+            ds.cui.appendStatus("Meddelande från grupp 3: " + inkmess.get(k));
+         }
               
 
         System.out.println(inkommande_samlat.toString());
@@ -511,10 +523,7 @@ public class Uppdrag {
      catch (IOException e) { System.out.print(e.toString()); }
      
     }    
-    
-   
-            
-     
+  
 }
     
 
