@@ -482,8 +482,6 @@ public class Uppdrag {
      public void messfromgroup() {
        //meddelande från den andra gruppen 
      try {
-            
-         String x = "Hej"; 
          //Uppdrag http = new Uppdrag();
          String url = "  http://tnk111.n7.se/getmessage.php?messagetype=2"; //Ändra messagetyp OBSOBSOBS
          URL urlobjekt = new URL(url);       
