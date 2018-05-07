@@ -55,8 +55,12 @@ public class DataStore {
     int meddelande_int;
     int sistanod;
     int [] poang;
+<<<<<<< HEAD
     int totPoang;
     int breakflag = 0;
+=======
+    int totPoang = 10;
+>>>>>>> 234ff196ebfe66bed1cf1a38cc8762839f740c8b
 
     public DataStore() {
         // Initialize the datastore with fixed size arrays for storing the network data
