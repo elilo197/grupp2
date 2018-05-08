@@ -106,7 +106,6 @@ public class OptPlan {
         }
     
         //System.out.println("nodlistaINT: " + nodlistaInt.length);
-        System.out.println("nodlista: " + nodlista.size());
 
 
      for(int i =0; i <nodlista.size()-2; i++) {    //nodlista.size(); i++)  {
