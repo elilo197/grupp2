@@ -54,7 +54,7 @@ public class Uppdrag implements Runnable{
       
     }
     
-    
+@Override    
     public void run(){
       
     listaplatser();
