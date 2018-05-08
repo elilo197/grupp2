@@ -59,7 +59,11 @@ public class DataStore {
     int totPoang = 0;
     int breakflag = 0;
     int scount = 0;
+
+    String messfrom;
+
     int paxInt = 0; //passagerarantal i det aktuella uppdraget
+
 
     public DataStore() {
         // Initialize the datastore with fixed size arrays for storing the network data
