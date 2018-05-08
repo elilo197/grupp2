@@ -185,7 +185,7 @@ public class Uppdrag implements Runnable{
     } //while
     }catch(InterruptedException exception){
     }
-    }
+}
     
 
     /** Här listar vi antalet upphämtningsplatser och beräknar vilken som är närmast. 
