@@ -518,7 +518,7 @@ public class Uppdrag implements Runnable{
        //meddelande från den andra gruppen 
      try {
          //Uppdrag http = new Uppdrag();
-         String url = "  http://tnk111.n7.se/getmessage.php?messagetype=2"; //Ändra messagetyp OBSOBSOBS
+         String url = "  http://tnk111.n7.se/getmessage.php?messagetype=32"; //Ändra messagetyp OBSOBSOBS
          URL urlobjekt = new URL(url);       
          HttpURLConnection anslutning = (HttpURLConnection)
          urlobjekt.openConnection();
