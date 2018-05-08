@@ -175,7 +175,9 @@ public class Uppdrag implements Runnable{
                 else {System.out.println("Svar från hemsida: " + svaruppdrag);}
 
                // aterstall("1");
-
+                RobotSend RSend = new RobotSend(ds);        //Startar robotsend-tråden
+                Thread RobotSendThread = new Thread(RSend);
+                RobotSendThread.start();
 
 
              ds.start = ds.sistanod;     //Sätt startnod på nästkommande uppdrag till nuvarande uppdrags sistanod
