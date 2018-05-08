@@ -58,6 +58,7 @@ public class DataStore {
     int totPoang = 0;
     int breakflag = 0;
     int scount = 0;
+    String messfrom;
 
     public DataStore() {
         // Initialize the datastore with fixed size arrays for storing the network data

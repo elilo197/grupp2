@@ -512,16 +512,16 @@ public class ControlUI extends javax.swing.JFrame {
       //Ta bort kommentarerna nedan för att köra bluetooth!! 
       
       //DETTA HAR MED BLUETOOTH ATT GÖRA, TA INTE BORT
-      ds.btc = new BluetoothTransceiver();
-      ds.btm = new BluetoothTransmitter(ds.btc);
-      ds.btr = new BluetoothReceiver(ds.btc, ds);
-      Thread t4 = new Thread(ds.btr);
-      t4.start();
-     appendStatus("Bluetoothanslutning upprättad");
-      
-     appendBluetoothAdress("20:16:01:20:56:82");
-
-     appendBluetoothKanal("1");
+//      ds.btc = new BluetoothTransceiver();
+//      ds.btm = new BluetoothTransmitter(ds.btc);
+//      ds.btr = new BluetoothReceiver(ds.btc, ds);
+//      Thread t4 = new Thread(ds.btr);
+//      t4.start();
+//     appendStatus("Bluetoothanslutning upprättad");
+//      
+//     appendBluetoothAdress("20:16:01:20:56:82");
+//
+//     appendBluetoothKanal("1");
 
   
     }//GEN-LAST:event_anslutActionPerformed

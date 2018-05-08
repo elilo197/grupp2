@@ -16,16 +16,17 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.lang.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Uppdrag implements Runnable{
-    String inkommandetext []; 
-    String ink_sam;
-    int IntStorlek;
-    DataStore ds;
-    int [] linkNod1;
-    int [] linkNod2;
-    OptPlan opt;
-    OptPlan [] oppis;
+   String inkommandetext []; 
+   String ink_sam;
+   int IntStorlek;
+   DataStore ds;
+   int [] linkNod1;
+   int [] linkNod2;
+   OptPlan opt;
+   OptPlan [] oppis;
    String narmstaPlats;// = "Start";
    String id; 
    String pax;
@@ -42,9 +43,13 @@ public class Uppdrag implements Runnable{
    ArrayList<Integer> oppis1path;
    ArrayList<Integer> oppis2path;
    ArrayList<Integer> oppispath;
-    ArrayList<String> ink; 
+   ArrayList<String> ink; 
+   ArrayList<String> inkmess; 
+   String [] splitmessfrom;  
+  
    int i = 0;   
-   
+    
+  
      
 
     public Uppdrag(DataStore ds) { 
@@ -56,7 +61,8 @@ public class Uppdrag implements Runnable{
     
 @Override    
     public void run(){
-      
+    
+    messfromgroup(); //Denna ligger här uppe för att vi vill veta vilken upphämtningsplats grupp 3 är påväg mot innan vi kör
     listaplatser();
     System.out.println("Uppdrag kvar: " + ink.get(0));
                 
@@ -64,6 +70,7 @@ public class Uppdrag implements Runnable{
     while (ink.get(0) != null) {    //Kollar så att det finns uppdrag på platsen
            
             while(ds.scount == i){  //Kollar antal "s", stopp, kör igång loopen när s=1, adderar på varje varv
+                
                 
                 System.out.println("scount: " + ds.scount);
                 
@@ -81,7 +88,7 @@ public class Uppdrag implements Runnable{
                 oppis1path = new ArrayList<Integer>();
                 oppis2path = new ArrayList<Integer>();
                 oppispath = new ArrayList<Integer>();
-                messfromgroup(); 
+                //messfromgroup();                      //VI HAR FLYTTAT UPP DENNA JUST NU MVH H OCH V
                 messtogroup();
 
                String svaruppdrag = tauppdrag(narmstaPlats, valtUppdrag, pax, ds.grupp);
@@ -126,7 +133,7 @@ public class Uppdrag implements Runnable{
                      opt = new OptPlan(ds);     //Hämtar variabler från DataStore
                      opt.compass(oppispath);    //Skapar färdbeskrivning
 
-                     ds.cui.repaint();
+                     ds.cui.repaint();          //Ritar ny väg
 
                 }
                 else {System.out.println("Svar från hemsida: " + svaruppdrag);}
@@ -136,7 +143,7 @@ public class Uppdrag implements Runnable{
 
 
              ds.start = ds.sistanod;     //Sätt startnod på nästkommande uppdrag till nuvarande uppdrags sistanod
-             i++;
+             i++;    //Räknar antalet S 
             }
             
     } //while
@@ -169,7 +176,7 @@ public class Uppdrag implements Runnable{
         StringBuffer inkommande_samlat = new StringBuffer();
         
         
-        ink = new ArrayList<String>();
+        ink = new ArrayList<String>();      //Skapar en arraylist som ska spara alla upphämtningsplatser
 
          
         while ((inkommande_text = inkommande.readLine()) != null) {
@@ -180,14 +187,14 @@ public class Uppdrag implements Runnable{
         }
          inkommande.close();
             ds.cui.appendStatus("Antal upphämtningsplatser: " + ink.get(0));
-            for(int k = 1; k < ink.size()-1; k++){
-            //ds.cui.appendStatus("Upphämtningsplats: " + ink.get(k));
-         }
+            for(int k = 1; k < ink.size()-1; k++){      
+            ds.cui.appendStatus("Upphämtningsplats: " + ink.get(k));
+            }
        
         
         //Variabler
-        String StringStorlek = ink.get(0);
-        IntStorlek = Integer.parseInt(StringStorlek);
+        String StringStorlek = ink.get(0);      //Antal upphämtningsplatser, det som ligger på plats 0 i ink.get()
+        IntStorlek = Integer.parseInt(StringStorlek);   
         String [] link = new String[IntStorlek];
         linkNod1 = new int[IntStorlek];
         linkNod2 = new int[IntStorlek];
@@ -244,6 +251,31 @@ public class Uppdrag implements Runnable{
                  narmstaNod = ds.slutRutt;
              }
              
+             //VI VILL:
+             //Om det inte finns någon plats att jämföra med --> kör på (detta kan hända första "varvet")
+             //Om närmsta plats = messfrom
+                    //kolla om det finns uppdrag så att det räcker till
+                        //åk till platsen om det finns
+                        //sök ny plats annars
+                //om de inte är lika, kör på        
+                
+//                if (ds.messfrom == null){
+//                    //kör vidare, skapa rutt
+//                }
+//                else if (ds.messfrom == narmstaPlats) {
+//                        if(antal uppdrag på platsen > 1){
+//                            //kör till platsen
+//                        }
+//                        else { //antal uppdrag =< 1
+//                           
+//                               //sök ny upphämtningsplats 
+//                         }
+//                    
+//                }   
+//                else {
+//                    //om upphämtningsplats inte är samma,
+//                    //skapa rutt 
+//                }
         }
              ds.cui.appendStatus("\nNärmaste upphämtningsplats är plats " + narmstaPlats + " med nodnummer " + narmstaNod);
              System.out.println("Kostnaden för att ta sig dit är " + lagstaKostnad);
@@ -307,7 +339,7 @@ public class Uppdrag implements Runnable{
           }
 
           inkommande.close();
-  
+          ds.cui.appendStatus("Antal uppdrag på platsen: " +inkuppdrag.get(0));
         for(int k = 0; k < inkuppdrag.size(); k++){
                }
         
@@ -477,7 +509,7 @@ public class Uppdrag implements Runnable{
        ds.cui.appendStatus("Meddelar grupp 3 vår upphämtningsplats.");
      try {
         
-         String url = " http://tnk111.n7.se/putmessage.php?groupid=2&messagetype=23&message="+ narmstaPlats; //Kom överens med grupp 3!!!!!
+         String url = " http://tnk111.n7.se/putmessage.php?groupid=2&messagetype=23&message=" +narmstaPlats; //Kom överens med grupp 3!!!!!
          URL urlobjekt = new URL(url);       
          HttpURLConnection anslutning = (HttpURLConnection)
          urlobjekt.openConnection();
@@ -516,9 +548,10 @@ public class Uppdrag implements Runnable{
 
      public void messfromgroup() {
        //meddelande från den andra gruppen 
+     
      try {
          //Uppdrag http = new Uppdrag();
-         String url = "  http://tnk111.n7.se/getmessage.php?messagetype=2"; //Ändra messagetyp OBSOBSOBS
+         String url = "  http://tnk111.n7.se/getmessage.php?messagetype=32"; //Ändra messagetyp OBSOBSOBS
          URL urlobjekt = new URL(url);       
          HttpURLConnection anslutning = (HttpURLConnection)
          urlobjekt.openConnection();
@@ -532,27 +565,39 @@ public class Uppdrag implements Runnable{
  
          BufferedReader inkommande = new BufferedReader(new
 
-        InputStreamReader(anslutning.getInputStream()));
-        String inkommande_text;
-        StringBuffer inkommande_samlat = new StringBuffer();
+         InputStreamReader(anslutning.getInputStream()));
+         String inkommande_text;
+         StringBuffer inkommande_samlat = new StringBuffer();
         
-        ArrayList <String> inkmess = new ArrayList<String>();
- 
-        while ((inkommande_text = inkommande.readLine()) != null) {
+        inkmess = new ArrayList<String>();
+        
+        splitmessfrom = new String [2]; ///FORTSÄTT HÄR!!!!
+        //messfrom = new String[1];
+         
+         while ((inkommande_text = inkommande.readLine()) != null) {
                 inkommande_samlat.append(inkommande_text);
                 inkmess.add(inkommande_text);
-        }
+         }
         
-        inkommande.close();
-        
+         inkommande.close();
+       
             for(int k = 0; k < inkmess.size(); k++){
             ds.cui.appendStatus("Meddelande från grupp 3: " + inkmess.get(k));
+            splitmessfrom = inkmess.get(k).split(";"); //OCH HÄR!!!!!!
+            ds.messfrom = splitmessfrom[2];    
+            ds.cui.appendStatus("\nDet som är intressant " + ds.messfrom);
          }
-              
-
-        System.out.println(inkommande_samlat.toString());
+//        
+//       for(int k = 0; k <inkmess.size() ; k++){
+//       
+//            sline1 = inkmess.get(k).split(";"); //OCH HÄR!!!!!!
+//            link1[k] = sline1[2];    
+//            ds.cui.appendStatus("Funkar detta tro?" + link1[k]);
+//        }
+            
+           
         }
-    
+  
      catch (IOException e) { System.out.print(e.toString()); }
      
     }    
