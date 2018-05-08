@@ -49,7 +49,9 @@ public class Uppdrag implements Runnable{
    String [] splitmessfrom;  
    int bortvald_flagga = 0;
    int[] bortvald_plats;
-   int i = 0;   
+   int i = 0; 
+   
+   ArrayList<String> inkuppdrag;
     
   
     public Uppdrag(DataStore ds) { 
@@ -64,6 +66,20 @@ public class Uppdrag implements Runnable{
     try{
     messfromgroup(); //Denna ligger här uppe för att vi vill veta vilken upphämtningsplats grupp 3 är påväg mot innan vi kör
     listaplatser();
+    if(ds.messfrom == null){
+        System.out.println("Fanns inget meddlande att hämta, börjar köra");
+    }
+    else if( ds.messfrom == narmstaPlats){
+        int dummyAntalUppdrag = Integer.parseInt(inkuppdrag.get(0));
+        if(dummyAntalUppdrag > 1 ){
+             System.out.println("Fanns mer än 1 uppdrag, börjar köra");
+        }
+        else 
+         System.out.println("Dom har tagit uppdraget, ta en annan plats");
+         //bortvald_plats[] = 1;
+    }
+    
+    
 //    ds.cui.appendStatus("Bortvald flagga första gången: " + bortvald_flagga);
 
   
@@ -80,8 +96,8 @@ public class Uppdrag implements Runnable{
     
             while(ds.scount == i){  //Kollar antal "s", stopp, kör igång loopen när s=1, adderar på varje varv
                 
-                //ds.cui.appendStatus("j: " + j);
-                //ds.cui.appendStatus("bortvald plats: " + bortvald_plats[j]);
+               
+                ds.cui.appendStatus("bortvald plats: " + bortvald_plats);
                 
                
                 valtUppdragPlats = listauppdrag(narmstaPlats);           //Skickar in upphämtningsplats, skickar ut vilket uppdrag vi väljer
@@ -260,7 +276,7 @@ public class Uppdrag implements Runnable{
              // total_arccost = map.getTotalArcCost();          //PROBLEM!!! Blir null.
              // Istället för detta skriver vi bara ds.tot_arcCost[i] och den vi vill ha se nedan.                                  
               kostnad = ds.tot_arcCost[vertexint];
-              tot_kostnad = tot_kostnad + kostnad;
+              tot_kostnad = tot_kostnad + kostnad + 100000; //* bortvald_plats[j];
               
             }
              ds.cui.appendStatus("Upphämtningsplats " + plats[j] + " innebär en rutt från " + ds.startRutt + " till "  
@@ -325,7 +341,7 @@ public class Uppdrag implements Runnable{
     
    
     public int listauppdrag(String plats){      //var static från början
-       ArrayList<String> inkuppdrag = new ArrayList<String>();
+      inkuppdrag = new ArrayList<String>();
        int valtupp = 0;      
      /**
      *Kalla på Compass och kör till platsen
