@@ -263,7 +263,8 @@ public class Uppdrag implements Runnable{
 //                    //kör vidare, skapa rutt
 //                }
 //                else if (ds.messfrom == narmstaPlats) {
-//                        if(antal uppdrag på platsen > 1){
+//                        if(inkuppdrag.get(0) > 1, ){
+//                              //antal uppdrag på platsen = inkuppdrag.get(0)
 //                            //kör till platsen
 //                        }
 //                        else { //antal uppdrag =< 1
@@ -340,8 +341,8 @@ public class Uppdrag implements Runnable{
 
           inkommande.close();
           ds.cui.appendStatus("Antal uppdrag på platsen: " +inkuppdrag.get(0));
-        for(int k = 0; k < inkuppdrag.size(); k++){
-               }
+//        for(int k = 0; k < inkuppdrag.size(); k++){
+//               }
         
         //Variabler
         String StringStorlek = inkuppdrag.get(0);
@@ -571,8 +572,8 @@ public class Uppdrag implements Runnable{
         
         inkmess = new ArrayList<String>();
         
-        splitmessfrom = new String [2]; ///FORTSÄTT HÄR!!!!
-        //messfrom = new String[1];
+        splitmessfrom = new String [2]; //String-array som sparar datum+tid, ID, upphämtningsplats
+     
          
          while ((inkommande_text = inkommande.readLine()) != null) {
                 inkommande_samlat.append(inkommande_text);
@@ -583,18 +584,10 @@ public class Uppdrag implements Runnable{
        
             for(int k = 0; k < inkmess.size(); k++){
             ds.cui.appendStatus("Meddelande från grupp 3: " + inkmess.get(k));
-            splitmessfrom = inkmess.get(k).split(";"); //OCH HÄR!!!!!!
-            ds.messfrom = splitmessfrom[2];    
+            splitmessfrom = inkmess.get(k).split(";");  //Splittar inkommande meddelande
+            ds.messfrom = splitmessfrom[2];             //Plockar ut värdet på plats 2 eftersom det bara är det som är intressant
             ds.cui.appendStatus("\nDet som är intressant " + ds.messfrom);
          }
-//        
-//       for(int k = 0; k <inkmess.size() ; k++){
-//       
-//            sline1 = inkmess.get(k).split(";"); //OCH HÄR!!!!!!
-//            link1[k] = sline1[2];    
-//            ds.cui.appendStatus("Funkar detta tro?" + link1[k]);
-//        }
-            
            
         }
   
