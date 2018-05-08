@@ -538,6 +538,8 @@ public class ControlUI extends javax.swing.JFrame {
        uppdragstrad.start(); 
 
        OptPlan comp = new OptPlan(ds);  
+      
+       
        
        RobotSend send = new RobotSend(ds);
        robottråd_send = new Thread(send);
