@@ -84,6 +84,8 @@ public class OptPlan {
       y = new double[nodlista.size()];
 
       ds.kommandon = new ArrayList<String>();
+      ds.kortaddekommandon = new ArrayList<String>(); 
+
                 
        //Här gör vi om arraylist till array med ints
               
@@ -223,12 +225,42 @@ public class OptPlan {
          
         }
    
-//     for (int i =0; i<ds.kommandon.length; i++){
-//        System.out.println(ds.kommandon[i]); 
-//        }
      ds.kommandon.add(ds.S);    //Lägger till ett stopp-kommando för att AGV:n ska stanna och "släppa av" passagerare
      
-     System.out.println(ds.kommandon);
+     //Modifierar kommando-arrayen så att vänstersvängarna funkar
+     System.out.println("Kortade kommandon innan: " + ds.kommandon);
+     for (int i = 0; i<ds.kommandon.size()-2; i++){
+         int kommandocount = ds.kommandon.size();
+         //Ersätt FLF med L
+        if (ds.kommandon.get(i).equals("F") && ds.kommandon.get(i+1).equals("L") &&  ds.kommandon.get(i+2).equals("F")){
+             System.out.println("I första if.");
+            ds.kommandon.remove(i);     //Ta bort första F:et
+            ds.kommandon.remove(i+1);   //Ta bort andra F:et
+            kommandocount = kommandocount - 2;
+         } 
+        
+        //Ersätt FLS med LS
+        else if (ds.kommandon.get(i).equals("F") && ds.kommandon.get(i+1).equals("L") &&  ds.kommandon.get(i+2).equals("S")){
+            System.out.println("I andra if.");
+             ds.kommandon.remove(i);     //Ta bort första F:et
+             kommandocount = kommandocount - 1;
+         }
+         
+         //Ersätt LF med L
+          else if (ds.kommandon.get(i).equals("L") && ds.kommandon.get(i+1).equals("F")){
+              System.out.println("I tredje if.");
+              ds.kommandon.remove(i+1);   //Ta bort andra F:et
+              kommandocount = kommandocount - 1;
+         } 
+           if (i == kommandocount){            
+               System.out.println("Breakat vid i=" + i);
+               break;
+           }
+       }
+     
+     System.out.println("Kortade kommandon efter: " + ds.kommandon);
+     
+    
      System.out.println(ds.vaderStrack);
    
          return ds.kommandon;
