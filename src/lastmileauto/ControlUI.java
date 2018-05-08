@@ -10,7 +10,7 @@ import javax.swing.*;
 public class ControlUI extends javax.swing.JFrame {
     // I orginalen är det bara en datastore. 
     DataStore ds;
-    Thread robottråd_send;
+
     Uppdrag upp;
     
     /**
@@ -536,14 +536,6 @@ public class ControlUI extends javax.swing.JFrame {
        upp = new Uppdrag(ds);
        Thread uppdragstrad = new Thread(upp);
        uppdragstrad.start(); 
-
-      // OptPlan comp = new OptPlan(ds);  
-       
-       RobotSend send = new RobotSend(ds);
-       robottråd_send = new Thread(send);
-       robottråd_send.start();
-       
-
         
     }//GEN-LAST:event_startActionPerformed
 
