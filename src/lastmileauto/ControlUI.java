@@ -537,7 +537,7 @@ public class ControlUI extends javax.swing.JFrame {
        Thread uppdragstrad = new Thread(upp);
        uppdragstrad.start(); 
 
-       OptPlan comp = new OptPlan(ds);  
+      // OptPlan comp = new OptPlan(ds);  
        
        RobotSend send = new RobotSend(ds);
        robottråd_send = new Thread(send);

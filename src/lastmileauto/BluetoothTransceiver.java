@@ -11,7 +11,7 @@ public class BluetoothTransceiver{
     PrintStream bluetoothanslutning;
     
     public BluetoothTransceiver() {
-        
+    System.out.println("I transceiver.");    
        //Skapar anslutningen mellan dator och AGV
        try {
              StreamConnection anslutning = (StreamConnection)
@@ -21,7 +21,7 @@ public class BluetoothTransceiver{
              
              bluetooth_in = new BufferedReader(new InputStreamReader(anslutning.openInputStream()));
 
-       } catch (Exception e) {  System.out.print(e.toString());   }
+       } catch (Exception e) {  System.out.print("Fångad i transceiver-catch." + e.toString());   }
     }
     
 //    public String getMessage(){
