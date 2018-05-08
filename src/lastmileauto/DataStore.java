@@ -42,10 +42,10 @@ public class DataStore {
     int robotpos = start;       //Robotens aktuella position, initieras till startpositionen
     //String[] kommandon;
     ArrayList<String> kommandon;
-    int kapacitet = 10;
+    int kapacitet = 1;
     String grupp = "2";
     ControlUI cui;
-   // String meddelande_string = "hej";
+   //String meddelande_string = "hej";
     String  meddelande_in = "100"; 
     int mottagenInt = 21;
     int btstatus =0; 
@@ -58,6 +58,7 @@ public class DataStore {
     int totPoang = 0;
     int breakflag = 0;
     int scount = 0;
+    int paxInt = 0; //passagerarantal i det aktuella uppdraget
 
     public DataStore() {
         // Initialize the datastore with fixed size arrays for storing the network data

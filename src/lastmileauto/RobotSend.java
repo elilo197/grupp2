@@ -13,13 +13,15 @@ public RobotSend(DataStore ds){
 @Override
 public void run(){
 
+    try {
+    Thread.sleep(2000);     //Detta är för att ds.kommandon ska hinna köras och få värden innan denna tråd startar
    
     if (ds.breakflag == 0) {    
         try { 
             
             System.out.println("Kommandon: " + ds.kommandon);
             
-            for(int i = 0; i <ds.kommandon.size(); i++){//ds.kommandon.size()
+            for(int i = 0; i <ds.kommandon.size(); i++){
             //dcount räknar antalet "D" (Done) som fås från AGVn
             
                while(ds.dcount == i){
@@ -34,6 +36,10 @@ public void run(){
                
                if (ds.kommandon.get(i).equals("S")) {
                    ds.scount = ds.scount +1;
+                   ds.kommandon.clear();            //Tömmer kommandon när alla är körda
+                   ds.paxInt = 0;                   //Nollställer passagerarantal
+                 //  ds.passant  = new int[IntStorlek]; 
+
                }
                
                
@@ -50,6 +56,8 @@ public void run(){
                }
         }
    
-    }
     
+} catch (InterruptedException exeption) {
+               }   
+}
 }
