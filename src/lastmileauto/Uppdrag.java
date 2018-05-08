@@ -289,33 +289,6 @@ public class Uppdrag implements Runnable{
                  narmstaPlats = plats[j];
                  narmstaNod = ds.slutRutt;
              }
-             
-             //VI VILL:
-             //Om det inte finns någon plats att jämföra med --> kör på (detta kan hända första "varvet")
-             //Om närmsta plats = messfrom
-                    //kolla om det finns uppdrag så att det räcker till
-                        //åk till platsen om det finns
-                        //sök ny plats annars
-                //om de inte är lika, kör på        
-                
-//                if (ds.messfrom == null){
-//                    //kör vidare, skapa rutt
-//                }
-//                else if (ds.messfrom == narmstaPlats) {
-//                        if(inkuppdrag.get(0) > 1, ){
-//                              //antal uppdrag på platsen = inkuppdrag.get(0)
-//                            //kör till platsen
-//                        }
-//                        else { //antal uppdrag =< 1
-//                           
-//                               //sök ny upphämtningsplats 
-//                         }
-//                    
-//                }   
-//                else {
-//                    //om upphämtningsplats inte är samma,
-//                    //skapa rutt 
-//                }
         }
              ds.cui.appendStatus("\nNärmaste upphämtningsplats är plats " + narmstaPlats + " med nodnummer " + narmstaNod);
              System.out.println("Kostnaden för att ta sig dit är " + lagstaKostnad);
