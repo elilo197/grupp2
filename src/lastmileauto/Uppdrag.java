@@ -44,7 +44,8 @@ public class Uppdrag implements Runnable{
    ArrayList<Integer> oppispath;
     ArrayList<String> ink; 
    int i = 0;   
-   
+   int [] bortvald_plats;
+  int bortvald_flagga = 0;
      
 
     public Uppdrag(DataStore ds) { 
@@ -56,18 +57,27 @@ public class Uppdrag implements Runnable{
     
 @Override    
     public void run(){
-      
+    try{  
     listaplatser();
     System.out.println("Uppdrag kvar: " + ink.get(0));
                 
   
     while (ink.get(0) != null) {    //Kollar så att det finns uppdrag på platsen
-           
+    //System.out.println("scount: " + ds.scount);
+    //System.out.println("i: " + i);
+    Thread.sleep(100);      //för att slippa göra utskrifterna ovan
+    
             while(ds.scount == i){  //Kollar antal "s", stopp, kör igång loopen när s=1, adderar på varje varv
                 
-                System.out.println("scount: " + ds.scount);
+               // System.out.println("scount: " + ds.scount);
                 
-                valtUppdrag = listauppdrag(narmstaPlats);           //Skickar in upphämtningsplats, skickar ut vilket uppdrag vi väljer
+                valtUppdrag = listauppdrag(narmstaPlats);           //Skickar in upphämtningsplats, skickar ut vilket uppdrag vi väljer  
+                //ds.cui.appendStatus("j: " + j);
+                //ds.cui.appendStatus("bortvald plats: " + bortvald_plats[j]);
+                if (bortvald_flagga == 1){      //Kör om utifall att nån upphämtningsplats har för stora uppdrag
+                listaplatser();
+                }
+                         //Skickar in upphämtningsplats, skickar ut vilket uppdrag vi väljer
                 pax = getPassagerare(valtUppdrag);                  //Skickar ut passagerarantal på det valda uppdraget
                 
 
@@ -137,9 +147,17 @@ public class Uppdrag implements Runnable{
 
              ds.start = ds.sistanod;     //Sätt startnod på nästkommande uppdrag till nuvarande uppdrags sistanod
              i++;
+            RobotSend send = new RobotSend(ds);
+            Thread robottråd_send = new Thread(send);
+            robottråd_send.start();
+             
+             
             }
             
     } //while
+    } catch (InterruptedException exception ){ System.out.println("Fångad i uppdragstråd-catch.");
+        
+    }
     }
 
     /** Här listar vi antalet upphämtningsplatser och beräknar vilken som är närmast. 
@@ -192,12 +210,14 @@ public class Uppdrag implements Runnable{
         linkNod1 = new int[IntStorlek];
         linkNod2 = new int[IntStorlek];
         oppis = new OptPlan[IntStorlek];
+        bortvald_plats = new int[IntStorlek];
         String [] sline;
         String [] plats = new String[IntStorlek];
         double tot_kostnad = 0;         //Totala kostnaden för en väg/alla bågar i en väg
         int narmstaNod = ds.start;
         double lagstaKostnad = 1000000;
         double kostnad = 0;             //Kostnad för en båg
+ 
       
         for(int k = 1; k <IntStorlek+1 ; k++){
             sline = ink.get(k).split(";");
@@ -230,9 +250,12 @@ public class Uppdrag implements Runnable{
              // total_arccost = map.getTotalArcCost();          //PROBLEM!!! Blir null.
              // Istället för detta skriver vi bara ds.tot_arcCost[i] och den vi vill ha se nedan.                                  
               kostnad = ds.tot_arcCost[vertexint];
-              tot_kostnad = tot_kostnad + kostnad;
+              tot_kostnad = tot_kostnad + kostnad + bortvald_plats[j]*100000;
+             
               
             }
+             System.out.println("Bortvald plats: " + bortvald_plats[j]);
+             
              ds.cui.appendStatus("Upphämtningsplats " + plats[j] + " innebär en rutt från " + ds.startRutt + " till "  
                    + ds.slutRutt + " vilket ger en totalkostnad på "  + tot_kostnad);
            
@@ -345,7 +368,7 @@ public class Uppdrag implements Runnable{
         }
         
 
-          System.out.println("Uppdragsid: " + uppdragsid[0]); //HÄR HAR VI BYTT
+         // System.out.println("Uppdragsid: " + uppdragsid[0]); //HÄR HAR VI BYTT
  
 
         //Välj uppdrag
@@ -353,13 +376,16 @@ public class Uppdrag implements Runnable{
 
             if (passant[j]<=ds.kapacitet) {
                 valtUppdrag = uppdragsid[j];
+                bortvald_flagga = 0;
+
                 break;
-                   
             }
             
-            else if (j==IntStorlek-1) {
+            else if (j== (IntStorlek-1)) {
                 ds.cui.appendStatus("För mycket folk!"); //HÄR HAR VI BYTT
-                //Här borde vi börja om på nått sätt, typ kalla på listaplatser och listauppdrag igen
+                bortvald_plats[j] = 1;
+                bortvald_flagga = 1;
+//Här borde vi börja om på nått sätt, typ kalla på listaplatser och listauppdrag igen
             }
         }
         }
@@ -381,11 +407,13 @@ public class Uppdrag implements Runnable{
    
       public String getPassagerare(String valtUppdrag){
       int uppdragInt = Integer.parseInt(valtUppdrag);
-
-      int paxInt = passant[Integer.parseInt(valtUppdrag)-1]; 
-
+      System.out.println("uppdragsint: " + uppdragInt);
+      
+      int passagerardummy = Integer.parseInt(valtUppdrag);
+      ds.paxInt = passant[passagerardummy-1]; 
+      System.out.println("paxint: " + ds.paxInt);
    
-      pax = Integer.toString(paxInt);  
+      pax = Integer.toString(ds.paxInt);  
       return pax; 
     }
       

@@ -11,12 +11,12 @@ public class BluetoothTransceiver{
     PrintStream bluetoothanslutning;
     
     public BluetoothTransceiver() {
-    System.out.println("I transceiver.");    
+       
        //Skapar anslutningen mellan dator och AGV
        try {
              StreamConnection anslutning = (StreamConnection)
              Connector.open("btspp://201601205682:1");
-                
+               System.out.println("I transceiver.");  
              bluetoothanslutning = new PrintStream(anslutning.openOutputStream());
              
              bluetooth_in = new BufferedReader(new InputStreamReader(anslutning.openInputStream()));
