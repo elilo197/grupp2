@@ -69,8 +69,9 @@ public class Uppdrag implements Runnable{
                 
                 valtUppdrag = listauppdrag(narmstaPlats);           //Skickar in upphämtningsplats, skickar ut vilket uppdrag vi väljer
                 pax = getPassagerare(valtUppdrag);                  //Skickar ut passagerarantal på det valda uppdraget
-                //Räknar totala poänge för uppdragen. 
+                
 
+                //Räknar totala poängen för uppdragen. 
                 int dummy; 
                 dummy = Integer.parseInt(valtUppdrag);
                 ds.totPoang = ds.totPoang + ds.poang[dummy];
