@@ -61,9 +61,9 @@ public class Uppdrag implements Runnable{
     System.out.println("Uppdrag kvar: " + ink.get(0));
                 
   
-    while (ink.get(0) != null) {
+    while (ink.get(0) != null) {    //Kollar så att det finns uppdrag på platsen
            
-            while(ds.scount == i){
+            while(ds.scount == i){  //Kollar antal "s", stopp, kör igång loopen när s=1, adderar på varje varv
                 
                 System.out.println("scount: " + ds.scount);
                 
@@ -107,26 +107,26 @@ public class Uppdrag implements Runnable{
                     oppis2path = oppis2.createPlan();
 
 
-                    for ( int j = 0; j < oppis1path.size(); j++ ){
-                    oppispath.add(oppis1path.get(i));
+                    for ( int j = 0; j < oppis1path.size(); j++ ){ //Lägger till oppis1path i oppispath (hela rutten)
+                    oppispath.add(oppis1path.get(j));
                     }
                      System.out.println("Oppis1path: " + oppis1path);   //På varv 2 och resten vill vi lägga på sistanod innan
 
-                      for ( int j = 2; j < oppis2path.size(); j++ ){
-                        oppispath.add(oppis2path.get(i));
-                       } 
+                    for ( int j = 2; j < oppis2path.size(); j++ ){  //Börjar på 2 för att de inte ska överlappa
+                        oppispath.add(oppis2path.get(j));           //Lägger till oppis2path i oppispath (hela rutten)
+                     } 
                      //System.out.println("Detta är sista noden: " + oppis2path.get(oppis2path.size()-1));
                      System.out.println("Oppis2path: " + oppis2path);    
                      ds.sistanod = (oppis2path.get(oppis2path.size()-1));   //Lägger till sista noden i föregående rutt i en ny arraylist som ska 
                      System.out.println("Testar att skriva sistanoden: " + ds.sistanod); //adderas innan nästa rutt skapas
 
 
-                    System.out.println("Oppispath: " + oppispath);  
+                     System.out.println("Oppispath: " + oppispath);  
 
-                    opt = new OptPlan(ds);
-                    opt.compass(oppispath);
+                     opt = new OptPlan(ds);     //Hämtar variabler från DataStore
+                     opt.compass(oppispath);    //Skapar färdbeskrivning
 
-                    ds.cui.repaint();
+                     ds.cui.repaint();
 
                 }
                 else {System.out.println("Svar från hemsida: " + svaruppdrag);}
