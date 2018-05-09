@@ -33,16 +33,17 @@ public class DataStore {
     String L = "L";   //Kör Left 
     String S = "S";   //Stop i 5 sek. 
     String C = "C";
+    String U = "U";     //Hämta uppdrag
     ArrayList<Integer> pathInt; 
     //int[] pathInt; //Noderna i ints
     BluetoothTransceiver btc;
     BluetoothTransmitter btm;
     BluetoothReceiver btr; 
+    DijkstraAlgorithm dij;
     int[] tot_arcCost;
     int robotpos = start;       //Robotens aktuella position, initieras till startpositionen
     //String[] kommandon;
     ArrayList<String> kommandon;
-    ArrayList<String> kortaddekommandon;
     int kapacitet = 10;
     String grupp = "2";
     ControlUI cui;
@@ -59,11 +60,13 @@ public class DataStore {
     int totPoang = 0;
     int breakflag = 0;
     int scount = 0;
-
     String messfrom;
-
     int paxInt = 0; //passagerarantal i det aktuella uppdraget
-
+    ArrayList<String> kommandon1; 
+    ArrayList<String> kommandon2; 
+    ArrayList<String> kommandon_done; 
+                
+    
 
     public DataStore() {
         // Initialize the datastore with fixed size arrays for storing the network data
