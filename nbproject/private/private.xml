@@ -3,6 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/Helena/Documents/GitHub/grupp2/src/lastmileauto/GuiUpdate.java</file>
             <file>file:/C:/Users/Helena/Documents/GitHub/grupp2/src/lastmileauto/DataStore.java</file>
             <file>file:/C:/Users/Helena/Documents/GitHub/grupp2/src/lastmileauto/OptPlan.java</file>
@@ -12,6 +13,14 @@
             <file>file:/C:/Users/Helena/Documents/GitHub/grupp2/src/lastmileauto/BluetoothReceiver.java</file>
             <file>file:/C:/Users/Helena/Documents/GitHub/grupp2/src/lastmileauto/RobotSend.java</file>
             <file>file:/C:/Users/Helena/Documents/GitHub/grupp2/src/lastmileauto/ControlUI.java</file>
+=======
+            <file>file:/Users/Veronika/Documents/grupp2/src/lastmileauto/OptPlan.java</file>
+            <file>file:/Users/Veronika/Documents/grupp2/src/lastmileauto/Uppdrag.java</file>
+            <file>file:/Users/Veronika/Documents/grupp2/src/lastmileauto/ControlUI.java</file>
+            <file>file:/Users/Veronika/Documents/grupp2/src/lastmileauto/RobotSend.java</file>
+            <file>file:/Users/Veronika/Documents/grupp2/src/lastmileauto/Planeringssystem.java</file>
+            <file>file:/Users/Veronika/Documents/grupp2/src/lastmileauto/DataStore.java</file>
+>>>>>>> ed2325fdd780d364811710af4e2ea8107ef6f108
         </group>
     </open-files>
 </project-private>

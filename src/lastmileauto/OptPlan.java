@@ -259,7 +259,7 @@ public class OptPlan {
        }
      
      System.out.println("Kortade kommandon efter: " + ds.kommandon);
-     
+     ds.cui.appendRutt(" " + ds.kommandon);
     
      System.out.println(ds.vaderStrack);
    

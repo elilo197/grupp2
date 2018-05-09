@@ -29,7 +29,7 @@ public class Uppdrag implements Runnable{
    OptPlan [] oppis;
    String narmstaPlats;// = "Start";
    String id; 
-   String pax;
+   int pax;
    String [] uppdragsid;
    String [] destination;
    int [] passant; 
@@ -47,12 +47,13 @@ public class Uppdrag implements Runnable{
    ArrayList<String> ink; 
    ArrayList<String> inkmess; 
    String [] splitmessfrom;  
-  
-   int i = 0;   
+   int bortvald_flagga = 0;
+   int[] bortvald_plats;
+   int i = 0; 
+   
+   ArrayList<String> inkuppdrag;
     
   
-     
-
     public Uppdrag(DataStore ds) { 
         //aterstall("1");
         //messfromgroup();
@@ -62,13 +63,26 @@ public class Uppdrag implements Runnable{
     
 @Override    
     public void run(){
-    
+    try{
     messfromgroup(); //Denna ligger här uppe för att vi vill veta vilken upphämtningsplats grupp 3 är påväg mot innan vi kör
     listaplatser();
+    if(ds.messfrom == null){
+        System.out.println("Fanns inget meddlande att hämta, börjar köra");
+    }
+    else if( ds.messfrom == narmstaPlats){
+        int dummyAntalUppdrag = Integer.parseInt(inkuppdrag.get(0));
+        if(dummyAntalUppdrag > 1 ){
+             System.out.println("Fanns mer än 1 uppdrag, börjar köra");
+        }
+        else 
+         System.out.println("Dom har tagit uppdraget, ta en annan plats");
+         //bortvald_plats[] = 1;
+    }
+    
+    
 //    ds.cui.appendStatus("Bortvald flagga första gången: " + bortvald_flagga);
 
   
-<<<<<<< HEAD
    // ds.cui.appendStatus("Upphämtningsplatser kvar: " + ink.get(0));
                 
    // ds.cui.appendStatus("ink get: " + ink.get(0));
@@ -80,43 +94,31 @@ public class Uppdrag implements Runnable{
     
    // ds.cui.appendStatus("Bortvald flagga andra gången: " + bortvald_flagga);
     
-
-      
-=======
-    while (ink.get(0) != null) {    //Kollar så att det finns uppdrag på platsen
-           
->>>>>>> af76b01b99f57c539e8662bd462c51d2add6b7fc
             while(ds.scount == i){  //Kollar antal "s", stopp, kör igång loopen när s=1, adderar på varje varv
                 
-                
-<<<<<<< HEAD
-                //ds.cui.appendStatus("j: " + j);
-                //ds.cui.appendStatus("bortvald plats: " + bortvald_plats[j]);
+               
+                ds.cui.appendStatus("bortvald plats: " + bortvald_plats);
                 
                
                 valtUppdragPlats = listauppdrag(narmstaPlats);           //Skickar in upphämtningsplats, skickar ut vilket uppdrag vi väljer
                 System.out.println("Valt uppdrag första gången: " + valtUppdragPlats);  
+                
                 if (bortvald_flagga == 1){      //Kör om utifall att nån upphämtningsplats har för stora uppdrag
                 listaplatser();
                 valtUppdragPlats = listauppdrag(narmstaPlats); 
+                
                 }
                   System.out.println("Valt uppdrag andra gången: " + valtUppdragPlats);        
               //  ds.cui.appendStatus("Bortvald flagga tredje gången: " + bortvald_flagga);
                 pax = getPassagerare(valtUppdragPlats);                  //Skickar ut passagerarantal på det valda uppdraget
                   System.out.println("Passagerarantal " + pax);  
-=======
-                System.out.println("scount: " + ds.scount);
-                
-                valtUppdrag = listauppdrag(narmstaPlats);           //Skickar in upphämtningsplats, skickar ut vilket uppdrag vi väljer
-                pax = getPassagerare(valtUppdrag);                  //Skickar ut passagerarantal på det valda uppdraget
-                
->>>>>>> af76b01b99f57c539e8662bd462c51d2add6b7fc
+
 
                 //Räknar totala poängen för uppdragen. 
                 int dummy; 
-//                dummy = Integer.parseInt(valtUppdrag);
-//                ds.totPoang = ds.totPoang + ds.poang[dummy];
-//                //System.out.println("Totala poäng: " + ds.totPoang);
+                dummy = (valtUppdragPlats);
+                ds.totPoang = ds.totPoang + ds.poang[dummy];
+                //System.out.println("Totala poäng: " + ds.totPoang);
                 ds.cui.appendPoang(ds.totPoang);
 
                 oppis1path = new ArrayList<Integer>();
@@ -125,7 +127,7 @@ public class Uppdrag implements Runnable{
                 //messfromgroup();                      //VI HAR FLYTTAT UPP DENNA JUST NU MVH H OCH V
                 messtogroup();
 
-               String svaruppdrag = tauppdrag(narmstaPlats, valtUppdrag, pax, ds.grupp);
+               String svaruppdrag = tauppdrag(narmstaPlats, valtUppdragId, pax, ds.grupp);
 
                     if (svaruppdrag.equals("beviljas")){
 
@@ -134,14 +136,14 @@ public class Uppdrag implements Runnable{
                             }
 
                     ds.startRutt = ds.robotpos;        
-                    ds.slutRutt = linkNod2[Integer.parseInt(valtUppdrag)-1];
+                    ds.slutRutt = linkNod2[(valtUppdragPlats)-1];
 
                     //Oppis 1 är den optimerade rutten för upphämtningsplatsen
                     oppis1 = new OptPlan(ds);
                     oppis1path = oppis1.createPlan();
 
-                    ds.startRutt = linkNod1[Integer.parseInt(valtUppdrag)-1];       
-                    ds.slutRutt = destNod1[Integer.parseInt(valtUppdrag)-1];
+                    ds.startRutt = linkNod1[(valtUppdragPlats)-1];       
+                    ds.slutRutt = destNod1[(valtUppdragPlats)-1];
 
                     //Oppis 2 är den optimerade rutten för uppdraget
                     oppis2 = new OptPlan(ds);
@@ -173,7 +175,9 @@ public class Uppdrag implements Runnable{
                 else {System.out.println("Svar från hemsida: " + svaruppdrag);}
 
                // aterstall("1");
-
+                RobotSend RSend = new RobotSend(ds);        //Startar robotsend-tråden
+                Thread RobotSendThread = new Thread(RSend);
+                RobotSendThread.start();
 
 
              ds.start = ds.sistanod;     //Sätt startnod på nästkommande uppdrag till nuvarande uppdrags sistanod
@@ -181,7 +185,10 @@ public class Uppdrag implements Runnable{
             }
             
     } //while
+    }catch(InterruptedException exception){
     }
+}
+    
 
     /** Här listar vi antalet upphämtningsplatser och beräknar vilken som är närmast. 
      */
@@ -271,7 +278,7 @@ public class Uppdrag implements Runnable{
              // total_arccost = map.getTotalArcCost();          //PROBLEM!!! Blir null.
              // Istället för detta skriver vi bara ds.tot_arcCost[i] och den vi vill ha se nedan.                                  
               kostnad = ds.tot_arcCost[vertexint];
-              tot_kostnad = tot_kostnad + kostnad;
+              tot_kostnad = tot_kostnad + kostnad + 100000; //* bortvald_plats[j];
               
             }
              ds.cui.appendStatus("Upphämtningsplats " + plats[j] + " innebär en rutt från " + ds.startRutt + " till "  
@@ -284,33 +291,6 @@ public class Uppdrag implements Runnable{
                  narmstaPlats = plats[j];
                  narmstaNod = ds.slutRutt;
              }
-             
-             //VI VILL:
-             //Om det inte finns någon plats att jämföra med --> kör på (detta kan hända första "varvet")
-             //Om närmsta plats = messfrom
-                    //kolla om det finns uppdrag så att det räcker till
-                        //åk till platsen om det finns
-                        //sök ny plats annars
-                //om de inte är lika, kör på        
-                
-//                if (ds.messfrom == null){
-//                    //kör vidare, skapa rutt
-//                }
-//                else if (ds.messfrom == narmstaPlats) {
-//                        if(inkuppdrag.get(0) > 1, ){
-//                              //antal uppdrag på platsen = inkuppdrag.get(0)
-//                            //kör till platsen
-//                        }
-//                        else { //antal uppdrag =< 1
-//                           
-//                               //sök ny upphämtningsplats 
-//                         }
-//                    
-//                }   
-//                else {
-//                    //om upphämtningsplats inte är samma,
-//                    //skapa rutt 
-//                }
         }
              ds.cui.appendStatus("\nNärmaste upphämtningsplats är plats " + narmstaPlats + " med nodnummer " + narmstaNod);
              System.out.println("Kostnaden för att ta sig dit är " + lagstaKostnad);
@@ -336,7 +316,7 @@ public class Uppdrag implements Runnable{
     
    
     public int listauppdrag(String plats){      //var static från början
-       ArrayList<String> inkuppdrag = new ArrayList<String>();
+      inkuppdrag = new ArrayList<String>();
        int valtupp = 0;      
      /**
      *Kalla på Compass och kör till platsen
@@ -419,30 +399,23 @@ public class Uppdrag implements Runnable{
         for (int j=0; j<IntStorlek; j++){
 
             if (passant[j]<=ds.kapacitet) {
-<<<<<<< HEAD
-                valtUppdragPlats = (j); // uppdragsid[j];
+                valtUppdragPlats = (j+1);
                 valtUppdragId = uppdragsid[j];
                 bortvald_flagga = 0;
 
-=======
-                valtUppdrag = uppdragsid[j];
->>>>>>> af76b01b99f57c539e8662bd462c51d2add6b7fc
                 break;
                    
             }
             
             else if (j==IntStorlek-1) {
                 ds.cui.appendStatus("För mycket folk!"); //HÄR HAR VI BYTT
-<<<<<<< HEAD
                 bortvald_plats[j] = 1;
                 bortvald_flagga = 1;
-                valtUppdragPlats = (j); // uppdragsid[j];
+                valtUppdragPlats = (j+1); // uppdragsid[j];
                 valtUppdragId = uppdragsid[j];
              
 //Här borde vi börja om på nått sätt, typ kalla på listaplatser och listauppdrag igen
-=======
-                //Här borde vi börja om på nått sätt, typ kalla på listaplatser och listauppdrag igen
->>>>>>> af76b01b99f57c539e8662bd462c51d2add6b7fc
+
             }
         }
         }
@@ -462,7 +435,6 @@ public class Uppdrag implements Runnable{
         return id;
     }
    
-<<<<<<< HEAD
       public int getPassagerare(int valtUppdrag){
       int uppdragInt = valtUppdrag;
       System.out.println("uppdragsint från getPassagerare: " + uppdragInt);
@@ -473,21 +445,12 @@ public class Uppdrag implements Runnable{
       System.out.println("paxint: " + ds.paxInt);
    
       //pax = ds.paxInt;  
-=======
-      public String getPassagerare(String valtUppdrag){
-      int uppdragInt = Integer.parseInt(valtUppdrag);
-
-      int paxInt = passant[Integer.parseInt(valtUppdrag)-1]; 
-
-   
-      pax = Integer.toString(paxInt);  
->>>>>>> af76b01b99f57c539e8662bd462c51d2add6b7fc
       return pax; 
     }
       
     
-    
-    public  String tauppdrag(String plats, String id, String pax, String grupp){    //Denna var static
+    //Vi har ändrat pax från string till int
+    public  String tauppdrag(String plats, String id, int pax, String grupp){    //Denna var static
     //   System.out.println("I tauppdrag kommer följande in: Plats: " + plats + " Id: " + id + " Pax: " + pax + " Grupp: " + grupp);
         /**Ta första uppdaget och kolla om kapacitet är ok
             *Om kapacitet är ok --> kolla om samåkning är ok
