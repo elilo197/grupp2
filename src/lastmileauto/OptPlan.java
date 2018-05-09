@@ -77,20 +77,23 @@ public class OptPlan {
     }
 
     public ArrayList<String> compass(ArrayList<Integer> nodlista){
-      int[] nodlistaInt = new int[nodlista.size()];//+2];     //Skapar en array med noderna längst "billigaste vägen"  
+     
+               
+        int[] nodlistaInt = new int[nodlista.size()-1];//+2];     //Skapar en array med noderna längst "billigaste vägen"  
                             //+2 är bara fulkodning för att testa
      // ds.kommandon = new String[nodlista.size()-2];
+   
+     
       x = new double[nodlista.size()];  //
       y = new double[nodlista.size()];
+      int uplats = 0;
+      int count = 0;
 
       ds.kommandon = new ArrayList<String>();
-      ds.kortaddekommandon = new ArrayList<String>(); 
-
-                
+                  
        //Här gör vi om arraylist till array med ints
               
-       //nodlista = createPlan(); 
-      System.out.println("Nodlista från compass: " + nodlista);
+        System.out.println("Nodlista från compass: " + nodlista);
             
          //Här gör vi om arraylist till array med ints
       for(int i =0; i <nodlista.size(); i++)
@@ -101,17 +104,17 @@ public class OptPlan {
      
           
       for(int i =0; i <nodlista.size(); i++)  
-        {    
-        x[i] = ds.nodeX[nodlistaInt[i]-1]; //+2 är fulkodning
-        y[i]= ds.nodeY[nodlistaInt[i]-1];  //+2 är fulkodning  
-       //System.out.println("Koordinater från compass: " +x[i]+", " +y[i]);
+        { 
+            //Kolla om nodlista innehåller en upphämtningsplats, ge x och y dummyvärden
+                x[i] = ds.nodeX[nodlistaInt[i]-1]; 
+                y[i]= ds.nodeY[nodlistaInt[i]-1];    
+               //System.out.println("Koordinater från compass: " +x[i]+", " +y[i]);
+                
         }
-    
-        //System.out.println("nodlistaINT: " + nodlistaInt.length);
 
 
-     for(int i =0; i <nodlista.size()-2; i++) {    //nodlista.size(); i++)  {
-           //Jämför nuvarande nod med nästkommande nod
+      for(int i =0; i <nodlista.size()-2; i++) {    
+              
            if((x[i+1] - x[i] > 0) && (y[i+1] - y[i] == 0))
            { //Agda kör österut
                System.out.println("Nu kör Agda österut.");
@@ -221,45 +224,59 @@ public class OptPlan {
                         System.out.println("Nu ska Agda svänga höger snedsväng.");  //Snedsväng
                         ds.kommandon.add(ds.R);
                     }
-            }
+            
          
         }
-   
-     ds.kommandon.add(ds.S);    //Lägger till ett stopp-kommando för att AGV:n ska stanna och "släppa av" passagerare
+          }  
+    System.out.println("Hela kommando i slutet av loopen: " + ds.kommandon);
+
+    
+         
      
      //Modifierar kommando-arrayen så att vänstersvängarna funkar
-     System.out.println("Kortade kommandon innan: " + ds.kommandon);
+ 
      for (int i = 0; i<ds.kommandon.size()-2; i++){
          int kommandocount = ds.kommandon.size();
-         //Ersätt FLF med L
+         //Ersätt FLF med L 
+         System.out.println("i = " + i);
+         System.out.println("Kommandon på plats i: " +ds.kommandon.get(i));
+         
         if (ds.kommandon.get(i).equals("F") && ds.kommandon.get(i+1).equals("L") &&  ds.kommandon.get(i+2).equals("F")){
-             System.out.println("I första if.");
+//            System.out.println("Kommando på plats i, ska raderas: " + ds.kommandon.get(i));
+//            System.out.println("Kommando på plats i + 1, ska vara kvar: " + ds.kommandon.get(i+1));
+//            System.out.println("Kommando på plats i + 2, ska raderas: " + ds.kommandon.get(i+2));
+//            System.out.println("I första if-satsen för modifiering.");
             ds.kommandon.remove(i);     //Ta bort första F:et
             ds.kommandon.remove(i+1);   //Ta bort andra F:et
+            System.out.println("Kommandon kvar efter radering, borde bara vara L: " + ds.kommandon.get(i));
             kommandocount = kommandocount - 2;
          } 
         
         //Ersätt FLS med LS
         else if (ds.kommandon.get(i).equals("F") && ds.kommandon.get(i+1).equals("L") &&  ds.kommandon.get(i+2).equals("S")){
-            System.out.println("I andra if.");
+                 System.out.println("I andra if-satsen för modifiering.");
+
              ds.kommandon.remove(i);     //Ta bort första F:et
              kommandocount = kommandocount - 1;
          }
          
          //Ersätt LF med L
           else if (ds.kommandon.get(i).equals("L") && ds.kommandon.get(i+1).equals("F")){
-              System.out.println("I tredje if.");
+                  System.out.println("I tredje if-satsen för modifiering.");
+
+              System.out.println("Kommando på plats i+1, ska raderas: " + ds.kommandon.get(i+1));
+                System.out.println("Kommando på plats i, ska vara kvar: " + ds.kommandon.get(i));
               ds.kommandon.remove(i+1);   //Ta bort andra F:et
               kommandocount = kommandocount - 1;
          } 
            if (i == kommandocount){            
-               System.out.println("Breakat vid i=" + i);
+              
                break;
            }
        }
      
-     System.out.println("Kortade kommandon efter: " + ds.kommandon);
-     ds.cui.appendRutt(" " + ds.kommandon);
+     
+ 
     
      System.out.println(ds.vaderStrack);
    
