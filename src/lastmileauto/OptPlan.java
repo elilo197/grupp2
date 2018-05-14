@@ -313,23 +313,16 @@ public class OptPlan {
     }
     }
     int countStor = compare.size();
-        System.out.println("countStor: " + countStor);
-    
-         
-     
+           
      //Modifierar kommando-arrayen så att vänstersvängarna funkar
 
      for (int i = 0; i<ds.kommandon.size()-1; i++){
          int kommandocount = ds.kommandon.size();
          //Ersätt FLF med L 
-         System.out.println("i = " + i);
-         System.out.println("kommandocount:" +  kommandocount);
-         System.out.println("Kommandon på plats i: " +ds.kommandon.get(i));
-         
-   
+
          if(countStor != 0 && i == ((compare.get(countFLF-1))-countBort)){      //har skapat en compare arraylist som sparar på vilka platser som FLF "kommandon" finns
                                                 //och om det finns på fler platser jämför dessa också tills att countStor är uppfylld. 
-             System.out.println("I är lika med compare:" + i + " hoppar över" ); //tror detta kan bli problem med i men de borde gå att fixa fort / eelise
+            // System.out.println("I är lika med compare:" + i + " hoppar över" ); //tror detta kan bli problem med i men de borde gå att fixa fort / eelise
              if(countFLF < countStor){                                   
              countFLF = countFLF +1; 
              }
@@ -371,7 +364,7 @@ public class OptPlan {
                break;
            }
        }
-      System.out.println("kommando efter modellering:"+ ds.kommandon);
+      System.out.println("Färdiga kommandon:"+ ds.kommandon);
      }
     }
      

@@ -66,6 +66,7 @@ public class DataStore {
     String messfrom;
     ArrayList<String> kommandon1; 
     ArrayList<String> kommandon2; 
+    ArrayList<String> kommandon3;
     ArrayList<String> kommandon_done;
     int pax = 0;
     int paxRutt = 0;
@@ -73,7 +74,8 @@ public class DataStore {
     int [] linkNod2;
     int startStart = 38;
     boolean taUppdrag = false; 
-    boolean skickatP = false; 
+    boolean skickatP = false;
+    int paxSamaka=0;
     
 
     public DataStore() {

@@ -16,7 +16,7 @@ public RobotSend(DataStore ds){
 public void run(){
 
     try {
-    Thread.sleep(2000);     //Detta är för att ds.kommandon ska hinna köras och få värden innan denna tråd startar
+    Thread.sleep(500);     //Detta är för att ds.kommandon ska hinna köras och få värden innan denna tråd startar
    
     if (ds.breakflag == 0) {    
         try { 
@@ -34,6 +34,7 @@ public void run(){
                 Thread.sleep(1000);
 
                 ds.ncount = i; //Räknar antalet noder som passeras 
+                ds.cui.appendStatus("Antal utförda svängar: " +ds.dcount);
                 String kommando =ds.kommandon_done.get(i) + dummyString;
                 ds.btm.send(kommando);
                 ds.cui.appendStatus("Skickat meddelande: " + ds.kommandon_done.get(i) + dummyString);
@@ -55,6 +56,7 @@ public void run(){
                    ds.paxRutt = ds.pax; 
                    ds.taUppdrag = true; 
                    Thread.sleep(1000);
+
                }
                
                 }

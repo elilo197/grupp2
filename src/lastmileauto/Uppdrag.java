@@ -38,10 +38,13 @@ public class Uppdrag implements Runnable{
    String svar;
    OptPlan oppis1;
    OptPlan oppis2;
+   OptPlan oppis3;
    ArrayList<Integer> oppis1path;
    ArrayList<Integer> oppis1pathNY;     //skapat ny oppis 
    ArrayList<Integer> oppis2path;
    ArrayList<Integer> oppis2pathNY;     //skapat ny oppis 
+   ArrayList<Integer> oppis3path;
+   ArrayList<Integer> oppis3pathNY;
    ArrayList<String> ink; 
    ArrayList<String> inkmess; 
    String [] splitmessfrom;  
@@ -49,8 +52,11 @@ public class Uppdrag implements Runnable{
    int[] bortvald_plats;
    int i = 0; 
    int upphamtningplatsPlats;
-   
+   int valtUppdragsplatsSamaka;
+   String valtUppdragsIDSamaka;
+   String valtUppdragsplatsSamakaString;
    ArrayList<String> inkuppdrag;
+   String svaruppdragSamaka;
     
   
     public Uppdrag(DataStore ds) { 
@@ -94,16 +100,29 @@ public class Uppdrag implements Runnable{
 
                 //Om det kunden vill samåka och det finns plats så görs detta. 
                 if(samaka[valtUppdragPlats] == 1 && passant[valtUppdragPlats] < ds.kapacitet){
+                ds.cui.appendRutt("Vill samåka i början");
                 int platsKvar = ds.kapacitet - passant[valtUppdragPlats];          
+                System.out.println("Plats kvar: " + platsKvar);
+                int maxpass=0; 
+                
+                for(int i = 0; i<IntStorlek; i++){
                     
+                    if(passant[i] >= platsKvar && i != valtUppdragPlats){
+                        valtUppdragsplatsSamaka = i;
+                        valtUppdragsplatsSamakaString = Integer.toString(valtUppdragsplatsSamaka);
+                        System.out.println("valtUppdragplatsSamakaString: " + valtUppdragsplatsSamakaString );
+                       valtUppdragsIDSamaka = getId(valtUppdragsplatsSamakaString);
+                       if(passant[i] == platsKvar){
+                       ds.paxSamaka = getPassagerare(valtUppdragsplatsSamaka);
+                       break;
+                       }else{
+                           ds.paxSamaka = platsKvar;
+                           break;
+                       }
+                    }   
+        
                 }
-                
-                
-                
-                
-                
-                
-                
+                }
                 
                 
 //                if (bortvald_flagga == 1){      //Kör om utifall att nån upphämtningsplats har för stora uppdrag
@@ -122,8 +141,10 @@ public class Uppdrag implements Runnable{
 
                 oppis1path = new ArrayList<Integer>();
                 oppis2path = new ArrayList<Integer>();
+                oppis3path = new ArrayList<Integer>();
                 oppis1pathNY = new ArrayList<Integer>();
                 oppis2pathNY = new ArrayList<Integer>();
+                oppis3pathNY = new ArrayList<Integer>();
                 ds.kommandon1 = new ArrayList<String>(); 
                 ds.kommandon2 = new ArrayList<String>(); 
                 ds.kommandon_done = new ArrayList<>();
@@ -174,13 +195,21 @@ public class Uppdrag implements Runnable{
                     + ", " +destNod2[valtUppdragPlats] + "\n"); 
                 
                 while(ds.skickatP  == false){
-                    System.out.println("I whilen med skickatP " + ds.skickatP + "taUppdrag" + ds.taUppdrag);
-                
+                Thread.sleep(100);
                 if(ds.taUppdrag == true){
-                 System.out.println("I whilen med skickatP och i ifen för ds.taUppdrag" + ds.taUppdrag);
-                String svaruppdrag = tauppdrag(narmstaPlats, valtUppdragId, ds.pax, ds.grupp); //denna ska flyttas sen 
-                if (svaruppdrag.equals("beviljas")){
-
+                
+                 String svaruppdrag = tauppdrag(narmstaPlats, valtUppdragId, ds.pax, ds.grupp); //denna ska flyttas sen 
+               
+                 System.out.println("valtUppdragsIDSamaka: " + valtUppdragsIDSamaka);
+                 System.out.println("ds.paxSamaka:" + ds.paxSamaka);
+                  
+                 if (svaruppdrag.equals("beviljas")){
+                     
+                     if(samaka[valtUppdragPlats] == 1 && passant[valtUppdragPlats] < ds.kapacitet){
+                        ds.cui.appendRutt("Vill samåka, vid tar uppdrag");
+                         System.out.println("Ta uppdrag: " + narmstaPlats + valtUppdragsIDSamaka + ds.paxSamaka + ds.grupp);
+                     svaruppdragSamaka = tauppdrag(narmstaPlats, valtUppdragsIDSamaka, ds.paxSamaka, ds.grupp);
+                     }
                         for(int j=0; j <128; j++){
                             ds.arcColor[j] = 0;           
                             }
@@ -217,7 +246,7 @@ public class Uppdrag implements Runnable{
                     }
                     
                     
-//                    oppis2path.add(destNod2[valtUppdragPlats]);
+//                  oppis2path.add(destNod2[valtUppdragPlats]);
                     ds.kommandon2 = oppis2.compass(oppis2pathNY);       
                     System.out.println("Kommandon2 först: " + ds.kommandon2);
                     ds.kommandon2.add(ds.S);
@@ -232,16 +261,63 @@ public class Uppdrag implements Runnable{
                     ds.sistanod2 = (oppis2path.get(oppis2path.size()-2));   //Lägger till sista noden i föregående rutt i en ny arraylist som ska 
                     System.out.println("sistanod2: " + ds.sistanod2);
                     
-                    System.out.println("Kommandon: " + ds.kommandon_done);  
+                    System.out.println("Kommandon: " + ds.kommandon_done); 
+                    
                     
                      ds.cui.repaint();          //Ritar ny väg
+                     
+                     //Kod för samåka
+                     if(samaka[valtUppdragPlats] == 1 && passant[valtUppdragPlats] < ds.kapacitet){
+                     if(svaruppdragSamaka.equals("beviljas")){
+     
+                    ds.startRutt = destNod2[upphamtningplatsPlats];  
+                    System.out.println("Startrutt för samåkning: " + ds.startRutt);
+                    ds.slutRutt = destNod1[valtUppdragsplatsSamaka]; 
+                    System.out.println("Slutrutt för samåkning: " + ds.slutRutt);
+  
+                    ds.start = destNod2[valtUppdragsplatsSamaka];  //Vart nästa optimering ska starta
+                    ds.startStart=destNod1[valtUppdragsplatsSamaka];
+
+                    //Oppis 2 är den optimerade rutten för uppdrage
+                    oppis3 = new OptPlan(ds);
+                    oppis3path = oppis3.createPlan();
+                    
+                    
+                   oppis3pathNY.add(0, ds.linkNod1[upphamtningplatsPlats]);
+                    for(int k = 1; k <oppis3path.size() + 1; k++){
+                        oppis3pathNY.add(k, oppis3path.get(k-1));
+                    }
+                    oppis3pathNY.add(destNod2[valtUppdragsplatsSamaka]);
+              
+                    for(int i = 0; i <oppis3pathNY.size(); i++){
+                        System.out.println("oppispath3 : " + oppis3pathNY.get(i));
+                    }
+                    
+                    
+//                  oppis2path.add(destNod2[valtUppdragPlats]);
+                    ds.kommandon3 = oppis3.compass(oppis3pathNY);       
+                    System.out.println("Kommandon2 först: " + ds.kommandon3);
+                    ds.kommandon3.add(ds.P);
+                    System.out.println("Kommandon2 sen: " + ds.kommandon3);
+
+                    for ( int j = 0; j < ds.kommandon3.size(); j++ ){ //Lägger till kommandon2 i kommandon 
+                    ds.kommandon_done.add(ds.kommandon3.get(j));
+                    }
+                    
+                    System.out.println("Kommandon: " + ds.kommandon_done); 
+
+                     ds.cui.repaint();          //Ritar ny väg
+                         
+                     }   
                 }
+                 }
 
          
                 else {System.out.println("Svar från hemsida: " + svaruppdrag);}
                 
                 ds.skickatP = true;
                 }
+                
                 }
 
              i++;    //Räknar antalet S 
