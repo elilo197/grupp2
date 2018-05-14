@@ -2,49 +2,14 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-<<<<<<< HEAD
-        <group/>
-=======
         <group>
-<<<<<<< HEAD
-            <file>file:/Users/hannamellqvist/Documents/Kandidat/grupp2/src/lastmileauto/GuiUpdate.java</file>
-            <file>file:/Users/hannamellqvist/Documents/Kandidat/grupp2/src/lastmileauto/Edge.java</file>
-            <file>file:/Users/hannamellqvist/Documents/Kandidat/grupp2/src/lastmileauto/Planeringssystem.java</file>
-            <file>file:/Users/hannamellqvist/Documents/Kandidat/grupp2/src/lastmileauto/BluetoothTransmitter.java</file>
-            <file>file:/Users/hannamellqvist/Documents/Kandidat/grupp2/src/lastmileauto/Vertex.java</file>
-            <file>file:/Users/hannamellqvist/Documents/Kandidat/grupp2/src/lastmileauto/DijkstraAlgorithm.java</file>
-            <file>file:/Users/hannamellqvist/Documents/Kandidat/grupp2/src/lastmileauto/ControlUI.java</file>
-            <file>file:/Users/hannamellqvist/Documents/Kandidat/grupp2/src/lastmileauto/BluetoothReceiver.java</file>
-            <file>file:/Users/hannamellqvist/Documents/Kandidat/grupp2/src/lastmileauto/OptPlan.java</file>
-            <file>file:/Users/hannamellqvist/Documents/Kandidat/grupp2/src/lastmileauto/RobotSend.java</file>
-            <file>file:/Users/hannamellqvist/Documents/Kandidat/grupp2/src/lastmileauto/MapPanel.java</file>
-            <file>file:/Users/hannamellqvist/Documents/Kandidat/grupp2/src/lastmileauto/Uppdrag.java</file>
-            <file>file:/Users/hannamellqvist/Documents/Kandidat/grupp2/src/lastmileauto/DataStore.java</file>
-            <file>file:/Users/hannamellqvist/Documents/Kandidat/grupp2/src/lastmileauto/BluetoothTransceiver.java</file>
-=======
-<<<<<<< HEAD
-            <file>file:/Users/eliselord/Documents/grupp2/src/lastmileauto/MapPanel.java</file>
-            <file>file:/Users/eliselord/Documents/grupp2/src/lastmileauto/ControlUI.java</file>
-            <file>file:/Users/eliselord/Documents/grupp2/src/lastmileauto/RobotSend.java</file>
-            <file>file:/Users/eliselord/Documents/grupp2/src/lastmileauto/OptPlan.java</file>
-            <file>file:/Users/eliselord/Documents/grupp2/src/lastmileauto/Uppdrag.java</file>
-            <file>file:/Users/eliselord/Documents/grupp2/src/lastmileauto/BluetoothTransmitter.java</file>
-            <file>file:/Users/eliselord/Documents/grupp2/src/lastmileauto/GuiUpdate.java</file>
-            <file>file:/Users/eliselord/Documents/grupp2/src/lastmileauto/Vertex.java</file>
-            <file>file:/Users/eliselord/Documents/grupp2/src/lastmileauto/DataStore.java</file>
-            <file>file:/Users/eliselord/Documents/grupp2/src/lastmileauto/Planeringssystem.java</file>
-            <file>file:/Users/eliselord/Documents/grupp2/src/lastmileauto/BluetoothReceiver.java</file>
-            <file>file:/Users/eliselord/Documents/grupp2/src/lastmileauto/BluetoothTransceiver.java</file>
-=======
-            <file>file:/Users/Veronika/Documents/grupp2/src/lastmileauto/OptPlan.java</file>
-            <file>file:/Users/Veronika/Documents/grupp2/src/lastmileauto/Uppdrag.java</file>
-            <file>file:/Users/Veronika/Documents/grupp2/src/lastmileauto/ControlUI.java</file>
-            <file>file:/Users/Veronika/Documents/grupp2/src/lastmileauto/RobotSend.java</file>
-            <file>file:/Users/Veronika/Documents/grupp2/src/lastmileauto/Planeringssystem.java</file>
-            <file>file:/Users/Veronika/Documents/grupp2/src/lastmileauto/DataStore.java</file>
->>>>>>> c1202a3320a309c0fbd0edbb12f42eb4f79f615b
->>>>>>> 2aadfbc522d84f482abbf79ef982543ebda0e2aa
+            <file>file:/C:/Users/Helena/Documents/GitHub/grupp2/src/lastmileauto/DataStore.java</file>
+            <file>file:/C:/Users/Helena/Documents/GitHub/grupp2/src/lastmileauto/BluetoothTransceiver.java</file>
+            <file>file:/C:/Users/Helena/Documents/GitHub/grupp2/src/lastmileauto/OptPlan.java</file>
+            <file>file:/C:/Users/Helena/Documents/GitHub/grupp2/src/lastmileauto/Uppdrag.java</file>
+            <file>file:/C:/Users/Helena/Documents/GitHub/grupp2/src/lastmileauto/Planeringssystem.java</file>
+            <file>file:/C:/Users/Helena/Documents/GitHub/grupp2/src/lastmileauto/RobotSend.java</file>
+            <file>file:/C:/Users/Helena/Documents/GitHub/grupp2/src/lastmileauto/ControlUI.java</file>
         </group>
->>>>>>> a45d4bc547c8bede92eea342caf6f4f3d335bea1
     </open-files>
 </project-private>
