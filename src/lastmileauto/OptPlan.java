@@ -45,8 +45,10 @@ public class OptPlan {
         DijkstraAlgorithm dijkstra =new DijkstraAlgorithm(graph);
 
         //Beräknar billigaste vägen från Dijkstra-classen    
-        dijkstra.execute(nodes.get(ds.startRutt-1)); //Startnod 
-        path =dijkstra.getPath(nodes.get(ds.slutRutt-1)); //Slutnod  
+        dijkstra.execute(nodes.get(ds.startRutt-1)); //Startnod      
+        System.out.println("startrutt från dij: " +  nodes.get(ds.startRutt-1));
+        path =dijkstra.getPath(nodes.get(ds.slutRutt-1)); //Slutnod
+        System.out.println("slutrutt från dij: " +  nodes.get(ds.slutRutt-1));
     
         
         for(int i=0; i <path.size()-1; i++)
@@ -77,7 +79,6 @@ public class OptPlan {
     }
 
     public ArrayList<String> compass(ArrayList<Integer> nodlista){
-     
                
         int[] nodlistaInt = new int[nodlista.size()-1];//+2];     //Skapar en array med noderna längst "billigaste vägen"  
                             //+2 är bara fulkodning för att testa
@@ -88,6 +89,9 @@ public class OptPlan {
       y = new double[nodlista.size()];
       int uplats = 0;
       int count = 0;
+      ArrayList<Integer> compare = new ArrayList<Integer>();
+      int countFLF=1;
+      int  countBort = 0; 
 
       ds.kommandon = new ArrayList<String>();
                   
@@ -102,7 +106,7 @@ public class OptPlan {
        //  System.out.println("Nodlista: " + nodlistaInt[i]);
         } 
      
-          
+        // nodlista.add(ds.sistanod);
       for(int i =0; i <nodlista.size(); i++)  
         { 
             //Kolla om nodlista innehåller en upphämtningsplats, ge x och y dummyvärden
@@ -113,7 +117,7 @@ public class OptPlan {
         }
 
 
-      for(int i =0; i <nodlista.size()-2; i++) {    
+      for(int i =0; i <nodlista.size()-2; i++) { 
               
            if((x[i+1] - x[i] > 0) && (y[i+1] - y[i] == 0))
            { //Agda kör österut
@@ -226,58 +230,151 @@ public class OptPlan {
                     }
             
          
-        }
+            }
+             if((x[i+1] - x[i] >0 ) && (y[i+1] - y[i] >0))
+           { //Agda kör ÖSTER FRÅN SNEVÄG
+               System.out.println("Nu kör Agda österut, från snedsväng.");
+                ds.vaderStrack.add("O"); 
+                    //Jämför nästkommande nod med noden två steg framåt
+                    if((x[i+2] - x[i+1] > 0) && (y[i+2] - y[i] == 0))
+                    {
+                        System.out.println("Nu ska Agda köra rakt fram.");
+                        ds.kommandon.add(ds.F);
+                    }
+                    else if((x[i+2] - x[i+1] == 0) && (y[i+2] - y[i+1] < 0))
+                    {
+                        System.out.println("Nu ska Agda svänga höger.");
+                        ds.kommandon.add(ds.R);
+                    } 
+                    else if((x[i+2] - x[i+1] == 0) && (y[i+2] - y[i+1] > 0))
+                    {
+                        ds.kommandon.add(ds.L);
+                        System.out.println("Nu ska Agda svänga vänster.");
+                    }  
+                   
+            }
+           //Jämför nuvarande nod med nästkommande nod
+           else if((x[i+1] - x[i] <0 ) && (y[i+1] - y[i] <0)){ //Agda kör västerut FRÅN SNESVÄNG
+               System.out.println("Nu kör Agda västerut, från snedsväng.");
+               ds.vaderStrack.add("V"); 
+                    //Jämför nästkommande nod med noden två steg framåt
+                    if((x[i+2] - x[i+1] < 0) && (y[i+2] - y[i+1] == 0))
+                    {
+                        System.out.println("Nu ska Agda köra rakt fram.");
+                        ds.kommandon.add(ds.F);
+                    }
+                    else if((x[i+2] - x[i+1] == 0) && (y[i+2] - y[i+1] > 0))
+                    {
+                        System.out.println("Nu ska Agda svänga höger.");
+                        ds.kommandon.add(ds.R);
+                    }
+                    else if((x[i+2] - x[i+1] == 0) && (y[i+2] - y[i+1] < 0))
+                    {
+                        System.out.println("Nu ska Agda svänga vänster.");
+                        ds.kommandon.add(ds.L);
+                    } 
+            }
           }  
-    System.out.println("Hela kommando i slutet av loopen: " + ds.kommandon);
+    System.out.println("Hela kommando i slutet av loopen innan modellering: " + ds.kommandon);
+    if(ds.kommandon.size() > 1 ){
+        
+       if(ds.kommandon.size()>3 ){  
+        for (int i = 0; i<ds.kommandon.size()-3; i++){
+           if(ds.kommandon.get(i).equals("F") && ds.kommandon.get(i+1).equals("L")&& ds.kommandon.get(i+2).equals("L")&& ds.kommandon.get(i+3).equals("F")){
+            
+            ds.kommandon.add(i, ds.U);     
+            ds.kommandon.remove(i+1);
+            ds.kommandon.remove(i+1);
+            ds.kommandon.remove(i+1);
+            ds.kommandon.remove(i+1);
+          
+   
+            System.out.println("FLLF = U ");
+            compare.add(i); 
+            
+              
+          }
+        }
+       }
+        
 
+    if(ds.kommandon.size()>2 ){
+    for (int i = 0; i<ds.kommandon.size()-2; i++){
+         
+        if (ds.kommandon.get(i).equals("F") && ds.kommandon.get(i+1).equals("L") &&  ds.kommandon.get(i+2).equals("F")){
+            ds.kommandon.remove(i);     //Ta bort första F:et
+            ds.kommandon.remove(i+1);   //Ta bort andra F:et
+ //           System.out.println("Kommandon kvar efter radering, borde bara vara L: " + ds.kommandon.get(i));
+            System.out.println("FLF = L ");
+            compare.add(i); 
+            
+            
+         } 
+    }
+    }
+    int countStor = compare.size();
+        System.out.println("countStor: " + countStor);
     
          
      
      //Modifierar kommando-arrayen så att vänstersvängarna funkar
- 
-     for (int i = 0; i<ds.kommandon.size()-2; i++){
+
+     for (int i = 0; i<ds.kommandon.size()-1; i++){
          int kommandocount = ds.kommandon.size();
          //Ersätt FLF med L 
          System.out.println("i = " + i);
+         System.out.println("kommandocount:" +  kommandocount);
          System.out.println("Kommandon på plats i: " +ds.kommandon.get(i));
          
-        if (ds.kommandon.get(i).equals("F") && ds.kommandon.get(i+1).equals("L") &&  ds.kommandon.get(i+2).equals("F")){
-//            System.out.println("Kommando på plats i, ska raderas: " + ds.kommandon.get(i));
-//            System.out.println("Kommando på plats i + 1, ska vara kvar: " + ds.kommandon.get(i+1));
-//            System.out.println("Kommando på plats i + 2, ska raderas: " + ds.kommandon.get(i+2));
-//            System.out.println("I första if-satsen för modifiering.");
-            ds.kommandon.remove(i);     //Ta bort första F:et
-            ds.kommandon.remove(i+1);   //Ta bort andra F:et
-            System.out.println("Kommandon kvar efter radering, borde bara vara L: " + ds.kommandon.get(i));
-            kommandocount = kommandocount - 2;
-         } 
-        
+   
+         if(countStor != 0 && i == ((compare.get(countFLF-1))-countBort)){      //har skapat en compare arraylist som sparar på vilka platser som FLF "kommandon" finns
+                                                //och om det finns på fler platser jämför dessa också tills att countStor är uppfylld. 
+             System.out.println("I är lika med compare:" + i + " hoppar över" ); //tror detta kan bli problem med i men de borde gå att fixa fort / eelise
+             if(countFLF < countStor){                                   
+             countFLF = countFLF +1; 
+             }
+         }
+         else{
         //Ersätt FLS med LS
-        else if (ds.kommandon.get(i).equals("F") && ds.kommandon.get(i+1).equals("L") &&  ds.kommandon.get(i+2).equals("S")){
-                 System.out.println("I andra if-satsen för modifiering.");
+        if (ds.kommandon.get(i).equals("F") && ds.kommandon.get(i+1).equals("L")){
+                // System.out.println("I andra if-satsen för modifiering.");
 
              ds.kommandon.remove(i);     //Ta bort första F:et
-             kommandocount = kommandocount - 1;
+             kommandocount = kommandocount -1;
+             System.out.println("FL = L ");
+             countBort = countBort -1;
          }
          
          //Ersätt LF med L
           else if (ds.kommandon.get(i).equals("L") && ds.kommandon.get(i+1).equals("F")){
-                  System.out.println("I tredje if-satsen för modifiering.");
-
-              System.out.println("Kommando på plats i+1, ska raderas: " + ds.kommandon.get(i+1));
-                System.out.println("Kommando på plats i, ska vara kvar: " + ds.kommandon.get(i));
+                //  System.out.println("I tredje if-satsen för modifiering.");
               ds.kommandon.remove(i+1);   //Ta bort andra F:et
               kommandocount = kommandocount - 1;
+              System.out.println("LF = L");
+              countBort = countBort -1;
+              
          } 
+          //Ersätter FF med F 
+          else if(ds.kommandon.get(i).equals("F") && ds.kommandon.get(i+1).equals("F")){
+              // System.out.println("I fjärde if-satsen för modifiering.");
+           //     System.out.println("Kommando på plats i, ska vara kvar: " + ds.kommandon.get(i));
+            ds.kommandon.remove(i);   //Ta bort första F:et
+  //          ds.kommandon.remove(i);//Detta kan bli strul ! 
+              kommandocount = kommandocount-1 ;
+              System.out.println("FF = F ");
+              countBort = countBort -1;
+              
+          }
+
            if (i == kommandocount){            
               
                break;
            }
        }
+      System.out.println("kommando efter modellering:"+ ds.kommandon);
+     }
+    }
      
-     
- 
-    
      System.out.println(ds.vaderStrack);
    
          return ds.kommandon;
