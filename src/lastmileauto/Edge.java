@@ -1,9 +1,4 @@
-
 package lastmileauto;
-
-
-// Bågarna i dij....
-
 
 public class Edge  {
     private final String id;

@@ -9,77 +9,71 @@ import java.util.ArrayList;
 public class DataStore {
 
     String fileName = null;
-    int nodes;
-    int arcs;
-    double[] nodeX;
-    double[] nodeY;
-    int[] nodenr;
-    int[] arcStart;
-    int[] arcEnd;
-    int[] arcCost;
+    int nodes; //Innehåller noder
+    int arcs; //Innehåller bågar
+    double[] nodeX; //Array med noders x-koordinater
+    double[] nodeY; //Array med noders y-koordinater
+    int[] nodenr; //Nodnummer
+    int[] arcStart; //Array med bågars startnoder
+    int[] arcEnd; //Array med bågars slutnoder
+    int[] arcCost; //Bågkostnader
     boolean networkRead;
     boolean updateUIflag;
-    double robotX;          
-    double robotY; 
-    // Dessa två bör ha samma nummer (tror vi) 
-    // Nod 71 i streets är  nod 70 här..
-    int start = 41;         //Roboten ska stå på en högre än start-värde
-   // int startY = startX; 
-    int[] arcColor;
+    double robotX; //Robotens position i x-koordinater  
+    double robotY; //Robotens position i y-koordinater
+    int start = 41; //Roboten ska stå på en högre än start-värde
+    int[] arcColor; //Array med bågar som ska färgläggas
     int startRutt = 5; //startnod, om vi säger 1 tar den 2 osv
     int slutRutt = 33; //slutnod, om vi säger 1 tar den 2 osv
     String F = "F"; //Kör forward 
-    String R = "R";  //Kör Right
-    String L = "L";   //Kör Left 
-    String S = "S";   //Stop i 5 sek. 
-    String C = "C";
-    String U = "U";    //Gör U-sväng
-    String P = "P";    //Pick up punkt
-    ArrayList<Integer> pathInt; 
+    String R = "R"; //Kör Right
+    String L = "L"; //Kör Left 
+    String S = "S"; //Stop i 5 sek. 
+    String C = "C"; //Cancel
+    String U = "U"; //Gör U-sväng
+    String P = "P"; //Pick-up punkt, stanna 5 sek
+    ArrayList<Integer> pathInt;
     //int[] pathInt; //Noderna i ints
-    BluetoothTransceiver btc;
-    BluetoothTransmitter btm;
-    BluetoothReceiver btr; 
-    DijkstraAlgorithm dij;
-    int[] tot_arcCost;
-    int robotpos = start-1;       //Robotens aktuella position, initieras till startpositionen
-    //String[] kommandon;
-    ArrayList<String> kommandon;
-    int kapacitet = 20;
-    String grupp = "2";
-    ControlUI cui;
-   //String meddelande_string = "hej";
+    BluetoothTransceiver btc; //Instans av BluetoothTransceiver-klassen
+    BluetoothTransmitter btm; //Instans av BluetoothTransmitter-klassen
+    BluetoothReceiver btr; //Instans av BluetoothReceiver-klassen
+    ControlUI cui; //Instans av ControlUI-klassen
+    DijkstraAlgorithm dij; //Instans av DijkstraAlgorithm-klassen 
+    int[] tot_arcCost; //Totala bågkostnaden
+    int robotpos = start-1; //Robotens aktuella position, initieras till startpositionen
+    ArrayList<String> kommandon; //ArrayList som sparar kommandon för en rutt
+    int kapacitet = 20; //AGV:ns platser
+    String grupp = "2"; //Gruppnummer
     String  meddelande_in = "100"; 
     int mottagenInt = 21;
-    int btstatus =0; 
-    int dcount = 0; 
-    ArrayList<String> vaderStrack; 
-    int ncount = 0;
+    int btstatus = 0; 
+    int dcount = 0; //Räknar antalet utförda kommandon från AGV:n (D=done) 
+    ArrayList<String> vaderStrack; //ArraList som sparar riktningen på AGV:n
+    int ncount = 0; //
     int meddelande_int;
     int sistanod1;
     int sistanod2 ;
-    String sistaRik;
-    int [] poang;
-    int totPoang = 0;
+    String sistaRik; //Sparar sista riktningen AGV:n står i 
+    int [] poang; //Sparar antalet poäng från uppdragen
+    int totPoang = 0; //Lägger ihop poäng från uppdrag
     int breakflag = 0;
-    int scount = 0;
-    String messfrom;
-    ArrayList<String> kommandon1; 
-    ArrayList<String> kommandon2; 
-    ArrayList<String> kommandon3;
-    ArrayList<String> kommandon_done;
-    int pax = 0;
-    int paxRutt = 0;
-    int [] linkNod1;
-    int [] linkNod2;
-    int startStart = 38;
+    int scount = 0; //Räknar antalet S=stopp
+    String messfrom; //Mottagna meddelanden från grupp 3
+    ArrayList<String> kommandon1; //Kommando till upphämtningsplats
+    ArrayList<String> kommandon2; //Kommando till avlämningsplats
+    ArrayList<String> kommandon3; //Kommando om samåkning finns
+    ArrayList<String> kommandon_done; //Alla kommandon ihopsatta
+    int pax = 0; 
+    int paxRutt = 0; 
+    int [] linkNod1; //Första noden på bågen för upphämtningsplatsen
+    int [] linkNod2; //Sista noden på bågen för upphämtningsplatsen
+    int startStart = 38; //Startposition
     boolean taUppdrag = false; 
     boolean skickatP = false;
     int paxSamaka=0;
     
-
+    //Initierar DataStore med arrayer som har fix storlek för att lagra data    
     public DataStore() {
-        // Initialize the datastore with fixed size arrays for storing the network data
         nodes = 0; 
         arcs = 0;
         nodeX = new double[1000];
@@ -95,11 +89,6 @@ public class DataStore {
         //kommandon = new String[3];//3 är fulkodning, denna ska va 2 mindre än pathInt
         
         vaderStrack = new ArrayList<String>();
-
-        
-        
-        
-
     }
 
     public void setFileName(String newFileName) {
@@ -112,67 +101,50 @@ public class DataStore {
 
     public void readNet() {
         String line;
-
+        
         if (fileName == null) {
             System.err.println("No file name set. Data read aborted.");
             return;
         }
+        
         try {
             File file = new File(fileName);
             Scanner scanner = new Scanner(file, "iso-8859-1");
             String[] sline;
 
-            // Read number of nodes
+            //Läser in antalet noder
             line = (scanner.nextLine());
             nodes = Integer.parseInt(line.trim());
             line = scanner.nextLine();
             arcs = Integer.parseInt(line.trim());
-
-            // Debug printout: network size data
-           // System.out.println("Nodes: "+nodes);
-            //System.out.println("Arcs: "+arcs);
             
-            // Read nodes as number, x, y
+            //Läser in noder som koordinater (x,y)
             for (int i=0; i < nodes; i++){
                 line = scanner.nextLine();
-                //split space separated data on line
+                //Separerar vid mellanrum
                 sline = line.split(" ");
                 nodenr[i] = Integer.parseInt(sline[0].trim());
                 nodeX[i] = Double.parseDouble(sline[1].trim());
                 nodeY[i] = Double.parseDouble(sline[2].trim());
-                
-                //int j = i+1; //Ändrar nodnummer så att den börjar vid 1
-                
-              //  System.out.println("Node "+ nodenr[i] +": "+nodeX[i]+" "+nodeY[i]); //loopar igenom alla noder och visar position
             }
 
-            // Debug printout: print data for node 1
-            //System.out.println("Node 1: "+nodeX[0]+" "+nodeY[0]);
-
-            // Read arc list as start node number, end node number
+            //Läser in som båglista start- och slutnodnummer
             for (int i=0; i < arcs; i++){
                 line = scanner.nextLine();
-                //split space separated data on line
+                //Separerar vid mellanrum
                 sline = line.split(" ");
                 arcStart[i] = Integer.parseInt(sline[0].trim());
                 arcEnd[i] = Integer.parseInt(sline[1].trim());
-                arcCost[i] = Integer.parseInt(sline[2].trim());
-                
+                arcCost[i] = Integer.parseInt(sline[2].trim());    
             }
-            
-
-            networkRead = true;  // Indicate that all network data is in place in the DataStore
-            
-           // for-loop som kör igenom alla arcs, for-loop som kopplar ihop noder med arcs
-                       //for-loop som identifierar koordinater på noderna och tar absolutbeloppet av skillnaden mellan x1 och x2, y1 och y2 och sedan adderar dem och sparar som bågkostand
-            
-            
-    
-        } catch (Exception e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-        robotX = nodeX[start]; //Node index för startposition
+           
+            //Indikerar att all data finns i DataStore
+            networkRead = true;
+                         
+        } catch (Exception e) { e.printStackTrace(); }
+        
+        //Nodindex för startposition
+        robotX = nodeX[start];
         robotY = nodeY[start];
     }
 
