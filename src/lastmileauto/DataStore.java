@@ -45,7 +45,7 @@ public class DataStore {
     int robotpos = start-1;       //Robotens aktuella position, initieras till startpositionen
     //String[] kommandon;
     ArrayList<String> kommandon;
-    int kapacitet = 10;
+    int kapacitet = 20;
     String grupp = "2";
     ControlUI cui;
    //String meddelande_string = "hej";
