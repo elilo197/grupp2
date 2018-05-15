@@ -56,31 +56,25 @@ public class OptPlan {
                 if(ds.arcStart[j]==Integer.parseInt(path.get(i).getId())
                         && ds.arcEnd[j]==Integer.parseInt(path.get(i+1).getId()))
                 {
-                    ds.arcColor[j] = 1;     //Ritar ut billigaste vägen i kartan
+                    ds.arcColor[j] = 1;     //Markerar de bågar som ingår i en rutt
 
-             //System.out.println("Arc in shortest path: "+j);
-             //System.out.println("arcStart: "+ds.arcStart[j]);
-             //System.out.println("arcEnd: "+ds.arcEnd[j]);
 
                 }
            
             }
-             
-            //Gör om till int. 
             ds.pathInt.add(Integer.parseInt(path.get(i).getId()));
 
         }     
     
         ds.pathInt.add(ds.slutRutt);
-    return ds.pathInt;     
+    return ds.pathInt;    //Returnerar den optimerade vägen i form av noder.   
 
     }
-
+//Denna metod skapar kommandon som ska skickas till Agv:n 
     public ArrayList<String> compass(ArrayList<Integer> nodlista){
                
-        int[] nodlistaInt = new int[nodlista.size()-1];//+2];     //Skapar en array med noderna längst "billigaste vägen"  
-                            //+2 är bara fulkodning för att testa
-     // ds.kommandon = new String[nodlista.size()-2];
+        int[] nodlistaInt = new int[nodlista.size()-1]; 
+
    
      
       x = new double[nodlista.size()];  //
@@ -92,138 +86,130 @@ public class OptPlan {
       int  countBort = 0; 
 
       ds.kommandon = new ArrayList<String>();
-                  
-       //Här gör vi om arraylist till array med ints
-              
+                      
         System.out.println("Nodlista från compass: " + nodlista);
             
-         //Här gör vi om arraylist till array med ints
       for(int i =0; i <nodlista.size(); i++)
         {
         nodlistaInt = nodlista.stream().mapToInt(k -> k).toArray();  
-       //  System.out.println("Nodlista: " + nodlistaInt[i]);
         } 
      
-        // nodlista.add(ds.sistanod);
       for(int i =0; i <nodlista.size(); i++)  
         { 
-            //Kolla om nodlista innehåller en upphämtningsplats, ge x och y dummyvärden
                 x[i] = ds.nodeX[nodlistaInt[i]-1]; 
-                y[i]= ds.nodeY[nodlistaInt[i]-1];    
-               //System.out.println("Koordinater från compass: " +x[i]+", " +y[i]);
-                
+                y[i]= ds.nodeY[nodlistaInt[i]-1];           
         }
 
-
-      for(int i =0; i <nodlista.size()-2; i++) { 
-              
+//Här översätts koordinaterna till körkommandon som Agv:n förstår, kommentarenera gäller för samtliga for-loopar nedåt
+     //Nästkommande nod jämförs med nuvarande nod. 
+      for(int i =0; i <nodlista.size()-2; i++) {    
            if((x[i+1] - x[i] > 0) && (y[i+1] - y[i] == 0))
            { //Agda kör österut
-               System.out.println("Nu kör Agda österut.");
+              // System.out.println("Nu kör Agda österut.");
                 ds.vaderStrack.add("O"); 
                     //Jämför nästkommande nod med noden två steg framåt
                     if((x[i+2] - x[i+1] > 0) && (y[i+2] - y[i] == 0))
                     {
-                        System.out.println("Nu ska Agda köra rakt fram.");
+                       // System.out.println("Nu ska Agda köra rakt fram.");
                         ds.kommandon.add(ds.F);
                     }
                     else if((x[i+2] - x[i+1] == 0) && (y[i+2] - y[i+1] < 0))
                     {
-                        System.out.println("Nu ska Agda svänga höger.");
+                        //System.out.println("Nu ska Agda svänga höger.");
                         ds.kommandon.add(ds.R);
                     } 
                     else if((x[i+2] - x[i+1] == 0) && (y[i+2] - y[i+1] > 0))
                     {
                         ds.kommandon.add(ds.L);
-                        System.out.println("Nu ska Agda svänga vänster.");
+                        //System.out.println("Nu ska Agda svänga vänster.");
                     }  
                     else if((x[i+2] - x[i+1] > 0) && (y[i+2] - y[i+1] > 0))
                     {
-                        System.out.println("Nu ska Agda köra rakt fram.");
+                        //System.out.println("Nu ska Agda köra rakt fram.");
                         ds.kommandon.add(ds.F);
                     }
             }
            //Jämför nuvarande nod med nästkommande nod
            else if((x[i+1] - x[i] < 0) && (y[i+1] - y[i] == 0)){ //Agda kör västerut
-               System.out.println("Nu kör Agda västerut.");
+               //System.out.println("Nu kör Agda västerut.");
                ds.vaderStrack.add("V"); 
                     //Jämför nästkommande nod med noden två steg framåt
                     if((x[i+2] - x[i+1] < 0) && (y[i+2] - y[i+1] == 0))
                     {
-                        System.out.println("Nu ska Agda köra rakt fram.");
+                        //System.out.println("Nu ska Agda köra rakt fram.");
                         ds.kommandon.add(ds.F);
                     }
                     else if((x[i+2] - x[i+1] == 0) && (y[i+2] - y[i+1] > 0))
                     {
-                        System.out.println("Nu ska Agda svänga höger.");
+                        //System.out.println("Nu ska Agda svänga höger.");
                         ds.kommandon.add(ds.R);
                     }
                     else if((x[i+2] - x[i+1] == 0) && (y[i+2] - y[i+1] < 0))
                     {
-                        System.out.println("Nu ska Agda svänga vänster.");
+                        //System.out.println("Nu ska Agda svänga vänster.");
                         ds.kommandon.add(ds.L);
                     } 
             }
            //Jämför nuvarande nod med nästkommande nod
            else if((x[i+1] - x[i] == 0) && (y[i+1] - y[i] > 0)){ //Agda kör norrut
-               System.out.println("Nu kör Agda norrut.");
+              // System.out.println("Nu kör Agda norrut.");
                ds.vaderStrack.add("N"); 
                     //Jämför nästkommande nod med noden två steg framåt
                     if((x[i+2] - x[i+1] == 0) && (y[i+2] - y[i+1] > 0))
                     {
-                        System.out.println("Nu ska Agda köra rakt fram.");
+                //        System.out.println("Nu ska Agda köra rakt fram.");
                         ds.kommandon.add(ds.F);
                     }
                     else if((x[i+2] - x[i+1] > 0) && (y[i+2] - y[i+1] == 0))
                     {
-                        System.out.println("Nu ska Agda svänga höger.");
+                  //      System.out.println("Nu ska Agda svänga höger.");
                         ds.kommandon.add(ds.R);
                     }
                     else if((x[i+2] - x[i+1] < 0) && (y[i+2] - y[i+1] == 0))
                     {
-                        System.out.println("Nu ska Agda svänga vänster.");
+                    //    System.out.println("Nu ska Agda svänga vänster.");
                         ds.kommandon.add(ds.L);
                     } 
                     else if((x[i+2] - x[i+1] > 0) && (y[i+2] - y[i+1] > 0))
                     {
-                        System.out.println("Nu ska Agda svänga höger snedsväng."); //Snedsväng
+                      //  System.out.println("Nu ska Agda svänga höger snedsväng."); //Snedsväng
                         ds.kommandon.add(ds.R);
                     }
                     else if((x[i+2] - x[i+1] < 0) && (y[i+2] - y[i+1] < 0))
                     {
-                        System.out.println("Nu ska Agda köra vänster snedsväng."); //Snedsväng
+                        //System.out.println("Nu ska Agda köra vänster snedsväng."); //Snedsväng
                         ds.kommandon.add(ds.L);
                     }
               
             }
            //Jämför nuvarande nod med nästkommande nod
            else if((x[i+1] - x[i] == 0) && (y[i+1] - y[i] < 0)) { //Agda kör söderut
-                System.out.println("Nu kör Agda söderut.");
+                //System.out.println("Nu kör Agda söderut.");
                 ds.vaderStrack.add("S"); 
                 //Jämför nästkommande nod med noden två steg framåt
                     if((x[i+2] - x[i+1] == 0) && (y[i+2] - y[i+1] < 0))
                     {
-                        System.out.println("Nu ska Agda köra rakt fram.");
+                       // System.out.println("Nu ska Agda köra rakt fram.");
                         ds.kommandon.add(ds.F);
                     }
                     else if((x[i+2] - x[i+1] < 0) && (y[i+2] - y[i+1] == 0))
                     {
-                        System.out.println("Nu ska Agda svänga höger.");
+                        //System.out.println("Nu ska Agda svänga höger.");
                         ds.kommandon.add(ds.R);
                     }
                     else if((x[i+2] - x[i+1] > 0) && (y[i+2] - y[i+1] == 0))
                     {
-                        System.out.println("Nu ska Agda svänga vänster.");
+                       // System.out.println("Nu ska Agda svänga vänster.");
                         ds.kommandon.add(ds.L);
                     } 
                     else if((x[i+2] - x[i+1] > 0) && (y[i+2] - y[i+1] > 0))
                     {
-                        System.out.println("Nu ska Agda svänga vänster snedsväng."); //Snedsväng
+                        //System.out.println("Nu ska Agda svänga vänster snedsväng."); //Snedsväng
                         ds.kommandon.add(ds.L);
                     }
                     else if((x[i+2] - x[i+1] < 0) && (y[i+2] - y[i+1] < 0))
                     {
-                        System.out.println("Nu ska Agda svänga höger snedsväng.");  //Snedsväng
+                       // System.out.println("Nu ska Agda svänga höger snedsväng.");  //Snedsväng
                         ds.kommandon.add(ds.R);
                     }
             
@@ -231,49 +217,49 @@ public class OptPlan {
             }
              if((x[i+1] - x[i] >0 ) && (y[i+1] - y[i] >0))
            { //Agda kör ÖSTER FRÅN SNEVÄG
-               System.out.println("Nu kör Agda österut, från snedsväng.");
+               //System.out.println("Nu kör Agda österut, från snedsväng.");
                 ds.vaderStrack.add("O"); 
                     //Jämför nästkommande nod med noden två steg framåt
                     if((x[i+2] - x[i+1] > 0) && (y[i+2] - y[i] == 0))
                     {
-                        System.out.println("Nu ska Agda köra rakt fram.");
+                        //System.out.println("Nu ska Agda köra rakt fram.");
                         ds.kommandon.add(ds.F);
                     }
                     else if((x[i+2] - x[i+1] == 0) && (y[i+2] - y[i+1] < 0))
                     {
-                        System.out.println("Nu ska Agda svänga höger.");
+                        //System.out.println("Nu ska Agda svänga höger.");
                         ds.kommandon.add(ds.R);
                     } 
                     else if((x[i+2] - x[i+1] == 0) && (y[i+2] - y[i+1] > 0))
                     {
                         ds.kommandon.add(ds.L);
-                        System.out.println("Nu ska Agda svänga vänster.");
+                       // System.out.println("Nu ska Agda svänga vänster.");
                     }  
                    
             }
            //Jämför nuvarande nod med nästkommande nod
            else if((x[i+1] - x[i] <0 ) && (y[i+1] - y[i] <0)){ //Agda kör västerut FRÅN SNESVÄNG
-               System.out.println("Nu kör Agda västerut, från snedsväng.");
+               //System.out.println("Nu kör Agda västerut, från snedsväng.");
                ds.vaderStrack.add("V"); 
                     //Jämför nästkommande nod med noden två steg framåt
                     if((x[i+2] - x[i+1] < 0) && (y[i+2] - y[i+1] == 0))
                     {
-                        System.out.println("Nu ska Agda köra rakt fram.");
+                       // System.out.println("Nu ska Agda köra rakt fram.");
                         ds.kommandon.add(ds.F);
                     }
                     else if((x[i+2] - x[i+1] == 0) && (y[i+2] - y[i+1] > 0))
                     {
-                        System.out.println("Nu ska Agda svänga höger.");
+                       // System.out.println("Nu ska Agda svänga höger.");
                         ds.kommandon.add(ds.R);
                     }
                     else if((x[i+2] - x[i+1] == 0) && (y[i+2] - y[i+1] < 0))
                     {
-                        System.out.println("Nu ska Agda svänga vänster.");
+                        //System.out.println("Nu ska Agda svänga vänster.");
                         ds.kommandon.add(ds.L);
                     } 
             }
           }  
-    System.out.println("Hela kommando i slutet av loopen innan modellering: " + ds.kommandon);
+    System.out.println("Hela kommando i slutet av loopen innan modifiering: " + ds.kommandon);
     if(ds.kommandon.size() > 1 ){
         
        if(ds.kommandon.size()>3 ){  
@@ -289,11 +275,9 @@ public class OptPlan {
    
             System.out.println("FLLF = U ");
             compare.add(i); 
-            
-              
           }
-        }
        }
+     }
         
 
     if(ds.kommandon.size()>2 ){
@@ -302,11 +286,8 @@ public class OptPlan {
         if (ds.kommandon.get(i).equals("F") && ds.kommandon.get(i+1).equals("L") &&  ds.kommandon.get(i+2).equals("F")){
             ds.kommandon.remove(i);     //Ta bort första F:et
             ds.kommandon.remove(i+1);   //Ta bort andra F:et
- //           System.out.println("Kommandon kvar efter radering, borde bara vara L: " + ds.kommandon.get(i));
-            System.out.println("FLF = L ");
+             System.out.println("FLF = L ");
             compare.add(i); 
-            
-            
          } 
     }
     }
@@ -317,7 +298,6 @@ public class OptPlan {
      for (int i = 0; i<ds.kommandon.size()-1; i++){
          int kommandocount = ds.kommandon.size();
          //Ersätt FLF med L 
-
          if(countStor != 0 && i == ((compare.get(countFLF-1))-countBort)){      //har skapat en compare arraylist som sparar på vilka platser som FLF "kommandon" finns
                                                 //och om det finns på fler platser jämför dessa också tills att countStor är uppfylld. 
             // System.out.println("I är lika med compare:" + i + " hoppar över" ); //tror detta kan bli problem med i men de borde gå att fixa fort / eelise

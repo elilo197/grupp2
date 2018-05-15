@@ -57,7 +57,6 @@ public class Uppdrag implements Runnable{
    String valtUppdragsplatsSamakaString;
    ArrayList<String> inkuppdrag;
    String svaruppdragSamaka = "nekas";
-    
   
     public Uppdrag(DataStore ds) { 
         //aterstall("1");
@@ -84,7 +83,7 @@ public class Uppdrag implements Runnable{
     }
     
     while (ink.get(0) != null) {    //Kollar så att det finns upphämtningsplatser kvar
-    Thread.sleep(100);      //för att slippa göra utskrifterna ovan
+    Thread.sleep(100);             //för att slippa göra utskrifterna ovan
  
             while(ds.scount == i){  //Kollar antal "s", stopp, kör igång loopen när s=1, adderar på varje varv
                 
@@ -95,12 +94,32 @@ public class Uppdrag implements Runnable{
 
                 if (IntStorlek == 0){
                     valtUppdragPlats = listauppdrag(nastnarmstaPlats); 
+                    if(IntStorlek == 0){
+                        while(true){
+                            Thread.sleep(1000);
+                        ds.cui.appendStatus("Slut på uppdrag!!");
+                        }
+                    }
                 }
                 
                 
                 System.out.println("Valt uppdrag: " + valtUppdragPlats);  
+                
                 ds.pax = getPassagerare(valtUppdragPlats);      //Sätter passagerarantal till antalet på det valda uppdraget
 
+//Undersöker om antalet passagerare på uppdraget är större än kapaciteten Agv:n har. Om detta sker tas nästa upppdrag om
+//det finns något och det funkar enligt kapacitet annars åker roboten till en annan upphämtningsplats. 
+               while(ds.pax > ds.kapacitet){ 
+                if(ds.pax > ds.kapacitet){
+                    if(valtUppdragPlats < IntStorlek ){
+                   valtUppdragPlats = valtUppdragPlats +1; 
+                    }
+                    else{
+                        valtUppdragPlats = listauppdrag(nastnarmstaPlats);
+                    }
+                }
+                ds.pax = getPassagerare(valtUppdragPlats); 
+                }
 
                 //Om kunden vill samåka, det finns plats kvar i fordonet och det finns tillräckligt med uppdrag 
           if(samaka[valtUppdragPlats] == 1 && passant[valtUppdragPlats] < ds.kapacitet && IntStorlek > 1 ){
@@ -405,7 +424,7 @@ public class Uppdrag implements Runnable{
        
         
         //Variabler
-        String StringStorlek = ink.get(0);      //Antal upphämtningsplatser, det som ligger på plats 0 i ink.get()
+        String StringStorlek = ink.get(0);      //Antal upphämtningsplatser
         IntStorlek = Integer.parseInt(StringStorlek);   
         String [] link = new String[IntStorlek];
         ds.linkNod1 = new int[IntStorlek];      //första noden för upphämtningslänken
@@ -647,7 +666,7 @@ public class Uppdrag implements Runnable{
     return svar;
     }
      
-//    public String aterstall(String scenario){       //var static från början
+//    public String aterstall(String scenario){
 //
 //         try {
 //        ds.cui.appendStatus("\nÅterställer.");
