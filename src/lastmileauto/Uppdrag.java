@@ -478,18 +478,10 @@ public class Uppdrag implements Runnable{
    
     public int listauppdrag(String plats){      //var static från början
       inkuppdrag = new ArrayList<String>();
-       int valtupp = 0;      
-     /**
-     *Kalla på Compass och kör till platsen
-     *String X = "A";
-     */
      
      try {
          ds.cui.appendStatus("\nNu hämtas lista på uppdrag!");
-         //Kalla på metoden ovan för att hämta x
-        // String X = "A"; //DENNA SKA VA MED I STEGET OVAN
-         //Uppdrag http = new Uppdrag();
-         String url = " http://tnk111.n7.se/listauppdrag.php?plats=" + plats; //plats=A ska inte vara hårdkodad,utan beror på vilken plats som är närmst
+         String url = " http://tnk111.n7.se/listauppdrag.php?plats=" + plats;
          URL urlobjekt = new URL(url);       
          HttpURLConnection anslutning = (HttpURLConnection)
          urlobjekt.openConnection();
