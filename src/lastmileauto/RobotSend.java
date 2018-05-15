@@ -6,6 +6,8 @@ package lastmileauto;
 public class RobotSend implements Runnable{
 long start;  
 DataStore ds;
+int countPax = 0;
+
       
 public RobotSend(DataStore ds){
     this.ds = ds;  
@@ -20,40 +22,47 @@ public void run(){
             try { 
 
 //Här skapas en loop som skickar alla kommandom till Agv:n.  
-               for(int i = 0; i <ds.kommandon.size(); i++){
+               for(int i = 0; i <ds.kommandon_done.size(); i++){
+                    int dummyInt  = ds.paxRutt;
+                    String dummyString = Integer.toString(dummyInt);
                                         //Dcount räknar antalet "Done" som skickats från Agv:n 
                     while(ds.dcount == i){  //Denna while-loop gör så att samma kommando skickas tills att
                     Thread.sleep(1000);    //systemet mottagit ett "Done" då skickas nästa. 
-
                     ds.ncount = i;        //Räknar antalet noder som passeras.  
-                    String kommando =ds.kommandon.get(i); 
+                    String kommando =ds.kommandon_done.get(i) + dummyString; //Skickar kommandot + passagerar antal
                     ds.btm.send(kommando);
                     ds.cui.appendStatus("Skickat meddelande: " + ds.kommandon.get(i));
 
                     }
                
-                    if (ds.kommandon.get(i).equals("S")) { //När ett "S" skickas till Agv:n betyder det att rutten 
+                    if (ds.kommandon_done.get(i).equals("S")) { //När ett "S" skickas till Agv:n betyder det att rutten 
                         ds.scount = ds.scount +1;        //är färdig. Scount räknar antalet skickade "S.
-                        ds.kommandon.clear();            //Tömmer kommandon när alla är körda
-                        ds.paxInt = 0;                   //Nollställer passagerarantal
+                        ds.kommandon_done.clear();            //Tömmer kommandon när alla är körda
+                        ds.paxRutt = 0;                   //Nollställer passagerarantal
+                        ds.pax = 0;                        //Nollställer passagerarantal
+                        countPax = 0;
+                        ds.taUppdrag = false;               //Återställer flaggor. 
+                        ds.skickatP = false;
+                        
                     }
-               
-               
-                }
-                        ds.dcount = 0; //Nollställer dcount när rutten är klar.  
+//När ett P skickas så börjar passagerar antalet skickas med. 
+               else if (ds.kommandon_done.get(i).equals("P")){
+                   countPax  = 1 ; 
+                   ds.paxRutt = ds.pax; 
+                   ds.taUppdrag = true; 
+                   Thread.sleep(1000);
 
-                }catch (InterruptedException exeption) {
-              }
-}
- 
-    else if (ds.breakflag == 1) { //Detta händer när någon trycker på avsluta
-                try {Thread.sleep(100000);
-            }   catch (InterruptedException exeption) {
-               }
+                }
+               
+            }
+             ds.dcount = 0; //Nollställer dcount när rutten är klar.  
+
+                }catch (InterruptedException exeption) {  }
         }
-   
-    
-} catch (InterruptedException exeption) {
-               }   
+        else if (ds.breakflag == 1) { //Detta händer när någon trycker på avsluta
+                try {Thread.sleep(100000);
+            }catch (InterruptedException exeption) { }
+        }
+} catch (InterruptedException exeption) {  }   
 }
 }

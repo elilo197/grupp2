@@ -23,7 +23,7 @@ public class DataStore {
     double robotY; 
     // Dessa två bör ha samma nummer (tror vi) 
     // Nod 71 i streets är  nod 70 här..
-    int start = 37;         //Roboten ska stå på en högre än start-värde
+    int start = 41;         //Roboten ska stå på en högre än start-värde
    // int startY = startX; 
     int[] arcColor;
     int startRutt = 5; //startnod, om vi säger 1 tar den 2 osv
@@ -33,7 +33,8 @@ public class DataStore {
     String L = "L";   //Kör Left 
     String S = "S";   //Stop i 5 sek. 
     String C = "C";
-    String U = "U";     //Hämta uppdrag
+    String U = "U";    //Gör U-sväng
+    String P = "P";    //Pick up punkt
     ArrayList<Integer> pathInt; 
     //int[] pathInt; //Noderna i ints
     BluetoothTransceiver btc;
@@ -41,10 +42,10 @@ public class DataStore {
     BluetoothReceiver btr; 
     DijkstraAlgorithm dij;
     int[] tot_arcCost;
-    int robotpos = start;       //Robotens aktuella position, initieras till startpositionen
+    int robotpos = start-1;       //Robotens aktuella position, initieras till startpositionen
     //String[] kommandon;
     ArrayList<String> kommandon;
-    int kapacitet = 10;
+    int kapacitet = 20;
     String grupp = "2";
     ControlUI cui;
    //String meddelande_string = "hej";
@@ -55,17 +56,26 @@ public class DataStore {
     ArrayList<String> vaderStrack; 
     int ncount = 0;
     int meddelande_int;
-    int sistanod;
+    int sistanod1;
+    int sistanod2 ;
+    String sistaRik;
     int [] poang;
     int totPoang = 0;
     int breakflag = 0;
     int scount = 0;
     String messfrom;
-    int paxInt = 0; //passagerarantal i det aktuella uppdraget
     ArrayList<String> kommandon1; 
     ArrayList<String> kommandon2; 
-    ArrayList<String> kommandon_done; 
-                
+    ArrayList<String> kommandon3;
+    ArrayList<String> kommandon_done;
+    int pax = 0;
+    int paxRutt = 0;
+    int [] linkNod1;
+    int [] linkNod2;
+    int startStart = 38;
+    boolean taUppdrag = false; 
+    boolean skickatP = false;
+    int paxSamaka=0;
     
 
     public DataStore() {
