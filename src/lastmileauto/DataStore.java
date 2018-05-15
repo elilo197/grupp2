@@ -71,6 +71,7 @@ public class DataStore {
     boolean taUppdrag = false; 
     boolean skickatP = false;
     int paxSamaka=0;
+    int pax_tot = 0;
     
     //Initierar DataStore med arrayer som har fix storlek för att lagra data    
     public DataStore() {

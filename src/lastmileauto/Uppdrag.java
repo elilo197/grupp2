@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-// Kan vi använda Timer istället för trådning i denna?
 
 package lastmileauto;
 
@@ -56,7 +55,7 @@ public class Uppdrag implements Runnable{
    String valtUppdragsIDSamaka;
    String valtUppdragsplatsSamakaString;
    ArrayList<String> inkuppdrag;
-   String svaruppdragSamaka;
+   String svaruppdragSamaka = "nekas";
     
   
     public Uppdrag(DataStore ds) { 
@@ -81,7 +80,6 @@ public class Uppdrag implements Runnable{
         }
         else 
          System.out.println("Dom har tagit uppdraget, ta en annan plats");
-         //bortvald_plats[] = 1;
     }
     
    
@@ -93,19 +91,31 @@ public class Uppdrag implements Runnable{
                 
                 listaplatser();
                 
+                //Välj första uppdraget
                 valtUppdragPlats = listauppdrag(narmstaPlats);           //Skickar in upphämtningsplats, skickar ut vilket uppdrag vi väljer
                 System.out.println("Valt uppdrag: " + valtUppdragPlats);  
+                ds.pax = getPassagerare(valtUppdragPlats);      //Sätter passagerarantal till antalet på det valda uppdraget
 
-                //Om kunden vill samåka och det finns plats så görs detta. 
-                if(samaka[valtUppdragPlats] == 1 && passant[valtUppdragPlats] < ds.kapacitet){
-                ds.cui.appendRutt("Vill samåka i början");
+
+                //Om kunden vill samåka, det finns plats kvar i fordonet och det finns tillräckligt med uppdrag 
+          if(samaka[valtUppdragPlats] == 1 && passant[valtUppdragPlats] < ds.kapacitet && IntStorlek > 1 ){
                 int platsKvar = ds.kapacitet - passant[valtUppdragPlats];          
                 System.out.println("Plats kvar: " + platsKvar);
-                int maxpass=0; 
+                
+                  valtUppdragsplatsSamaka = valtUppdragPlats + 1; 
+                  valtUppdragsplatsSamakaString = Integer.toString(valtUppdragsplatsSamaka);
+                  valtUppdragsIDSamaka = getId(valtUppdragsplatsSamakaString);  
+                  ds.paxSamaka = getPassagerare(valtUppdragsplatsSamaka);
+                  ds.pax_tot = ds.pax + ds.paxSamaka;
                 
                 for(int i = 0; i<IntStorlek; i++){
                     
                     //Lägg till ett till uppdrag om kund nr 1 vill samåka och plats finns
+                    System.out.println("\nMellan for och if när vi tänker ta samåkningsuppdrag."); 
+                    System.out.println("Plats kvar: " + platsKvar);
+                    System.out.println("Valt uppdragsplats: " + valtUppdragPlats +"\n"); 
+            
+                    
                     if(passant[i] >= platsKvar && i != valtUppdragPlats){
                         valtUppdragsplatsSamaka = i;    //Välj det första uppdraget som är möjligt
                         valtUppdragsplatsSamakaString = Integer.toString(valtUppdragsplatsSamaka);
@@ -114,24 +124,20 @@ public class Uppdrag implements Runnable{
                        
                        if(passant[i] == platsKvar){
                        ds.paxSamaka = getPassagerare(valtUppdragsplatsSamaka);
+                       ds.pax_tot = ds.pax + ds.paxSamaka; //Uppdatera passagerarantalet
                        break;
                        }else{
                            ds.paxSamaka = platsKvar;
+                           ds.pax_tot = ds.pax + ds.paxSamaka;  //Uppdatera passagerarantalet
                            break;
                        }
-                    }   
+                    }
+      
+                    
         
                 }
-                }
+            }
                 
-                
-//                if (bortvald_flagga == 1){      //Kör om utifall att nån upphämtningsplats har för stora uppdrag
-//                listaplatser();
-//                valtUppdragPlats = listauppdrag(narmstaPlats); }
-
-                ds.pax = getPassagerare(valtUppdragPlats);                  //Skickar ut passagerarantal på det valda uppdraget
-
-
                 //Räknar totala poängen för uppdragen. 
                 int dummy; 
                 dummy = (valtUppdragPlats);
@@ -166,20 +172,19 @@ public class Uppdrag implements Runnable{
                     Thread.sleep(100);
                     oppis1path = oppis1.createPlan();
                     
-
+                    //Lägger till en nod extra i början och i slutet på oppis1path och sparar detta i oppis1pathNY
                     oppis1pathNY.add(0, ds.startStart);
                     for(int k = 1; k <oppis1path.size() + 1; k++){
                         oppis1pathNY.add(k, oppis1path.get(k-1));
                     }
                     oppis1pathNY.add(ds.linkNod2[upphamtningplatsPlats]);
                     
-               //testet slutar här 
                     
                     ds.kommandon1 = oppis1.compass(oppis1pathNY);
                     ds.kommandon1.add(ds.P);
                                       
-                    for ( int j = 0; j < ds.kommandon1.size(); j++ ){ //Lägger till kommandon1 i kommandon
-                    ds.kommandon_done.add(ds.kommandon1.get(j));
+                    for ( int j = 0; j < ds.kommandon1.size(); j++ ){ //Lägger till kommandon1 i kommandon_done
+                        ds.kommandon_done.add(ds.kommandon1.get(j));
                     }
                     ds.cui.repaint(); 
                  
@@ -188,19 +193,20 @@ public class Uppdrag implements Runnable{
                 Thread RobotSendThread = new Thread(RSend);
                 RobotSendThread.start();
                 
+               //Skriver ut vad som valts hittills
                 ds.cui.appendRutt("Valt uppdrag: " +  valtUppdragId + ".\n" 
-                + "Antal passagerare: " + ds.pax + "\n Upphämtningsplats: "
+                + "Antal passagerare: " + ds.pax + "\nUpphämtningsplats: "
                    + narmstaPlats + ", mellan nod " + ds.linkNod1[upphamtningplatsPlats] + " och nod " 
-                   + ds.linkNod2[upphamtningplatsPlats] + "\n Avlämningsplats: Länk mellan nod " + destNod1[valtUppdragPlats]
+                   + ds.linkNod2[upphamtningplatsPlats] + "\nAvlämningsplats: Länk mellan nod " + destNod1[valtUppdragPlats]
                     + " och nod " +destNod2[valtUppdragPlats] + ".\n" 
                 + "Inställning till samåkning: " + samaka[upphamtningplatsPlats]); 
             
                 
-               ds.cui.appendRutt("Kommando för första delrutten: "+ ds.kommandon1);
+               ds.cui.appendRutt("Kommando för första delrutten: "+ ds.kommandon1 + "\n");
                 
                 while(ds.skickatP  == false){
                 Thread.sleep(100);
-                if(ds.taUppdrag == true){
+                if(ds.taUppdrag == true){//Nu är Agv:n vid upphämtningsplatsen och vi kan ta uppdrag
                 
                  String svaruppdrag = tauppdrag(narmstaPlats, valtUppdragId, ds.pax, ds.grupp); //denna ska flyttas sen 
                
@@ -211,15 +217,12 @@ public class Uppdrag implements Runnable{
    if (svaruppdrag.equals("beviljas")){
                   
                 //Om det valda uppdraget kan tas, kolla om det går att ta fler uppdrag samtidigt     
-                     if(samaka[valtUppdragPlats] == 1 && passant[valtUppdragPlats] < ds.kapacitet){
+                     if(samaka[valtUppdragPlats] == 1 && passant[valtUppdragPlats] < ds.kapacitet && IntStorlek > 1){
                      System.out.println("Första uppdaget vill och kan samåka.");
                      System.out.println("Ta uppdrag: " + narmstaPlats + valtUppdragsIDSamaka + ds.paxSamaka + ds.grupp);
                      svaruppdragSamaka = tauppdrag(narmstaPlats, valtUppdragsIDSamaka, ds.paxSamaka, ds.grupp);
                      ds.cui.appendRutt("Ta uppdrag: " + svaruppdragSamaka); 
                      }
-                        for(int j=0; j <128; j++){
-                            ds.arcColor[j] = 0;           
-                            }
 
    //Oppis 2 börjar här. 
    //Oppis2 går från upphämtningsplatsen till första avlämningsplatsen
@@ -249,7 +252,7 @@ public class Uppdrag implements Runnable{
                     ds.kommandon2 = oppis2.compass(oppis2pathNY);      
                    
                     //Om sakåkning sker, lägg till ett P för avsläppning efter oppis2
-                   if(svaruppdragSamaka.equals("samaka")){
+                   if(svaruppdragSamaka.equals("beviljas")){
                     ds.kommandon2.add(ds.P);
                    }
                    else {
@@ -268,6 +271,7 @@ public class Uppdrag implements Runnable{
                     
                      ds.cui.repaint();          //Ritar ny väg
                      
+
    //Oppis 3 börjar här. 
   //Oppis3 går från första avlämningsplatsen till andra avlämningsplatsen
 
@@ -278,14 +282,17 @@ public class Uppdrag implements Runnable{
             ds.cui.appendRutt("Ta uppdrag för samåkning: " + svaruppdragSamaka);    
                               
                     //Rutten startar vid föregående rutts sista nod, dvs avlämningsplatsen för oppis2
-                    ds.startRutt = destNod2[upphamtningplatsPlats];  
+                    ds.startRutt =destNod2[valtUppdragPlats];  
+                    
+                    
+                    
                     ds.cui.appendStatus("Startnod i delrutt 3: " + ds.startRutt);
                     System.out.println("Startrutt för samåkning: " + ds.startRutt);
                     //Rutten slutar vid den första noden i avlämnings-länken för samåkningsuppdraget
                     ds.slutRutt = destNod1[valtUppdragsplatsSamaka]; 
                     ds.cui.appendStatus("Startnod i delrutt 3: " + ds.slutRutt);
                     System.out.println("Slutrutt för samåkning: " + ds.slutRutt);
-                    
+                    ds.cui.repaint(); 
                     //Variabler för att förenkla hantering av info vid optimeringen 
                     ds.start = destNod2[valtUppdragsplatsSamaka];  //Var nästa optimering ska starta
                     ds.startStart=destNod1[valtUppdragsplatsSamaka]; 
@@ -293,7 +300,7 @@ public class Uppdrag implements Runnable{
                     oppis3 = new OptPlan(ds);
                     oppis3path = oppis3.createPlan();
                       
-                   oppis3pathNY.add(0, ds.linkNod1[upphamtningplatsPlats]);
+                   oppis3pathNY.add(0, destNod1[valtUppdragPlats]);
                     for(int k = 1; k <oppis3path.size() + 1; k++){
                         oppis3pathNY.add(k, oppis3path.get(k-1));
                     }
@@ -334,8 +341,10 @@ public class Uppdrag implements Runnable{
         //Utskrift     
                
                 //Skriv bara ut om oppis3 finns, dvs samåkning sker
-                if (oppis3 != null) {ds.cui.appendRutt("Samåkning sker med uppdrag med id " + valtUppdragsIDSamaka + ".\n" 
-                   + ". Detta uppdraget har " + ds.paxSamaka + " passagerare. \n Avlämningsplats: Mellan nod " 
+                System.out.println("oppis3 =!" + oppis3);
+                if (oppis3 != null) {
+                    ds.cui.appendRutt("Samåkning sker med uppdrag med id " + valtUppdragsIDSamaka + ".\n" 
+                   + "Detta uppdraget har " + ds.paxSamaka + " passagerare. \n Avlämningsplats: Mellan nod " 
                    + destNod1[valtUppdragsplatsSamaka] + " och nod " +destNod2[valtUppdragsplatsSamaka] + ".\n");
                   ds.cui.appendRutt("Kommandon för tredje delrutten: "+ ds.kommandon3 + " \n");
                 }
