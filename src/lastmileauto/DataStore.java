@@ -76,6 +76,7 @@ public class DataStore {
     boolean taUppdrag = false; 
     boolean skickatP = false;
     int paxSamaka=0;
+    int pax_tot = 0;
     
 
     public DataStore() {

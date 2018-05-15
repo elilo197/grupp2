@@ -29,9 +29,9 @@ public void run(){
                     while(ds.dcount == i){  //Denna while-loop gör så att samma kommando skickas tills att
                     Thread.sleep(1000);    //systemet mottagit ett "Done" då skickas nästa. 
                     ds.ncount = i;        //Räknar antalet noder som passeras.  
-                    String kommando =ds.kommandon_done.get(i) + dummyString; //Skickar kommandot + passagerar antal
+                    String kommando = ds.kommandon_done.get(i) + dummyString; //Skickar kommandot + passagerar antal
                     ds.btm.send(kommando);
-                    ds.cui.appendStatus("Skickat meddelande: " + ds.kommandon.get(i));
+//                    ds.cui.appendStatus("Skickat meddelande: " + kommando);
 
                     }
                
@@ -44,12 +44,18 @@ public void run(){
                         ds.taUppdrag = false;               //Återställer flaggor. 
                         ds.skickatP = false;
                         
+                        
                     }
 //När ett P skickas så börjar passagerar antalet skickas med. 
                else if (ds.kommandon_done.get(i).equals("P")){
-                   countPax  = 1 ; 
-                   ds.paxRutt = ds.pax; 
                    ds.taUppdrag = true; 
+                   if(ds.paxRutt == 0){ //Detta sker vid första upphämtningen 
+                       ds.paxRutt = ds.pax_tot; 
+                   }else{ //Dettta sker vid samåkning vid första avlämningsplats
+                       ds.paxRutt = ds.pax_tot-ds.paxSamaka;
+                   }
+                   countPax  = 1 ; 
+                   
                    Thread.sleep(1000);
 
                 }
