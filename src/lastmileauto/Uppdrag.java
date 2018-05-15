@@ -56,7 +56,7 @@ public class Uppdrag implements Runnable{
    String valtUppdragsIDSamaka;
    String valtUppdragsplatsSamakaString;
    ArrayList<String> inkuppdrag;
-   String svaruppdragSamaka;
+   String svaruppdragSamaka = "nekas";
     
   
     public Uppdrag(DataStore ds) { 
@@ -95,6 +95,8 @@ public class Uppdrag implements Runnable{
                 
                 valtUppdragPlats = listauppdrag(narmstaPlats);           //Skickar in upphämtningsplats, skickar ut vilket uppdrag vi väljer
                 System.out.println("Valt uppdrag: " + valtUppdragPlats);  
+                ds.pax = getPassagerare(valtUppdragPlats);      //Sätter passagerarantal till antalet på det valda uppdraget
+
 
                 //Om kunden vill samåka och det finns plats så görs detta. 
                 if(samaka[valtUppdragPlats] == 1 && passant[valtUppdragPlats] < ds.kapacitet){
@@ -114,11 +116,15 @@ public class Uppdrag implements Runnable{
                        
                        if(passant[i] == platsKvar){
                        ds.paxSamaka = getPassagerare(valtUppdragsplatsSamaka);
+                       ds.pax = ds.pax + ds.paxSamaka; //Uppdatera passagerarantalet
                        break;
                        }else{
                            ds.paxSamaka = platsKvar;
+                           ds.pax = ds.pax + ds.paxSamaka;  //Uppdatera passagerarantalet
                            break;
                        }
+                       
+                       
                     }   
         
                 }
@@ -129,8 +135,7 @@ public class Uppdrag implements Runnable{
 //                listaplatser();
 //                valtUppdragPlats = listauppdrag(narmstaPlats); }
 
-                ds.pax = getPassagerare(valtUppdragPlats);                  //Skickar ut passagerarantal på det valda uppdraget
-
+ 
 
                 //Räknar totala poängen för uppdragen. 
                 int dummy; 
@@ -248,7 +253,7 @@ public class Uppdrag implements Runnable{
                     ds.kommandon2 = oppis2.compass(oppis2pathNY);      
                    
                     //Om sakåkning sker, lägg till ett P för avsläppning efter oppis2
-                   if(svaruppdragSamaka.equals("samaka")){
+                   if(svaruppdragSamaka.equals("beviljas")){
                     ds.kommandon2.add(ds.P);
                    }
                    else {
