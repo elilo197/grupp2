@@ -5,7 +5,7 @@
  */
 package lastmileauto;
 
-// Noderna
+//Denna klass är kopierad från labben. GLÖM inte referera till detta i rapporten. 
 
 public class Vertex {
     final private String id;
