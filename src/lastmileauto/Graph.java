@@ -1,9 +1,6 @@
-
 package lastmileauto;
 
 import java.util.List;
-
-//Någor med graferna i dijkstra
 
 public class Graph {
     private final List<Vertex> vertexes;
@@ -21,7 +18,4 @@ public class Graph {
     public List<Edge> getEdges() {
         return edges;
     }
-
-
-
 }

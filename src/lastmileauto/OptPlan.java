@@ -3,8 +3,8 @@ package lastmileauto;
 
 import java.util.*;
 import javax.bluetooth.*;
-// Genomför billigaste väg beräkningar + Gör färdplanering
 
+//Skapar en optimerad plan och skapar kommandon som ska skickas till Agv:n. 
 public class OptPlan {
     private DataStore ds; 
     LinkedList<Vertex>path;
@@ -19,15 +19,13 @@ public class OptPlan {
         this.ds = ds; 
     }
     
-    // Genomför billigaste väg beräkningen
-    public ArrayList<Integer>  createPlan(){      //denna var void först
-        //double [] x; 
-        //double [] y;
+    //Skapar en plan med noder för hur Agv:n ska åka
+    public ArrayList<Integer>  createPlan(){ 
         List<Vertex> nodes =new ArrayList<Vertex>();
         List<Edge> edges =new ArrayList<Edge>();
         ds.pathInt = new ArrayList<Integer>();
         
-        // Set up network
+        // Sätter upp nätverket 
         for(int i =0; i <ds.nodes; i++)
         {
             Vertex location =new Vertex("" + (i +1), "Nod #" + (i +1));
@@ -44,7 +42,7 @@ public class OptPlan {
         Graph graph =new Graph(nodes,edges);
         DijkstraAlgorithm dijkstra =new DijkstraAlgorithm(graph);
 
-        //Beräknar billigaste vägen från Dijkstra-classen    
+        //Kallar på dijkstra och skapar en väg från startnod till slutnod    
         dijkstra.execute(nodes.get(ds.startRutt-1)); //Startnod      
         System.out.println("startrutt från dij: " +  nodes.get(ds.startRutt-1));
         path =dijkstra.getPath(nodes.get(ds.slutRutt-1)); //Slutnod

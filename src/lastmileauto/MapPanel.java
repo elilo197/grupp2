@@ -4,7 +4,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import javax.swing.JPanel;
 
-// Ritar ut allt på kartan, ex. robot osv. 
+//Ritar ut allt på kartan som AGV, bågar och noder. 
 
 public class MapPanel extends JPanel {
     DataStore ds; 
@@ -27,10 +27,10 @@ public class MapPanel extends JPanel {
         final int ysize = 350;
         final int xsize = 700;
 
+        //Plottar data om den har lästs in på rätt sätt
+        if (ds.networkRead == true) { 
 
-        if (ds.networkRead == true) { // Only try to plot is data has been properly read from file
-
-            // Compute scale factor in order to keep the map in proportion when the window is resized
+            //Beräknar skalfaktor så att kartans proportioner följer gränssnittets storlek
             int height = getHeight();
             int width = getWidth();
             double xscale = 1.0 * width / xsize;
@@ -38,7 +38,7 @@ public class MapPanel extends JPanel {
 
             g.setColor(DARK_COLOR);
 
-            // Draw nodes as circles
+            //Ritar noder som cirklar
             for (int i = 0; i < ds.nodes; i++) {
                 x = (int) (ds.nodeX[i] * xscale);
                 y = (int) (ds.nodeY[i] * yscale);
@@ -49,7 +49,7 @@ public class MapPanel extends JPanel {
             
             ds.tot_arcCost = new int[ds.arcs];
             
-            // Draw arcs
+            //Ritar bågar
             g.setColor(MAGENTA_COLOR);
             for (int i = 0; i < ds.arcs; i++) {
                 if (ds.arcColor[i] == 0){
@@ -64,26 +64,23 @@ public class MapPanel extends JPanel {
                 x2 = (int) (ds.nodeX[ds.arcEnd[i] - 1] * xscale);
                 y2 = (int) (ds.nodeY[ds.arcEnd[i] - 1] * yscale);
                 g.drawLine(x1, height - y1, x2, height - y2);
-                
-                
-                // arcCost
+                               
+                //Bågkostnaden
                 x = Math.abs(x1 - x2);
                 y = Math.abs(y1 - y2);
-                
-                ds.tot_arcCost[i] = x + y; // här är skillnaden, fyller liksom ds variabeln här så vi kan hämta den i ds sen 
+                ds.tot_arcCost[i] = x + y; 
  
-               // g.drawString("" + ds.tot_arcCost[i], (x1+x2)/2,((height - y1 ) + (height - y2))/2);
+                //Skriver ut bågkostnaderna i kartan
+                //g.drawString("" + ds.tot_arcCost[i], (x1+x2)/2,((height - y1 ) + (height - y2))/2);
               }
 
-            // Draw robot
+            //Ritar AGV:n på kartan
             robotPosX = (int)((ds.robotX) * xscale);
-            robotPosY = (int)((ds.robotY)*yscale);
+            robotPosY = (int)((ds.robotY) * yscale);
             
-             g.setColor(MAGENTA_COLOR);
-             // Bara linjer. 
-            //g.drawOval(robotPosX-((circlesize+10)/2), height-robotPosY-(circlesize+10)/2, circlesize+10, circlesize+10);
+            g.setColor(MAGENTA_COLOR);
           
-            //Ifylld cirkel
+            //Fyller i AGV:n
             g.fillOval(robotPosX-((circlesize+10)/2), height-robotPosY-(circlesize+10)/2, circlesize+10, circlesize+10);
             
         }

@@ -1,16 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package lastmileauto;
-
-//Denna klass är kopierad från labben. GLÖM inte referera till detta i rapporten. 
 
 public class Vertex {
     final private String id;
     final private String name;
-
 
     public Vertex(String id, String name) {
         this.id = id;

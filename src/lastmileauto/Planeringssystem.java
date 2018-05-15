@@ -1,29 +1,25 @@
 
 package lastmileauto;
 
-// Main 
-
+//Huvudklass för projektet, startar igång allt
 public class Planeringssystem {
 
     DataStore ds;
        
     Planeringssystem(){
-        ds = new DataStore();
+       ds = new DataStore();
 
-        ds.setFileName("C:\\Users\\Helena\\Documents\\GitHub\\grupp2/streets.txt");
+       //Vägen till kartfilen
+       ds.setFileName("C:\\Users\\Helena\\Documents\\GitHub\\grupp2/streets.txt");
   
        ds.readNet();
        ds.cui = new ControlUI(ds);
        ds.cui.setVisible(true);
        ds.cui.showStatus();
        ds.cui.appendPoang(ds.totPoang);
-        
                                             
        ds.cui.appendStatus("Startar programmet \n" );
-       ds.cui.appendStatusAgv("Meddelanden från Agda kommer nu. \n" );
-              
-
-       
+       ds.cui.appendStatusAgv("Meddelanden från Agda kommer nu. \n" );     
     }
          
     /**
@@ -31,7 +27,7 @@ public class Planeringssystem {
      */
     
     public static void main(String[] args) {
-   
+        
         Planeringssystem x = new Planeringssystem();
     }       
 }

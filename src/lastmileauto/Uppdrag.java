@@ -18,30 +18,30 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Uppdrag implements Runnable{
-   String inkommandetext []; 
-   String ink_sam;
+   String inkommandetext []; //Osäker var den här används och gör?
+   String ink_sam; //Osäker var den här används och gör?
    int IntStorlek;
-   DataStore ds;
-   OptPlan opt;
-   OptPlan [] oppis;
-   String narmstaPlats;// = "Start";
-   String id; 
-   String [] uppdragsid;
-   String [] destination;
-   int [] passant; 
-   int [] samaka;
-   int[] destNod1;
-   int[] destNod2;
-   int valtUppdragPlats;     //
-   String valtUppdragId;
-   String svar;
-   OptPlan oppis1;
-   OptPlan oppis2;
-   OptPlan oppis3;
-   ArrayList<Integer> oppis1path;
-   ArrayList<Integer> oppis1pathNY;     //skapat ny oppis 
+   DataStore ds; //Instans av DataStore-klassen
+   OptPlan opt; //Instans av OptPlan-klassen
+   OptPlan [] oppis; //Sparar hela den optimerade rutten
+   String narmstaPlats; // = "Start";
+   String id; //Uppdragsid 
+   String [] uppdragsid; //Array med uppdragsid
+   String [] destination; //Array med nodnummer för destinationen
+   int [] passant; //Passagerarantal
+   int [] samaka;  //Samåkning
+   int[] destNod1; //Noden AGV:n kommer in på först på avlämningsbågen
+   int[] destNod2; //Nästa nod på avlämningsbågen
+   int valtUppdragPlats; //Plats i array för valt uppdrag
+   String valtUppdragId; //Id på valt uppdrag
+   String svar; //Skickar beviljas eller nekas om uppdraget kan tas
+   OptPlan oppis1; //Optimerad rutt till upphämtningsplatsen
+   OptPlan oppis2; //Optimerad rutt till avlämningsplatsen
+   OptPlan oppis3; //Optimerad rutt vid samåkning
+   ArrayList<Integer> oppis1path;       
+   ArrayList<Integer> oppis1pathNY; //skapat ny oppis 
    ArrayList<Integer> oppis2path;
-   ArrayList<Integer> oppis2pathNY;     //skapat ny oppis 
+   ArrayList<Integer> oppis2pathNY; //skapat ny oppis 
    ArrayList<Integer> oppis3path;
    ArrayList<Integer> oppis3pathNY;
    ArrayList<String> ink; 
@@ -187,8 +187,9 @@ public class Uppdrag implements Runnable{
                         ds.kommandon_done.add(ds.kommandon1.get(j));
                     }
                     ds.cui.repaint(); 
-                    
-                RobotSend RSend = new RobotSend(ds);        //Startar robotsend-tråden
+                 
+                //Startar robotsend-tråden    
+                RobotSend RSend = new RobotSend(ds);       
                 Thread RobotSendThread = new Thread(RSend);
                 RobotSendThread.start();
                 
