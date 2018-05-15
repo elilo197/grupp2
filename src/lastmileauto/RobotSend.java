@@ -31,7 +31,7 @@ public void run(){
                     ds.ncount = i;        //Räknar antalet noder som passeras.  
                     String kommando = ds.kommandon_done.get(i) + dummyString; //Skickar kommandot + passagerar antal
                     ds.btm.send(kommando);
-//                    ds.cui.appendStatus("Skickat meddelande: " + kommando);
+                    ds.cui.appendStatus("Skickat meddelande: " + kommando);
 
                     }
                

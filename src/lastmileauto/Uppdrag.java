@@ -24,7 +24,8 @@ public class Uppdrag implements Runnable{
    DataStore ds; //Instans av DataStore-klassen
    OptPlan opt; //Instans av OptPlan-klassen
    OptPlan [] oppis; //Sparar hela den optimerade rutten
-   String narmstaPlats; // = "Start";
+   String narmstaPlats; //Närmasta upphämtningsplats;
+   String nastnarmstaPlats; 
    String id; //Uppdragsid 
    String [] uppdragsid; //Array med uppdragsid
    String [] destination; //Array med nodnummer för destinationen
@@ -69,7 +70,7 @@ public class Uppdrag implements Runnable{
     public void run(){  
     try{
     messfromgroup(); //Denna ligger här uppe för att vi vill veta vilken upphämtningsplats grupp 3 är påväg mot innan vi kör
-    listaplatser();
+    listaplatser();  
     if(ds.messfrom == null){
         System.out.println("Fanns inget meddelande att hämta, börjar köra");
     }
@@ -82,8 +83,6 @@ public class Uppdrag implements Runnable{
          System.out.println("Dom har tagit uppdraget, ta en annan plats");
     }
     
-   
-    
     while (ink.get(0) != null) {    //Kollar så att det finns upphämtningsplatser kvar
     Thread.sleep(100);      //för att slippa göra utskrifterna ovan
  
@@ -93,6 +92,12 @@ public class Uppdrag implements Runnable{
                 
                 //Välj första uppdraget
                 valtUppdragPlats = listauppdrag(narmstaPlats);           //Skickar in upphämtningsplats, skickar ut vilket uppdrag vi väljer
+
+                if (IntStorlek == 0){
+                    valtUppdragPlats = listauppdrag(nastnarmstaPlats); 
+                }
+                
+                
                 System.out.println("Valt uppdrag: " + valtUppdragPlats);  
                 ds.pax = getPassagerare(valtUppdragPlats);      //Sätter passagerarantal till antalet på det valda uppdraget
 
@@ -411,6 +416,7 @@ public class Uppdrag implements Runnable{
         double tot_kostnad = 0;         //Totala kostnaden för en väg/alla bågar i en väg
         int narmstaNod = ds.start;
         double lagstaKostnad = 1000000;
+        double nastLagstaKostad = 1000000;
         int [] vertexint; 
         
              
@@ -459,14 +465,24 @@ public class Uppdrag implements Runnable{
            
              System.out.println();      //Blankrad
                 
-             if (tot_kostnad < lagstaKostnad){
-                 lagstaKostnad = tot_kostnad;
+           if (tot_kostnad < lagstaKostnad){
+                 lagstaKostnad = tot_kostnad;           
                  narmstaPlats = plats[j];
                  narmstaNod = ds.slutRutt;
-                 upphamtningplatsPlats = j;
+                 upphamtningplatsPlats = j;  
+                 
+                 if(j == 0){
+                     nastnarmstaPlats = Integer.toString(j+1);
+                 }else if(j ==oppis[j].path.size()-1){
+                  nastnarmstaPlats = Integer.toString(j+1);
+                 }else{
+                     nastnarmstaPlats = Integer.toString(j-1);
+                 }             
              }
              tot_kostnad = 0; 
+             
         }
+        
              ds.cui.appendStatus("\nNärmaste upphämtningsplats är plats " + narmstaPlats + " med nodnummer " + narmstaNod);
              System.out.println("Kostnaden för att ta sig dit är " + lagstaKostnad);
 
@@ -478,7 +494,7 @@ public class Uppdrag implements Runnable{
      
    
     public int listauppdrag(String plats){      //var static från början
-      inkuppdrag = new ArrayList<String>();
+     inkuppdrag = new ArrayList<String>();
      
      try {
          ds.cui.appendStatus("\nNu hämtas lista på uppdrag!");
@@ -568,7 +584,7 @@ public class Uppdrag implements Runnable{
      catch (Exception e) { System.out.print(e.toString()); }
      
 
-      ds.cui.appendStatus("\nValt uppdrag: " + valtUppdragId); //HÄR HAR VI BYTT
+      ds.cui.appendStatus("\nValt uppdrag: " + valtUppdragId); 
       ds.cui.appendStatus("");
 
      return valtUppdragPlats;
@@ -590,7 +606,7 @@ public class Uppdrag implements Runnable{
       
     
 
-    public  String tauppdrag(String plats, String id, int pax, String grupp){    //Denna var static
+    public  String tauppdrag(String plats, String id, int pax, String grupp){ 
 
     try {
         ds.cui.appendStatus("\nTar uppdrag.");
