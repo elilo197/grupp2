@@ -57,6 +57,7 @@ public class Uppdrag implements Runnable{
    String valtUppdragsplatsSamakaString;
    ArrayList<String> inkuppdrag;
    String svaruppdragSamaka = "nekas";
+   int platsKvar;
   
     public Uppdrag(DataStore ds) { 
         //aterstall("1");
@@ -88,9 +89,9 @@ public class Uppdrag implements Runnable{
             while(ds.scount == i){  //Kollar antal "s", stopp, kör igång loopen när s=1, adderar på varje varv
                 
                 listaplatser();
+                valtUppdragPlats = listauppdrag(narmstaPlats); 
                 
-                //Välj första uppdraget
-                valtUppdragPlats = listauppdrag(narmstaPlats);           //Skickar in upphämtningsplats, skickar ut vilket uppdrag vi väljer
+                         //Skickar in upphämtningsplats, skickar ut vilket uppdrag vi väljer
 
                 if (IntStorlek == 0){
                     valtUppdragPlats = listauppdrag(nastnarmstaPlats); 
@@ -102,28 +103,21 @@ public class Uppdrag implements Runnable{
                     }
                 }
                 
-                
+                //Välj första uppdraget
+
                 System.out.println("Valt uppdrag: " + valtUppdragPlats);  
                 
                 ds.pax = getPassagerare(valtUppdragPlats);      //Sätter passagerarantal till antalet på det valda uppdraget
-
-//Undersöker om antalet passagerare på uppdraget är större än kapaciteten Agv:n har. Om detta sker tas nästa upppdrag om
-//det finns något och det funkar enligt kapacitet annars åker roboten till en annan upphämtningsplats. 
-               while(ds.pax > ds.kapacitet){ 
+                platsKvar = ds.kapacitet - ds.pax;  
+               
+                //Om passagerarantalet överskrider kapaciteten, ta bara så många som får plats
                 if(ds.pax > ds.kapacitet){
-                    if(valtUppdragPlats < IntStorlek ){
-                   valtUppdragPlats = valtUppdragPlats +1; 
-                    }
-                    else{
-                        valtUppdragPlats = listauppdrag(nastnarmstaPlats);
-                    }
-                }
-                ds.pax = getPassagerare(valtUppdragPlats); 
+                   ds.pax = -(platsKvar); 
                 }
 
                 //Om kunden vill samåka, det finns plats kvar i fordonet och det finns tillräckligt med uppdrag 
           if(samaka[valtUppdragPlats] == 1 && passant[valtUppdragPlats] < ds.kapacitet && IntStorlek > 1 ){
-                int platsKvar = ds.kapacitet - passant[valtUppdragPlats];          
+                       
                 System.out.println("Plats kvar: " + platsKvar);
                 
                   valtUppdragsplatsSamaka = valtUppdragPlats + 1; 
@@ -239,6 +233,7 @@ public class Uppdrag implements Runnable{
                   
                  
    if (svaruppdrag.equals("beviljas")){
+
                   
                 //Om det valda uppdraget kan tas, kolla om det går att ta fler uppdrag samtidigt     
                      if(samaka[valtUppdragPlats] == 1 && passant[valtUppdragPlats] < ds.kapacitet && IntStorlek > 1){
@@ -589,12 +584,8 @@ public class Uppdrag implements Runnable{
             }
             
             else if (j==IntStorlek-1) {
-                ds.cui.appendStatus("För mycket folk!"); //HÄR HAR VI BYTT
-                bortvald_plats[j] = 1;
-                bortvald_flagga = 1;
-                valtUppdragPlats = j; // uppdragsid[j];
-                valtUppdragId = uppdragsid[j];
-             
+                ds.cui.appendStatus("För mycket folk!"); 
+              
             }
         }
         }

@@ -43,8 +43,7 @@ public void run(){
                         countPax = 0;
                         ds.taUppdrag = false;               //Återställer flaggor. 
                         ds.skickatP = false;
-                        
-                        
+                       
                     }
 //När ett P skickas så börjar passagerar antalet skickas med. 
                else if (ds.kommandon_done.get(i).equals("P")){

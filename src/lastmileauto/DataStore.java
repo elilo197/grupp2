@@ -42,7 +42,7 @@ public class DataStore {
     int[] tot_arcCost; //Totala bågkostnaden
     int robotpos = start-1; //Robotens aktuella position, initieras till startpositionen
     ArrayList<String> kommandon; //ArrayList som sparar kommandon för en rutt
-    int kapacitet = 20; //AGV:ns platser
+    int kapacitet = 2; //AGV:ns platser
     String grupp = "2"; //Gruppnummer
     String  meddelande_in = "100"; 
     int mottagenInt = 21;

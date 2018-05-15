@@ -18,8 +18,8 @@ public void run(){
         //Initiering av starttid
         start = System.currentTimeMillis();  
 
-            //Kör följande loop så länge det inte gått mer än 2500 ms
-            while (System.currentTimeMillis() - start < 2500){
+            //Kör följande loop så länge det inte gått mer än 250 ms
+            while (System.currentTimeMillis() - start < 250){
 
               ds.meddelande_in = btc.bluetooth_in.readLine();
 
