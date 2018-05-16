@@ -221,7 +221,7 @@ public class Uppdrag implements Runnable{
                 
                ds.cui.appendRutt("Kommando för första delrutten: "+ ds.kommandon1 + "\n");
                 
-                while(ds.skickatP  == false){
+     while(ds.skickatP  == false){
                 Thread.sleep(100);
                 if(ds.taUppdrag == true){//Nu är Agv:n vid upphämtningsplatsen och vi kan ta uppdrag
                 
@@ -347,14 +347,20 @@ public class Uppdrag implements Runnable{
     //Om uppdrag nekas     
     else { 
        ds.cui.appendStatus("Ta uppdrag: " + svaruppdrag); 
+       
+       //Alternativ 1, gör om samma procedur som i if-satsen, men kollar ej om uppdragen beviljats = inte bra
        valtUppdragPlats = listauppdrag(narmstaPlats);   //Listar uppdrag igen, nu bör det nekade uppdraget vara borta
+       //String svaruppdrag2 = tauppdrag(narmstaPlats, valtUppdragId, ds.pax, ds.grupp); //denna ska flyttas sen 
        skapaRutter();   //Kolla samåkning, gör färdbeskrivningar m.m. (allt som fanns i if-satsen) 
+       
+       //Alternativ 2, sätt ds.skickatP = true på rad 360 i if-satsen ovan och breaka loopen här 
+       
    }
                 
-                ds.skickatP = true;
-                }
+              ds.skickatP = true;
+      }
                 
-                }
+   }
 
              i++;    //Räknar antalet S 
         
