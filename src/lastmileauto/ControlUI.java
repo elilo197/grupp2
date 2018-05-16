@@ -520,13 +520,13 @@ public class ControlUI extends javax.swing.JFrame {
 
     //Knapp för Bluetoothanslutning
     private void anslutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_anslutActionPerformed
-//      ds.btc = new BluetoothTransceiver();
-//      ds.btm = new BluetoothTransmitter(ds.btc);
-//      ds.btr = new BluetoothReceiver(ds.btc, ds);
-//      
-//      Thread t4 = new Thread(ds.btr);
-//      t4.start();
-//      
+      ds.btc = new BluetoothTransceiver();
+      ds.btm = new BluetoothTransmitter(ds.btc);
+      ds.btr = new BluetoothReceiver(ds.btc, ds);
+      
+      Thread t4 = new Thread(ds.btr);
+      t4.start();
+      
       appendStatus("Bluetoothanslutning upprättad");
       appendBluetoothAdress("20:16:01:20:56:82");
       appendBluetoothKanal("1"); 
@@ -546,7 +546,7 @@ public class ControlUI extends javax.swing.JFrame {
 
     //Knapp som avslutar uppdrag
     private void avslutaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_avslutaActionPerformed
-     //  ds.btm.send(ds.C);
+       ds.btm.send(ds.C);
        appendStatus("Skickade meddelande: " + ds.C);
        ds.breakflag = 1;        
     }//GEN-LAST:event_avslutaActionPerformed
