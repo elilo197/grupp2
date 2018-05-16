@@ -8,7 +8,7 @@ public class Planeringssystem {
        
     Planeringssystem(){
        ds = new DataStore();
-
+        
        //Vägen till kartfilen
        ds.setFileName("C:\\Users\\Helena\\Documents\\GitHub\\grupp2/streets.txt");
   
@@ -19,7 +19,16 @@ public class Planeringssystem {
        ds.cui.appendPoang(ds.totPoang);
                                             
        ds.cui.appendStatus("Startar programmet \n" );
-       ds.cui.appendStatusAgv("Meddelanden från Agda kommer nu. \n" );     
+       ds.cui.appendStatusAgv("Meddelanden från Agda kommer nu. \n" );  
+       
+       
+       
+     
+       
+       
+       
+       
+       
     }
          
     /**

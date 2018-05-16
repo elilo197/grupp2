@@ -1,5 +1,13 @@
 
 package lastmileauto;
+//kommentera tillbaka rad 33
+
+
+
+
+
+
+
 
 // Denna klass används för att skicka meddelanden till Agv:n och är en trådad klass. 
 
@@ -30,7 +38,7 @@ public void run(){
                     Thread.sleep(1000);    //systemet mottagit ett "Done" då skickas nästa. 
                     ds.ncount = i;        //Räknar antalet noder som passeras.  
                     String kommando = ds.kommandon_done.get(i) + dummyString; //Skickar kommandot + passagerar antal
-                    ds.btm.send(kommando);
+//                    ds.btm.send(kommando);
                     ds.cui.appendStatus("Skickat meddelande: " + kommando);
 
                     }

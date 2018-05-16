@@ -72,15 +72,15 @@ public class Uppdrag implements Runnable{
     messfromgroup(); //Denna ligger här uppe för att vi vill veta vilken upphämtningsplats grupp 3 är påväg mot innan vi kör
     listaplatser();  
     if(ds.messfrom == null){
-        System.out.println("Fanns inget meddelande att hämta, börjar köra");
+        System.out.println("Fanns inget meddelande att hämta, börjar köra.");
     }
     else if( ds.messfrom == narmstaPlats){
         int dummyAntalUppdrag = Integer.parseInt(inkuppdrag.get(0));
         if(dummyAntalUppdrag > 1 ){
-             System.out.println("Fanns mer än 1 uppdrag, börjar köra");
+             System.out.println("Fanns mer än 1 uppdrag, börjar köra.");
         }
         else 
-         System.out.println("Dom har tagit uppdraget, ta en annan plats");
+         System.out.println("Grupp 3 har tagit uppdraget, ta en annan plats.");
     }
     
     while (ink.get(0) != null) {    //Kollar så att det finns upphämtningsplatser kvar
@@ -129,7 +129,6 @@ public class Uppdrag implements Runnable{
                 for(int i = 0; i<IntStorlek; i++){
                     
                     //Lägg till ett till uppdrag om kund nr 1 vill samåka och plats finns
-                    System.out.println("\nMellan for och if när vi tänker ta samåkningsuppdrag."); 
                     System.out.println("Plats kvar: " + platsKvar);
                     System.out.println("Valt uppdragsplats: " + valtUppdragPlats +"\n"); 
             
@@ -233,9 +232,156 @@ public class Uppdrag implements Runnable{
                   
                  
    if (svaruppdrag.equals("beviljas")){
+       skapaRutter(); //Kollar samkörning, skappar färdplaner (allt som står i bortkommenterade koden under) 
+       
+//                   //Om det valda uppdraget kan tas, kolla om det går att ta fler uppdrag samtidigt     
+//                     if(samaka[valtUppdragPlats] == 1 && passant[valtUppdragPlats] < ds.kapacitet && IntStorlek > 1){
+//                     System.out.println("Första uppdaget vill och kan samåka.");
+//                     System.out.println("Ta uppdrag: " + narmstaPlats + valtUppdragsIDSamaka + ds.paxSamaka + ds.grupp);
+//                     svaruppdragSamaka = tauppdrag(narmstaPlats, valtUppdragsIDSamaka, ds.paxSamaka, ds.grupp);
+//                     ds.cui.appendRutt("Ta uppdrag: " + svaruppdragSamaka); 
+//                     }
+//
+//   //Oppis 2 börjar här. 
+//   //Oppis2 går från upphämtningsplatsen till första avlämningsplatsen
+//    
+//                    ds.startRutt = ds.linkNod2[upphamtningplatsPlats];  
+//                   // ds.cui.appendRutt("Upphämtningsnod i delrutt 2: " + ds.startRutt);
+//                    ds.slutRutt = destNod1[valtUppdragPlats];                    
+//                   // ds.cui.appendRutt("Destinationsnod i delrutt 2: " + ds.slutRutt);
+//                    ds.start = destNod2[valtUppdragPlats];  //Vart nästa optimering ska starta
+//                    System.out.println("Startnod: " + ds.start);
+//                    ds.startStart=destNod1[valtUppdragPlats];
+//    
+//                    oppis2 = new OptPlan(ds);
+//                    oppis2path = oppis2.createPlan();
+//                    
+//                    
+//                   oppis2pathNY.add(0, ds.linkNod1[upphamtningplatsPlats]);
+//                    for(int k = 1; k <oppis2path.size() + 1; k++){
+//                        oppis2pathNY.add(k, oppis2path.get(k-1));
+//                    }
+//                    oppis2pathNY.add(destNod2[valtUppdragPlats]);
+//                     
+//                    for(int i = 0; i <oppis2pathNY.size(); i++){
+//                        System.out.println("oppispath2 : " + oppis2pathNY.get(i));
+//                    }
+//                    
+//                    ds.kommandon2 = oppis2.compass(oppis2pathNY);      
+//                   
+//                    //Om sakåkning sker, lägg till ett P för avsläppning efter oppis2
+//                   if(svaruppdragSamaka.equals("beviljas")){
+//                    ds.kommandon2.add(ds.P);
+//                   }
+//                   else {
+//                       ds.kommandon2.add(ds.S);     //Om samåkning ej sker, lägg till S för stopp
+//                   }
+//                    
+//                    for ( int j = 0; j < ds.kommandon2.size(); j++ ){ //Lägger till kommandon2 i kommandon 
+//                    ds.kommandon_done.add(ds.kommandon2.get(j));
+//                    }
+//                    
+//                    ds.sistanod2 = (oppis2path.get(oppis2path.size()-2));   //Lägger till sista noden i föregående rutt i en ny arraylist som ska 
+//                  
+//                    ds.cui.appendRutt("Kommandon i andra delrutten: " + ds.kommandon2);
+//                    System.out.println("Kommandon i Oppis2: " + ds.kommandon_done); 
+//                    
+//                    
+//                     ds.cui.repaint();          //Ritar ny väg
+//                     
+//
+//   //Oppis 3 börjar här. 
+//  //Oppis3 går från första avlämningsplatsen till andra avlämningsplatsen
+//
+//            
+//        //Allt i oppis 3 ska bara göras om kunden i det valda uppdraget vill samåka och det finns plats i fordonet
+//        if(svaruppdragSamaka.equals("beviljas")){
+//            
+//            ds.cui.appendRutt("Ta uppdrag för samåkning: " + svaruppdragSamaka);    
+//                              
+//                    //Rutten startar vid föregående rutts sista nod, dvs avlämningsplatsen för oppis2
+//                    ds.startRutt =destNod2[valtUppdragPlats];  
+//                    
+//                    
+//                    
+//                    ds.cui.appendStatus("Startnod i delrutt 3: " + ds.startRutt);
+//                    System.out.println("Startrutt för samåkning: " + ds.startRutt);
+//                    //Rutten slutar vid den första noden i avlämnings-länken för samåkningsuppdraget
+//                    ds.slutRutt = destNod1[valtUppdragsplatsSamaka]; 
+//                    ds.cui.appendStatus("Startnod i delrutt 3: " + ds.slutRutt);
+//                    System.out.println("Slutrutt för samåkning: " + ds.slutRutt);
+//                    ds.cui.repaint(); 
+//                    //Variabler för att förenkla hantering av info vid optimeringen 
+//                    ds.start = destNod2[valtUppdragsplatsSamaka];  //Var nästa optimering ska starta
+//                    ds.startStart=destNod1[valtUppdragsplatsSamaka]; 
+//
+//                    oppis3 = new OptPlan(ds);
+//                    oppis3path = oppis3.createPlan();
+//                      
+//                   oppis3pathNY.add(0, destNod1[valtUppdragPlats]);
+//                    for(int k = 1; k <oppis3path.size() + 1; k++){
+//                        oppis3pathNY.add(k, oppis3path.get(k-1));
+//                    }
+//                    oppis3pathNY.add(destNod2[valtUppdragsplatsSamaka]);
+//              
+//                    for(int i = 0; i <oppis3pathNY.size(); i++){
+//                        System.out.println("oppispath3 : " + oppis3pathNY.get(i));
+//                    }
+//                    
+//                    //Skapar körkommandon
+//                     ds.kommandon3 = oppis3.compass(oppis3pathNY);       
+//                    ds.kommandon3.add(ds.S); //Lägger till stoppkommando i slutet
+//
+//                    for ( int j = 0; j < ds.kommandon3.size(); j++ ){ //Lägger till kommandon3 i kommandon 
+//                    ds.kommandon_done.add(ds.kommandon3.get(j));
+//                    }
+//                    
+//                    System.out.println("Kommandon i Oppis3: " + ds.kommandon_done); 
+//
+//                     ds.cui.repaint();          //Ritar ny väg
+//                         
+//                     
+//           }
+    }
 
-                  
-                //Om det valda uppdraget kan tas, kolla om det går att ta fler uppdrag samtidigt     
+    //Om uppdrag nekas     
+    else { 
+       ds.cui.appendStatus("Ta uppdrag: " + svaruppdrag); 
+       valtUppdragPlats = listauppdrag(narmstaPlats);   //Listar uppdrag igen, nu bör det nekade uppdraget vara borta
+       skapaRutter();   //Kolla samåkning, gör färdbeskrivningar m.m. (allt som fanns i if-satsen) 
+   }
+                
+                ds.skickatP = true;
+                }
+                
+                }
+
+             i++;    //Räknar antalet S 
+        
+             
+             
+        //Utskrift     
+               
+                //Skriv bara ut om oppis3 finns, dvs samåkning sker
+                System.out.println("oppis3 =!" + oppis3);
+                if (oppis3 != null) {
+                    ds.cui.appendRutt("Samåkning sker med uppdrag med id " + valtUppdragsIDSamaka + ".\n" 
+                   + "Detta uppdraget har " + ds.paxSamaka + " passagerare. \n Avlämningsplats: Mellan nod " 
+                   + destNod1[valtUppdragsplatsSamaka] + " och nod " +destNod2[valtUppdragsplatsSamaka] + ".\n");
+                  ds.cui.appendRutt("Kommandon för tredje delrutten: "+ ds.kommandon3 + " \n");
+                }
+                
+                 ds.cui.appendRutt("Kommandon för hela rutten: "+ ds.kommandon_done + " \n");
+                 
+            }
+            
+} //while
+    }catch(InterruptedException exception){
+    }
+}
+    
+    public void skapaRutter(){
+                        //Om det valda uppdraget kan tas, kolla om det går att ta fler uppdrag samtidigt     
                      if(samaka[valtUppdragPlats] == 1 && passant[valtUppdragPlats] < ds.kapacitet && IntStorlek > 1){
                      System.out.println("Första uppdaget vill och kan samåka.");
                      System.out.println("Ta uppdrag: " + narmstaPlats + valtUppdragsIDSamaka + ds.paxSamaka + ds.grupp);
@@ -343,39 +489,8 @@ public class Uppdrag implements Runnable{
                          
                      
            }
-    }
-
-         
-    else {System.out.println("Svar från hemsida: " + svaruppdrag);}
-                
-                ds.skickatP = true;
-                }
-                
-                }
-
-             i++;    //Räknar antalet S 
         
-             
-             
-        //Utskrift     
-               
-                //Skriv bara ut om oppis3 finns, dvs samåkning sker
-                System.out.println("oppis3 =!" + oppis3);
-                if (oppis3 != null) {
-                    ds.cui.appendRutt("Samåkning sker med uppdrag med id " + valtUppdragsIDSamaka + ".\n" 
-                   + "Detta uppdraget har " + ds.paxSamaka + " passagerare. \n Avlämningsplats: Mellan nod " 
-                   + destNod1[valtUppdragsplatsSamaka] + " och nod " +destNod2[valtUppdragsplatsSamaka] + ".\n");
-                  ds.cui.appendRutt("Kommandon för tredje delrutten: "+ ds.kommandon3 + " \n");
-                }
-                
-                 ds.cui.appendRutt("Kommandon för hela rutten: "+ ds.kommandon_done + " \n");
-                 
-            }
-            
-} //while
-    }catch(InterruptedException exception){
     }
-}
     
 
     /** Här listar vi antalet upphämtningsplatser och beräknar vilken som är närmast. 
