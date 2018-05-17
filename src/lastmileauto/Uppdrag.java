@@ -792,7 +792,8 @@ public class Uppdrag implements Runnable{
        
     return svar;
     }
-     
+    
+//En metod som återställer uppdragen på hemsidan, denna är bortkommenterad eftersom den inte används.    
 //    public String aterstall(String scenario){
 //
 //         try {
@@ -823,37 +824,31 @@ public class Uppdrag implements Runnable{
 //    return svar;
 //    }
 
+//Denna metod används för att skicka meddelande till en hemsida.    
     public void messtogroup() {
-       //skicka meddelande till den andra gruppen 
-       ds.cui.appendStatus("Meddelar grupp 3 vår upphämtningsplats.");
+//Kallar på hemsidan och skickar upp ett meddelande. 
+        ds.cui.appendStatus("Meddelar grupp 3 vår upphämtningsplats.");
      try {
         
          String url = " http://tnk111.n7.se/putmessage.php?groupid=2&messagetype=23&message=" +narmstaPlats; //Kom överens med grupp 3!!!!!
          URL urlobjekt = new URL(url);       
          HttpURLConnection anslutning = (HttpURLConnection)
          urlobjekt.openConnection();
-
          System.out.println("\nAnropar: " + url);
- 
          int mottagen_status = anslutning.getResponseCode();
-
          System.out.println("Statuskod: " + mottagen_status);
-
- 
          BufferedReader inkommande = new BufferedReader(new
-
         InputStreamReader(anslutning.getInputStream()));
         String inkommande_text;
         StringBuffer inkommande_samlat = new StringBuffer();
-        
          ArrayList <String> inkfromserv = new ArrayList<String>();
  
         while ((inkommande_text = inkommande.readLine()) != null) {
                 inkommande_samlat.append(inkommande_text);
                 inkfromserv.add(inkommande_text);
         }
-   
         inkommande.close();
+        
          for(int k = 0; k < inkfromserv.size(); k++){
             ds.cui.appendStatus("Meddelande server: " + inkfromserv.get(k));
          }
@@ -865,43 +860,33 @@ public class Uppdrag implements Runnable{
      
     }
 
-//Denna metod används för att hämta meddelande från en hemsida från den andra gruppen i samma företagsgrupp. 
+//Denna metod används för att hämta meddelande från en hemsida från den andra gruppen i samma företagsgrupp.     
      public void messfromgroup() {  
      
      try {
-         //Uppdrag http = new Uppdrag();
-         String url = "  http://tnk111.n7.se/getmessage.php?messagetype=32"; //Ändra messagetyp OBSOBSOBS
+         //Kallar på hemsidan, sparar ner informationen och delar upp meddelandet. 
+         String url = "http://tnk111.n7.se/getmessage.php?messagetype=32"; 
          URL urlobjekt = new URL(url);       
          HttpURLConnection anslutning = (HttpURLConnection)
          urlobjekt.openConnection();
-
          System.out.println("\nAnropar: " + url);
- 
          int mottagen_status = anslutning.getResponseCode();
-
          System.out.println("Statuskod: " + mottagen_status);
-
- 
          BufferedReader inkommande = new BufferedReader(new
-
          InputStreamReader(anslutning.getInputStream()));
          String inkommande_text;
          StringBuffer inkommande_samlat = new StringBuffer();
-        
         inkmess = new ArrayList<String>();
-        
         splitmessfrom = new String [2]; //String-array som sparar datum+tid, ID, upphämtningsplats
-     
-         
          while ((inkommande_text = inkommande.readLine()) != null) {
                 inkommande_samlat.append(inkommande_text);
                 inkmess.add(inkommande_text);
          }
         
          inkommande.close();
-       
+    
+//En loop som delar på meddalandet och sparar relevant information.          
             for(int k = 0; k < inkmess.size(); k++){
-            //ds.cui.appendStatus("Meddelande från grupp 3: " + inkmess.get(k));
             splitmessfrom = inkmess.get(k).split(";");  //Splittar inkommande meddelande
             ds.messfrom = splitmessfrom[2];             //Plockar ut värdet på plats 2 eftersom det bara är det som är intressant
             ds.cui.appendStatus("\nGrupp 3 är på väg mot upphämtningsplats  " + ds.messfrom + ".");
