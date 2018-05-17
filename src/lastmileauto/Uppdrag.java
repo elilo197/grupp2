@@ -532,8 +532,9 @@ public class Uppdrag implements Runnable{
      
     
      
-   
-    public int listauppdrag(String plats){      //var static från början
+   //Denna metod används för att lista vilka uppdag som finns på en vald plats. 
+    //Vi väljer även vilket uppdrag på platsen vi ska ta. Först kallar vi på hemsidan och läser in uppdragen som finns. 
+    public int listauppdrag(String plats){    
      inkuppdrag = new ArrayList<String>();
      
      try {
@@ -575,7 +576,7 @@ public class Uppdrag implements Runnable{
         destNod1 = new int[IntStorlek];
         destNod2 = new int[IntStorlek];
      
-      
+   //Sparar relevant information i olika arrayer. 
         for(int k = 1; k <IntStorlek+1 ; k++){
             sline = inkuppdrag.get(k).split(";");
             uppdragsid[k-1] = sline[0];
@@ -588,7 +589,7 @@ public class Uppdrag implements Runnable{
             + " och ger " + ds.poang[k-1] + " poäng.");      
         }
         
-             
+//Sparar noderna för de avlämnsingslänkar som finns              
         for(int j = 0; j <IntStorlek; j++){
             sline = destination[j].split(",");    
             destNod1[j] =Integer.parseInt(sline[0]);
@@ -598,11 +599,13 @@ public class Uppdrag implements Runnable{
         
         
         //Välj första uppdraget
-         valtUppdragPlats = 0;       //Plats i arrayen som uppdraget hämtas från
+         valtUppdragPlats = 0;       //Plats i arrayen som uppdraget ligger på 
          valtUppdragId = uppdragsid[0];  //Id på valt uppdrag
           System.out.print("ValtuppdragId: " + valtUppdragId);
 
-        
+//Vi hade även gjort en annan variant på hur man väljer uppdrag istället för att bara ta en del av det första uppdraget. 
+//Dock användes inte denna på uppvisningen. Denna varian kollar kapaciteten på AGV:n och väljer det uppdrag som
+//AGV:n klarar att ta hela av. Om det inte finns något uppdrag som AGV:n kan ta hela så väljs uppdrag 1. 
      //Välj uppdrag
     //    for (int j=0; j<IntStorlek; j++){
             
@@ -632,15 +635,16 @@ public class Uppdrag implements Runnable{
 
       ds.cui.appendStatus("\nValt uppdrag: " + valtUppdragId); 
       ds.cui.appendStatus("");
-
+//Returnerar platsen i arrayen som valt uppdrag ligger på
      return valtUppdragPlats;
     }     
-
+    //Denna metod används för att returnera ID för det valda uppdraget.  
     public String getId(String valtUppdrag){
         id = uppdragsid[Integer.parseInt(valtUppdrag)];
         return id;
     }
-   
+
+    //Denna metod används för att returnera antalet passagerare för ett valt uppdrag. 
       public int getPassagerare(int valtUppdrag){
       int dummy = 0;
 
@@ -651,7 +655,8 @@ public class Uppdrag implements Runnable{
     }
       
     
-
+//Denna metod används för att ta uppdrag, information om uppdraget skickas upp till hemsidan
+//sedan fås ett svar om uppdraget beviljas eller inte. 
     public  String tauppdrag(String plats, String id, int pax, String grupp){ 
 
     try {
@@ -660,16 +665,10 @@ public class Uppdrag implements Runnable{
          URL urlobjekt = new URL(url);       
          HttpURLConnection anslutning = (HttpURLConnection)
          urlobjekt.openConnection();
-
          System.out.println("\nAnropar: " + url);
- 
          int mottagen_status = anslutning.getResponseCode();
-
          System.out.println("Statuskod: " + mottagen_status);
-
- 
          BufferedReader inkommande = new BufferedReader(new
-
         InputStreamReader(anslutning.getInputStream()));
         String inkommande_text;
         StringBuffer inkommande_samlat = new StringBuffer();
