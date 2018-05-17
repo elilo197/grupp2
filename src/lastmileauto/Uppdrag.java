@@ -406,14 +406,13 @@ public class Uppdrag implements Runnable{
 
     /** Här listar vi antalet upphämtningsplatser och beräknar vilken som är närmast. 
      */
-    public void listaplatser() { //tagit bort static
+    public void listaplatser() { 
       
     ds.cui.appendStatus("");    
     ds.cui.appendStatus("Listar platser.");    
         
      try {
-
-         //Uppdrag http = new Uppdrag();
+       //Läser in information från bokningscentralen
          String url = "http://tnk111.n7.se/listaplatser.php"; 
          URL urlobjekt = new URL(url);       
          HttpURLConnection anslutning = (HttpURLConnection)
@@ -426,22 +425,25 @@ public class Uppdrag implements Runnable{
          System.out.println("Statuskod: " + mottagen_status);
          BufferedReader inkommande = new BufferedReader(new
 
-        InputStreamReader(anslutning.getInputStream()));
-        String inkommande_text;
-        StringBuffer inkommande_samlat = new StringBuffer();
+         InputStreamReader(anslutning.getInputStream()));
+         String inkommande_text;
+         StringBuffer inkommande_samlat = new StringBuffer();
         
         
-        ink = new ArrayList<String>();      //Skapar en arraylist som ska spara alla upphämtningsplatser
+         ink = new ArrayList<String>();      //Skapar en arraylist som ska spara alla upphämtningsplatser
 
          
-        while ((inkommande_text = inkommande.readLine()) != null) {
+         while ((inkommande_text = inkommande.readLine()) != null) {
                   ink.add(inkommande_text);      
-        }
+         }
          inkommande.close();
-            ds.cui.appendStatus("Antal upphämtningsplatser: " + ink.get(0));
-            for(int k = 1; k < ink.size()-1; k++){      
-            ds.cui.appendStatus("Upphämtningsplats: " + ink.get(k));
-            }
+         
+         
+        //Skriver ut vald upphämtningsplats och antal uppdrag på denna 
+        ds.cui.appendStatus("Antal upphämtningsplatser: " + ink.get(0));
+        for(int k = 1; k < ink.size()-1; k++){      
+        ds.cui.appendStatus("Upphämtningsplats: " + ink.get(k));
+        }
        
         
         //Variabler
@@ -459,14 +461,14 @@ public class Uppdrag implements Runnable{
         double nastLagstaKostad = 1000000;
         int [] vertexint; 
         
-             
-  
+        //Splittar inkommande data vid semikolon
         for(int k = 1; k <IntStorlekPlatser+1 ; k++){
             sline = ink.get(k).split(";");
             link[k-1] = sline[1];
             plats[k-1] = sline[0];       
         }
-
+        
+        //Splittar data ytterligare en gång vid komma, vilket ger två arrayer med noderna för upphämtningslänkarna
         for(int j = 0; j <IntStorlekPlatser; j++){
             sline = link[j].split(",");    
             ds.linkNod1[j] =Integer.parseInt(sline[0]);
@@ -474,43 +476,40 @@ public class Uppdrag implements Runnable{
             ds.linkNod2[j] =Integer.parseInt(sline[1]);  
         }
         
-//Nu har vi nod-nr på uppdragen. Dags att beräkna avstånd! 
-                
-        //Här borde en loop börja
-        for (int j=0; j<IntStorlekPlatser; j++){       //Den här ska loopa över alla upphämtningsplatser
+    //Beräknar avstånd till de ovan inlästa noderna 
+        for (int j=0; j<IntStorlekPlatser; j++){       //loopar över alla upphämtningsplatser
             ds.startRutt = ds.start;        
-            ds.slutRutt = ds.linkNod2[j];
-            //System.out.println("Startnod: " + ds.startRutt + ", slutnod: " + ds.slutRutt);
-             
+            ds.slutRutt = ds.linkNod2[j];   //
+                      
             oppis[j] = new OptPlan(ds);
             oppis[j].createPlan();
             
-            
-             vertexint = new int[oppis[j].path.size()-1];
+            vertexint = new int[oppis[j].path.size()-1];
        
-            //Den här loopen räknar ut kostnaden för rutten till den aktuella upphämtningsplatsen
+            //Skapar array med alla nodnr i rutten som ints
             for (int i=0; i< oppis[j].path.size()-1; i++){      
+            vertexint[i] = Integer.parseInt(oppis[j].path.get(i).getId());
+            }
             
-             vertexint[i] = Integer.parseInt(oppis[j].path.get(i).getId()); //Gör om path till ints
-             
-              }
-            
+            //Räknar ut avståndet för rutten
             tot_kostnad = RaknaAvstand(vertexint);
 
             ds.cui.appendStatus("Totalkostnad: " + tot_kostnad);
               
-            
+            //Skriver ut vilka uppdrag som finns och deras kostnader
              ds.cui.appendStatus("Upphämtningsplats " + plats[j] + " innebär en rutt från " + ds.startRutt + " till "  
                    + ds.slutRutt + " vilket ger en totalkostnad på "  + tot_kostnad);
            
-             System.out.println();      //Blankrad
-                
+             System.out.println();     
+          
+            //Räknar ut vilken upphämtningsplats som är närmast 
            if (tot_kostnad < lagstaKostnad){
                  lagstaKostnad = tot_kostnad;           
                  narmstaPlats = plats[j];
                  narmstaNod = ds.slutRutt;
                  upphamtningplatsPlats = j;  
                  
+                 //Sparar näst närmsta plats
                  if(j == 0){
                      nastnarmstaPlats = Integer.toString(j+1);
                  }else if(j ==oppis[j].path.size()-1){
@@ -519,10 +518,10 @@ public class Uppdrag implements Runnable{
                      nastnarmstaPlats = Integer.toString(j-1);
                  }             
              }
-             tot_kostnad = 0; 
-             
+             tot_kostnad = 0;            
         }
         
+        //Skriver ut vald upphämtningsplats
              ds.cui.appendStatus("\nNärmaste upphämtningsplats är plats " + narmstaPlats + " med nodnummer " + narmstaNod);
              System.out.println("Kostnaden för att ta sig dit är " + lagstaKostnad);
 
@@ -798,25 +797,24 @@ public class Uppdrag implements Runnable{
      
     }
      
-     
+ //Metod som beräknar avstånd mellan två noder. Tar som inparameter två noder och returnerar avståndet mellan dessa    
  public double RaknaAvstand(int nod1, int nod2){
+  //Hämtar x- och y-koordinater för noden och räknar ut avståndet mellan dessa
    double  xstart= ds.nodeX[nod1];
    double xslut = ds.nodeX[nod2];
    double ystart= ds.nodeY[nod1];
    double yslut = ds.nodeY[nod2];
-   //nodnr[i] = i;//+1;
-
-    //uppdragsnr[i] = i+1;
+   
    double resvag = Math.hypot(xslut-xstart, yslut-ystart);
-
-  //System.out.println("Sträcka mellan nod " + nod1 + " och nod" + nod2 + ": " + resvag);
 
     return resvag;
 }
  
-    public double RaknaAvstand (int[] rutt){
-   double[] resvag;        //sträcka i km mellan start- och slutnod
-  
+ //Metod som beräknar den totala resvägen för en rutt. Tar som inparameter en int-array med de noder som ingår i rutten
+   public double RaknaAvstand (int[] rutt){
+   
+   //Varibeldeklaration
+   double[] resvag;        
    resvag = new double [rutt.length-1]; 
    double xstart;
    double xslut; 
@@ -825,24 +823,17 @@ public class Uppdrag implements Runnable{
    double tot_resvag = 0;
   
    
+   //Hämtar x- och y-koordinater för noden och räknar ut avståndet mellan dessa
           for (int i=0; i < rutt.length-1; i++){
                 xstart= ds.nodeX[rutt[i]];
-             //   System.out.println("Startnod: " + rutt[i]);
-               // System.out.println("x-koordinat för startnod: " + xstart);
                 xslut = ds.nodeX[rutt[i+1]];
                 ystart= ds.nodeY[rutt[i]];
                 yslut = ds.nodeY[rutt[i+1]];
-                //nodnr[i] = i;//+1;
 
-                //uppdragsnr[i] = i+1;
                 resvag[i] = Math.hypot(xslut-xstart, yslut-ystart);
                 
-                tot_resvag = tot_resvag + resvag[i];
-
-                
-                //System.out.println("Sträcka mellan nod " + rutt[i] + " och nod" + rutt[i+1] + ": " + resvag[i]);
-                
-            }
+                tot_resvag = tot_resvag + resvag[i];               
+             }
      System.out.println("Total resväg: " + tot_resvag);
      return tot_resvag;
 }
