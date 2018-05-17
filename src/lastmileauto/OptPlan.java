@@ -24,20 +24,19 @@ public class OptPlan {
         List<Edge> edges =new ArrayList<Edge>();
         ds.pathInt = new ArrayList<Integer>();
         
-        // Sätter upp nätverket med noderna 
+        // Sätter upp nätverket med noderna
         for(int i =0; i <ds.nodes; i++)
         {
             Vertex location =new Vertex("" + (i +1), "Nod #" + (i +1));
             nodes.add(location);
         }
-        
+        //Sätter upp länkar 
         for(int i =0; i <ds.arcs; i++)
         {
             Edge lane =new Edge("" + (i +1), nodes.get(ds.arcStart[i]-1), 
                     nodes.get(ds.arcEnd[i]-1),1); // Last argument is arc cost 
             edges.add(lane);
         }
-        
         Graph graph =new Graph(nodes,edges);
         DijkstraAlgorithm dijkstra =new DijkstraAlgorithm(graph);
 
@@ -47,7 +46,7 @@ public class OptPlan {
         path =dijkstra.getPath(nodes.get(ds.slutRutt-1)); //Slutnod
         System.out.println("slutrutt från dij: " +  nodes.get(ds.slutRutt-1));
     
-        
+        //Markerar de vägar som ingår i den optimerade rutten. 
         for(int i=0; i <path.size()-1; i++)
         {
              for(int j = 0; j <ds.arcs; j++)
@@ -74,9 +73,7 @@ public class OptPlan {
                
         int[] nodlistaInt = new int[nodlista.size()-1]; 
 
-   
-     
-      x = new double[nodlista.size()];  //
+      x = new double[nodlista.size()]; 
       y = new double[nodlista.size()];
       int uplats = 0;
       int count = 0;
@@ -87,12 +84,14 @@ public class OptPlan {
       ds.kommandon = new ArrayList<String>();
                       
         System.out.println("Nodlista från compass: " + nodlista);
-            
+        
+        
       for(int i =0; i <nodlista.size(); i++)
         {
         nodlistaInt = nodlista.stream().mapToInt(k -> k).toArray();  
         } 
      
+      //Tar reda på x och y koordinaterna för noderna som är med i rutten. 
       for(int i =0; i <nodlista.size(); i++)  
         { 
                 x[i] = ds.nodeX[nodlistaInt[i]-1]; 
@@ -258,11 +257,14 @@ public class OptPlan {
                     } 
             }
           }  
+//Modifierar om kommando arrayen till kommandon som passar AGV:n, vi kollar även hur många lång kommando 
+//arrayen är för veta om vissa modifieringar inte är nödvändiga. 
     System.out.println("Hela kommando i slutet av loopen innan modifiering: " + ds.kommandon);
     if(ds.kommandon.size() > 1 ){
         
        if(ds.kommandon.size()>3 ){  
         for (int i = 0; i<ds.kommandon.size()-3; i++){
+             //Kollar om en viss kommando följd är FLLF och isåfall görs denna om till U. 
            if(ds.kommandon.get(i).equals("F") && ds.kommandon.get(i+1).equals("L")&& ds.kommandon.get(i+2).equals("L")&& ds.kommandon.get(i+3).equals("F")){
             
             ds.kommandon.add(i, ds.U);     
@@ -278,7 +280,7 @@ public class OptPlan {
        }
      }
         
-
+//Kollar om en viss kommando följd är FLF och isåfall görs denna om till L. 
     if(ds.kommandon.size()>2 ){
     for (int i = 0; i<ds.kommandon.size()-2; i++){
          
@@ -292,14 +294,12 @@ public class OptPlan {
     }
     int countStor = compare.size();
            
-     //Modifierar kommando-arrayen så att vänstersvängarna funkar
-
+//Här modifieras resten av kommandona, se separata kommentarer för varje modifiering
      for (int i = 0; i<ds.kommandon.size()-1; i++){
          int kommandocount = ds.kommandon.size();
          //Ersätt FLF med L 
          if(countStor != 0 && i == ((compare.get(countFLF-1))-countBort)){      //har skapat en compare arraylist som sparar på vilka platser som FLF "kommandon" finns
                                                 //och om det finns på fler platser jämför dessa också tills att countStor är uppfylld. 
-            // System.out.println("I är lika med compare:" + i + " hoppar över" ); //tror detta kan bli problem med i men de borde gå att fixa fort / eelise
              if(countFLF < countStor){                                   
              countFLF = countFLF +1; 
              }
@@ -326,10 +326,7 @@ public class OptPlan {
          } 
           //Ersätter FF med F 
           else if(ds.kommandon.get(i).equals("F") && ds.kommandon.get(i+1).equals("F")){
-              // System.out.println("I fjärde if-satsen för modifiering.");
-           //     System.out.println("Kommando på plats i, ska vara kvar: " + ds.kommandon.get(i));
             ds.kommandon.remove(i);   //Ta bort första F:et
-  //          ds.kommandon.remove(i);//Detta kan bli strul ! 
               kommandocount = kommandocount-1 ;
               System.out.println("FF = F ");
               countBort = countBort -1;
@@ -347,7 +344,7 @@ public class OptPlan {
      
      System.out.println(ds.vaderStrack);
    
-         return ds.kommandon;
+         return ds.kommandon; //Returnerar den färdiga kommando arrayen som sedan anvönds för att skicka kommandon till AGV:n. 
 
     }
 }

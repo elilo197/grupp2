@@ -865,8 +865,8 @@ public class Uppdrag implements Runnable{
      
     }
 
-     public void messfromgroup() {
-       //meddelande från den andra gruppen 
+//Denna metod används för att hämta meddelande från en hemsida från den andra gruppen i samma företagsgrupp. 
+     public void messfromgroup() {  
      
      try {
          //Uppdrag http = new Uppdrag();
