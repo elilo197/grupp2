@@ -1,4 +1,3 @@
-
 package lastmileauto;
 
 import java.util.*;
@@ -25,7 +24,7 @@ public class OptPlan {
         List<Edge> edges =new ArrayList<Edge>();
         ds.pathInt = new ArrayList<Integer>();
         
-        // Sätter upp nätverket 
+        // Sätter upp nätverket med noderna 
         for(int i =0; i <ds.nodes; i++)
         {
             Vertex location =new Vertex("" + (i +1), "Nod #" + (i +1));
