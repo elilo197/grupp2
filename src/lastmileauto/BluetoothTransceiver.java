@@ -13,8 +13,8 @@ public class BluetoothTransceiver{
         //Skapar anslutningen mellan dator och AGV
         try {
             StreamConnection anslutning = (StreamConnection)
-            Connector.open("btspp://98D331F62137:1"); //Arduino
-            //Connector.open("btspp://201601205682:1");  //Agda
+            //Connector.open("btspp://98D331F62137:1"); //Arduino
+            Connector.open("btspp://98D331F72A6C:1");  //Agda
               
              bluetoothanslutning = new PrintStream(anslutning.openOutputStream());          
              bluetooth_in = new BufferedReader(new InputStreamReader(anslutning.openInputStream()));

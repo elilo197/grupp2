@@ -22,14 +22,8 @@ public class Planeringssystem {
        ds.cui.appendStatusAgv("Meddelanden från Agda kommer nu. \n" );  
        
        
-       
-     
-       
-       
-       
-       
-       
-    }
+        
+ }
          
     /**
      * @param args the command line arguments
